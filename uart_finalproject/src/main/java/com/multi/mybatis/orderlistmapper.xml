@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.OrderlistMapper">
+	
+	<select id="select" parameterType="Integer" resultType="OrderlistDTO"> 
+		SELECT o.orderlistid, o.custid, c.cname as cust_cname, o.itemid, i.itemname as item_itemname, 
+		o.orderdate, o.ordercnt, o.totalprice, o.pay, o.phone2, o.candate
+		FROM orderlist o
+		INNER JOIN item i ON o.itemid = i.itemid
+		INNER JOIN customer c ON o.custid = c.custid
+		WHERE orderlistid=#{orderlistid};
+		
+	</select>
+	<select id="selectall" resultType="OrderlistDTO">
+		
+	</select>
+	<insert id="insert" parameterType="OrderlistDTO">
+		INSERT INTO orderlist VALUES (NULL, #{itemid}, #{custid}, #{orderdate}, #{ordercnt}, #{totalprice}, #{pay}, #{phone2}, #{candate})
+		<selectKey keyProperty="orderlistid" resultType="Integer" order="AFTER"> 
+                SELECT LAST_INSERT_ID()
+        </selectKey> 
+	</insert>
+	<update id="update" parameterType="OrderlistDTO">
+		
+	</update>
+	<delete id="delete" parameterType="Integer">
+		
+	</delete>
+	
+</mapper>
