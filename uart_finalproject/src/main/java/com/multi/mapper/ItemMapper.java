@@ -13,5 +13,6 @@ import com.multi.frame.MyMapper;
 public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
 	public List<ItemDTO> select_cate(Integer k) throws Exception;
 	public List<ItemDTO> searchitem(String txt) throws Exception;
+	public List<ItemDTO> gethighgrade() throws Exception;
 
 }

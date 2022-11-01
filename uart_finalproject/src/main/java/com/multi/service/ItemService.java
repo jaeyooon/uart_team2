@@ -43,5 +43,9 @@ public class ItemService implements MyService<Integer, ItemDTO>{
 	public List<ItemDTO> select_cate(Integer k) throws Exception{
 		return mapper.select_cate(k);
 	}
+	
+	public List<ItemDTO> gethighgrade() throws Exception{
+		return mapper.gethighgrade();
+	}
 
 }

@@ -32,9 +32,7 @@
 	                    <a th:href="@{/item/itemdetail(itemid=${it.itemid})}"><img th:src="'/img/' +${it.itemimg}" alt="Image placeholder" class="img-fluid"></a>
 	                  </figure>
 	                  <div class="block-4-text p-4">
-	                    <h3><a href="/item/itemdetail">Tank Top</a></h3>
-	                    <p class="mb-0">Finding perfect t-shirt</p>
-	                    <p class="text-primary font-weight-bold">$50</p>
+	                    <h3><a th:href="@{/item/itemdetail(itemid=${it.itemid})}" th:text="${it.itemname}"></a></h3>
 	                  </div>
 	                </div>
 	              </div>

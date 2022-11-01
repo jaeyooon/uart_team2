@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ItemDTO {
-	private int itemid;
+	private Integer itemid;
 	private String cateid;
 	private String itemname;
 	private String itemimg;
@@ -23,13 +23,13 @@ public class ItemDTO {
 	private float lng;
 	private String itemguide;
 	private String itemticket;
-	private int itemstock;
+	private Integer itemstock;
 	private Date estart;
 	private Date efin;
 	
 	private String itemoption_obj;
-	private int itemoption_price;
+	private Integer itemoption_price;
 	private String cate_catename;
-	
+	private float review_reviewgrade;
 
 }

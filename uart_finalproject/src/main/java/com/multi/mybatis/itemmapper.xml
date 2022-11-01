@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		FROM item AS i
 		INNER JOIN cate AS c ON c.cateid=i.cateid
 		INNER JOIN itemoption AS ip ON i.itemid = ip.itemid
-		WHERE c.cateid=#{cateid};
+		WHERE c.cateid=#{cateid}
 	</select>	
 	
 	
@@ -33,6 +33,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="searchitem" parameterType="String" resultType="itemDTO">
 		SELECT * FROM item WHERE itemname LIKE CONCAT('%',#{txt},'%')		
+	</select>
+	
+	<select id="gethighgrade" resultType="itemDTO">
+		SELECT i.itemid, i.itemname, i.itemimg, i.estart, i.efin, 
+		r.reviewgrade as review_reviewgrade FROM item i 
+		INNER JOIN review r ON i.itemid = r.itemid
+		INNER JOIN cate c ON c.cateid = i.cateid
+		ORDER BY r.reviewgrade DESC LIMIT 6;
 	</select>
 
 </mapper>
