@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ItemMapper">
+
+	<select id="select" parameterType="Integer" resultType="itemDTO">
+		SELECT c.cateid, c.catename AS cate_catename, i.itemid, i.itemname, i.itemimg, i.itemplace, i.itemguide, 
+		ip.obj AS itemoption_obj, ip.price AS itemoption_price, i.itemticket, i.estart, i.efin,
+		i.lat, i.lng, i.itemstock FROM item i
+		INNER JOIN cate c ON c.cateid = i.cateid
+		INNER JOIN itemoption ip ON i.itemid = ip.itemid
+		WHERE i.itemid=#{itemid};
+
+	</select>
+	
+	<select id="select_cate" parameterType="Integer" resultType="itemDTO">
+		SELECT i.itemid, i.cateid, i.itemname, i.itemimg, i.itemplace, i.lat, i.lng,
+		i.itemguide, i.itemticket, i.itemstock, i.estart, i.efin, ip.obj AS itemoption_obj, 
+		ip.price AS itemoption_price
+		FROM item AS i
+		INNER JOIN cate AS c ON c.cateid=i.cateid
+		INNER JOIN itemoption AS ip ON i.itemid = ip.itemid
+		WHERE c.cateid=#{cateid};
+	</select>	
+	
+	
+	<select id="selectall" resultType="itemDTO">
+		SELECT c.cateid, c.catename, i.itemid, i.itemname, i.itemimg, i.itemplace, i.itemguide, (t.obj) AS ticket_obj, (t.price) AS ticket_price, i.itemticket, i.estart, i.efin  FROM item AS i
+		INNER JOIN cate AS c ON c.cateid=i.cateid
+		INNER JOIN ticket AS t ON t.itemid=i.itemid
+	</select>
+	
+	<select id="searchitem" parameterType="String" resultType="itemDTO">
+		SELECT * FROM item WHERE itemname LIKE CONCAT('%',#{txt},'%')		
+	</select>
+
+</mapper>

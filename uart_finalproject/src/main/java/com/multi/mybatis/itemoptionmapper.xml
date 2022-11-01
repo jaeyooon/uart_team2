@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ItemoptionMapper">
+	
+	<select id="select" parameterType="Integer" resultType="ItemoptionDTO"> 
+		
+	</select>
+	<select id="selectall" resultType="ItemoptionDTO">
+
+	</select>
+	<insert id="insert" parameterType="ItemoptionDTO">
+		
+	</insert>
+	<update id="update" parameterType="ItemoptionDTO">
+	
+	</update>
+	<delete id="delete" parameterType="Integer">
+		
+	</delete>
+	<select id="getitem" parameterType="Integer" resultType="ItemoptionDTO">
+	SELECT * FROM itemoption WHERE itemid=#{itemid}
+	</select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.WishMapper">
+
+	<select id="select" parameterType="Integer" resultType="WishDTO">
+		select wi.wishid, wi.custid, wi.itemid, it.itemname, 
+		it.itemimg from wish wi
+		INNER JOIN item it ON wi.itemid = it.itemid
+		INNER JOIN customer cu ON wi.custid = cu.custid
+		WHERE wishid=#{wishid}
+	</select>
+	<select id="selectall" resultType="WishDTO">
+		select wi.wishid, wi.custid, wi.itemid, it.itemname, 
+		it.itemimg from wish wi
+		INNER JOIN item it ON wi.itemid = it.itemid
+		INNER JOIN customer cu ON wi.custid = cu.custid
+	</select>
+
+	<insert id="insert" parameterType="WishDTO">
+		INSERT INTO wish VALUES (null,#{custid},#{itemid})
+	</insert>
+
+	<update id="update" parameterType="WishDTO">
+		UPDATE wish SET itemid=#{itemid}, custid=#{custid} WHERE wishid=#{wishid}
+	</update>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM wish WHERE wishid=#{wishid}
+	</delete>
+	
+	<select id="wishall" parameterType="String" resultType="WishDTO">
+		select wi.wishid, wi.custid, wi.itemid, it.itemname, 
+		it.itemimg from wish wi
+		INNER JOIN item it ON wi.itemid = it.itemid
+		INNER JOIN customer cu ON wi.custid = cu.custid
+		WHERE wi.custid= #{custid}
+	</select>
+
+</mapper>
