@@ -1,0 +1,81 @@
+  <meta charset="utf-8">
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- bootstrap tab template -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+  </head>
+  
+  <body>
+  
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img th:src="'/img/'+${itemdetail.itemimg}" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <h2 class="text-black" th:text="${itemdetail.itemname}"></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
+            <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
+            <p><strong class="text-primary h4">$50.00</strong></p>
+            <div class="mb-1 d-flex">
+              <label for="option-sm" class="d-flex mr-3 mb-3">
+                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
+              </label>
+              <label for="option-md" class="d-flex mr-3 mb-3">
+                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-md" name="shop-sizes"></span> <span class="d-inline-block text-black">Medium</span>
+              </label>
+              <label for="option-lg" class="d-flex mr-3 mb-3">
+                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-lg" name="shop-sizes"></span> <span class="d-inline-block text-black">Large</span>
+              </label>
+              <label for="option-xl" class="d-flex mr-3 mb-3">
+                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-xl" name="shop-sizes"></span> <span class="d-inline-block text-black"> Extra Large</span>
+              </label>
+            </div>
+            <div class="mb-5">
+              <div class="input-group mb-3" style="max-width: 120px;">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+              </div>
+              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <div class="input-group-append">
+                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+              </div>
+            </div>
+            </div>
+            <p><a href="#" class="buy-now btn btn-sm btn-primary">예매하기</a></p>
+          </div>
+        </div>
+        
+        <!-- tab 메뉴 -->
+		 <nav>
+		  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+		    <button class="nav-link active" id="nav-one-tab" data-bs-toggle="tab" data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one" aria-selected="true">상세정보</button>
+		    <button class="nav-link" id="nav-two-tab" data-bs-toggle="tab" data-bs-target="#nav-two" type="button" role="tab" aria-controls="nav-two" aria-selected="false">한줄평</button>
+		    <button class="nav-link" id="nav-three-tab" data-bs-toggle="tab" data-bs-target="#nav-three" type="button" role="tab" aria-controls="nav-three" aria-selected="false">장소정보</button>
+		    <button class="nav-link" id="nav-four-tab" data-bs-toggle="tab" data-bs-target="#nav-four" type="button" role="tab" aria-controls="nav-four" aria-selected="false">예매/취소안내</button>
+		  </div>
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+		  <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
+		  	 <h3>tab1</h3>
+		  </div>
+		  <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
+		  	 <h3>tab2</h3>
+		  </div>
+		  <div class="tab-pane fade" id="nav-three" role="tabpanel" aria-labelledby="nav-three-tab">
+		  	 <h3>tab3</h3>
+		  </div>
+		  <div class="tab-pane fade" id="nav-four" role="tabpanel" aria-labelledby="nav-four-tab">
+		  	 <h3>tab4</h3>
+		  </div>
+		</div>
+		<!-- tad end -->
+		  
+      </div>
+    </div>
+
+  </body>
+</html>
