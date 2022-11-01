@@ -26,8 +26,8 @@
             </div>
             <div class="row mb-5">
 			<!-- 첫번째 행 -->
-	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-	                <div th:each="it : ${itemlist}" class="block-4 text-center border">
+	              <div th:each="it : ${itemlist}" class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
 	                    <a th:href="@{/item/itemdetail(itemid=${it.itemid})}"><img th:src="'/img/' +${it.itemimg}" alt="Image placeholder" class="img-fluid"></a>
 	                  </figure>
