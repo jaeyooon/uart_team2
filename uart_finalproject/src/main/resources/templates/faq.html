@@ -1,0 +1,141 @@
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+body{
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container h3{
+width:80%;
+  color: #264653;
+  text-align: center;
+  
+}
+
+details{
+margin-top:10px;
+  background-color: #fefae0;
+  color: #264653;
+  font-size: 15px;
+}
+
+summary {
+  padding: .5em 1.3rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;  
+  transition: height 1s ease;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:after{
+  content: "\002B";
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .5em;
+    font-weight: bold;
+}
+
+details[open] summary:after{
+  content: "\00D7";
+}
+
+details[open] div{
+  padding: .5em 1em;
+}
+em{
+color:#1e88e5;
+font-weight: bold;
+}
+#info{
+color: red;
+}
+#stop{
+width: 100px;
+}
+
+
+</style>
+  <div class="site-section">
+      <div class="container">
+
+        <div class="row mb-5">
+          <div class="col-md-12 order-2">
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="float-md-left mb-4"><h3 class="text-black h3">FAQ</h3></div>
+                <div class="d-flex">
+                </div>
+              </div>
+            </div>
+           
+           <div class="row mb-5">
+           	<div class="container">
+  <details>
+  <summary id="info">+ 부정이용 규제안내</summary>
+  <div>
+   U-ART에서는 <em id="info">부정이용 관리 시스템</em>을 통해 티켓의 부정이용을 엄격히 규제합니다.<br>
+  <em id="info">공정하고 안전하게</em> 공연/전시/스포츠경기를 즐기실 수 있도록
+  각종 부적절한 이용과 개인 간 이루어지는 판매, 양도 등의 부정 거래를<br>
+  약관 제9조(회원 탈퇴 및 자격 상실), 제32조(허위 구매에 대한 규제)를 바탕으로 규제하고 있습니다.
+  <div><img id="stop" th:src="@{/img/stop.png}" alt="stop"></div>
+  암표 부정거래는 (일명 플미티켓)
+  	<p>
+	* 공연/전시/스포츠 문화를 해치는 범죄행위입니다.<br>
+	부정거래 관리 시스템을 통한 모니터링 과정에서 비정상적인 프로세스의 예매내역(매크로, 개인 간 거래 등) 적발 시
+	예매취소/회원정지/회원자격 상실 등의 적절한 조치 및 법적 제재를 가할 수 있습니다.
+	<p>
+	* 사기의 위험에서 보호받지 못합니다.<br>
+	개인 간의 거래로 인한 피해에 대한 책임은 전적으로 거래 당사자에게 있으며, 피해 발생 시 주최/주관/티켓링크에서
+	책임지지 않습니다.
+	<p>
+	* 개인 간 판매/구매 시 공유된 개인 신상정보가 외부로 유출될 수 있습니다.<br>
+	티켓을 타인에게 재 판매하거나 양도받는 과정에서 개인 신상정보를 공유할 경우, 판매자와 구매자 모두 피해를 
+	입을 수 있습니다.
+  </div>
+</details>
+  <details>
+  <summary>Q. 회원 탈퇴 신청을 하고 싶어요</summary>
+  <div>
+  U-ART에서는 서비스 탈퇴 신청 후 철회를 하실 수 없습니다.<br>
+  서비스 재 이용을 원하시는 경우, <em>신규 아이디로 서비스 재가입하여 이용</em>하시기 바랍니다.
+  </div>
+</details>
+ <details>
+  <summary>Q. 예매 후 티켓 수령은 어떻게 하나요?</summary>
+  <div>
+  [현장 수령]<br>
+	행사/경기 당일 현장 매표소(예매자 전용 창구)에서 예매번호를 제시하면 티켓을 수령할 수 있습니다.<br>
+	- 예매번호는 예매내역 페이지에서 확인할 수 있습니다.<br>
+	- <em>공연 시작 시간 1시간 전 ~ 30분 전까지</em> 행사장 매표소에서 티켓을 수령하실 수 있습니다.
+  </div>
+  </details>
+  <details>
+  <summary>Q. 예매 취소 하고 싶어요!</summary>
+  <div>
+  [예매 취소 시 주의사항]<br>
+   <em>* 취소마감기간 내 취소가능하며, 그 이후로는 취소가 불가합니다.</em><br>
+	- 동일 상품에 대해서 날짜, 시간, 좌석, 가격등급, 결제 등의 <em>일부 변경은 불가하며</em>, 원하시는 경우에는 기존 예매건을 취소하시고, 재 예매를 하셔야 합니다. 
+  </div>
+</details>
+ <details>
+  <summary>Q. 최근 개명하여 이름이 변경되었어요.</summary>
+  <div>
+	개명 전 이름이 이미 회원정보로 등록되어 있다면, 아래의 경로를 통해 회원정보를 변경바랍니다.<br>
+	- MyPage > 이름 변경 후 Update
+  </div>
+</details>
+              </div>
+           </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
