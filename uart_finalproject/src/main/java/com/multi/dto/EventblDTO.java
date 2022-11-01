@@ -20,5 +20,5 @@ public class EventblDTO {
 	private String content;
 	private String image;
 	private Date tdate;
-	private int sale;
+	private Integer sale;
 }
