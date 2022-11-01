@@ -21,6 +21,7 @@
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a th:href="@{/item/itemdetail(itemid=${rit.itemid})}" th:text="${rit.itemname}">Tank Top</a></h3>
+                  	<span th:text="${#dates.format(rit.estart,'yyyy.MM.dd')}+'~'">시작</span><span th:text="${#dates.format(rit.efin,'yyyy.MM.dd')}">끝</span>
                   </div>
                 </div>
               </div>
