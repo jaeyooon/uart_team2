@@ -1,4 +1,27 @@
   <meta charset="utf-8">
+  
+  <style>
+.img-fluid{
+	width:80%;
+	height:550px;
+}
+
+#p1{
+	font-style:italic;
+	font-weight:400;
+}
+
+h6, #p2{
+	color:black;
+}
+
+.info_img{
+	width:45%;
+	height:600px;
+	margin-bottom:50px;
+}
+</style>
+  
   <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -17,8 +40,8 @@
           </div>
           <div class="col-md-6">
             <h2 class="text-black" th:text="${itemdetail.itemname}"></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
-            <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
+            <p></p>
+            <p class="mb-4">Don't hesitate to make a reservation. <br>You can book this great exhibition now.<br> Amazing works await you!</p>
             <p><strong class="text-primary h4">$50.00</strong></p>
             <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
@@ -49,18 +72,30 @@
           </div>
         </div>
         
-        <!-- tab 메뉴 -->
+        <!-- tab 메뉴 --------------------------------------------------------------->
 		 <nav>
+		 <br><br><br><br>
 		  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-		    <button class="nav-link active" id="nav-one-tab" data-bs-toggle="tab" data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one" aria-selected="true">상세정보</button>
-		    <button class="nav-link" id="nav-two-tab" data-bs-toggle="tab" data-bs-target="#nav-two" type="button" role="tab" aria-controls="nav-two" aria-selected="false">한줄평</button>
-		    <button class="nav-link" id="nav-three-tab" data-bs-toggle="tab" data-bs-target="#nav-three" type="button" role="tab" aria-controls="nav-three" aria-selected="false">장소정보</button>
+		    <button class="nav-link active" id="nav-one-tab" data-bs-toggle="tab" data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one" aria-selected="true">상세정보</button>&nbsp;&nbsp;
+		    <button class="nav-link" id="nav-two-tab" data-bs-toggle="tab" data-bs-target="#nav-two" type="button" role="tab" aria-controls="nav-two" aria-selected="false">한줄평</button>&nbsp;&nbsp;
+		    <button class="nav-link" id="nav-three-tab" data-bs-toggle="tab" data-bs-target="#nav-three" type="button" role="tab" aria-controls="nav-three" aria-selected="false">장소정보</button>&nbsp;&nbsp;
 		    <button class="nav-link" id="nav-four-tab" data-bs-toggle="tab" data-bs-target="#nav-four" type="button" role="tab" aria-controls="nav-four" aria-selected="false">예매/취소안내</button>
 		  </div>
 		</nav>
 		<div class="tab-content" id="nav-tabContent">
 		  <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
-		  	 <h3>tab1</h3>
+		  	 <br><br>
+		  	 <h3>Exhibition Information</h3>
+		  	 <br><br>
+		  	 <p id="p1">멋진 전시를 U-ART에서 만나보세요</p>
+		  	 <br><br>
+		  	 <h6 th:text="'▶전시명: &nbsp;   ' + ${itemdetail.itemname}">▶전시명:</h6><br>
+		  	 <img th:src="'/img/'+${itemdetail.itemimg}" alt="Image" class="info_img">
+		  	 <h6 th:text="'▶전시장소: &nbsp;   ' + ${itemdetail.itemplace}">▶전시장소:</h6><br>
+		  	 <h6 th:text="'▶전시관람등급: &nbsp;   ' + ${itemdetail.itemguide}">▶전시관람등급:</h6><br>
+		  	 <h6 th:text="'▶티켓수령방법: &nbsp;   ' + ${itemdetail.itemticket}">▶티켓수령방법:</h6><br>
+		  	 <h6 th:text="'▶티켓가격: &nbsp;   '+'&nbsp;&nbsp;&nbsp;'+ ${itemdetail.itemoption_obj} +'&nbsp;&nbsp;&nbsp;'+ ${itemdetail.itemoption_price}"></h6><br>
+		  	 <h6 th:text="'▶전시기간: &nbsp;   ' + ${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}">▶전시일정:</h6><br>
 		  </div>
 		  <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
 		  	 <h3>tab2</h3>
@@ -69,7 +104,36 @@
 		  	 <h3>tab3</h3>
 		  </div>
 		  <div class="tab-pane fade" id="nav-four" role="tabpanel" aria-labelledby="nav-four-tab">
-		  	 <h3>tab4</h3>
+		  	 <br><br>
+		  	 <h4>예매/취소안내</h4>
+		  	 <br><br>
+		  	 <h5>티켓 수령안내</h5>
+		  	 <p id="p2">▶온라인수령<br>
+		  	 티켓 예매 확인 후 예매시 입력하신 연락처로 티켓이 발송됩니다.<br> 예매 후 1일 이내에 수령이 가능합니다.</p>
+		  	 <br><br>
+		  	 <h5>예매 취소안내</h5>
+		  	 <p id="p2">▶취소시 주의사항<br>
+		  	 티켓 예매 후 7일 이내에 취소시, 취소수수료가 없습니다.<br> 단, 예매 후 7일 이내라도 취소 시점이 전시 시작일로부터 7일이내라면 50%만 환불됩니다.</p>
+		  	 <br>
+		  	 <p id="p2">▶취소환불 규정</p>
+		  	 
+		  	 <table>
+		  	 <thead>
+		  	 <tr>
+		  	 <th>기준</th>
+		  	 <th>환불금액</th>
+		  	 </tr>
+		  	 </thead>
+		  	 
+		  	 <tbody>
+		  	 <tr><td>예매 후 7일 이내</td>
+		  	 <td>전액환불</td></tr>
+		  	 <tr><td>전시 시작일 전 7일 이내</td>
+		  	 <td>티켓금액의 50%환불</td></tr>
+		  	 
+		  	 </tbody>
+		  	 </table>
+		  	 
 		  </div>
 		</div>
 		<!-- tad end -->

@@ -24,11 +24,12 @@ public class ItemController {
 		List<ItemDTO> list = null;
 		try {
 			list = item_service.select_cate(1);
-			model.addAttribute("itemlist", list);
+			model.addAttribute("itemlist1", list);
+			model.addAttribute("center", dir+"medialist");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("center", dir+"medialist");
+		
 		return "main";
 	}
 	
@@ -37,11 +38,12 @@ public class ItemController {
 		List<ItemDTO> list = null;
 		try {
 			list = item_service.select_cate(2);
-			model.addAttribute("itemlist", list);
+			model.addAttribute("itemlist2", list);
+			model.addAttribute("center", dir+"explist");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("center", dir+"explist");
+		
 		return "main";
 	}
 	
@@ -50,11 +52,12 @@ public class ItemController {
 		List<ItemDTO> list = null;
 		try {
 			list = item_service.select_cate(3);
-			model.addAttribute("itemlist", list);
+			model.addAttribute("itemlist3", list);
+			model.addAttribute("center", dir+"privatelist");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("center", dir+"privatelist");
+		
 		return "main";
 	}
 	
@@ -63,11 +66,12 @@ public class ItemController {
 		List<ItemDTO> list = null;
 		try {
 			list = item_service.select_cate(4);
-			model.addAttribute("itemlist", list);
+			model.addAttribute("itemlist4", list);
+			model.addAttribute("center", dir+"speciallist");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("center", dir+"speciallist");
+		
 		return "main";
 	}
 	
