@@ -99,7 +99,7 @@
 	                <span class="material-symbols-outlined" id="logout">
 						person로그아웃
 					</span></a></li>
-                    <li><a href="/wishlist"><span class="icon icon-heart-o"></span></a></li>
+                    <li><a th:href="@{/wishlist(id=${session.logincust.custid})}" ><span class="icon icon-heart-o"></span></a></li>
                     <li>
                     <a href="/order" class="site-cart" id='orderlist'>
                       <span class="material-symbols-outlined">

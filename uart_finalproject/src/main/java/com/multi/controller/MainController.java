@@ -53,10 +53,6 @@ public class MainController {
 		return "main";
 	}
 	
-	@RequestMapping("/wishlist")
-	public String wishlist(Model model) {
-		model.addAttribute("center", "wishlist");
-		return "main";
-	}
+	
 	
 }
