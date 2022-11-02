@@ -10,18 +10,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		i.lat, i.lng, i.itemstock FROM item i
 		INNER JOIN cate c ON c.cateid = i.cateid
 		INNER JOIN itemoption ip ON i.itemid = ip.itemid
-		WHERE i.itemid=#{itemid};
-
+		WHERE i.itemid=#{itemid} LIMIT 1
 	</select>
 	
 	<select id="select_cate" parameterType="Integer" resultType="itemDTO">
 		SELECT i.itemid, i.cateid, i.itemname, i.itemimg, i.itemplace, i.lat, i.lng,
-		i.itemguide, i.itemticket, i.itemstock, i.estart, i.efin, ip.obj AS itemoption_obj, 
-		ip.price AS itemoption_price
+		i.itemguide, i.itemticket, i.itemstock, i.estart, i.efin
 		FROM item AS i
 		INNER JOIN cate AS c ON c.cateid=i.cateid
-		INNER JOIN itemoption AS ip ON i.itemid = ip.itemid
-		WHERE c.cateid=#{cateid}
+		WHERE c.cateid=#{cateid};
 	</select>	
 	
 	
@@ -41,6 +38,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN review r ON i.itemid = r.itemid
 		INNER JOIN cate c ON c.cateid = i.cateid
 		ORDER BY r.reviewgrade DESC LIMIT 6;
+
 	</select>
 
 </mapper>
