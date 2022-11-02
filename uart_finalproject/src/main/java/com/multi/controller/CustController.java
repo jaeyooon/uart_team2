@@ -49,6 +49,7 @@ public class CustController {
 	         e.printStackTrace();
 	        
 	      }
+	      
 	      return "redirect:/";
 	   }
 	
