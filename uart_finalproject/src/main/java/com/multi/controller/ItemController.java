@@ -34,18 +34,39 @@ public class ItemController {
 	
 	@RequestMapping("/explist")
 	public String explist(Model model) {
+		List<ItemDTO> list = null;
+		try {
+			list = item_service.select_cate(2);
+			model.addAttribute("itemlist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("center", dir+"explist");
 		return "main";
 	}
 	
 	@RequestMapping("/privatelist")
 	public String privatelist(Model model) {
+		List<ItemDTO> list = null;
+		try {
+			list = item_service.select_cate(3);
+			model.addAttribute("itemlist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("center", dir+"privatelist");
 		return "main";
 	}
 	
 	@RequestMapping("/speciallist")
 	public String speciallist(Model model) {
+		List<ItemDTO> list = null;
+		try {
+			list = item_service.select_cate(4);
+			model.addAttribute("itemlist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("center", dir+"speciallist");
 		return "main";
 	}
