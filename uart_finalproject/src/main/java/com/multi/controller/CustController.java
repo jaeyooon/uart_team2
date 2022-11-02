@@ -19,11 +19,39 @@ public class CustController {
 	@Autowired
 	CustomerService cust_service;
 	
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		//session을 거절하고 다시 main으로 보냄!
+		if(session != null) {
+			session.invalidate();
+		}
+		return "redirect:/";
+	}
+	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("center", dir+"login");
 		return "main";
 	}
-
-
+	
+	@RequestMapping("/loginimpl")
+	   public String loginimpl(HttpSession session, String custid, String pwd) {
+	      CustomerDTO cust = null;
+	      try {
+	         cust = cust_service.get(custid);
+	         if(cust != null) {
+	            if(cust.getPwd().equals(pwd)) {
+	               session.setAttribute("logincust", cust); 
+	            }
+	         }
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	        
+	      }
+	      return "redirect:/";
+	   }
+	
+	
+	
 }
