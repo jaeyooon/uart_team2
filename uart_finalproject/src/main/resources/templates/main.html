@@ -62,15 +62,17 @@
   </style>
   
   <script>
-  $(document).ready(function(){
-	 $('#search_btn').click(function(){
-		 $('.site-block-top-search').attr({
-			 method:'get',
-			 action:'/searchimpl'
-		 });
-		 $('.site-block-top-search').submit();
-	 }); 
-  }); 
+  $(document).ready(function() {
+		
+		$('#search_btn').click(function() {
+		
+			$('#search_form').attr({
+				method : 'get',
+				action : '/searchimpl'
+			});
+			$('#search_form').submit();
+		});
+	});
   
   </script>
   
@@ -83,7 +85,7 @@
           <div class="row align-items-center">
 
             <div id="top_search" class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form class="site-block-top-search">
+              <form  id="search_form" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
                 <input type="text" class="form-control border-0" placeholder="Search">
               </form>
