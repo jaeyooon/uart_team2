@@ -1,27 +1,35 @@
 package com.multi.wish;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.WishDTO;
-import com.multi.service.WishService;
+import com.multi.dto.WishlistDTO;
+import com.multi.service.WishlistService;
+
 
 @SpringBootTest
-class SelectWish {
+class GetAllWishlist {
 
 	@Autowired
-	WishService service;
+	WishlistService service;
 	
 	@Test
 	void contextLoads() {
-		WishDTO wish = null;
+		List<WishlistDTO> list = null;
 		try {
-			wish = service.get(20);
-			System.out.println(wish);
+			list = service.wishlistall("id01");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		for(WishlistDTO c:list) {
+			System.out.println(c);
+		}
+		
 	}
+
 }

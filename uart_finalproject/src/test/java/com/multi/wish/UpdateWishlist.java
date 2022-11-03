@@ -4,18 +4,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.WishDTO;
-import com.multi.service.WishService;
+import com.multi.dto.WishlistDTO;
+import com.multi.service.WishlistService;
 
 @SpringBootTest
-class UpdateWish {
+class UpdateWishlist {
 
 	@Autowired
-	WishService service;
+	WishlistService service;
 	
 	@Test
 	void contextLoads() {
-		WishDTO wish = new WishDTO(20, "id01", 107, null, null);
+		WishlistDTO wish = new WishlistDTO(20, "id01", 107, null, null, null, null, null);
 		try {
 			service.modify(wish);
 		} catch (Exception e) {

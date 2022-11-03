@@ -4,23 +4,24 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.WishDTO;
-import com.multi.service.WishService;
+import com.multi.dto.WishlistDTO;
+import com.multi.service.WishlistService;
 
 @SpringBootTest
-class InsertWish {
+class SelectWishlist {
 
 	@Autowired
-	WishService service;
+	WishlistService service;
 	
 	@Test
 	void contextLoads() {
-		WishDTO wish = new WishDTO(null, "id10", 107, null, null);
+		WishlistDTO wish = null;
 		try {
-			service.register(wish);
+			wish = service.get(20);
+			System.out.println(wish);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("inserted");
 	}
 }

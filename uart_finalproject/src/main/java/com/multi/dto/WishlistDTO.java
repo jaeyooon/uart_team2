@@ -13,15 +13,20 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class WishDTO {
+public class WishlistDTO {
 	private Integer wishid;
 	private String custid;
 	private Integer itemid;
+	
 	
 	//foreign 키로 추가된 것
 	private String itemname;
 	private String itemimg;
 	
+	//임의로 추가
+	private Date estart;
+	private Date efin;
+	private Date wishdate;
 	
 
 }

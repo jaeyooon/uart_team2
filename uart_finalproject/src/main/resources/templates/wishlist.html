@@ -33,7 +33,7 @@ function del(wishid) {
 	var custid = '[[${session.logincust.custid}]]';
 	var c = confirm('삭제 하시겠습니까 ?');
 	if (c == true) {
-		location.href = '[[@{/deletewish?id=}]]' + wishid + '&custid=' + custid;
+		location.href = '[[@{/deletewishlist?id=}]]' + wishid + '&custid=' + custid;
 	}
 }
 
@@ -48,8 +48,9 @@ function del(wishid) {
       <tr>
       	<th>no</th>
         <th>상품 이미지</th>
-        <th>상품 아이디</th>
         <th>상품명</th>
+        <th>전시일정</th>
+        <th>등록일</th>
         <th>삭제</th>
       </tr>
     </thead>
@@ -57,11 +58,12 @@ function del(wishid) {
       <tr th:each="c : ${mywishlist}">
         <td id="wishid" th:text="${c.wishid}">no</td>
         <td><a th:href="@{/item/itemdetail(itemid=${c.itemid})}" class="img"><img th:src="@{/img/}+${c.itemimg}"></a></td>
-        <td th:text="${c.itemid}">상품 아이디</td>
         <td th:text="${c.itemname}">상품명</td>
+        <td th:text="${#dates.format(c.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(c.efin, 'yyyy.MM.dd')}">전시일정</td>
+        <td th:text="${#dates.format(c.wishdate, 'yyyy.MM.dd')}">등록일</td>
         <td> 
-        	<button th:onclick="del([[${c.wishid}]]);" type="button" class="btn btn-default btn-sm">
-          		<span class="glyphicon glyphicon-trash"></span>삭제
+        	<button type="button" th:onclick="del([[${c.wishid}]]);" class="btn btn-dark btn-sm">
+          		<span class="material-icons">delete</span>
         	</button>
         </td>
       </tr>

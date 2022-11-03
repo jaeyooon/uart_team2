@@ -9,10 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.dto.WishDTO;
+import com.multi.dto.WishlistDTO;
 import com.multi.dto.CustomerDTO;
 import com.multi.dto.ItemDTO;
-import com.multi.service.WishService;
+import com.multi.service.WishlistService;
 import com.multi.service.CustomerService;
 import com.multi.service.ItemService;
 
@@ -27,15 +27,15 @@ public class WishlistController {
 	ItemService item_service;
 	
 	@Autowired
-	WishService wish_service;
+	WishlistService wishlist_service;
 	
 	
 	
 	@RequestMapping("/wishlist")
 	public String wishlist(Model model, String id) {
-		List<WishDTO> list = null;
+		List<WishlistDTO> list = null;
 		try {
-			list = wish_service.wishall(id);
+			list = wishlist_service.wishlistall(id);
 			model.addAttribute("mywishlist",list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,20 +44,20 @@ public class WishlistController {
 		return "main";
 	}
 	
-	@RequestMapping("/deletewish")
-	public String deletewish(Model model, int id, String custid) {
+	@RequestMapping("/deletewishlist")
+	public String deletewishlist(Model model, int id, String custid) {
 		try {
-			wish_service.remove(id);
+			wishlist_service.remove(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "redirect:wishlist?id="+custid;
 	}
 	
-	@RequestMapping("/addwish")
-	public Object addwish(WishDTO wish) {
+	@RequestMapping("/addwishlist")
+	public Object addwishlist(WishlistDTO wishlist) {
 		try {
-			wish_service.register(wish);
+			wishlist_service.register(wishlist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

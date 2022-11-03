@@ -6,19 +6,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.WishDTO;
-import com.multi.service.WishService;
+import com.multi.dto.WishlistDTO;
+import com.multi.service.WishlistService;
 
 
 @SpringBootTest
-class SelectAllWish {
+class SelectAllWishlist {
 
 	@Autowired
-	WishService service;
+	WishlistService service;
 	
 	@Test
 	void contextLoads() {
-		List<WishDTO> list = null;
+		List<WishlistDTO> list = null;
 		try {
 			list = service.get();
 		} catch (Exception e) {
@@ -26,7 +26,7 @@ class SelectAllWish {
 			e.printStackTrace();
 		}
 		
-		for(WishDTO c:list) {
+		for(WishlistDTO c:list) {
 			System.out.println(c);
 		}
 		
