@@ -21,12 +21,9 @@
     <!-- Google icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Filled|Material+Icons+Rounded|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet">
-	 <script src="/js/jquery-3.3.1.min.js"></script> 
 	 
-	 <!-- Kakao map API -->   
-	 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=da1e82165dc5c5973f53df275ee2dae6"></script>
-  </head>
-  <style>
+	 
+	 <style>
    #top_search{
   display: flex;
   align-items: center;
@@ -60,19 +57,36 @@
  font-weight: bold;
  }
   </style>
+	 
+	 
+	 
+	 <script src="/js/jquery-3.3.1.min.js"></script> 
+	 
+	 <!-- Kakao map API -->   
+	 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=da1e82165dc5c5973f53df275ee2dae6"></script>
+  
+  
   
   <script>
-  $(document).ready(function(){
-	 $('#search_btn').click(function(){
-		 $('.site-block-top-search').attr({
-			 method:'get',
-			 action:'/searchimpl'
-		 });
-		 $('.site-block-top-search').submit();
-	 }); 
-  }); 
+  $(document).ready(function() {
+		
+		$('#search_btn').click(function() {
+		
+			$('#search_form').attr({
+				method : 'get',
+				action : '/searchimpl'
+			});
+			$('#search_form').submit();
+		});
+	});
   
   </script>
+  
+  
+  
+  
+  </head>
+  
   
   <body>
   
@@ -83,9 +97,9 @@
           <div class="row align-items-center">
 
             <div id="top_search" class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form class="site-block-top-search">
+              <form  id="search_form" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
+                <input type="text" class="form-control border-0" placeholder="Search" name="txt"> <!-- name 잊지말기 -->
               </form>
               <button id="search_btn" class="btn btn-primary btn-xs">GO</button>
             </div>

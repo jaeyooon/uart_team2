@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.ItemDTO;
+import com.multi.mapper.ItemMapper;
 import com.multi.service.ItemService;
 
 @Controller
@@ -16,6 +17,9 @@ public class MainController {
 	
 	@Autowired
 	ItemService item_service;
+	
+	@Autowired
+	ItemMapper item_mapper;
 	
 	@RequestMapping("/")
 	public String main() {
@@ -53,6 +57,19 @@ public class MainController {
 		return "main";
 	}
 	
+	@RequestMapping("/searchimpl")
+	public String searchimpl(Model model, String txt) {
+		
+		List<ItemDTO> list=null;
+		try {
+			list=item_mapper.searchitem(txt);
+			model.addAttribute("list", list);
+			model.addAttribute("center", "search");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "main";
 	
+	}	
 	
 }

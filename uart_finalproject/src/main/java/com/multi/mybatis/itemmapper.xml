@@ -39,7 +39,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="searchitem" parameterType="String" resultType="itemDTO">
-		SELECT * FROM item WHERE itemname LIKE CONCAT('%',#{txt},'%')		
+		SELECT * FROM item AS i
+		WHERE itemname LIKE CONCAT('%',#{txt},'%')		
 	</select>
 	
 	<select id="gethighgrade" resultType="itemDTO">
