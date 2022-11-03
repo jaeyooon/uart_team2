@@ -75,16 +75,41 @@ public class ItemController {
 		return "main";
 	}
 	
-	@RequestMapping("/itemdetail")
-	public String itemdetail(Model model, int itemid) {
-		ItemDTO item = null;
+	
+	@RequestMapping("/itemdetail_0")
+	public String itemdetail_0(Model model, Integer itemid) {
+		ItemDTO item1=null;
 		try {
-			item = item_service.get(itemid);
-			model.addAttribute("itemdetail", item);
+			item1=item_service.get(itemid);
+			model.addAttribute("detail", item1);
+			model.addAttribute("center", dir+"itemdetail_0");
+			System.out.println("정상출력");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("center", dir+"itemdetail");
+		
+		return "main";
+	}
+	
+	
+	
+	@RequestMapping("/itemdetail")
+	public String itemdetail(Model model, int itemid) {
+		ItemDTO item = null;
+		ItemDTO item2=null;
+		ItemDTO item3=null;
+		try {
+			item = item_service.get(itemid);
+			item2=item_service.get2(itemid);
+			item3=item_service.get3(itemid);
+			model.addAttribute("itemdetail", item);
+			model.addAttribute("itemdetail2", item2);
+			model.addAttribute("itemdetail3", item3);
+			model.addAttribute("center", dir+"itemdetail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return "main";
 	}
 }

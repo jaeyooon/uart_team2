@@ -47,5 +47,13 @@ public class ItemService implements MyService<Integer, ItemDTO>{
 	public List<ItemDTO> gethighgrade() throws Exception{
 		return mapper.gethighgrade();
 	}
+	
+	public ItemDTO get2(Integer k) throws Exception {
+		return mapper.select2(k);
+	}
+	
+	public ItemDTO get3(Integer k) throws Exception {
+		return mapper.select3(k);
+	}
 
 }
