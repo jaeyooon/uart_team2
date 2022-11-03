@@ -1,0 +1,100 @@
+<meta charset="utf-8">
+
+<style>
+#custupdate_form {
+	width:30%;
+	margin: auto;
+	margin-bottom:40px;
+}
+#update_btn{
+
+margin:auto;
+display:block;
+}
+
+#cd{
+text-align: center;
+}
+
+</style>
+<script>
+$(document).ready(function() {
+	//id를 바꾸고 update버튼을 클릭했을 때
+	$('#update_btn').click(function() {
+		//수정할 것인지 먼저 confirm
+		var c = confirm('회원정보를 수정 하시겠습니까 ?');
+		if (c == true) {
+			//이때만 attribute setting을 하고
+			$('#custupdate_form').attr({
+				//form사이에 있는 것이 post의 형태로 updateimpl부분의 서버로 보내짐
+				'method' : 'post',
+				'action' : '[[@{/cust/custupdateimpl}]]'
+			});
+			//보낸다.
+			$('#custupdate_form').submit();
+		} else {
+			return;
+		}
+	});
+});
+</script>
+
+  <div class="site-section">
+      <div class="container">
+
+        <div class="row mb-5">
+          <div class="col-md-12 order-2">
+
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div id="cd" ><h3 class="text-black h3" style="color:#785964">회원정보 수정</h3></div>
+                <div class="d-flex">
+                </div>
+              </div>
+            </div>
+            
+            <div class="row mb-5">
+           	  <div class="col-md-12 mb-5">
+           		<div class="table-responsive">
+
+           <form id="custupdate_form">
+			<div class="form-group">
+				<label for="id">아이디:</label> <input type="text" readonly="readonly"
+					class="form-control" id="id" th:value="${cust.custid}" name="custid">
+				<span id="ispan"></span>
+			</div>
+			<div class="form-group">
+				<label for="pwd">비밀번호:</label> <input type="text"
+					class="form-control" id="pwd" th:value="${cust.pwd}" name="pwd">
+			</div>
+			<div class="form-group">
+				<label for="name">이름:</label> <input type="text" class="form-control"
+					id="name" th:value="${cust.cname}" name="cname">
+			</div>
+			<div class="form-group">
+				<label for="name">전화번호:</label> <input type="text" class="form-control"
+					id="phone" th:value="${cust.phone}" name="phone">
+			</div>
+			<div class="form-group">
+				<label for="gender">성별:</label> <input type="text" class="form-control"  readonly="readonly"
+					id="gender" th:value="${cust.gender}" name="gender">
+			</div>
+			<div class="form-group">
+				<label for="name">출생일:</label> <input type="text" class="form-control"  readonly="readonly"
+					id="birth" th:value="${cust.birth}" name="birth">
+			</div>
+			
+			
+		</form>
+		
+	<button id="update_btn" class="btn btn-primary btn-sm">수정하기</button>
+	
+         </div>
+              </div>
+           </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+

@@ -1,0 +1,106 @@
+<meta charset="utf-8">
+
+<style>
+#withdraw_form {
+width:30%;
+margin: auto;
+margin-bottom:40px;
+}
+#withdraw_btn{
+ margin:auto;
+ display:block;
+	
+}
+#cd{
+text-align: center;
+}
+
+#check {
+	text-align: center;
+	font-size: 17px;
+	font-weight: 600;
+	margin-top: 20px;
+    color:#118ab2;
+}
+</style>
+<script>
+$(document).ready(function() {
+
+	$('#withdraw_btn').click(function() {
+
+		var c = confirm('회원 탈퇴시 해당 아이디로 재가입할 수 없습니다. 탈퇴 하시겠습니까?');
+		if (c == true) {
+			$('#withdraw_form').attr({
+				'method' : 'post',
+				'action' : '[[@{/cust/withdrawimpl}]]'
+			});
+			//보낸다.
+			$('#withdraw_form').submit();
+		} else {
+			return;
+		}
+	});
+});
+</script>
+
+  <div class="site-section">
+      <div class="container">
+
+        <div class="row mb-5">
+          <div class="col-md-12 order-2">
+
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div id="cd"><h3 class="text-black h3" style="color:#785964">계정 탈퇴</h3></div>
+                <div class="d-flex">
+                </div>
+              </div>
+            </div>
+            
+            <div class="row mb-5">
+           	  <div class="col-md-12 mb-5">
+           		<div class="table-responsive">
+
+           <form id="withdraw_form">
+			<div class="form-group">
+				<label for="id">아이디:</label> <input type="text" readonly="readonly"
+					class="form-control" id="id" th:value="${cust.custid}" name="custid">
+				<span id="ispan"></span>
+			</div>
+			<div class="form-group">
+				<label for="pwd">비밀번호:</label> <input type="text" readonly="readonly"
+					class="form-control" id="pwd" th:value="${cust.pwd}" name="pwd">
+			</div>
+			<div class="form-group">
+				<label for="name">이름:</label> <input type="text" readonly="readonly" class="form-control"
+					id="name" th:value="${cust.cname}" name="cname">
+			</div>
+			<div class="form-group">
+				<label for="name">전화번호:</label> <input type="text" readonly="readonly" class="form-control"
+					id="phone" th:value="${cust.phone}" name="phone">
+			</div>
+			<div class="form-group">
+				<label for="birth">출생일:</label> <input type="text" readonly="readonly" class="form-control"
+					id="birth" th:value="${cust.birth}" name="birth">
+			</div>
+			<div class="form-group">
+				<label for="name">성별:</label> <input type="text" readonly="readonly" class="form-control"
+					id="gender" th:value="${cust.gender}" name="gender">
+			</div>
+			<div class="form-group">
+			 <input type="hidden" readonly="readonly" class="form-control"
+			id="withdrawal" th:value=0 name="withdrawal">
+			</div>
+			<p id="check">정말 떠나시는 건가요...?😢</p>
+		</form>
+		<button id="withdraw_btn" class="btn btn-primary btn-sm">탈퇴하기</button>
+		
+         </div>
+              </div>
+           </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+

@@ -44,6 +44,10 @@
  align-items: center;
  height: 100px;
  }
+ 
+ #cname{
+ font-weight: bold;
+ }
   </style>
   
   <script>
@@ -94,7 +98,7 @@
 					</span></a></li>
 					</ul>
 					<ul th:if="${session.logincust != null}">
-					 <a href="#" th:text="${session.logincust.cname}"><span class="caret"></span></a>
+					 <a id="cname" style="color:#9f86c0" href="#" th:text="${session.logincust.cname}+'님'" th:href="@{/cust/detail(custid=${session.logincust.custid})}"><span class="caret"></span></a>
 					<li><a href="/cust/logout">
 	                <span class="material-symbols-outlined" id="logout">
 						person로그아웃
