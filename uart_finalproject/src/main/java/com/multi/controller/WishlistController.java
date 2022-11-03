@@ -18,7 +18,7 @@ import com.multi.service.ItemService;
 
 
 @Controller
-public class WishController {
+public class WishlistController {
 
 	@Autowired
 	CustomerService cust_service;
@@ -54,6 +54,15 @@ public class WishController {
 		return "redirect:wishlist?id="+custid;
 	}
 	
+	@RequestMapping("/addwish")
+	public Object addwish(WishDTO wish) {
+		try {
+			wish_service.register(wish);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
 	
 }
 

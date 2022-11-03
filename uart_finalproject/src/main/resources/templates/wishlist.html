@@ -29,13 +29,15 @@ table.table th {
 </style>
 
 <script>
-	function del(wishid) {
-		var custid = '[[${session.logincust.custid}]]';
-		var c = confirm('삭제 하시겠습니까 ?');
-		if (c == true) {
-			location.href = '/deletewish?id=' + wishid + '&custid=' + custid;
-		}
+function del(wishid) {
+	var custid = '[[${session.logincust.custid}]]';
+	var c = confirm('삭제 하시겠습니까 ?');
+	if (c == true) {
+		location.href = '[[@{/deletewish?id=}]]' + wishid + '&custid=' + custid;
 	}
+}
+
+	
 </script>
 
 
@@ -54,7 +56,7 @@ table.table th {
     <tbody>
       <tr th:each="c : ${mywishlist}">
         <td id="wishid" th:text="${c.wishid}">no</td>
-        <td><a th:href="@{/item/itemdetail(itemid=${c.itemid})}" class="img"><img th:src="'/img/'+${c.itemimg}"></a></td>
+        <td><a th:href="@{/item/itemdetail(itemid=${c.itemid})}" class="img"><img th:src="@{/img/}+${c.itemimg}"></a></td>
         <td th:text="${c.itemid}">상품 아이디</td>
         <td th:text="${c.itemname}">상품명</td>
         <td> 
@@ -69,15 +71,12 @@ table.table th {
 
 
 
-
+<!-- 하단부 공백(테이블공간) 마련을 위해서 -->
 <meta charset="utf-8">
-
   <div class="site-section">
       <div class="container">
-
         <div class="row mb-5">
           <div class="col-md-12 order-2">
-
             <div class="row">
               <div class="col-md-12 mb-4">
                 <div class="float-md-left mb-4"><h3 class="text-black h3"></h3></div>
