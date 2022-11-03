@@ -47,10 +47,10 @@ h6, #p2{
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img th:src="'/img/'+${itemdetail.itemimg}" alt="Image" class="img-fluid">
+            <img th:src="'/img/'+${itemdetail1.itemimg}" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
-            <h2 class="text-black" th:text="${itemdetail.itemname}"></h2>
+            <h2 class="text-black" th:text="${itemdetail1.itemname}"></h2>
             <p></p>
             <p class="mb-4">Don't hesitate to make a reservation. <br>You can book this great exhibition now.<br> Amazing works await you!</p>
             <p><strong class="text-primary h4">$50.00</strong></p>
@@ -100,12 +100,12 @@ h6, #p2{
 		  	 <br><br>
 		  	 <p id="p1">멋진 전시를 U-ART에서 만나보세요</p>
 		  	 <br><br>
-		  	 <h6 th:text="'▶전시명: &nbsp;   ' + ${itemdetail.itemname}">▶전시명:</h6><br>
-		  	 <img th:src="'/img/'+${itemdetail.itemimg}" alt="Image" class="info_img" >
-		  	 <h6 th:text="'▶전시장소: &nbsp;   ' + ${itemdetail.itemplace}">▶전시장소:</h6><br>
-		  	 <h6 th:text="'▶전시관람등급: &nbsp;   ' + ${itemdetail.itemguide}">▶전시관람등급:</h6><br>
-		  	 <h6 th:text="'▶티켓수령방법: &nbsp;   ' + ${itemdetail.itemticket}">▶티켓수령방법:</h6><br>
-		  	 <h6 th:text="'▶전시기간: &nbsp;   ' + ${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}">▶전시일정:</h6><br>
+		  	 <h6 th:text="'▶전시명: &nbsp;   ' + ${itemdetail1.itemname}">▶전시명:</h6><br>
+		  	 <img th:src="'/img/'+${itemdetail1.itemimg}" alt="Image" class="info_img" >
+		  	 <h6 th:text="'▶전시장소: &nbsp;   ' + ${itemdetail1.itemplace}">▶전시장소:</h6><br>
+		  	 <h6 th:text="'▶전시관람등급: &nbsp;   ' + ${itemdetail1.itemguide}">▶전시관람등급:</h6><br>
+		  	 <h6 th:text="'▶티켓수령방법: &nbsp;   ' + ${itemdetail1.itemticket}">▶티켓수령방법:</h6><br>
+		  	 <h6 th:text="'▶전시기간: &nbsp;   ' + ${#dates.format(itemdetail1.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail1.efin, 'yyyy.MM.dd')}">▶전시일정:</h6><br>
 		  	 <h6 th:text=" '▶요금안내: &nbsp;  ' " ></h6>
 		  	 
 		  	 <table class="table table-bordered" id="price_table">
@@ -117,11 +117,11 @@ h6, #p2{
 		  	 </thead>
 		  	 
 		  	 <tbody>
-		  	 <tr><td th:text="${itemdetail.itemoption_obj}">청소년</td>
-		  	 <td th:text="${itemdetail.itemoption_price}">가격</td></tr>
-		  	 <tr><td th:text="${itemdetail.itemoption_obj}">성인</td>
+		  	 <tr><td th:text="${itemdetail1.itemoption_obj}">청소년</td>
+		  	 <td th:text="${itemdetail1.itemoption_price}">가격</td></tr>
+		  	 <tr><td th:text="${itemdetail2.itemoption_obj}">성인</td>
 		  	 <td th:text="${itemdetail2.itemoption_price}">가격</td></tr>
-		  	 <tr><td th:text="${itemdetail.itemoption_obj}">아동</td>
+		  	 <tr><td th:text="${itemdetail3.itemoption_obj}">아동</td>
 		  	 <td th:text="${itemdetail3.itemoption_price}">가격</td></tr>
 		  	 
 		  	 </tbody>
