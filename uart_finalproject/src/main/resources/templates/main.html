@@ -25,7 +25,7 @@
 	 
 	 <!-- Kakao map API -->   
 	 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=da1e82165dc5c5973f53df275ee2dae6"></script>
-  </head>
+  
   <style>
    #top_search{
   display: flex;
@@ -76,6 +76,12 @@
   
   </script>
   
+  
+  
+  
+  </head>
+  
+  
   <body>
   
   <div class="site-wrap">
@@ -87,7 +93,7 @@
             <div id="top_search" class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
               <form  id="search_form" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
+                <input type="text" class="form-control border-0" placeholder="Search" name="txt"> <!-- name 잊지말기 -->
               </form>
               <button id="search_btn" class="btn btn-primary btn-xs">GO</button>
             </div>
