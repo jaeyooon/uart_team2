@@ -2,11 +2,11 @@
 <style>
 
 img{
-width: 100px;
+width: 70px;
 }
 
 img:hover {
-	width: 99px;
+	width: 69px;
 	border: 1px solid #742f99;
 }
 
@@ -57,12 +57,12 @@ function del(wishid) {
     <tbody>
       <tr th:each="c : ${mywishlist}">
         <td id="wishid" th:text="${c.wishid}">no</td>
-        <td><a th:href="@{/item/itemdetail(itemid=${c.itemid})}" class="img"><img th:src="@{/img/}+${c.itemimg}"></a></td>
-        <td th:text="${c.itemname}">상품명</td>
+        <td><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><img th:src="@{/img/}+${c.itemimg}"></a></td>
+        <td><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><txt th:text="${c.itemname}"></td>
         <td th:text="${#dates.format(c.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(c.efin, 'yyyy.MM.dd')}">전시일정</td>
         <td th:text="${#dates.format(c.wishdate, 'yyyy.MM.dd')}">등록일</td>
         <td> 
-        	<button type="button" th:onclick="del([[${c.wishid}]]);" class="btn btn-dark btn-sm">
+        	<button type="button" th:onclick="del([[${c.wishid}]]);" class="btn btn-dark btn-sm-sm">
           		<span class="material-icons">delete</span>
         	</button>
         </td>
