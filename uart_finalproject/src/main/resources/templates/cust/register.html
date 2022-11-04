@@ -2,7 +2,7 @@
 $(document).ready(function(){
 	$('#register_btn').click(function(){  /* button의 id와 일치시키는 것. JQUERY, $(선택자).method(parameter, 매개변수) */
 		$('#register_form').attr({  /*attr() → 속성 조작*/
-			'action':'/register/registerimpl',  /* registerimpl로 연결되게 하였음 */
+			'action':'[[@{/register/registerimpl}]]',  /* registerimpl로 연결되게 하였음 */
 			'method':'post'
 		});
 		$('#register_form').submit();
@@ -21,24 +21,23 @@ $(document).ready(function(){
 	$('#id').keyup(function(){   /* keyup은 키보드를 누른 키에서 손을 땔 때를 나타내는 말. 이 부분의 경우 id다 입력하면 발생할 것. */
 		var id = $(this).val();
 		$.ajax({
-			url:'[[@{/checkid}]]',
+			url:'[[@{/checkid}]]',    /*ajax 넘겨서 데이터는 cid로 받고*/
 			data:{'cid':id},
-			success:function(result){
-				if(result == 't'){
-					$('#ispan').text('Available');
+			success:function(result){       /*함수 돌리고*/
+				if(result == 't'){             
+					$('#ispan').text('Available');   /*결과가 t라면 available(사용할수 있음)*/
 				}else{
-					$('#ispan').text('Not Available');
+					$('#ispan').text('Not Available, Already Using.');   /*아니라면  Not available(사용불가능)*/
 				}
 			}
 		});
 		
 	});
-});
+});                         /*여기서 돌아간 모든 사항은 script 캡션에 있긴 하지만 내용은 Jquery임*/
 </script>
 
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
 
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
@@ -106,6 +105,6 @@ $(document).ready(function(){
      
     <p class="text-center">계정이 있으십니까? <a href="/cust/login">로그인하세요.</a> </p>                                                                 
 </form>
-<button id ="register_btn" class="btn btn-primary btn-block"> Create Account  </button>
+<button id ="register_btn" class="btn btn-primary btn-block"> Create Account  </button>  <!-- butto id 넣어줘야 함 그래야 script돌릴때 편하지고 -->
 </article>
 </div> <!-- card.// -->
