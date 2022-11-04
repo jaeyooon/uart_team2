@@ -54,15 +54,6 @@ public class WishlistController {
 		return "redirect:wishlist?id="+custid;
 	}
 	
-	@RequestMapping("/addwishlist")
-	public Object addwishlist(WishlistDTO wishlist) {
-		try {
-			wishlist_service.register(wishlist);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
 	
 }
 
