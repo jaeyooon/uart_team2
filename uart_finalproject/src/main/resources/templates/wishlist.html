@@ -7,7 +7,7 @@ width: 70px;
 
 img:hover {
 	width: 69px;
-	border: 1px solid #742f99;
+	border: 2px solid #742f99;
 }
 
 
@@ -47,7 +47,7 @@ function del(wishid) {
     <thead>
       <tr>
       	<th class="text-black">no</th>
-        <th class="text-black">상품 이미지</th>
+        <th class="text-black">이미지</th>
         <th class="text-black">상품명</th>
         <th class="text-black">전시일정</th>
         <th class="text-black">등록일</th>
@@ -58,7 +58,7 @@ function del(wishid) {
       <tr th:each="c : ${mywishlist}">
         <td class="text-black" id="wishid" th:text="${c.wishid}">no</td>
         <td class="text-black"><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><img th:src="@{/img/}+${c.itemimg}"></a></td>
-        <td class="text-black"><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><strong><txt th:text="${c.itemname}"></txt></strong></td>
+        <td><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><strong><txt th:text="${c.itemname}" class="text-black"></txt></strong></td>
         <td class="text-black" th:text="${#dates.format(c.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(c.efin, 'yyyy.MM.dd')}">전시일정</td>
         <td class="text-black" th:text="${#dates.format(c.wishdate, 'yyyy.MM.dd')}">등록일</td>
         <td> 

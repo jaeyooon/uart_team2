@@ -37,7 +37,7 @@ h6, #p2 {
 }
 
 #wishlist_btn:hover{
-background-color:#AAF0D1;}
+background-color:#D7B5EB;}
 
 </style>
 
@@ -97,7 +97,11 @@ background-color:#AAF0D1;}
 									id="itemid" th:value="${itemdetail1.itemid}"
 									readonly="readonly">
 							</div>
-							
+							<div class="form-group">
+								<input type="text" class="form-control form-control-user text-black"
+									id="itemplace" th:value="'위치 : '+${itemdetail1.itemplace}"
+									readonly="readonly">
+							</div>
 							<div class="form-group">
 								<input type="text" class="form-control form-control-user text-black"
 									th:value="'기간 : '+ ${#dates.format(itemdetail1.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail1.efin, 'yyyy.MM.dd')}"
