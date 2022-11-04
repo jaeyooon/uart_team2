@@ -88,33 +88,33 @@ background-color:#AAF0D1;}
 					<div class="container">
 						<form class="user">
 							<div class="form-group">
-								<input type="text" class="form-control form-control-user"
+								<input type="text" class="form-control form-control-user text-black"
 									id="itemname" th:value="${itemdetail1.itemname}"
 									readonly="readonly">
 							</div>
 							<div class="form-group" style="display:none;">
-								<input type="text" class="form-control form-control-user"
+								<input type="text" class="form-control form-control-user text-black"
 									id="itemid" th:value="${itemdetail1.itemid}"
 									readonly="readonly">
 							</div>
 							
 							<div class="form-group">
-								<input type="text" class="form-control form-control-user"
+								<input type="text" class="form-control form-control-user text-black"
 									th:value="'기간 : '+ ${#dates.format(itemdetail1.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail1.efin, 'yyyy.MM.dd')}"
 									readonly="readonly">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control form-control-user"
+								<input type="text" class="form-control form-control-user text-black"
 									th:value="${itemdetail1.itemoption_obj} +' : '+ ${#numbers.formatInteger(itemdetail1.itemoption_price, 3,'COMMA')}+'원'"
 									readonly="readonly">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control form-control-user"
+								<input type="text" class="form-control form-control-user text-black"
 									th:value="${itemdetail2.itemoption_obj} +' : '+ ${#numbers.formatInteger(itemdetail2.itemoption_price, 3,'COMMA')}+'원'"
 									readonly="readonly">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control form-control-user"
+								<input type="text" class="form-control form-control-user text-black"
 									th:value="${itemdetail3.itemoption_obj} +' : '+ ${#numbers.formatInteger(itemdetail3.itemoption_price, 3,'COMMA')}+'원'"
 									readonly="readonly">
 							</div>
@@ -122,7 +122,7 @@ background-color:#AAF0D1;}
 					</div>
 					<div class="container">
 					<p>
-						<a href="#" class="buy-now btn btn-sm btn-primary">예매하기</a>
+						<a href="#" class="buy-now btn btn-sm btn-primary"><strong>예매하기</strong></a>
 						<a type="button" href="#" class="btn btn-dark btn-sm-sm" id="wishlist_btn"> 
 						<span class="material-icons-outlined">favorite_border</span>
 						</a>
