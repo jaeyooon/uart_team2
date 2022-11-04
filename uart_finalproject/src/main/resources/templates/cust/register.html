@@ -2,7 +2,7 @@
 $(document).ready(function(){
 	$('#register_btn').click(function(){  /* button의 id와 일치시키는 것. JQUERY, $(선택자).method(parameter, 매개변수) */
 		$('#register_form').attr({  /*attr() → 속성 조작*/
-			'action':'/reigster/registerimpl',  /* registerimpl로 연결되게 하였음 */
+			'action':'/register/registerimpl',  /* registerimpl로 연결되게 하였음 */
 			'method':'post'
 		});
 		$('#register_form').submit();
@@ -44,16 +44,18 @@ $(document).ready(function(){
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">회원가입</h4>
 	<p class="text-center">계정을 만들고 이 모든 서비스를 누리십시오!</p>
-	<p>
+	<!-- <p>
 		<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-google"></i> 구글로 회원가입</a>
 		<a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i> 페이스북으로 회원가입</a>
-	</p>	
-	<form id = "register_form"> <!-- form에 id를 주어야 , submit이 되는 원리.  -->
+	</p>	 -->
+	<form id="register_form"> <!-- form에 id를 주어야 , submit이 되는 원리.  -->
     <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
 		 </div>
-        <input id="custid" class="form-control" placeholder="Input your user accounts." type="text">
+<!-- custid 입력 -->
+        <input name="custid" id="id" class="form-control" placeholder="Input your user accounts." type="text">
+        <span id="ispan"></span>
     </div>
     <div class="form-group input-group">
 		<div class="input-group-prepend">
@@ -65,7 +67,7 @@ $(document).ready(function(){
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-calendar-alt"></i> </span>
 		 </div>
-        <input name="birth" class="form-control" placeholder="Birth of dates" type="text">
+        <input name="birth" class="form-control" placeholder="생년월일 ex)020101" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
@@ -83,7 +85,7 @@ $(document).ready(function(){
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-users"></i> </span>
 		</div>
-		<select class="form-control">
+		<select name="gender" class="form-control">
 			<option value="남">남성(Male)</option>
 			<option value="여">여성(Female)</option>
 		</select>
@@ -92,13 +94,14 @@ $(document).ready(function(){
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="pwd"class="form-control" placeholder="Create password" type="password">
+        <input id="pwd" name="pwd"class="form-control" placeholder="Create password" type="password">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="pwd2"class="form-control" placeholder="Repeat password" type="password"> <!-- 이름 다르게 해야 pwd2명령 먹을 거 같아서 이렇게. -->
+        <input id="pwd2" class="form-control" placeholder="Repeat password" type="password"> <!-- 이름 다르게 해야 pwd2명령 먹을 거 같아서 이렇게. -->
+    	<span id="pspan"></span>
     </div> <!-- form-group// -->                                      
      
     <p class="text-center">계정이 있으십니까? <a href="/cust/login">로그인하세요.</a> </p>                                                                 
