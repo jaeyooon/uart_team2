@@ -109,6 +109,11 @@ background-color:#D7B5EB;}
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control form-control-user text-black"
+									id="itemguide" th:value="'전시관람등급 : '+${itemdetail1.itemguide}"
+									readonly="readonly">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control form-control-user text-black"
 									th:value="${itemdetail1.itemoption_obj} +' : '+ ${#numbers.formatInteger(itemdetail1.itemoption_price, 3,'COMMA')}+'원'"
 									readonly="readonly">
 							</div>
@@ -126,7 +131,7 @@ background-color:#D7B5EB;}
 					</div>
 					<div class="container">
 					<p>
-						<a href="#" class="buy-now btn btn-sm btn-primary"><strong>예매하기</strong></a>
+						<a th:href="@{/itemoption(id=${session.logincust.custid})}" class="buy-now btn btn-sm btn-primary"><strong>예매하기</strong></a>
 						<a type="button" href="#" class="btn btn-dark btn-sm-sm" id="wishlist_btn"> 
 						<span class="material-icons-outlined">favorite_border</span>
 						</a>

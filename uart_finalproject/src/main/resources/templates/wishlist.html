@@ -26,7 +26,12 @@ table.table th {
 table.table th {
 	border-bottom: solid #E9E9E9
 }
+
+.text-info:hover{
+ text-decoration: underline black; 
+ }
 </style>
+
 
 <script>
 function del(wishid) {
@@ -58,7 +63,7 @@ function del(wishid) {
       <tr th:each="c : ${mywishlist}">
         <td class="text-black" id="wishid" th:text="${c.wishid}">no</td>
         <td class="text-black"><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><img th:src="@{/img/}+${c.itemimg}"></a></td>
-        <td><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><strong><txt th:text="${c.itemname}" class="text-black"></txt></strong></td>
+        <td><a class="text-info" th:href="@{/item/itemdetail(itemid=${c.itemid})}"><strong><txt th:text="${c.itemname}" class="text-black"></txt></strong></td>
         <td class="text-black" th:text="${#dates.format(c.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(c.efin, 'yyyy.MM.dd')}">전시일정</td>
         <td class="text-black" th:text="${#dates.format(c.wishdate, 'yyyy.MM.dd')}">등록일</td>
         <td> 
