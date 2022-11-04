@@ -5,6 +5,11 @@
 	width:100%;
 	height:450px; 
 }
+
+#p1{
+	color:gray;
+	margin-top:10px;
+}
 </style>
   
   <body>
@@ -43,7 +48,7 @@
 	                  </figure>
 	                  <div class="block-4-text p-4">
 	                    <h3><a th:href="@{/item/itemdetail(itemid=${it.itemid})}" th:text="${it.itemname}"></a></h3>
-	                  	<p class="mb-0">Let's go to the exhibition</p>
+	                  	<a th:href="@{/item/itemdetail(itemid=${it.itemid})}"><p id="p1" class="mb-0">전시 둘러보기</p></a>
 	                  </div>
 	                </div>
 	              </div>
