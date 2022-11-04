@@ -1,97 +1,138 @@
 <meta charset="utf-8">
+   <style>
+   
+     #map{
+		width:500%;
+		height:400px; 
+		border:1px solid black; 
+	 }
+	 
+	 #text{
+	   text-align: center; 
+	 }
+	/*  #image{
+	   text-align: right;
+	 } */
 
-    <div class="site-section border-bottom" data-aos="fade">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6">
-            <div class="block-16">
-              <figure>
-                <img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded">
-                <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo"><span class="ion-md-play"></span></a>
+   </style>  
+   <script>
+   var lat = 37.56014367008594;   /* javascript 안에서 변수 선언  */
+   var lng = 126.98071970839374;
+   var map;
 
-              </figure>
-            </div>
+   function display(){
+   	var mapContainer = document.querySelector('#map'); /* Web API에서 선택자 또는 선택자 뭉치와 일치하는 첫 번째 element를 반환함 */
+   	/* 특정 요소들을 선택하여 스타일을 적용할 수 있게 되는 것.  */
+   	var mapOption = { 
+   	        center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
+   	        level: 4 // 지도의 확대 레벨
+   	    };
+   	map = new kakao.maps.Map(mapContainer, mapOption); 
+   };
+
+
+
+   function displaymarker(){
+   	var imageSrc = "/img/mk.png";  //어떤 이미지를 올릴 것인가? → 마커 확장자 png인걸 올리겠다 
+       var imageSize = new kakao.maps.Size(24, 35);    
+       var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);   //이미지 사이즈 조정 및 bla bla 
+   	
+   	  //for 문 빼고 lat이랑 데이터 lng넣어보기
+   		 var marker = new kakao.maps.Marker({  //여기다가 이미지를 집어넣자   /* 마커 데이터를 생성(생성자 연산) */
+   	        map: map,
+   	        position: new kakao.maps.LatLng(37.56014367008594, 126.98071970839374),   /* 위도와 경도를 입력함으로써 넣어 줌 */
+   		 });
+
+   	     var iwPosition = new kakao.maps.LatLng(37.56014367008594, 126.98071970839374);
+
+   		 var infowindow = new kakao.maps.InfoWindow({
+   		     position : iwPosition, 
+   		     content : iwContent
+   		 });
+   		 kakao.maps.event.addListener(marker, 'mouseover', mouseoverListener(marker, infowindow)); /* 커서를 가져다 대면, 보이게 함.  */
+   		 kakao.maps.event.addListener(marker, 'mouseout', mouseoutListener(marker, infowindow));
+   	
+   	
+   	function mouseoverListener(marker, infowindow) {
+   		return function(){
+   			infowindow.open(map, marker);
+   		};
+   	}
+   	function mouseoutListener(marker, infowindow) {
+   		return function(){
+   			infowindow.close();
+   		};
+   	}
+   	function mouseclickListener(target) {
+   	  	return function(){
+   	  		location.href = target;
+   	  	};
+   	}
+   }
+
+   function getdata(loc){   /* getdata 함수 */
+   	$.ajax({
+   		url : '/getmarker',
+   		data : {'loc' : loc},
+   		success : function(data){   /* 성공하면 fucntion, 실패하면 displaymarker */
+   			displaymarker(data);
+   		}
+   	});
+   };
+
+   function go(lat,lng,loc){  //위도 경도 지역명
+   	var moveLatLon = new kakao.maps.LatLng(lat,lng);
+       map.panTo(moveLatLon);      /* 지도가 이동했으면 데이터를 가져와야됨 */ 
+       getdata(loc);                 //marker information request
+   };
+
+   $(document).ready(function(){
+   	display();
+   	displaymarker();
+   	
+   });
+  
+	</script>
+   	<div class="container">
+           
+	          <!-- div등으로 영역을 확정짓는다.  -->
+			  <div style="text-align:center; font-size: 36px; font-weight:bold; color:black">Our Visions</div>
+			  <div style="text-align:center; font-size:20px; font-weight:bold; color:black">"환영합니다!!!"</div>
+			  <div style="text-align:center;color:black;">일상생활에 지친 당신, 전시회로 힐링하자!</div>
+			  <div style="text-align:center;color:black;">저희 사이트에는 각양각색의 특색 있는 전시들이 있습니다.</div>
+			  <div style="text-align:center;color:black;">이 전시들을 보고 싶으십니까? 주저하지 마십시오. 예매만 하시면 됩니다.</div>
+			  <div style="text-align:center;color:black;">원하는 전시도 보고, 지친 심신을 전시를 보면서 완화시키십시오.</div>
+			  <div style="text-align:center;color:black;">이 모든 전시회는 당신을 위해서 준비된 겁니다.</div>
+		 
+          <div>
+              <!-- <img id="about_img" src="@{img/healing.jpg}" style="text-align:right;"> -->
           </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-5">
-            
-            
-            <div class="site-section-heading pt-3 mb-4">
-              <h2 class="text-black">How We Started</h2>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p>Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam cumque recusandae, laudantium minima repellendus.</p>
-            
-          </div>
-        </div>
-      </div>
     </div>
+     
 
     <div class="site-section border-bottom" data-aos="fade">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>The Team </h2>
+            <a><strong>오시는 길</strong></a>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 col-lg-3">
   
             <div class="block-38 text-center">
+             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src="images/person_1.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Elizabeth Graham</h3>
-                  <p class="block-38-subheading">CEO/Co-Founder</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
+                  <div id ="map"></div> 
                 </div>
               </div>
+             </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="images/person_2.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Jennifer Greive</h3>
-                  <p class="block-38-subheading">Co-Founder</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="images/person_3.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Patrick Marx</h3>
-                  <p class="block-38-subheading">Marketing</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="images/person_4.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Mike Coolbert</h3>
-                  <p class="block-38-subheading">Sales Manager</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          
+          
+          
         </div>
       </div>
     </div>

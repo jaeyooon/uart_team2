@@ -1,27 +1,108 @@
+<script>
+$(document).ready(function(){
+	$('#register_btn').click(function(){  /* button의 id와 일치시키는 것. JQUERY, $(선택자).method(parameter, 매개변수) */
+		$('#register_form').attr({  /*attr() → 속성 조작*/
+			'action':'/reigster/registerimpl',  /* registerimpl로 연결되게 하였음 */
+			'method':'post'
+		});
+		$('#register_form').submit();
+	});
+	
+	$('#pwd2').keyup(function(){
+		var pwd = $('#pwd').val();
+		var pwd2 = $('#pwd2').val();
+		if(pwd == pwd2){
+			$('#pspan').text('Correct');
+		}else{
+			$('#pspan').text('Incorrect');
+		}
+	});
+	
+	$('#id').keyup(function(){   /* keyup은 키보드를 누른 키에서 손을 땔 때를 나타내는 말. 이 부분의 경우 id다 입력하면 발생할 것. */
+		var id = $(this).val();
+		$.ajax({
+			url:'[[@{/checkid}]]',
+			data:{'cid':id},
+			success:function(result){
+				if(result == 't'){
+					$('#ispan').text('Available');
+				}else{
+					$('#ispan').text('Not Available');
+				}
+			}
+		});
+		
+	});
+});
+</script>
+
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
-  <div class="site-section">
-      <div class="container">
 
-        <div class="row mb-5">
-          <div class="col-md-12 order-2">
-
-            <div class="row">
-              <div class="col-md-12 mb-4">
-                <div class="float-md-left mb-4"><h3 class="text-black h3">회원가입</h3></div>
-                <div class="d-flex">
-                </div>
-              </div>
-            </div>
-            
-            <div class="row mb-5">
-           	  <div class="col-md-12 mb-5">
-           		<h3>page</h3>
-              </div>
-           </div>
-           
-          </div>
-        </div>
-      </div>
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">회원가입</h4>
+	<p class="text-center">계정을 만들고 이 모든 서비스를 누리십시오!</p>
+	<p>
+		<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-google"></i> 구글로 회원가입</a>
+		<a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i> 페이스북으로 회원가입</a>
+	</p>	
+	<form id = "register_form"> <!-- form에 id를 주어야 , submit이 되는 원리.  -->
+    <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
+		 </div>
+        <input id="custid" class="form-control" placeholder="Input your user accounts." type="text">
     </div>
-
+    <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="cname" class="form-control" placeholder="Full name" type="text">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-calendar-alt"></i> </span>
+		 </div>
+        <input name="birth" class="form-control" placeholder="Birth of dates" type="text">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="email" class="form-control" placeholder="Email address" type="email">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+		</div>
+    	<input name="phone" class="form-control" placeholder="Phone number" type="text">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-users"></i> </span>
+		</div>
+		<select class="form-control">
+			<option value="남">남성(Male)</option>
+			<option value="여">여성(Female)</option>
+		</select>
+	</div> <!-- form-group end.// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="pwd"class="form-control" placeholder="Create password" type="password">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="pwd2"class="form-control" placeholder="Repeat password" type="password"> <!-- 이름 다르게 해야 pwd2명령 먹을 거 같아서 이렇게. -->
+    </div> <!-- form-group// -->                                      
+     
+    <p class="text-center">계정이 있으십니까? <a href="/cust/login">로그인하세요.</a> </p>                                                                 
+</form>
+<button id ="register_btn" class="btn btn-primary btn-block"> Create Account  </button>
+</article>
+</div> <!-- card.// -->
