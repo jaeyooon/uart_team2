@@ -13,16 +13,22 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class WishlistDTO {
-	private Integer wishid;
-	private String custid;
+public class KItemDTO {
 	private Integer itemid;
-	
-	// 추가된 것
+	private Integer cateid;
 	private String itemname;
 	private String itemimg;
+	private String itemplace;
+	private double lat;
+	private double lng;
+	private String itemguide;
+	private String itemticket;
+	private Integer itemstock;
 	private Date estart;
 	private Date efin;
-	private Date wishdate;
+	
+	private String obj;
+	private Integer price;
+	private String catename;
 
 }
