@@ -1,64 +1,183 @@
-<div class="site-blocks-cover" style="background-image: url(images/hero_1.jpg);" data-aos="fade">
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+#block-1{
+	background-color:#7971EA;
+	opacity:0.8;
+	margin-right:100px;
+	margin-left:100px;
+	height:650px;	
+	border-radius:4px;
+}
+
+#block-2{
+ 	background : linear-gradient(to right, white, white, white, gray, white, white, white);
+ 	margin-top:20px;
+ 	margin-bottom:50px;
+ 	margin-right:40px;
+	margin-left:0px;
+	width:100%;
+	height:600px;
+	border-radius:4px;
+ }
+
+#h1{
+	font-size:38px;
+	font-style:italic;
+}
+
+#p1{
+	font-size:18px;
+	color:black;
+	font-style:italic;
+}
+
+#block-3{
+ 	background-color: black;
+ 	height:600px;
+ 	width:2px;
+ 	margin-top:-182px;
+ 	margin-right:80px;
+ 	margin-left:60px;
+ }
+
+#myCarousel{
+	width: 450px;
+	height:600px;
+	margin-bottom:130px;
+	margin-right:130px;
+	margin-left:-40px;
+	
+}
+
+#img{
+  width: 100%;
+  height: 550px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+ }  
+  
+ #d2{
+ 	margin-left: 50px;
+ 	margin-right: -100px;
+ }
+ 
+ #block-3-h3{
+ 	font-size:20px;
+ 	color:#7971EA;
+ }
+ 
+ .img-fluid{
+ 	width:100px;
+ 	height:400px;
+ }
+ 
+ #block-8-h3{
+ 	font-weight:bold;
+ 	font-size:20px;
+ }
+ 
+ #block-8-h5{
+ 	margin-top:30px;
+ }
+ 
+ #event-img{
+ 	width:100%;
+ 	height:300px;
+ }
+
+
+
+
+
+
+
+</style>
+
+<div id="block-1" class="site-blocks-cover" data-aos="fade">
       <div class="container">
-        <div class="row align-items-start align-items-md-center justify-content-end">
-          <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-            <h1 class="mb-2">Finding Your Perfect Shoes</h1>
+      
+      <div id="block-2" class="col-md-12">
+      <div class="row align-items-start align-items-md-center justify-content-end">
+          <div class="col-md-5">
+            <h1 id="h1" class="mb-2">예술의 세계로</h1>
+			<h1 id="h1" class="mb-2">당신을 초대합니다.</h1>
             <div class="intro-text text-center text-md-left">
-              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
-              <p>
-                <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
-              </p>
+              <p id="p1" class="mb-4"><br>다양하고 멋진 작품들이<br> 당신을 기다리고 있습니다.<br>
+              U-ART와 함께 놀라운 작품들을 감상하세요.</p>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        
+        <div id="block-3" class="col-md-0.1"></div>
+        
+        <div  class="col-md-5">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-    <div class="site-section site-blocks-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-            <a class="block-2-item" href="#">
-              <figure class="image">
-                <img src="images/women.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Collections</span>
-                <h3>Women</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-            <a class="block-2-item" href="#">
-              <figure class="image">
-                <img src="images/children.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Collections</span>
-                <h3>Children</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-            <a class="block-2-item" href="#">
-              <figure class="image">
-                <img src="images/men.jpg" alt="Image" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Collections</span>
-                <h3>Men</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>
+						<li data-target="#myCarousel" data-slide-to="3"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<img id="img" src="img/img01.jpg" alt="Image">
+							<div class="carousel-caption"></div>
+						</div>
+
+						<div class="item">
+							<img id="img" src="img/img07.jpg" alt="Image">
+							<div class="carousel-caption"></div>
+						</div>
+
+						<div class="item">
+							<img id="img" src="img/img13.jpg" alt="Image">
+							<div class="carousel-caption"></div>
+						</div>
+
+						<div class="item">
+							<img id="img" src="img/img19.jpg" alt="Image">
+							<div class="carousel-caption"></div>
+						</div>
+
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#myCarousel" role="button"
+							data-slide="prev"> <span
+							class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a> <a class="right carousel-control" href="#myCarousel"
+							role="button" data-slide="next"> <span
+							class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			</div>
+	</div>
+	</div>
+	</div>
 
     <div class="site-section block-3 site-blocks-2 bg-light">
       <div class="container">
         <div class="row justify-content-center">
+          
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Featured Products</h2>
+            <h3 id="block-8-h3">전시 예정</h3>
           </div>
         </div>
         <div class="row">
@@ -67,60 +186,60 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="img_p/img_p1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a id="block-3-h3" href="#">NATURELABS(시간의 조각:계절)</a></h3><br>
+                    <p class="mb-0">전시를 준비중입니다.</p>
+                    <p class="mb-0">2023년 Grand Opening</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="img_p/img_p2.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a id="block-3-h3" href="#">ARTE MUSEUM VALLEY</a></h3><br>
+                    <p class="mb-0">전시를 준비중입니다.</p>
+                    <p class="mb-0">2023년 Grand Opening</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="img_p/img_p3.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a id="block-3-h3" href="#">DIALOGUE IN THE DARK</a></h3><br>
+                    <p class="mb-0">전시를 준비중입니다.</p>
+                    <p class="mb-0">2023년 Grand Opening</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="img_p/img_p4.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a id="block-3-h3" href="#">ARARIO MUSEUM</a></h3><br>
+                    <p class="mb-0">전시를 준비중입니다.</p>
+                    <p class="mb-0">2023년 Grand Opening</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="img_p/img_p5.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a id="block-3-h3" href="#">그대, 나의 뮤즈</a></h3><br>
+                    <p class="mb-0">전시를 준비중입니다.</p>
+                    <p class="mb-0">2023년 Grand Opening</p>
                   </div>
                 </div>
               </div>
@@ -132,20 +251,19 @@
 
     <div class="site-section block-8">
       <div class="container">
-        <div class="row justify-content-center  mb-5">
-          <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Big Sale!</h2>
-          </div>
-        </div>
-        <div class="row align-items-center">
-          <div class="col-md-12 col-lg-7 mb-5">
-            <a href="#"><img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
-          </div>
-          <div class="col-md-12 col-lg-5 text-center pl-md-5">
-            <h2><a href="#">50% less in all items</a></h2>
-            <p class="post-meta mb-4">By <a href="#">Carl Smith</a> <span class="block-8-sep">&bullet;</span> September 3, 2018</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
-            <p><a href="#" class="btn btn-primary btn-sm">Shop Now</a></p>
+       <div class="row">
+			<div class="col-md-6 site-section-heading text-left pt-4">
+				<h3 id="block-8-h3">공지사항</h3>
+				
+				<h5 id="block-8-h5">U-ART 서비스 점검일: 매월 1일 2:00 AM - 6:00 AM</h5>
+				<h5>U-ART 고객센터 휴무: 매주 일요일</h5>
+			</div>
+
+			<div class="col-md-6 site-section-heading text-left pt-4">
+				<h3 id="block-8-h3">이벤트</h3>
+				
+			<!-- 이벤트 이미지 아래 <img>tag에 넣어주세요! -->
+			<img id="event-img" src="img/img05.jpg">
           </div>
         </div>
       </div>
