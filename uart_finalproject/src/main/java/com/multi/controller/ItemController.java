@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.ItemDTO;
+import com.multi.dto.ReviewDTO;
 import com.multi.service.ItemService;
+import com.multi.service.ReviewService;
 
 @Controller
 @RequestMapping("/item")
@@ -17,6 +19,10 @@ public class ItemController {
 	@Autowired
 	ItemService item_service;
 
+
+	@Autowired
+	ReviewService re_service;
+	
 	String dir = "item/";
 	
 	@RequestMapping("/medialist")
@@ -81,13 +87,16 @@ public class ItemController {
 		ItemDTO item1 = null;
 		ItemDTO item2=null;
 		ItemDTO item3=null;
+		List<ReviewDTO> review = null;
 		try {
 			item1 = item_service.get(itemid);
 			item2=item_service.get2(itemid);
 			item3=item_service.get3(itemid);
+			review = re_service.get_itemreview(itemid);
 			model.addAttribute("itemdetail1", item1);
 			model.addAttribute("itemdetail2", item2);
 			model.addAttribute("itemdetail3", item3);
+			model.addAttribute("review", review);
 			model.addAttribute("center", dir+"itemdetail");
 		} catch (Exception e) {
 			e.printStackTrace();

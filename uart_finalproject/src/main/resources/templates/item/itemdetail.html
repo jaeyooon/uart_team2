@@ -39,6 +39,54 @@ h6, #p2 {
 #wishlist_btn:hover{
 background-color:#D7B5EB;}
 
+#review {
+	font-size: 15px;
+}
+
+#re_att {
+	font-size: 13px;
+	color: #c44536;
+}
+
+#item_review {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+hr.two_1 {
+	width: 100%;
+	border: none;
+	border: 1px solid #ced4da;
+}
+
+.star-ratings {
+	color: #aaa9a9;
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order)
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29; */
+}
+
+.star-ratings-fill {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: #f9c74f;
+}
+
+.star-ratings-base {
+	z-index: 0;
+	padding: 0;
+}
+
 </style>
 
 <script>
@@ -218,7 +266,57 @@ background-color:#D7B5EB;}
 				</div>
 				<div class="tab-pane fade" id="nav-two" role="tabpanel"
 					aria-labelledby="nav-two-tab">
-					<h3>tab2</h3>
+						<br>
+					<h6 style="color: grey">게시판 운영규정에 맞지 않는 글은 사전 통보없이 삭제될 수 있습니다.</h6>
+					<div class="container">
+						<details>
+							<summary id="re_att" style="font-weight: bold"> 부정이용
+								규제안내</summary>
+							<div id="review">
+								게시판 운영 정책 위배시 사전 통보 없이 게시글을 삭제하거나 블라인드 처리할 수 있습니다. <br> <br>
+								1. 티켓 매매 및 양도 관련 글일 경우 <br>2. 게시판 운영 목적에 반하거나 이벤트 당첨을 위해,
+								단어 또는 문장을 반복적으로 등록하여 도배성 게시글이라고 판단되는 경우<br> 3. 전화번호, 이메일,
+								주소 등 회원 및 타인의 개인정보 유출이 우려되는 경우<br> 4. 해당 상품과 관련이 없거나 게시판의
+								성격에 맞지 않는다고 판단되는 경우<br> 5. 타회원 및 제 3자의 권리나 개인정보, 명예, 신용, 기타
+								정당한 이익을 침해하는 내용을 포함하는 경우<br> 6. 의도적으로 악성 게시글이나, 공공질서나 미풍양속에
+								위배되는 욕설, 저속, 음란 내용을 포함하는 경우<br> 7. 홍보 및 광고성 내용을 포함하는 경우
+
+							</div>
+						</details>
+						<br>
+
+
+					</div>
+					<div class=reviews>
+						<h3>Reviews</h3>
+						<br>
+						<form id="itemreview_form" th:each="re : ${review}">
+							<div class="movie__rate">
+								<div class="star-ratings">
+									<div name="${re.reviewgrade}"
+										class="star-ratings-fill space-x-4 text-lg"
+										th:style="${'width:'+re.reviewgrade*20+'%'}">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</div>
+									<div class="star-ratings-base space-x-4 text-lg">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</div>
+								</div>
+							</div>
+
+							<p style="color: black" th:text="${re.reviewcontent}"
+								name="reviewcontent"></p>
+
+							<p
+								th:text="${re.custid} + ' 🙋‍♀️🙋‍♂ | ' + ${#dates.format(re.reviewdate,'yy.MM.dd')}"
+								name="reviewdate"></p>
+							<hr class="two_1">
+
+
+
+
+						</form>
+					</div>
 				</div>
 				<div class="tab-pane fade" id="nav-three" role="tabpanel"
 					aria-labelledby="nav-three-tab">
