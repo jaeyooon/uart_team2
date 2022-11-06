@@ -4,17 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.KItemDTO;
-import com.multi.service.KItemService;
+import com.multi.dto.ItemDTO2;
+import com.multi.service.ItemService2;
 
 @SpringBootTest
-class SelectKItem {
+class SelectItem2 {
 	@Autowired
-	KItemService service;
+	ItemService2 service;
 
 	@Test
 	void contextLoads() {
-		KItemDTO kitem = null;
+		ItemDTO2 kitem = null;
 		try {
 			kitem = service.get(100);
 			System.out.println(kitem);

@@ -2,15 +2,15 @@ package com.multi.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.multi.dto.KItemDTO;
+import com.multi.dto.ItemDTO2;
 import com.multi.frame.MyService;
-import com.multi.mapper.KItemMapper;
+import com.multi.mapper.ItemMapper2;
 @Service
-public class KItemService implements MyService<Integer, KItemDTO>{
+public class ItemService2 implements MyService<Integer, ItemDTO2>{
     @Autowired
-    KItemMapper mapper;
+    ItemMapper2 mapper;
     @Override
-    public void register(KItemDTO v) throws Exception {
+    public void register(ItemDTO2 v) throws Exception {
         mapper.insert(v);
         // TODO Auto-generated method stub
     }
@@ -20,22 +20,22 @@ public class KItemService implements MyService<Integer, KItemDTO>{
         // TODO Auto-generated method stub
     }
     @Override
-    public void modify(KItemDTO v) throws Exception {
+    public void modify(ItemDTO2 v) throws Exception {
         mapper.update(v);
         // TODO Auto-generated method stub
     }
     @Override
-    public KItemDTO get(Integer k) throws Exception {
+    public ItemDTO2 get(Integer k) throws Exception {
         // TODO Auto-generated method stub
         return mapper.select(k);
     }
     @Override
-    public List<KItemDTO> get() throws Exception {
+    public List<ItemDTO2> get() throws Exception {
         // TODO Auto-generated method stub
         return mapper.selectall();
     }
-    public List<KItemDTO> kitemall(Integer itemid) throws Exception {
-		return mapper.kitemall(itemid);
+    public List<ItemDTO2> itemall2(Integer itemid) throws Exception {
+		return mapper.itemall2(itemid);
 	}
 	
     

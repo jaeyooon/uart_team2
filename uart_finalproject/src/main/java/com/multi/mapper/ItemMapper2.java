@@ -5,11 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.multi.dto.KItemDTO;
+import com.multi.dto.ItemDTO2;
 import com.multi.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface KItemMapper extends MyMapper<Integer, KItemDTO>{
-	public List<KItemDTO> kitemall(Integer itemid) throws Exception;
+public interface ItemMapper2 extends MyMapper<Integer, ItemDTO2>{
+	public List<ItemDTO2> itemall2(Integer itemid) throws Exception;
 }

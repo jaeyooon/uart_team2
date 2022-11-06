@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.service.KItemService;
+import com.multi.service.ItemService2;
 
 @SpringBootTest
-class DeleteKItem {
+class DeleteItem2 {
 	@Autowired
-	KItemService service;
+	ItemService2 service;
 
 	@Test
 	void contextLoads() {

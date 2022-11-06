@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class KItemDTO {
+public class ItemDTO2 {
 	private Integer itemid;
 	private Integer cateid;
 	private String itemname;

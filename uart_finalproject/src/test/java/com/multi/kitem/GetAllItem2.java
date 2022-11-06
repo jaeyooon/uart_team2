@@ -6,25 +6,30 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.KItemDTO;
-import com.multi.service.KItemService;
+import com.multi.dto.ItemDTO2;
+import com.multi.service.ItemService2;
+
 
 @SpringBootTest
-class SelectAllKItem {
-	@Autowired
-	KItemService service;
+class GetAllItem2 {
 
+	@Autowired
+	ItemService2 service;
+	
 	@Test
 	void contextLoads() {
-		List<KItemDTO> list = null;
+		List<ItemDTO2> list = null;
 		try {
-			list = service.get();
+			list = service.itemall2(101);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(KItemDTO i:list) {
-			System.out.println(i);
+		
+		for(ItemDTO2 c:list) {
+			System.out.println(c);
 		}
+		
 	}
 
 }
