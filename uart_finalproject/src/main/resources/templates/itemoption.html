@@ -1,0 +1,196 @@
+<meta charset="utf-8">
+
+<style>
+.img-fluid {
+	width: 80%;
+	height: 550px;
+	border-radius: 10px;
+}
+
+#tab_name{
+	font-size:15px;
+	font-weight:bold;
+}
+
+#p1 {
+	font-style: italic;
+	font-weight: 400;
+}
+
+h6, #p2 {
+	color: black;
+}
+
+#p3 {
+	font-size: 14px;
+}
+
+.info_img {
+	width: 45%;
+	height: 600px;
+	border-radius: 10px;
+	margin-bottom: 50px;
+}
+
+#cancel_table {
+	width: 600px;
+}
+
+#price_table {
+	width: 400px;
+}
+
+#review {
+	font-size: 15px;
+}
+
+#re_att {
+	font-size: 13px;
+	color: #c44536;
+}
+
+#item_review {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+hr.two_1 {
+	width: 100%;
+	border: none;
+	border: 1px solid #ced4da;
+}
+
+.star-ratings {
+	color: #aaa9a9;
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order)
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29; */
+}
+
+.star-ratings-fill {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: #f9c74f;
+}
+
+.star-ratings-base {
+	z-index: 0;
+	padding: 0;
+}
+
+.title {
+	display: inline-block;
+	width: 100px;
+	font-weight: bold;
+}
+
+.con {
+	font-weight: 500;
+}
+
+#order {
+	width: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 200px;
+	float: left;
+}
+
+#wishlist {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 200px;
+	float: left;
+	background-color: #cec2ff;
+	padding: 10px;
+	border-radius: 10px;
+	outline: 0;
+}
+
+.btn {
+	animation: bgColor 1st both;
+	background-color:#7971EA;
+}
+
+@keyframes byColor {
+	from {background: #cec2ff;
+}
+
+to {
+	background: blue;
+	color: white;
+}
+}
+
+#btn {
+	width: 100%;
+	text-align: center;
+	color:#7971EA;
+}
+</style>
+
+<script>
+	
+</script>
+
+
+
+<body>
+
+	<div class="site-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<img th:src="'/img/'+${itemdetail1.itemimg}" alt="Image"
+						class="img-fluid">
+				</div>
+				<div class="col-md-6">
+					<h2 class="text-black" th:text="${itemdetail1.itemname}"></h2>
+					<p></p>
+					<hr class="two_1">
+					<span id="itemid" th:text="${itemdetail1.itemid}" name="itemid"
+						style="display: none"></span><br>
+					<sapn class="title">장소</sapn>
+					<span class="con" th:text="${itemdetail1.itemplace}"></span><br>
+					<sapn class="title">기간</sapn>
+					<span class="con"
+						th:text="${#dates.format(itemdetail1.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail1.efin, 'yyyy.MM.dd')}"
+						name="itemid"></span><br> <span class="title">관람등급</span><span
+						class="con" th:text="' '+${itemdetail1.itemguide}"></span>
+					<hr style="color: black">
+					<span class="title">가격</span><span class="con"
+						th:text="${itemdetail1.itemoption_obj} +'권 '+ ${#numbers.formatInteger(itemdetail1.itemoption_price, 3,'COMMA')}+'원'"></span><br>
+					<span class="title"></span><span class="con"
+						th:text="${itemdetail2.itemoption_obj} +'권 '+ ${#numbers.formatInteger(itemdetail2.itemoption_price, 3,'COMMA')}+'원'"></span><br>
+					<span class="title"></span><span class="con"
+						th:text="${itemdetail3.itemoption_obj} +'권 '+ ${#numbers.formatInteger(itemdetail3.itemoption_price, 3,'COMMA')}+'원'"></span>
+
+
+					<div id="btn">
+						<div style="display: inline-block">
+							<a id="order"
+								th:href="@{/itemoption(itemid=${itemdetail1.itemid})}"
+								class="buy-now btn btn-sm btn-primary"><strong>예매하기</strong></a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+	</div>
+</body>
+</html>
