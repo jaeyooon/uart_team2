@@ -19,8 +19,8 @@ public class ItemDTO {
 	private String itemname;
 	private String itemimg;
 	private String itemplace;
-	private double lat;
-	private double lng;
+	private Double lat;
+	private Double lng;
 	private String itemguide;
 	private String itemticket;
 	private Integer itemstock;

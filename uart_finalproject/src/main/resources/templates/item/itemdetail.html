@@ -136,7 +136,23 @@ to {
 </style>
 
 <script>
+var map;
+function display(){
+	var lat = $('#lat').val();
+	var lng = $('#lng').val(); 
+	alert(lat);
+	alert(lng);  
+	  
+	var mapContainer =document.querySelector('#map');
+	var mapOption = { 
+        center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
+        level: 8 // 지도의 확대 레벨
+    };
+	map = new kakao.maps.Map(mapContainer, mapOption); 
+};
+
 $(document).ready(function(){
+	display();
  	$('#wishlist').click(function(){
  		$(this).toggleClass("btn");
  		var itemid = $('#itemid').text();
@@ -344,6 +360,9 @@ $(document).ready(function(){
 				<div class="tab-pane fade" id="nav-three" role="tabpanel"
 					aria-labelledby="nav-three-tab">
 					<h3>장소정보</h3>
+					<div id="map" style="width:500px;height:400px;"></div>
+					 <input id="lat" th:value="${itemdetail2.lat}" readonly="readonly">
+             		 <input id="lng" th:value="${itemdetail2.lng}" readonly="readonly">
 				</div>
 				<div class="tab-pane fade" id="nav-four" role="tabpanel"
 					aria-labelledby="nav-four-tab">
