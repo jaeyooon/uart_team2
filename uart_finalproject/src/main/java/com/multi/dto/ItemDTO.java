@@ -15,12 +15,12 @@ import lombok.ToString;
 @ToString
 public class ItemDTO {
 	private Integer itemid;
-	private String cateid;
+	private Integer cateid;
 	private String itemname;
 	private String itemimg;
 	private String itemplace;
-	private float lat;
-	private float lng;
+	private double lat;
+	private double lng;
 	private String itemguide;
 	private String itemticket;
 	private Integer itemstock;
