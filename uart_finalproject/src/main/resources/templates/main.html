@@ -131,7 +131,7 @@
 												potted_plant회원가입 </span></a></li>
 								</ul>
 								<ul th:if="${session.logincust != null}">
-									<a id="cname" style="color: #9f86c0" href="#"
+									<a id="cname" style="color: #9f86c0"
 										th:text="${session.logincust.cname}+'님'"
 										th:href="@{/cust/detail(custid=${session.logincust.custid})}"><span
 										class="caret"></span></a>
@@ -170,7 +170,7 @@
 						<li><a href="/recommend">추천전시</a></li>
 						<li><a href="/event">이벤트</a></li>
 						<li><a href="/faq">FAQ</a></li>
-						<li><a href="#"><img id="chatbot-icon" th:src="@{img_c/chatbot.jpg}"></a></li>
+						<li><a href="#"><img id="chatbot-icon" src="/img_c/chatbot.jpg"></a></li>
 					</ul>
 				</div>
 			</nav>
