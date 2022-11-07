@@ -140,8 +140,7 @@ var map;
 function display(){
 	var lat = $('#lat').val();
 	var lng = $('#lng').val(); 
-	alert(lat);
-	alert(lng);  
+	
 	  
 	var mapContainer =document.querySelector('#map');
 	var mapOption = { 
@@ -149,6 +148,13 @@ function display(){
         level: 8 // 지도의 확대 레벨
     };
 	map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+	
+	var markerPosition  = new kakao.maps.LatLng(lat, lng); 
+	
+	var marker = new kakao.maps.Marker({
+  	    position: markerPosition
+  	});
 };
 
 $(document).ready(function(){
