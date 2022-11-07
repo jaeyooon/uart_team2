@@ -361,8 +361,8 @@ $(document).ready(function(){
 					aria-labelledby="nav-three-tab">
 					<h3>장소정보</h3>
 					<div id="map" style="width:500px;height:400px;"></div>
-					 <input id="lat" th:value="${itemdetail2.lat}" readonly="readonly">
-             		 <input id="lng" th:value="${itemdetail2.lng}" readonly="readonly">
+					 <input id="lat" type="hidden" th:value="${itemdetail2.lat}" readonly="readonly">
+             		 <input id="lng" type="hidden" th:value="${itemdetail2.lng}" readonly="readonly">
 				</div>
 				<div class="tab-pane fade" id="nav-four" role="tabpanel"
 					aria-labelledby="nav-four-tab">
