@@ -8,17 +8,17 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
-<link rel="stylesheet" href="/fonts/icomoon/style.css">
+<link rel="stylesheet" th:href="@{/fonts/icomoon/style.css}">
 
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/magnific-popup.css">
-<link rel="stylesheet" href="/css/jquery-ui.css">
-<link rel="stylesheet" href="/css/owl.carousel.min.css">
-<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.css}">
+<link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+<link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
 
 
-<link rel="stylesheet" href="/css/aos.css">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" th:href="@{/css/aos.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 
 <!-- Google icon -->
 <link rel="stylesheet"
@@ -27,11 +27,11 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Filled|Material+Icons+Rounded|Material+Icons+Sharp|Material+Icons+Two+Tone"
 	rel="stylesheet">
 
-<script src="/js/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
 
 <!-- Kakao map API -->
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=da1e82165dc5c5973f53df275ee2dae6"></script>
+	th:src="@{//dapi.kakao.com/v2/maps/sdk.js?appkey=da1e82165dc5c5973f53df275ee2dae6}"></script>
 
 
 <style>
@@ -66,13 +66,11 @@
 	font-weight: bold;
 }
 
-#send_btn {
-	font-size: 14px;
-	padding: 7px;
-	height: 34px;
-	margin-right: -5px;
-	background-color: #7971EA;
+#chatbot-icon{
+	width:40px;
+	height:40px;
 }
+
 </style>
 
 
@@ -172,6 +170,7 @@
 						<li><a href="/recommend">추천전시</a></li>
 						<li><a href="/event">이벤트</a></li>
 						<li><a href="/faq">FAQ</a></li>
+						<li><a href="#"><img id="chatbot-icon" th:src="@{img_c/chatbot.jpg}"></a></li>
 					</ul>
 				</div>
 			</nav>
@@ -224,14 +223,6 @@
 						</div>
 
 						<div class="block-7">
-							<form action="#" method="post">
-								<label for="email_subscribe" class="footer-heading">Subscribe</label>
-								<div class="form-group">
-									<input type="text" class="form-control py-4"
-										id="email_subscribe" placeholder="Email"> <input
-										type="submit" id="send_btn" class="btn btn-primary btn-xs" value="Send">
-								</div>
-							</form>
 						</div>
 					</div>
 				</div>
@@ -255,14 +246,14 @@
 		</footer>
 	</div>
 
-	<script src="/js/jquery-ui.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/owl.carousel.min.js"></script>
-	<script src="/js/jquery.magnific-popup.min.js"></script>
-	<script src="/js/aos.js"></script>
+	<script th:src="@{/js/jquery-ui.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/aos.js}"></script>
 
-	<script src="/js/main.js"></script>
+	<script th:src="@{/js/main.js}"></script>
 
 </body>
 </html>
