@@ -5,21 +5,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.ItemMapper">
 
 	<select id="select" parameterType="Integer" resultType="itemDTO">
-		SELECT c.cateid, (c.catename) AS cate_catename, i.itemid, i.itemname, i.itemimg, i.itemplace, i.itemguide, i.itemticket, (o.obj) AS itemoption_obj, (o.price) AS itemoption_price, i.estart, i.efin  FROM item AS i
+		SELECT c.cateid, (c.catename) AS cate_catename, i.itemid, i.itemname, i.itemimg, i.itemplace, i.lat, i.lng, i.itemguide, i.itemticket, (o.obj) AS itemoption_obj, (o.price) AS itemoption_price, i.itemstock, i.estart, i.efin  FROM item AS i
 		INNER JOIN cate AS c ON c.cateid=i.cateid
 		INNER JOIN itemoption AS o ON o.itemid=i.itemid
 		WHERE i.itemid=#{itemid} LIMIT 1
 	</select>
 	
 	<select id="select2" parameterType="Integer" resultType="itemDTO">
-		SELECT c.cateid, c.catename, i.itemid, i.itemname, i.itemimg, i.itemplace, i.lat, i.lng, i.itemguide, i.itemticket, (o.obj) AS itemoption_obj, (o.price) AS itemoption_price, i.itemstock, i.estart, i.efin  FROM item AS i
+		SELECT c.cateid, (c.catename) AS cate_catename, i.itemid, i.itemname, i.itemimg, i.itemplace, i.lat, i.lng, i.itemguide, i.itemticket, (o.obj) AS itemoption_obj, (o.price) AS itemoption_price, i.itemstock, i.estart, i.efin  FROM item AS i
 		INNER JOIN cate AS c ON c.cateid=i.cateid
 		INNER JOIN itemoption AS o ON o.itemid=i.itemid
 		WHERE i.itemid=#{itemid} LIMIT 1,1
 	</select>
 	
 	<select id="select3" parameterType="Integer" resultType="itemDTO">
-		SELECT c.cateid, c.catename, i.itemid, i.itemname, i.itemimg, i.itemplace, i.lat, i.lng, i.itemguide, i.itemticket, (o.obj) AS itemoption_obj, (o.price) AS itemoption_price, i.itemstock, i.estart, i.efin  FROM item AS i
+		SELECT c.cateid, (c.catename) AS cate_catename, i.itemid, i.itemname, i.itemimg, i.itemplace, i.lat, i.lng, i.itemguide, i.itemticket, (o.obj) AS itemoption_obj, (o.price) AS itemoption_price, i.itemstock, i.estart, i.efin  FROM item AS i
 		INNER JOIN cate AS c ON c.cateid=i.cateid
 		INNER JOIN itemoption AS o ON o.itemid=i.itemid
 		WHERE i.itemid=#{itemid} LIMIT 2,1
