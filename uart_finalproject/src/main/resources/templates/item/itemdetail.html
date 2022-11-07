@@ -208,7 +208,7 @@ to {
 					<span class="con"
 						th:text="${#dates.format(itemdetail1.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail1.efin, 'yyyy.MM.dd')}"
 						name="itemid"></span><br> <span class="title">관람등급</span><span
-						class="con" th:text="${itemdetail1.itemguide}"></span>
+						class="con" th:text="' '+${itemdetail1.itemguide}"></span>
 					<hr style="color: black">
 					<span class="title">가격</span><span class="con"
 						th:text="${itemdetail1.itemoption_obj} +'권 '+ ${#numbers.formatInteger(itemdetail1.itemoption_price, 3,'COMMA')}+'원'"></span><br>
