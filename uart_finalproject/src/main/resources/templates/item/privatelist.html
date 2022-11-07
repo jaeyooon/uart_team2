@@ -6,6 +6,15 @@
 	height:450px; 
 }
 
+#h2{
+	font-size:22px;
+}
+
+#h3{
+	color: #7971EA;
+	font-size:18px;
+}
+
 #p1{
 	color:gray;
 	margin-top:10px;
@@ -22,7 +31,7 @@
 
             <div class="row">
               <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">개인전</h2></div>
+                <div class="float-md-left mb-4"><h2 id="h2" class="text-black h5">개인전</h2></div>
               </div>
             </div>
             
@@ -35,7 +44,7 @@
 	                    <a th:href="@{/item/itemdetail(itemid=${it.itemid})}"><img th:src="'/img/' +${it.itemimg}" alt="Image placeholder" class="img-fluid"></a>
 	                  </figure>
 	                  <div class="block-4-text p-4">
-	                    <h3><a th:href="@{/item/itemdetail(itemid=${it.itemid})}" th:text="${it.itemname}"></a></h3>
+	                    <h3><a id="h3" th:href="@{/item/itemdetail(itemid=${it.itemid})}" th:text="${it.itemname}"></a></h3>
 	                  	<a th:href="@{/item/itemdetail(itemid=${it.itemid})}"><p id="p1" class="mb-0">전시 둘러보기</p></a>
 	                  </div>
 	                </div>
