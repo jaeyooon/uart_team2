@@ -267,19 +267,19 @@ $(document).ready(function(){
 								<th>티켓가격</th>
 							</tr>
 						</thead>
-
+${#numbers.formatInteger(itemdetail1.itemoption_price, 3,'COMMA')}+'원'
 						<tbody>
 							<tr>
 								<td th:text="${itemdetail1.itemoption_obj}">청소년</td>
-								<td th:text="${itemdetail1.itemoption_price}">가격</td>
+								<td th:text="${#numbers.formatInteger(itemdetail1.itemoption_price, 3, 'COMMA')}+'원'">가격</td>
 							</tr>
 							<tr>
 								<td th:text="${itemdetail2.itemoption_obj}">성인</td>
-								<td th:text="${itemdetail2.itemoption_price}">가격</td>
+								<td th:text="${#numbers.formatInteger(itemdetail2.itemoption_price, 3, 'COMMA')}+'원'">가격</td>
 							</tr>
 							<tr>
 								<td th:text="${itemdetail3.itemoption_obj}">아동</td>
-								<td th:text="${itemdetail3.itemoption_price}">가격</td>
+								<td th:text="${#numbers.formatInteger(itemdetail3.itemoption_price, 3, 'COMMA')}+'원'">가격</td>
 							</tr>
 
 						</tbody>
