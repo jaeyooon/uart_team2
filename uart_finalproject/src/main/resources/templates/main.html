@@ -28,6 +28,16 @@
 		th:src="@{//dapi.kakao.com/v2/maps/sdk.js?appkey=f541c133e4befeb47a03d1471b0f1748}"></script>
 
 
+	<!-- logo font -->	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
 <style>
 #top_search {
 	display: flex;
@@ -65,13 +75,16 @@
 	height:40px;
 }
 
-#send_btn{
-	font-size: 14px;
-  	padding: 7px;
-  	height: 34px;
-  	margin-right:-5px;
-  	background-color:#7971EA;
+#address{
+	font-size: 15px;
 }
+
+#logo{
+	border:none;
+	font-size:40px;
+	font-family: 'Dancing Script', cursive;
+}
+
 
 </style>
 
@@ -118,7 +131,7 @@
 						<div
 							class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
 							<div class="site-logo">
-								<a th:href="@{/}" class="js-logo-clone">U-Art</a>
+								<a th:href="@{/}" id="logo" class="js-logo-clone">U-Art</a>
 							</div>
 						</div>
 
@@ -128,7 +141,7 @@
 									<li><a th:href="@{/cust/login}"> <span
 											class="material-symbols-outlined" id="login">
 												person로그인 </span></a></li>
-									<li><a href="@{/register/registered}"> <span
+									<li><a th:href="@{/register/registered}"> <span
 											class="material-symbols-outlined" id="register">
 												potted_plant회원가입 </span></a></li>
 								</ul>
@@ -224,22 +237,10 @@
 						<div class="block-5 mb-5">
 							<h3 class="footer-heading mb-4">Contact U-ART</h3>
 							<ul class="list-unstyled">
-								<li class="address">서울특별시 강남구 삼성로 42 삼성동빌딩 5층</li>
+								<li id="address" class="address">서울특별시 강남구 삼성로 42 삼성동빌딩 5층</li>
 								<li class="phone"><a href="#">+82 02-2387-2387</a></li>
 								<li class="email">emailaddress@domain.com</li>
 							</ul>
-						</div>
-
-						<div class="block-7">
-							<form action="#" method="post">
-								<label for="email_subscribe" class="footer-heading">Subscribe</label>
-								<div class="form-group">
-									<input type="text" class="form-control py-4"
-										id="email_subscribe" placeholder="Email"> 
-									<button
-										 id="send_btn" class="btn btn-primary btn-xm">SEND</button>
-								</div>
-							</form>
 						</div>
 					</div>
 				</div>

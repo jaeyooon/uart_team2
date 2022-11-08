@@ -1,15 +1,22 @@
 <meta charset="utf-8">
 
 <style>
+#cover{
+	background: linear-gradient(135deg, white, white, gray, white, white)
+}
 
 #h2{
 	font-style:italic;
+	color:black;
+	font-family: 'Nanum Pen Script', cursive;
+	font-size:55px;
 }
 
 #p1{
-	font-size:18px;
+	font-size:25px;
 	color:black;
 	font-style:italic;
+	font-family: 'Nanum Pen Script', cursive;
 }
 
 #block-3{
@@ -20,10 +27,21 @@
  	margin-right:80px;
  	margin-left:60px;
  }
+ 
+ #d1{
+ 	margin-right:-150px;
+ }
 
 #img{
-  height: 500px;
-  }
+  width: 490px;
+  height: 650px;
+ }
+ 
+ #carouselExampleControls{
+  width: 490px;
+  height: 650px;
+  margin-left:50px;
+ }
 
   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
@@ -38,7 +56,7 @@
  }
  
  #block-3-h3{
- 	font-size:20px;
+ 	font-size:18px;
  	color:#7971EA;
  }
  
@@ -66,12 +84,12 @@
 
 </style>
 
-<div class="site-blocks-cover" data-aos="fade">
+<div id="cover" class="site-blocks-cover" data-aos="fade">
       <div class="container">
       
       <div class="col-md-12">
       <div class="row align-items-start align-items-md-center justify-content-end">
-          <div class="col-md-6">
+          <div id="d1" class="col-md-6">
             <h2 id="h2" class="mb-2">예술의 세계로</h2>
 			<h2 id="h2" class="mb-2">당신을 초대합니다.</h2>
             <div class="intro-text text-center text-md-left">
@@ -80,7 +98,7 @@
             </div>
           </div>
         
-	        <div  class="col-md-6">
+	        <div class="col-md-6">
 				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 				  <div class="carousel-inner">
 				    <div class="carousel-item active">
