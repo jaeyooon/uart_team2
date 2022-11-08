@@ -155,11 +155,10 @@ to {
 		};
 		map = new kakao.maps.Map(mapContainer, mapOption);
 
-		var markerPosition = new kakao.maps.LatLng(lat, lng);
-
-		var marker = new kakao.maps.Marker({
-			position : markerPosition
-		});
+		var marker = new kakao.maps.Marker({  
+	        map: map,
+	        position: new kakao.maps.LatLng(lat, lng),   /* 위도와 경도를 입력함으로써 넣어 줌 */
+		 });
 
 	};
 
