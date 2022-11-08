@@ -145,16 +145,15 @@ function display(){
 	var mapContainer =document.querySelector('#map');
 	var mapOption = { 
         center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
-        level: 8 // 지도의 확대 레벨
+        level: 3 // 지도의 확대 레벨
     };
 	map = new kakao.maps.Map(mapContainer, mapOption); 
 	
 	
-	var markerPosition  = new kakao.maps.LatLng(lat, lng); 
-	
-	var marker = new kakao.maps.Marker({
-  	    position: markerPosition
-  	});
+	 var marker = new kakao.maps.Marker({  //여기다가 이미지를 집어넣자   /* 마커 데이터를 생성(생성자 연산) */
+	        map: map,
+	        position: new kakao.maps.LatLng(lat, lng),   /* 위도와 경도를 입력함으로써 넣어 줌 */
+		 });
 };
 
 $(document).ready(function(){
