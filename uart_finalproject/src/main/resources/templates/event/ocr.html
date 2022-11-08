@@ -1,0 +1,178 @@
+<meta charset="utf-8">
+
+<style>
+#event_form {
+margin: auto;
+}
+
+#section{
+display: flex;
+align-items: center;
+}
+
+#register_btn{
+height:45px;
+font-size: 14px;
+}
+
+</style>
+<script>
+function tnumber_check(num) {
+	//alert(num);
+	var result;
+	var custid = '[[${session.logincust.custid}]]';
+	$.ajax({
+		url:'/ocrTnumberCheck',
+		async: false, 
+		data:{'tnumber':num, 'custid':custid},
+		success : function(data) {
+			result = data;
+			//alert('*'+result); 
+		}
+	});
+	//alert('**'+result);
+	return result;
+}
+
+function result(data) {
+	var tnumber =''; // 중복 확인을 위해 수험번호 저장할 변수
+	var cname = $('#cname').val();
+	var birth = $('#birth').val();
+	var sdate = $('#sdate').val();
+	var date = (Number(sdate)+1).toString(); // 수험년도는 올해 + 1
+	
+	/* alert(cname);
+	alert(birth);
+	alert(sdate);
+	alert(data.images[0].fields[0].inferText);  // 수험년도
+	alert(data.images[0].fields[1].inferText);  // 이름
+	alert(data.images[0].fields[2].inferText);  // 생년월일
+	alert(data.images[0].fields[3].inferText);   // 수험번호 */
+	
+		
+	if(data.images[0].inferResult != 'FAILURE') { // 수험표 인증이 가능한 경우
+		
+		ocr_year = data.images[0].fields[0].inferText;
+		ocr_name = data.images[0].fields[1].inferText;
+		ocr_birth = data.images[0].fields[2].inferText;
+		tnumber = data.images[0].fields[3].inferText;
+		
+		
+		if(date == ocr_year && cname == ocr_name && birth == ocr_birth) {
+			check_result = tnumber_check(tnumber);
+			//alert('***'+check_result);
+			if(check_result == true) {
+				$('#upload_result').text("\u00a0\u00a0모든 전시예매에 50% 가격할인이 적용됩니다!(※1회 한정)");
+				$('#upload_result').css('color','#5a189a');
+				$('#upload_result').css('font-size','17px');
+				$('#upload_result').css('font-weight','bold');
+			}
+			else {
+				$('#upload_result').text("\u00a0\u00a0이미 참여한 이벤트입니다.");
+				$('#upload_result').css('color','#d264b6');
+				$('#upload_result').css('font-size','17px');
+				$('#upload_result').css('font-weight','bold');
+			}
+		}else {
+			$('#upload_result').text("\u00a0\u00a0이벤트 참여 대상이 아닙니다.");
+			$('#upload_result').css('color','#d264b6');
+			$('#upload_result').css('font-size','17px');
+			$('#upload_result').css('font-weight','bold');
+		}
+	}
+	else {
+		$('#upload_result').text("\u00a0\u00a0수험표 인증에 실패하였습니다.");
+		$('#upload_result').css('color','#d264b6');
+		$('#upload_result').css('font-size','17px');
+		$('#upload_result').css('font-weight','bold');
+	}
+}
+
+function previewimg(event){
+	var reader = new FileReader();
+	
+	reader.onload = function(event) {
+		$('#showimg').attr('src',event.target.result);
+		$('#showimg').attr('style','width:600px; hight:600px;');
+	};
+	reader.readAsDataURL(event.target.files[0]);
+	//alert('reader.readAsDataURL : ' + event.target.files[0]);
+};
+
+function upload() {
+	const imageInput = $('#uploadimg')[0];
+	console.log("uploadimg: ", imageInput.files)
+	 
+	 if(imageInput.files.length === 0){
+		    alert("파일은 선택해주세요");
+		    return;
+		  }
+	 
+	 const formData = new FormData();
+	  formData.append("uploadimg", imageInput.files[0]); 
+
+
+	 $.ajax({
+			type : 'POST',
+			enctype: 'multipart/form-data',
+			url : '/ocrimpl',
+			processData : false,
+			contentType : false,
+		 	data: formData,
+			success : function(data) {
+				//alert(data);
+				result(data);
+			}
+		});
+
+}
+
+
+</script>
+
+  <div class="site-section">
+      <div class="container">
+
+        <div class="row mb-5">
+          <div class="col-md-12 order-2">
+
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="float-md-left mb-4"><h4 class="text-black h4">수험표 인증🎫</h4></div>
+                <div class="d-flex">
+                </div>
+              </div>
+            </div>
+           
+           <div class="row">
+           	  <div class="row col-md-12 mb-5" id="section">
+           		<form id="uploadimg_form" class="col-sm-4">
+				  <div class="form-group">
+				    <label for="imageupload" id="upload_section">수험표 사진 업로드</label>
+				    <input type="file" class="form-control" id="uploadimg" name="uploadimg" 
+				    placeholder="choose file" onchange="previewimg(event)">
+				  </div>
+				</form>
+				<button onclick="upload()" id="register_btn" class="btn btn-primary btn-xm">인증</button>
+				<span id="upload_result"></span>
+             
+              <div class="col-md-12 mb-5">
+              	 <div>
+              	     <img id="showimg">
+              	 </div>
+              </div>
+              
+              <div class="col-md-12">
+   	        	<input id="cname" type="hidden" th:value="${cust.cname}" readonly="readonly">
+              	<input id="birth" type="hidden" th:value="${cust.birth}" readonly="readonly">
+              	<input id="sdate" type="hidden" th:value="${#dates.format(event.sdate,'yyyy')}" readonly="readonly"> 
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+

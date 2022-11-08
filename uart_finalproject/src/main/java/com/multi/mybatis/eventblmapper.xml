@@ -5,22 +5,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.EventblMapper">
     
     <select id="select" parameterType="Integer" resultType="eventblDTO">
-		SELECT * FROM review WHERE eid=#{eid}
+		SELECT * FROM eventbl WHERE eid=#{eid};
 	</select>
 	<select id="selectall" resultType="eventblDTO">
 		SELECT * FROM eventbl
 	</select>
 	<insert id="insert" parameterType="eventblDTO">
-		INSERT INTO eventbl VALUES (NULL,#{custid},#{udate},#{content},#{image},#{tdate},#{sale});
+		INSERT INTO eventbl VALUES (NULL, #{custid},'2022-11-17', '2022-12-31', '수험표 인증시, 전시 50% 할인!','sevent.png', 50, sysdate())
 	</insert>
 	<update id="update" parameterType="eventblDTO">
-		UPDATE eventbl SET eid=#{eid},content=#{content},image=#{image},tdate=#{tdate},sale=#{sale} WHERE eid=#{eid}
+		
 	</update>
 	<delete id="delete" parameterType="Integer">
-		DELETE FROM evnetbl WHERE eid=#{eid}
+		
 	</delete>
-	<select id="select_itemreview" parameterType="Integer" resultType="eventblDTO">
-		SELECT * FROM eventbl WHERE custid=#{custid}
-	</select>
 	
 </mapper>

@@ -20,69 +20,69 @@
     
     <!-- Google icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-	
-	<script th:src="@{/js/jquery-3.3.1.min.js}"></script> 
+   
+   <script th:src="@{/js/jquery-3.3.1.min.js}"></script> 
 
-	<!-- Kakao map API -->
-	<script type="text/javascript"
-		th:src="@{//dapi.kakao.com/v2/maps/sdk.js?appkey=f541c133e4befeb47a03d1471b0f1748}"></script>
+   <!-- Kakao map API -->
+   <script type="text/javascript"
+      th:src="@{//dapi.kakao.com/v2/maps/sdk.js?appkey=f541c133e4befeb47a03d1471b0f1748}"></script>
 
 
-	<!-- logo font -->	
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+   <!-- logo font -->   
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 
 <style>
 #top_search {
-	display: flex;
-	align-items: center;
+   display: flex;
+   align-items: center;
 }
 
 #search_btn {
-	font-size: 12px;
-	padding: 7px, 7px, 7px, 7px;
-	width: 50px;
-	height: 32px;
-	background-color: #7971EA;
+   font-size: 12px;
+   padding: 7px, 7px, 7px, 7px;
+   width: 50px;
+   height: 32px;
+   background-color: #7971EA;
 }
 
 #login, #register, #logout {
-	font-size: 14px;
+   font-size: 14px;
 }
 
 .material-symbols-outlined {
-	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48
+   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48
 }
 
 #icons {
-	display: flex;
-	align-items: center;
-	height: 100px;
+   display: flex;
+   align-items: center;
+   height: 100px;
 }
 
 #cname {
-	font-weight: bold;
+   font-weight: bold;
 }
 
 #chatbot-icon{
-	width:40px;
-	height:40px;
+   width:40px;
+   height:40px;
 }
 
 #address{
-	font-size: 15px;
+   font-size: 15px;
 }
 
 #logo{
-	border:none;
-	font-size:40px;
-	font-family: 'Dancing Script', cursive;
+   border:none;
+   font-size:40px;
+   font-family: 'Dancing Script', cursive;
 }
 
 
@@ -91,16 +91,16 @@
 
 <script>
   $(document).ready(function() {
-		
-		$('#search_btn').click(function() {
-		
-			$('#search_form').attr({
-				method : 'get',
-				action : '/searchimpl'
-			});
-			$('#search_form').submit();
-		});
-	});
+      
+      $('#search_btn').click(function() {
+      
+         $('#search_form').attr({
+            method : 'get',
+            action : '/searchimpl'
+         });
+         $('#search_form').submit();
+      });
+   });
   
   </script>
 
@@ -112,156 +112,156 @@
 
 <body>
 
-	<div class="site-wrap">
-		<header class="site-navbar" role="banner">
-			<div class="site-navbar-top">
-				<div class="container">
-					<div class="row align-items-center">
+   <div class="site-wrap">
+      <header class="site-navbar" role="banner">
+         <div class="site-navbar-top">
+            <div class="container">
+               <div class="row align-items-center">
 
-						<div id="top_search"
-							class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-							<form id="search_form" class="site-block-top-search">
-								<span class="icon icon-search2"></span> <input type="text"
-									class="form-control border-0" placeholder="Search" name="txt">
-								<!-- name 잊지말기 -->
-							</form>
-							<button id="search_btn" class="btn btn-primary btn-xs">GO</button>
-						</div>
+                  <div id="top_search"
+                     class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+                     <form id="search_form" class="site-block-top-search">
+                        <span class="icon icon-search2"></span> <input type="text"
+                           class="form-control border-0" placeholder="Search" name="txt">
+                        <!-- name 잊지말기 -->
+                     </form>
+                     <button id="search_btn" class="btn btn-primary btn-xs">GO</button>
+                  </div>
 
-						<div
-							class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-							<div class="site-logo">
-								<a th:href="@{/}" id="logo" class="js-logo-clone">U-Art</a>
-							</div>
-						</div>
+                  <div
+                     class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+                     <div class="site-logo">
+                        <a th:href="@{/}" id="logo" class="js-logo-clone">U-Art</a>
+                     </div>
+                  </div>
 
-						<div class="col-6 col-md-4 order-3 order-md-3 text-right">
-							<div class="site-top-icons">
-								<ul id="icons" th:if="${session.logincust == null}">
-									<li><a th:href="@{/cust/login}"> <span
-											class="material-symbols-outlined" id="login">
-												person로그인 </span></a></li>
-									<li><a th:href="@{/register/registered}"> <span
-											class="material-symbols-outlined" id="register">
-												potted_plant회원가입 </span></a></li>
-								</ul>
-								<ul th:if="${session.logincust != null}">
-									<a id="cname" style="color: #9f86c0"
-										th:text="${session.logincust.cname}+'님'"
-										th:href="@{/cust/detail(custid=${session.logincust.custid})}"><span
-										class="caret"></span></a>
-									<li><a th:href="@{/cust/logout}"> <span
-											class="material-symbols-outlined" id="logout">
-												person로그아웃 </span></a></li>
-									<li><a
-										th:href="@{/wishlist(id=${session.logincust.custid})}"><span
-											class="icon icon-heart-o"></span></a></li>
-									<li><a th:href="@{/order}" class="site-cart" id='orderlist'>
-											<span class="material-symbols-outlined"> list_alt </span>
-									</a></li>
+                  <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+                     <div class="site-top-icons">
+                        <ul id="icons" th:if="${session.logincust == null}">
+                           <li><a th:href="@{/cust/login}"> <span
+                                 class="material-symbols-outlined" id="login">
+                                    person로그인 </span></a></li>
+                           <li><a th:href="@{/register/registered}"> <span
+                                 class="material-symbols-outlined" id="register">
+                                    potted_plant회원가입 </span></a></li>
+                        </ul>
+                        <ul th:if="${session.logincust != null}">
+                           <a id="cname" style="color: #9f86c0"
+                              th:text="${session.logincust.cname}+'님'"
+                              th:href="@{/cust/detail(custid=${session.logincust.custid})}"><span
+                              class="caret"></span></a>
+                           <li><a th:href="@{/cust/logout}"> <span
+                                 class="material-symbols-outlined" id="logout">
+                                    person로그아웃 </span></a></li>
+                           <li><a
+                              th:href="@{/wishlist(id=${session.logincust.custid})}"><span
+                                 class="icon icon-heart-o"></span></a></li>
+                           <li><a th:href="@{/order}" class="site-cart" id='orderlist'>
+                                 <span class="material-symbols-outlined"> list_alt </span>
+                           </a></li>
 
-								</ul>
-							</div>
-						</div>
+                        </ul>
+                     </div>
+                  </div>
 
-					</div>
-				</div>
-			</div>
-			<nav class="site-navigation text-right text-md-center"
-				role="navigation">
-				<div class="container">
-					<ul class="site-menu js-clone-nav d-none d-md-block">
-						<li class="has-children active"><a href="/">Home</a>
-							<ul class="dropdown">
-								<li><a th:href="@{/aboutus}">About Us</a></li>
-							</ul></li>
-						<li class="has-children"><a href="#">전시</a>
-							<ul class="dropdown">
-								<li><a th:href="@{/item/medialist}">미디어 전시</a></li>
-								<li><a th:href="@{/item/explist}">체험형 전시</a></li>
-								<li><a th:href="@{/item/privatelist}">개인전</a></li>
-								<li><a th:href="@{/item/speciallist}">특별전</a></li>
-							</ul></li>
-						<li><a th:href="@{/recommend}">추천전시</a></li>
-						<li><a th:href="@{/event}">이벤트</a></li>
-						<li><a th:href="@{/faq}">FAQ</a></li>
-						<li><a href="#"><img id="chatbot-icon" th:src="@{/img_c/chatbot.jpg}"></a></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
+               </div>
+            </div>
+         </div>
+         <nav class="site-navigation text-right text-md-center"
+            role="navigation">
+            <div class="container">
+               <ul class="site-menu js-clone-nav d-none d-md-block">
+                  <li class="has-children active"><a href="/">Home</a>
+                     <ul class="dropdown">
+                        <li><a th:href="@{/aboutus}">About Us</a></li>
+                     </ul></li>
+                  <li class="has-children"><a href="#">전시</a>
+                     <ul class="dropdown">
+                        <li><a th:href="@{/item/medialist}">미디어 전시</a></li>
+                        <li><a th:href="@{/item/explist}">체험형 전시</a></li>
+                        <li><a th:href="@{/item/privatelist}">개인전</a></li>
+                        <li><a th:href="@{/item/speciallist}">특별전</a></li>
+                     </ul></li>
+                  <li><a th:href="@{/recommend}">추천전시</a></li>
+                  <li><a th:href="@{/event/get}">이벤트</a></li>
+                  <li><a th:href="@{/faq}">FAQ</a></li>
+                  <li><a href="#"><img id="chatbot-icon" th:src="@{/img_c/chatbot.jpg}"></a></li>
+               </ul>
+            </div>
+         </nav>
+      </header>
 
-		<!-- Main Center Start -->
-		<div th:insert="${center} ? ${center} : maincenter"></div>
-		<!-- Main Center End -->	
-	</div>
+      <!-- Main Center Start -->
+      <div th:insert="${center} ? ${center} : maincenter"></div>
+      <!-- Main Center End -->   
+   </div>
 
 
 <footer class="site-footer border-top">
-			<div class="container">
-				<div class="row">
-				<!-- enter -->
-				<!-- enter -->
-				<!-- enter -->
-					<div class="col-lg-6 mb-5 mb-lg-0">
-						<div class="row">
-							<div class="col-md-12">
-								<h3 class="footer-heading mb-4">주식회사 U-ART</h3>
-							</div>
-							<div class="col-md-6 col-lg-4">
-								<ul class="list-unstyled">
-									<li><a href="#">개인정보처리방침</a></li>
-									<li><a href="#">청소년보호정책</a></li>
-									<li><a href="#">이용약관</a></li>
-								</ul>
-							</div>
-							<div class="col-md-6 col-lg-4">
-								<ul class="list-unstyled">
-									<li><a href="#">회사소개</a></li>
-									<li><a href="#">고객센터</a></li>
-									<li><a href="#">티켓판매안내</a></li>
-								</ul>
-							</div>
-							<div class="col-md-7 col-lg-4">
-								<ul class="list-unstyled">
-									<li><a href="#">웹사이트 개발</a></li>
-									<li><a href="#">채용안내</a></li>
-									<li><a href="#">광고/제휴안내</a></li>
-								</ul>
-							</div>
-						
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-1 mb-4 mb-lg-0"></div>
-					<div class="col-md-6 col-lg-4">
-						<div class="block-5 mb-5">
-							<h3 class="footer-heading mb-4">Contact U-ART</h3>
-							<ul class="list-unstyled">
-								<li id="address" class="address">서울특별시 강남구 삼성로 42 삼성동빌딩 5층</li>
-								<li class="phone"><a href="#">+82 02-2387-2387</a></li>
-								<li class="email">emailaddress@domain.com</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="row pt-5 mt-5 text-center">
-					<div class="col-md-12">
-						<p>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;
-							<script data-cfasync="false"
-								src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-							<script>document.write(new Date().getFullYear());</script>
-							All rights reserved | This template is made with <i
-								class="icon-heart" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
-					</div>
+         <div class="container">
+            <div class="row">
+            <!-- enter -->
+            <!-- enter -->
+            <!-- enter -->
+               <div class="col-lg-6 mb-5 mb-lg-0">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <h3 class="footer-heading mb-4">주식회사 U-ART</h3>
+                     </div>
+                     <div class="col-md-6 col-lg-4">
+                        <ul class="list-unstyled">
+                           <li><a href="#">개인정보처리방침</a></li>
+                           <li><a href="#">청소년보호정책</a></li>
+                           <li><a href="#">이용약관</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-md-6 col-lg-4">
+                        <ul class="list-unstyled">
+                           <li><a href="#">회사소개</a></li>
+                           <li><a href="#">고객센터</a></li>
+                           <li><a href="#">티켓판매안내</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-md-7 col-lg-4">
+                        <ul class="list-unstyled">
+                           <li><a href="#">웹사이트 개발</a></li>
+                           <li><a href="#">채용안내</a></li>
+                           <li><a href="#">광고/제휴안내</a></li>
+                        </ul>
+                     </div>
+                  
+                  </div>
+               </div>
+               <div class="col-md-6 col-lg-1 mb-4 mb-lg-0"></div>
+               <div class="col-md-6 col-lg-4">
+                  <div class="block-5 mb-5">
+                     <h3 class="footer-heading mb-4">Contact U-ART</h3>
+                     <ul class="list-unstyled">
+                        <li id="address" class="address">서울특별시 강남구 삼성로 42 삼성동빌딩 5층</li>
+                        <li class="phone"><a href="#">+82 02-2387-2387</a></li>
+                        <li class="email">emailaddress@domain.com</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="row pt-5 mt-5 text-center">
+               <div class="col-md-12">
+                  <p>
+                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                     Copyright &copy;
+                     <script data-cfasync="false"
+                        src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                     <script>document.write(new Date().getFullYear());</script>
+                     All rights reserved | This template is made with <i
+                        class="icon-heart" aria-hidden="true"></i> by <a
+                        href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  </p>
+               </div>
 
-				</div>
-			</div>
-		</footer>
+            </div>
+         </div>
+      </footer>
 
   <script src="/js/jquery-ui.js"></script>
   <script src="/js/popper.min.js"></script>

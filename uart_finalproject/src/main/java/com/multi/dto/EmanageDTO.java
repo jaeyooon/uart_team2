@@ -15,15 +15,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class EventblDTO {
-	private Integer eid;
-	private String custid;
-	private Date sdate;
-	private Date fdate;
-	private String content;
-	private String image;
-	private Integer sale;
-	private Date pdate;
-	
-	private MultipartFile uploadimg; // 수험표 업로드한 이미지
+public class EmanageDTO {
+	private String tnumber;
+	private Date rdate;
 }

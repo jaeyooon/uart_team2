@@ -1,0 +1,133 @@
+ <meta charset="utf-8">
+ 
+ <style>
+ #eventinfo {
+ text-align: center;
+ }
+ 
+ #period {
+ font-size: 18px;
+ border: 1px solid #ccc9dc;
+ border-radius: 30px;
+ margin-bottom: 20px;
+ width: 300px;
+ display: inline-block;
+ }
+ 
+ #target, h3, h6 {
+ color: #595959;
+ }
+ 
+ h6{
+ font-weight: bold;
+ }
+  
+ #important {
+ color: #595959;
+ font-weight: bold;
+ }
+ </style>
+ <script>
+ 
+ function logingo(){
+		$('#alertlogin').modal('hide');
+		location.href ="/cust/login";
+		
+	}
+ 
+ function check(cust, eid){
+	 if(cust == null) {
+		 //alert('cust 정보 없음');
+		 var loginok = $('#alertlogin').modal('show');
+		 if(loginok == true){// 로그인 하겠다고 한 경우 
+				logingo();
+		 }
+	 }
+	 else {
+		 var custid = cust.custid;
+		 location.href="/event/ocr?custid="+custid+'&id='+eid;
+	 }
+ }
+ 
+ </script>
+ 
+ <div class="site-section block-8">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h2>Special Event!</h2>
+          </div>
+        </div>
+        <div class="row align-items-center">
+	          <div class="col-md-12 col-lg-7 mb-5">
+	            <img th:src="'/img/' + ${event.image}" alt="Image placeholder" class="img-fluid rounded">
+	            <input type="hidden" th:value="${event.eid}" readonly="readonly">
+	          </div>
+	          <div id="eventinfo" class="col-md-12 col-lg-5 text-center pl-md-5">
+	            <h3 th:text="${event.content}">내용</h3>
+	            <p id="target"><span class="block-8-sep">&bullet;</span>2023학년도 수험생을 위한 이벤트🎉</p>
+	            <p id="important">해당 이벤트는 회원ID당 한번만 참여가능하며 동반할인은 적용되지 않습니다.</p>
+	            <div id="period">
+	            	<span th:text="'기간 : '+${#dates.format(event.sdate,'yyyy.MM.dd')}+'~'">시작</span><span th:text="${#dates.format(event.fdate,'yyyy.MM.dd')}">끝</span>
+	            </div>
+	            <div>
+	            <button th:onclick="check([[${session.logincust}]], [[${event.eid}]])" class="btn btn-primary btn-sm">참여하기</button>
+	            </div>
+	          </div>
+        </div>
+      </div>
+      
+      <div class="site-section block-3 site-blocks-2 bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h4>진행중인 이벤트🕺</h4>
+          </div>
+        </div>
+        <div class="row">
+		  <div class="col-sm-6">
+		    <div class="card">
+		    <a href="/event/getinfo1"><img class="card-img-top" src="/img/event/eventinfo1.jpg" alt="Card image cap"></a>
+		      <div class="card-body">
+		        <h6 class="card-title">스티커 아트북 인기 3종 선물!</h6>
+		        <p class="card-text">방구석 문화생활하고 힐링하자!</p>
+		        <a href="/event/getinfo1" class="btn btn-primary btn-sm">✨CLICK</a>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="col-sm-6">
+		    <div class="card">
+		    <a href="/event/getinfo2"><img class="card-img-top" src="/img/event/eventinfo2.jpg" alt="Card image cap"></a>
+		      <div class="card-body">
+		        <h6 class="card-title">마이클 크레이그 마틴전 초대 이벤트</h6>
+		        <p class="card-text">세계 최초 영국 현대미술 거장의 회고전!</p>
+		        <a href="/event/getinfo2" class="btn btn-primary btn-sm">👆CLICK</a>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+    </div>
+	</div>
+</div>   
+   <!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="alertlogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>로그인이 필요한 서비스입니다.</p>
+        <p>로그인 페이지로 이동하시겠습니까?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" th:onclick="logingo()">이동</button>
+      </div>
+    </div>
+  </div>
+</div>

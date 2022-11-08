@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.EmanageMapper">
+    
+    <select id="select" parameterType="String" resultType="EmanageDTO">
+		SELECT * FROM emanage WHERE tnumber=#{tnumber}
+	</select>
+	<select id="selectall" resultType="EmanageDTO">
+		
+	</select>
+	<insert id="insert" parameterType="EmanageDTO">
+		INSERT INTO emanage VALUES (#{tnumber}, sysdate())
+	</insert>
+	<update id="update" parameterType="EmanageDTO">
+		
+	</update>
+	<delete id="delete" parameterType="String">
+		
+	</delete>
+	
+</mapper>
