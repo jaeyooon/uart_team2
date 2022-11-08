@@ -32,7 +32,7 @@ h6, #p2 {
 }
 
 #price_table {
-	width: 400px;
+	width: 500px;
 }
 
 #review {
@@ -284,24 +284,28 @@ $(document).ready(function(){
 						<thead>
 							<tr>
 								<th>분류</th>
+								<th>기준</th>
 								<th>티켓가격</th>
 							</tr>
 						</thead>
 
 						<tbody>
 							<tr>
-								<td th:text="${itemdetail1.itemoption_obj}">청소년</td>
+								<td th:text="${itemdetail1.itemoption_obj}">성인</td>
+								<td>20세 이상</td>
 								<td th:text="${itemdetail1.itemoption_price}">가격</td>
 							</tr>
 							<tr>
-								<td th:text="${itemdetail2.itemoption_obj}">성인</td>
+								<td th:text="${itemdetail2.itemoption_obj}">청소년</td>
+								<td>14세-19세</td>
 								<td th:text="${itemdetail2.itemoption_price}">가격</td>
 							</tr>
 							<tr>
 								<td th:text="${itemdetail3.itemoption_obj}">아동</td>
+								<td>13세 이하</td>
 								<td th:text="${itemdetail3.itemoption_price}">가격</td>
 							</tr>
-
+							
 						</tbody>
 					</table>
 
