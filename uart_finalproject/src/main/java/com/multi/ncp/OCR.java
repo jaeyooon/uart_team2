@@ -19,8 +19,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OCR {
-	String apiURL = "https://osmdb4ximq.apigw.ntruss.com/custom/v1/19095/cd73e79087091c00cadd7c1bc6c29e5ee22bbe16b8e7e21944208c7c98874dea/infer";
-	String secretKey = "Y3RPZXJYdGllZUtBcU52Z1BVSExnT0lKaXFxdWlpbUQ=";// 
+	String apiURL = "https://osmdb4ximq.apigw.ntruss.com/custom/v1/19096/cd73e79087091c00cadd7c1bc6c29e5ee22bbe16b8e7e21944208c7c98874dea/infer";
+	String secretKey = "V25WQWZkWU9menFhZ3RYa0xSemdyVkdGbG10aU9ncUM=";// 
 	String imgpath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static","img","event").toString();//이미지 저장 경로
 
 	public Object ocrresult(String imgname) {

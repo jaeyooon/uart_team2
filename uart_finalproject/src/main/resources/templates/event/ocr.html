@@ -36,7 +36,7 @@ function tnumber_check(num) {
 
 function result(data) {
 	var tnumber =''; // 중복 확인을 위해 수험번호 저장할 변수
-	var cname = $('#cname').val();
+	var cname = $('#cname0').val(); 
 	var birth = $('#birth').val();
 	var sdate = $('#sdate').val();
 	var date = (Number(sdate)+1).toString(); // 수험년도는 올해 + 1
@@ -47,7 +47,7 @@ function result(data) {
 	alert(data.images[0].fields[0].inferText);  // 수험년도
 	alert(data.images[0].fields[1].inferText);  // 이름
 	alert(data.images[0].fields[2].inferText);  // 생년월일
-	alert(data.images[0].fields[3].inferText);   // 수험번호 */
+	alert(data.images[0].fields[3].inferText);   // 수험번호  */
 	
 		
 	if(data.images[0].inferResult != 'FAILURE') { // 수험표 인증이 가능한 경우
@@ -121,6 +121,10 @@ function upload() {
 		 	data: formData,
 			success : function(data) {
 				//alert(data);
+				/* alert(data.images[0].fields[0].inferText);
+				alert(data.images[0].fields[1].inferText);
+				alert(data.images[0].fields[2].inferText);
+				alert(data.images[0].fields[3].inferText); */
 				result(data);
 			}
 		});
@@ -163,7 +167,7 @@ function upload() {
               </div>
               
               <div class="col-md-12">
-   	        	<input id="cname" type="hidden" th:value="${cust.cname}" readonly="readonly">
+   	        	<input id="cname0" type="hidden" th:value="${cust.cname}" readonly="readonly">
               	<input id="birth" type="hidden" th:value="${cust.birth}" readonly="readonly">
               	<input id="sdate" type="hidden" th:value="${#dates.format(event.sdate,'yyyy')}" readonly="readonly"> 
               </div>
