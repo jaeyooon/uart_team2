@@ -5,15 +5,16 @@
 margin: auto;
 }
 
-#section{
-display: flex;
-align-items: center;
+#upload_section {
+margin-left:20px;
 }
 
 #register_btn{
-height:45px;
+height:43px;
 font-size: 14px;
+font-weight: 500;
 }
+
 
 </style>
 <script>
@@ -149,31 +150,29 @@ function upload() {
             </div>
            
            <div class="row">
-           	  <div class="row col-md-12 mb-5" id="section">
+             <label for="imageupload" id="upload_section">수험표 사진 업로드</label>
+           	  <div class="d-flex row col-md-12 mb-5" id="section">
            		<form id="uploadimg_form" class="col-sm-4">
 				  <div class="form-group">
-				    <label for="imageupload" id="upload_section">수험표 사진 업로드</label>
 				    <input type="file" class="form-control" id="uploadimg" name="uploadimg" 
 				    placeholder="choose file" onchange="previewimg(event)">
 				  </div>
 				</form>
-				<button onclick="upload()" id="register_btn" class="btn btn-primary btn-xm">인증</button>
+				<div>
+					<button onclick="upload()" id="register_btn" class="btn btn-primary btn-xm">인증</button>
+				</div>
 				<span id="upload_result"></span>
-             
               <div class="col-md-12 mb-5">
-              	 <div>
-              	     <img id="showimg">
-              	 </div>
+	              <div>
+	              	   <img id="showimg">
+	              </div>
               </div>
-              
               <div class="col-md-12">
    	        	<input id="cname0" type="hidden" th:value="${cust.cname}" readonly="readonly">
               	<input id="birth" type="hidden" th:value="${cust.birth}" readonly="readonly">
               	<input id="sdate" type="hidden" th:value="${#dates.format(event.sdate,'yyyy')}" readonly="readonly"> 
               </div>
-              
             </div>
-            
           </div>
         </div>
       </div>

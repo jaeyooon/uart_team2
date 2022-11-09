@@ -5,6 +5,7 @@
 		width:500%;
 		height:400px; 
 		border:1px solid black; 
+		margin: auto;
 	 }
 	 
 	 #text{
@@ -28,6 +29,11 @@
    	        level: 4 // 지도의 확대 레벨
    	    };
    	map = new kakao.maps.Map(mapContainer, mapOption); 
+   	
+   	var marker = new kakao.maps.Marker({  
+	     map: map,
+	     position: new kakao.maps.LatLng(lat, lng),   /* 위도와 경도를 입력함으로써 넣어 줌 */
+	}); 
    };
 
 
@@ -118,17 +124,20 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-12">
+          		<div>
+                  <div id ="map" style="width:700px;height:400px;"></div> 
+                </div>
   
-            <div class="block-38 text-center">
+            <!-- <div class="block-38 text-center">
              <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <div id ="map"></div> 
+                  <div id ="map style="width:700px;height:500px;"></div> 
                 </div>
               </div>
              </div>
-            </div>
+            </div> -->
           </div>
           
           
