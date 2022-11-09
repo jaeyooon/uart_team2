@@ -251,7 +251,7 @@ $(document).ready(function(){
 					&nbsp;&nbsp;
 					<button class="nav-link" id="nav-three-tab" data-bs-toggle="tab"
 						data-bs-target="#nav-three" type="button" role="tab"
-						aria-controls="nav-three" aria-selected="false">장소정보</button>
+						aria-controls="nav-three" aria-selected="false">오시는 길</button>
 					&nbsp;&nbsp;
 					<button class="nav-link" id="nav-four-tab" data-bs-toggle="tab"
 						data-bs-target="#nav-four" type="button" role="tab"
@@ -364,10 +364,12 @@ $(document).ready(function(){
 				<div class="tab-pane fade" id="nav-three" role="tabpanel" 
 					aria-labelledby="nav-three-tab">
 					<br>
-					<h5>장소정보</h5>
+					<h5>위치</h5>
 				  		 <div id="map" style="width:500px;height:400px;"></div>
 							<input id="lat" type="hidden" th:value="${itemdetail2.lat}" readonly="readonly"> 
 							<input id="lng" type="hidden" th:value="${itemdetail2.lng}" readonly="readonly">
+						<p>▶ 찾아오시는 길</p>
+             		    <input id="address" type="hidden" th:text="${itemdetail2.itemplace_address}" readonly="readonly">
 				</div>
 				<div class="tab-pane fade" id="nav-four" role="tabpanel"
 					aria-labelledby="nav-four-tab">
