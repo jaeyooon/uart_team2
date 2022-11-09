@@ -141,6 +141,17 @@ h2 {
 
 
 <script>
+function enterkey(){
+	if(window.event.keyCode == 13){
+		$('#login_form').attr({
+			
+			'action':'/cust/loginimpl',
+			'method':'post'			
+		});
+		$('#login_form').submit();
+	};
+	
+};
 $(document).ready(function(){
 	   $('#submit').click(function(){
 	       $('#login_form').attr(
@@ -164,11 +175,11 @@ $(document).ready(function(){
            <form id="login_form">
             <div class="login_id">
                 <h4>ID</h4>
-                <input type="text" name="custid" id="custid" placeholder="ID">
+                <input type="text" name="custid" id="custid" placeholder="ID" onkeyup="enterkey()">
             </div>
             <div class="login_pw">
                 <h4>Password</h4>
-                <input type="password" name="pwd" id="pwd" placeholder="Password">
+                <input type="password" name="pwd" id="pwd" placeholder="Password" onkeyup="enterkey()">
             </div>
             <div class="login_etc">
                 <div class="new_account">

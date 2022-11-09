@@ -90,13 +90,23 @@
 
 
 <script>
+function enterkey2(){
+	if(window.event.keyCode == 13){
+		$('#search_form').attr({
+			'method':'get',
+			'action':'/searchimpl'
+		});
+		$('#search_form').submit();
+	};
+	
+};
   $(document).ready(function() {
       
       $('#search_btn').click(function() {
       
          $('#search_form').attr({
-            method : 'get',
-            action : '/searchimpl'
+            'method' : 'get',
+            'action' : '/searchimpl'
          });
          $('#search_form').submit();
       });
@@ -121,9 +131,11 @@
                   <div id="top_search"
                      class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
                      <form id="search_form" class="site-block-top-search">
-                        <span class="icon icon-search2"></span> <input type="text"
-                           class="form-control border-0" placeholder="Search" name="txt">
-                        <!-- name 잊지말기 -->
+                        <span class="icon icon-search2"></span> 
+                        <input type="text" class="form-control border-0" placeholder="Search" name="txt" onkeyup="enterkey2()">
+                        <input type="text" style="display:none" onkeyup="enterkey2()">
+                            <!-- 더미를 주지 않으면 서치가 searchimpl?txt= 로 가는게 아니라 ?txt로 가버린다 -->
+                            <!-- name 잊지말기 -->
                      </form>
                      <button id="search_btn" class="btn btn-primary btn-xs">GO</button>
                   </div>
