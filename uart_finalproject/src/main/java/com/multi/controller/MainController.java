@@ -63,8 +63,19 @@ public class MainController {
 		List<ItemDTO> list=null;
 		try {
 			list=item_mapper.searchitem(txt);
-			model.addAttribute("list", list);
-			model.addAttribute("center", "search");
+			
+			if(txt.isEmpty()) {
+				model.addAttribute("center", "searchfail");
+			
+			}else {
+				if(list.size()==0) {
+					model.addAttribute("center", "searchfail");
+				}else {
+					model.addAttribute("list", list);
+					model.addAttribute("center", "search");
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
