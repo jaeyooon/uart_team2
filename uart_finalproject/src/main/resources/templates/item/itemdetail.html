@@ -175,6 +175,14 @@ $(document).ready(function(){
 				}
 		});
 	});
+ 	
+ 	$('#review_btn').click(function(){
+		var custid = '[[${session.logincust.custid}]]';
+		var itemid = $('#itemid').text();
+		var reviewgrade = $('#reviewgrade').val();
+		var reviewcontent = $('#reviewcontent').val();
+		location.href="[[@{/registerreview?custid=}]]"+custid+"&[[@{itemid=}]]"+itemid+"&[[@{reviewgrade=}]]"+reviewgrade+"&[[@{reviewcontent=}]]"+reviewcontent;
+	});
 });
 </script>
 
@@ -337,9 +345,28 @@ $(document).ready(function(){
 					</div>
 					<div class=reviews>
 						<h3>Reviews</h3>
-						<br>
+									<form id="review_form" method="post">
+                        	<div class="col-2 mb-3"></div><div id="itemid" th:text="${itemid}" style="display:none"></div>
+                        	   <div>
+                        	      <span class="input-group-addon">⭐ * </span><select name="reviewgrade" id="reviewgrade">
+                        	    <option value="0.5" data-icon="img/star.5.png">0.5</option>
+                        	    <option value="1.0">1.0</option>
+                        	    <option value="1.5">1.5</option>
+                        	    <option value="2.0">2.0</option>
+                        	    <option value="2.5">2.5</option>
+                        	    <option value="3.0">3.0</option>
+                        	    <option value="3.5">3.5</option>
+                        	    <option value="4.0">4.0</option>
+                        	    <option value="4.5">4.5</option>
+                        	    <option value="5.0">5.0</option>
+                        	    </select>
+                        	    </div>
+                        	    
+                            <textarea id="reviewcontent" name="text" style="width:500px;"  placeholder='관람후기를 남겨주세요!'></textarea><br>
+                        </form>
+                        <button type="button" id="review_btn" class="btn btn-primary btn-xs">✏등록</button><br><br>
 						<form id="itemreview_form" th:each="re : ${review}">
-							<div class="movie__rate">
+							<div>
 								<div class="star-ratings">
 									<div name="${re.reviewgrade}"
 										class="star-ratings-fill space-x-4 text-lg"

@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM review
 	</select>
 	<insert id="insert" parameterType="reviewDTO">
-		INSERT INTO review VALUES (NULL,#{custid},#{itemid},#{reviewcontent},#{reviewgrade},#{reviewdate})
+		INSERT INTO review VALUES (NULL,#{itemid},#{custid},#{reviewcontent},#{reviewgrade},sysdate())
 	</insert>
 	<update id="update" parameterType="reviewDTO">
-		UPDATE review SET custid=#{custid}, reviewcontent=#{reviewcontent}, reviewgrade=#{reviewgrade}, reviewdate=#{reviewdate} WHERE reviewid=#{reviewid}
+		UPDATE review SET custid=#{custid}, reviewcontent=#{reviewcontent}, reviewgrade=#{reviewgrade}, sysdate() WHERE reviewid=#{reviewid}
 	</update>
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM review WHERE reviewid=#{reviewid}
