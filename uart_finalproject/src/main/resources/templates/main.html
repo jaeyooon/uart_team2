@@ -20,8 +20,8 @@
     
     <!-- Google icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-   
-   <script th:src="@{/js/jquery-3.3.1.min.js}"></script> 
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Filled|Material+Icons+Rounded|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"> 
 
    <!-- Kakao map API -->
    <script type="text/javascript"
@@ -100,11 +100,16 @@ z-index: 10000;
 <script>
 function enterkey2(){
 	if(window.event.keyCode == 13){
+		if($('#search_input').val() == ''){
+	    	  $('#mymodal').modal('show');
+	      }
+		else {
 		$('#search_form').attr({
 			'method':'get',
 			'action':'/searchimpl'
 		});
 		$('#search_form').submit();
+		}
 	};
 	
 };
