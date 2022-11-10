@@ -135,8 +135,9 @@ to {
 </style>
 
 <script>
-var map;
+
 function display(){
+	var map;
 	var lat = $('#lat').val();
 	var lng = $('#lng').val(); 
 	//alert(lat);
@@ -293,17 +294,17 @@ $(document).ready(function(){
 							<tr>
 								<td th:text="${itemdetail.itemoption_obj1}">성인</td>
 								<td>20세 이상</td>
-								<td th:text="${itemdetail.itemoption_price1}">가격</td>
+								<td th:text="${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'">가격</td>
 							</tr>
 							<tr>
 								<td th:text="${itemdetail.itemoption_obj2}">청소년</td>
 								<td>14세-19세</td>
-								<td th:text="${itemdetail.itemoption_price2}">가격</td>
+								<td th:text="${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'">가격</td>
 							</tr>
 							<tr>
 								<td th:text="${itemdetail.itemoption_obj3}">아동</td>
 								<td>13세 이하</td>
-								<td th:text="${itemdetail.itemoption_price3}">가격</td>
+								<td th:text="${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'">가격</td>
 							</tr>
 							
 						</tbody>
@@ -365,7 +366,7 @@ $(document).ready(function(){
 					aria-labelledby="nav-three-tab">
 					<br>
 					<h5>위치</h5>
-				  		 <div id="map" style="width:500px;height:400px;"></div>
+				  		 <div id="map" style="width:600px;height:500px;"></div>
 							<input id="lat" type="hidden" th:value="${itemdetail.lat}" readonly="readonly"> 
 							<input id="lng" type="hidden" th:value="${itemdetail.lng}" readonly="readonly">
 						<p>▶ 찾아오시는 길</p>
