@@ -84,18 +84,12 @@ public class ItemController {
 		
 	@RequestMapping("/itemdetail")
 	public String itemdetail(Model model, int itemid) {
-		ItemDTO item1 = null;
-		ItemDTO item2=null;
-		ItemDTO item3=null;
+		ItemDTO item = null;
 		List<ReviewDTO> review = null;
 		try {
-			item1 = item_service.get(itemid);
-			item2=item_service.get2(itemid);
-			item3=item_service.get3(itemid);
+			item = item_service.get(itemid);
 			review = re_service.get_itemreview(itemid);
-			model.addAttribute("itemdetail1", item1);
-			model.addAttribute("itemdetail2", item2);
-			model.addAttribute("itemdetail3", item3);
+			model.addAttribute("itemdetail", item);
 			model.addAttribute("review", review);
 			model.addAttribute("center", dir+"itemdetail");
 		} catch (Exception e) {

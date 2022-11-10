@@ -196,29 +196,29 @@ $(document).ready(function(){
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<img th:src="'/img/'+${itemdetail1.itemimg}" alt="Image"
+					<img th:src="'/img/'+${itemdetail.itemimg}" alt="Image"
 						class="img-fluid">
 				</div>
 				<div class="col-md-6">
-					<h2 class="text-black" th:text="${itemdetail1.itemname}"></h2>
+					<h2 class="text-black" th:text="${itemdetail.itemname}"></h2>
 					<p></p>
 					<hr class="two_1">
-					<span id="itemid" th:text="${itemdetail1.itemid}" name="itemid"
+					<span id="itemid" th:text="${itemdetail.itemid}" name="itemid"
 						style="display: none"></span><br>
 					<sapn class="title">장소</sapn>
-					<span class="con" th:text="${itemdetail1.itemplace}"></span><br>
+					<span class="con" th:text="${itemdetail.itemplace}"></span><br>
 					<sapn class="title">기간</sapn>
 					<span class="con"
-						th:text="${#dates.format(itemdetail1.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail1.efin, 'yyyy.MM.dd')}"
+						th:text="${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}"
 						name="itemid"></span><br> <span class="title">관람등급</span><span
-						class="con" th:text="${itemdetail1.itemguide}"></span>
+						class="con" th:text="${itemdetail.itemguide}"></span>
 					<hr style="color: black">
 					<span class="title">가격</span><span class="con"
-						th:text="${itemdetail1.itemoption_obj} +'권 '+ ${#numbers.formatInteger(itemdetail1.itemoption_price, 3,'COMMA')}+'원'"></span><br>
+						th:text="${itemdetail.itemoption_obj1} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'"></span><br>
 					<span class="title"></span><span class="con"
-						th:text="${itemdetail2.itemoption_obj} +'권 '+ ${#numbers.formatInteger(itemdetail2.itemoption_price, 3,'COMMA')}+'원'"></span><br>
+						th:text="${itemdetail.itemoption_obj2} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'"></span><br>
 					<span class="title"></span><span class="con"
-						th:text="${itemdetail3.itemoption_obj} +'권 '+ ${#numbers.formatInteger(itemdetail3.itemoption_price, 3,'COMMA')}+'원'"></span>
+						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span>
 
 
 					<div id="btn">
@@ -266,17 +266,17 @@ $(document).ready(function(){
 					<br> <br>
 					<p id="p1">멋진 전시를 U-ART에서 만나보세요</p>
 					<br> <br>
-					<h6 th:text="'▶전시명: &nbsp;   ' + ${itemdetail1.itemname}">▶전시명:</h6>
-					<br> <img th:src="'/img/'+${itemdetail1.itemimg}" alt="Image"
+					<h6 th:text="'▶전시명: &nbsp;   ' + ${itemdetail.itemname}">▶전시명:</h6>
+					<br> <img th:src="'/img/'+${itemdetail.itemimg}" alt="Image"
 						class="info_img">
-					<h6 th:text="'▶전시장소: &nbsp;   ' + ${itemdetail1.itemplace}">▶전시장소:</h6>
+					<h6 th:text="'▶전시장소: &nbsp;   ' + ${itemdetail.itemplace}">▶전시장소:</h6>
 					<br>
-					<h6 th:text="'▶전시관람등급: &nbsp;   ' + ${itemdetail1.itemguide}">▶전시관람등급:</h6>
+					<h6 th:text="'▶전시관람등급: &nbsp;   ' + ${itemdetail.itemguide}">▶전시관람등급:</h6>
 					<br>
-					<h6 th:text="'▶티켓수령방법: &nbsp;   ' + ${itemdetail1.itemticket}">▶티켓수령방법:</h6>
+					<h6 th:text="'▶티켓수령방법: &nbsp;   ' + ${itemdetail.itemticket}">▶티켓수령방법:</h6>
 					<br>
 					<h6
-						th:text="'▶전시기간: &nbsp;   ' + ${#dates.format(itemdetail1.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail1.efin, 'yyyy.MM.dd')}">▶전시일정:</h6>
+						th:text="'▶전시기간: &nbsp;   ' + ${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}">▶전시일정:</h6>
 					<br>
 					<h6 th:text=" '▶요금안내: &nbsp;  ' "></h6>
 
@@ -291,19 +291,19 @@ $(document).ready(function(){
 
 						<tbody>
 							<tr>
-								<td th:text="${itemdetail1.itemoption_obj}">성인</td>
+								<td th:text="${itemdetail.itemoption_obj1}">성인</td>
 								<td>20세 이상</td>
-								<td th:text="${itemdetail1.itemoption_price}">가격</td>
+								<td th:text="${itemdetail.itemoption_price1}">가격</td>
 							</tr>
 							<tr>
-								<td th:text="${itemdetail2.itemoption_obj}">청소년</td>
+								<td th:text="${itemdetail.itemoption_obj2}">청소년</td>
 								<td>14세-19세</td>
-								<td th:text="${itemdetail2.itemoption_price}">가격</td>
+								<td th:text="${itemdetail.itemoption_price2}">가격</td>
 							</tr>
 							<tr>
-								<td th:text="${itemdetail3.itemoption_obj}">아동</td>
+								<td th:text="${itemdetail.itemoption_obj3}">아동</td>
 								<td>13세 이하</td>
-								<td th:text="${itemdetail3.itemoption_price}">가격</td>
+								<td th:text="${itemdetail.itemoption_price3}">가격</td>
 							</tr>
 							
 						</tbody>
@@ -366,10 +366,10 @@ $(document).ready(function(){
 					<br>
 					<h5>위치</h5>
 				  		 <div id="map" style="width:500px;height:400px;"></div>
-							<input id="lat" type="hidden" th:value="${itemdetail2.lat}" readonly="readonly"> 
-							<input id="lng" type="hidden" th:value="${itemdetail2.lng}" readonly="readonly">
+							<input id="lat" type="hidden" th:value="${itemdetail.lat}" readonly="readonly"> 
+							<input id="lng" type="hidden" th:value="${itemdetail.lng}" readonly="readonly">
 						<p>▶ 찾아오시는 길</p>
-             		    <input id="address" type="hidden" th:text="${itemdetail2.itemplace_address}" readonly="readonly">
+             		    <input id="address" type="hidden" th:text="${itemdetail.itemplace_address}" readonly="readonly">
 				</div>
 				<div class="tab-pane fade" id="nav-four" role="tabpanel"
 					aria-labelledby="nav-four-tab">

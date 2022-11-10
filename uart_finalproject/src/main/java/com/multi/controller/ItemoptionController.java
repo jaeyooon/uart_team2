@@ -20,18 +20,15 @@ public class ItemoptionController {
 		
 	@RequestMapping("/itemoption")
 	public String itemdetail(Model model, int itemid) {
-		ItemDTO item1 = null;
-		ItemDTO item2=null;
-		ItemDTO item3=null;
+		ItemDTO item = null;
+	
 		
 		try {
-			item1 = item_service.get(itemid);
-			item2=item_service.get2(itemid);
-			item3=item_service.get3(itemid);
+			item = item_service.get(itemid);
+		
 			
-			model.addAttribute("itemdetail1", item1);
-			model.addAttribute("itemdetail2", item2);
-			model.addAttribute("itemdetail3", item3);
+			model.addAttribute("itemdetail", item);
+		
 			
 			model.addAttribute("center", "itemoption");
 		} catch (Exception e) {

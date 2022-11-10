@@ -28,8 +28,13 @@ public class ItemDTO {
 	private Date estart;
 	private Date efin;
 	
-	private String itemoption_obj;
-	private Integer itemoption_price;
+	private String itemoption_obj1;
+	private Integer itemoption_price1;
+	private String itemoption_obj2;
+	private Integer itemoption_price2;
+	private String itemoption_obj3;
+	private Integer itemoption_price3;
+	
 	private String cate_catename;
 	private float review_reviewgrade;
 
