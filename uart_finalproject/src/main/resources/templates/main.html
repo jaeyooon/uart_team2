@@ -177,7 +177,7 @@ function enterkey2(){
                            <li><a
                               th:href="@{/wishlist(id=${session.logincust.custid})}"><span
                                  class="icon icon-heart-o"></span></a></li>
-                           <li><a th:href="@{/order}" class="site-cart" id='orderlist'>
+                           <li><a th:href="@{/order/detail(id=${session.logincust.custid})}" class="site-cart" id='orderlist'>
                                  <span class="material-symbols-outlined"> list_alt </span>
                            </a></li>
 

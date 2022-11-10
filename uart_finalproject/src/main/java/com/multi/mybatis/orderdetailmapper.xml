@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="getallorderdetail" parameterType="String" resultType="OrderdetailDTO">
 		SELECT c.custid as cust_custid, od.orderdetailid, od.orderlistid, od.itemid,
 		i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
-		i.itemname as item_itemname, ol.ordercnt as orderlist_ordercnt,
+		i.itemname as item_itemname, i.itemimg as item_itemimg, ol.ordercnt as orderlist_ordercnt,
 		ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderdetail od
 		INNER JOIN orderlist ol ON ol.orderlistid = od.orderlistid
 		INNER JOIN customer c ON ol.custid = c.custid

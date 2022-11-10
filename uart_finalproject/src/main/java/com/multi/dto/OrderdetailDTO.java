@@ -22,6 +22,7 @@ public class OrderdetailDTO {
 	private String item_place;
 	private Date item_estart;
 	private Date item_efin;
+	private String item_itemimg;
 	private String item_itemname;
 	private Integer orderlist_ordercnt;
 	private Date orderlist_orderdate;

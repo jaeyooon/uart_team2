@@ -1,147 +1,107 @@
 <meta charset="utf-8">
 
-  <body>
-  
-    <div class="site-section">
-      <div class="container">
-        <div class="row mb-5">
-        <div class="float-md-left mb-4"><h2 class="text-black h5">예매내역</h2></div>
-          <form class="col-md-12" method="post">
-            <div class="site-blocks-table">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th class="product-thumbnail">Image</th>
-                    <th class="product-name">Product</th>
-                    <th class="product-price">Price</th>
-                    <th class="product-quantity">Quantity</th>
-                    <th class="product-total">Total</th>
-                    <th class="product-remove">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img src="images/cloth_1.jpg" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">Top Up T-Shirt</h2>
-                    </td>
-                    <td>$49.00</td>
-                    <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                        </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                        </div>
-                      </div>
+<style>
+.table {
+	margin: auto;
+	width: 95%;
+	color: #22333b;
+}
 
-                    </td>
-                    <td>$49.00</td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
-                  </tr>
+.table td {
+	vertical-align: middle;
+}
 
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img src="images/cloth_2.jpg" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">Polo Shirt</h2>
-                    </td>
-                    <td>$49.00</td>
-                    <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                        </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                        </div>
-                      </div>
+th, td {
+	text-align: center;
+}
 
-                    </td>
-                    <td>$49.00</td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </form>
-        </div>
+.site-blocks-table thead th {
+	font-size: 16px;
+}
 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row mb-5">
-              <div class="col-md-6 mb-3 mb-md-0">
-                <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
-              </div>
-              <div class="col-md-6">
-                <button class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <label class="text-black h4" for="coupon">Coupon</label>
-                <p>Enter your coupon code if you have one.</p>
-              </div>
-              <div class="col-md-8 mb-3 mb-md-0">
-                <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-primary btn-sm">Apply Coupon</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 pl-5">
-            <div class="row justify-content-end">
-              <div class="col-md-7">
-                <div class="row">
-                  <div class="col-md-12 text-right border-bottom mb-5">
-                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <span class="text-black">Subtotal</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
-                  </div>
-                </div>
-                <div class="row mb-5">
-                  <div class="col-md-6">
-                    <span class="text-black">Total</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
-                  </div>
-                </div>
+#pname {
+	color: #22333b;
+	width: 200px;
+}
 
-                <div class="row">
-                  <div class="col-md-12">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+#s1 {
+	width: 100px;
+	display: flex;
+	justify-content: center;
+}
 
+#s1_1 {
+	text-align: center;
+	width: 67px;
+	background-color: #eef5db;
+	border-radius: 20px;
+}
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
+#detailimg {
+	width: 150px;
+	height: 210px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
 
-  <script src="js/main.js"></script>
-    
-  </body>
+</style>
+
+<body>
+
+	<div class="site-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-12 mb-5">
+					<h4 class="text-black h4">예매내역</h4>
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>전시명</th>
+							<th>예매일</th>
+							<th>예약번호</th>
+							<th>이용일/<br>매수
+							</th>
+							<th>장소</th>
+							<th>취소가능일</th> 
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="d:${detaillist}">
+							<td style="display: flex; justify-content: center">
+								<div style="width: 180px">
+									<a th:href="@{/item/itemdetail(itemid=${d.itemid})}"><img
+										id="detailimg" th:src="'/img/' + ${d.item_itemimg}"
+										alt="Image" class="img-fluid"><br> <span id="pname"
+										th:text="${d.item_itemname}" class="product-name"></span></a>
+								</div>
+							</td>
+							<td
+								th:text="${#dates.format(d.orderlist_orderdate,'yyyy.MM.dd')}"
+								style="font-size: 17px;">
+								<h2 class="h5 text-black"></h2>
+							</td>
+							<td th:text="${d.orderlistid}"></td>
+							<td>
+								<div style="display: flex; justify-content: center;">
+									<div id="s1" class="row input-group mb-3"
+										style="max-width: 120px;">
+										<div>
+											<span
+												th:text="${#dates.format(d.item_estart,'yyyy.MM.dd')}+'~'">시작</span>
+											<span th:text="${#dates.format(d.item_efin,'yyyy.MM.dd')}">끝</span>
+											<span th:text="${d.itemid}" style="display: none;"></span>
+										</div>
+										<div id="s1_1" th:text="'총 '+${d.orderlist_ordercnt}+'매'"></div>
+									</div>
+								</div>
+							</td>
+							<td th:text="${d.item_place}"></td>
+							<td th:text="${#dates.format(d.orderlist_candate,'yyyy.MM.dd')}" style="color: #7971EA;"></td> 
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
