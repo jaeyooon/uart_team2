@@ -64,17 +64,12 @@ public class MainController {
 		try {
 			list=item_mapper.searchitem(txt);
 			
-			if(txt.isEmpty()) {
-				model.addAttribute("center", "searchfail");
-			
-			}else {
 				if(list.size()==0) {
 					model.addAttribute("center", "searchfail");
 				}else {
 					model.addAttribute("list", list);
 					model.addAttribute("center", "search");
 				}
-			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
