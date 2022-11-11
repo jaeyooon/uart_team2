@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./login.css">
+    
+    
 </head>
 <style>
 * {
@@ -141,17 +143,8 @@ h2 {
 
 
 <script>
-function enterkey(){
-	if(window.event.keyCode == 13){
-		$('#login_form').attr({
-			
-			'action':'/cust/loginimpl',
-			'method':'post'			
-		});
-		$('#login_form').submit();
-	};
-	
-};
+
+
 $(document).ready(function(){
 	   $('#submit').click(function(){
 	       $('#login_form').attr(
@@ -168,37 +161,36 @@ $(document).ready(function(){
 </script>
 
 
+
 <body>
     <div class="wrap">
         <div class="login">
             <h2>Login</h2>
-           <form id="login_form">
-            <div class="login_id">
-                <h4>ID</h4>
-                <input type="text" name="custid" id="custid" placeholder="ID" onkeyup="enterkey()">
-            </div>
-            <div class="login_pw">
-                <h4>Password</h4>
-                <input type="password" name="pwd" id="pwd" placeholder="Password" onkeyup="enterkey()">
-            </div>
-            <div class="login_etc">
-                <div class="new_account">
-                <a href="/register/registered">아직 계정이 없으신가요? 계정을 만들어 보세요!</a>
-                </div>
-            </div>
-             </form>
+		           <form id="login_form">
+		            <div class="login_id">
+		                <h4>ID</h4>
+		                <input type="text" name="custid" id="custid" placeholder="ID">
+		            </div>
+		            <div class="login_pw">
+		                <h4>Password</h4>
+		                <input type="password" name="pwd" id="pwd" placeholder="Password">
+		            </div>
+		            <div class="login_etc">
+		                <div class="new_account">
+		                <a href="/register/registered">아직 계정이 없으신가요? 계정을 만들어 보세요!</a>
+		                </div>
+		            </div>
+		             </form>
                 <button id="submit">Login</button>
          
              <div class="login_sns">
-         
-		<li><a href='#'> 
-			<img id="kakao" src="/img/kakao_login.png">
-		</a></li>
-		<li><a href='#'> 
-			<img id="naver" src="/img/naver_login.png">
-		</a></li> 
-		<br>
-		
+				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=48b96f6623867093002dbead41c00334&redirect_uri=http://127.0.0.1/oauth/kakao&response_type=code"> 
+					<img id="kakao" src="/img/kakao_login.png">
+				</a></li>
+				<li><a href='#'> 
+					<img id="naver" src="/img/naver_login.png">
+				</a></li> 
+				<br>
             </div>
         </div>
     </div>

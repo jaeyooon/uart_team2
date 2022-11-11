@@ -1,0 +1,52 @@
+<meta charset="utf-8">
+
+<style>
+#sns_container {
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#sns_inner {
+display:flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+margin-top: 20px;
+margin-bottom: 20px;
+width: 400px;
+height: 150px;
+background: #f8f9fa;
+}
+
+
+h3, h5, p {
+color: #22333b;
+}
+
+.scontent {
+font-size: 17px;
+}
+</style>
+
+<script>
+function gotomain() {
+	location.href="/"
+}
+</script>
+
+<div class="site-section block-8">
+<div id="sns_container">
+	<h3>회원가입 완료:D</h3>‍
+	<h5 th:text="${session.logincust.cname}+'님 U-ART 회원이 되신 것을 환영합니다!'"></h5>
+	<div id="sns_inner">
+		<p class="scontent" th:text="'가입ID : '+${session.logincust.email}">가입ID</p>
+		<p class="scontent" th:text="'가입일 : '+${#dates.format(session.logincust.custdate,'yyyy.MM.dd')}">가입일</p>
+	</div>
+	<button th:onclick="gotomain()" class="btn btn-primary btn-sm">확인🌼</button>
+</div>
+</div>
+
