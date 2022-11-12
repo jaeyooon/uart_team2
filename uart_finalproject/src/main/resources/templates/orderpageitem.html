@@ -107,6 +107,15 @@ hr.two_1 {
 	float: left;
 }
 
+#itemoption {
+	width: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 200px;
+	float: left;
+}
+
 #wishlist {
 	display: flex;
 	justify-content: center;
@@ -144,21 +153,17 @@ to {
 <script>
 $(document).ready(
 		function() {
-			$('#order').click(function() {
+			$('#itemoption').click(function() {
 
-				moveorder();
+				moveitemoption();
 			});
 
-			function moveorder() {
+			function moveitemoption() {
 				var custid = '[[${session.logincust.custid}]]';
 				var itemid = $('#itemid').text();
-				var itemcnt1 = $('#itemcnt1').val();
-				var itemcnt2 = $('#itemcnt2').val();
-				var itemcnt3 = $('#itemcnt3').val();
-				location.href = '/orderpageitem?custid=' + custid
-						+ '&itemid=' + itemid 
-						+ '&itemcnt1=' + itemcnt1 + '&itemcnt2=' + itemcnt2
-						+ '&itemcnt3=' + itemcnt3;
+				
+				location.href = '/itemoption?id=' + custid
+						+ '&itemid=' + itemid;
 
 			}
 			;
@@ -166,6 +171,7 @@ $(document).ready(
 			
 				});
 	
+
 </script>
 
 
@@ -187,74 +193,62 @@ $(document).ready(
 					<p></p>
 					<hr class="two_1">
 					<span id="itemid" th:text="${itemdetail.itemid}" name="itemid"
-						style="display: none"></span><br>
-					<span class="title">장소</span>
-					<span class="con" th:text="${itemdetail.itemplace}"></span><br>
-					<sapn class="title">기간</sapn>
-					<span class="con"
-						th:text="${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}"
-						name="itemid"></span><br> <span class="title">관람등급</span><span
-						class="con" th:text="' '+${itemdetail.itemguide}"></span>
-					<hr style="color: black">
+						style="display: none"></span>
+					
+					<div style="color: black">
 					<span class="title">가격</span><span class="con"
-						th:text="${itemdetail.itemoption_obj1} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'"><label for="sel1"></label></span> 
-						<select
-							class="form-control" id="itemcnt1">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> 
+						th:text="${itemdetail.itemoption_obj1} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'"><label for="sel1"></label></span>
+						<span class="con" th:text="${itemcnt1}+'매'" ></span> <span class="con" th:text="${#numbers.formatInteger(itemcnt1*itemdetail.itemoption_price1, 3,'COMMA')}+'원'" ></span> 
+						
 					<br>
 					<span class="title"></span><span class="con"
-						th:text="${itemdetail.itemoption_obj2} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'"></span><label for="sel1"></label> <select
-							class="form-control" id="itemcnt2">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> 
+						th:text="${itemdetail.itemoption_obj2} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'"></span><label for="sel1"></label> 
+					<span class="con" th:text="${itemcnt2}+'매'" ></span> <span class="con" th:text="${#numbers.formatInteger(itemcnt2*itemdetail.itemoption_price2, 3,'COMMA')}+'원'" ></span> 
 					<br>
 					<span class="title"></span><span class="con"
-						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label for="sel1"></label> <select
-							class="form-control" id="itemcnt3">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> 
-						
-						
-				
+						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label for="sel1"></label> 
+					<span class="con" th:text="${itemcnt3}+'매'" ></span> <span class="con" th:text="${#numbers.formatInteger(itemcnt3*itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span> 
+					<br>
+					<span class="title">전체금액</span><span class="con"
+						th:text="${#numbers.formatInteger(itemcnt1*itemdetail.itemoption_price1+itemcnt2*itemdetail.itemoption_price2+itemcnt3*itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label for="sel1"></label> 
+					<hr>
+      
+                <div id="cd" ><h4 class="text-black h4" style="color:#785964">회원정보 조회</h4></div>
+             
+                </div>
+              
+           
+            
+            <div class="row mb-5">
+           	  <div class="col-md-12 mb-5">
+           		<div class="table-responsive">
 
-
-					<div id="btn">
+           <form id="cust_form">
+			<div class="form-group">
+				<label for="id">아이디:</label> <input type="text" readonly="readonly"
+					class="form-control" id="custid" th:value="${cust.custid}" name="custid">
+				<span id="ispan"></span>
+			</div>
+			
+			<div class="form-group">
+				<label for="name">이름:</label> <input type="text" readonly="readonly" class="form-control"
+					id="name" th:value="${cust.cname}" name="cname">
+			</div>
+			<div class="form-group">
+				<label for="name">전화번호:</label> <input type="text" readonly="readonly" class="form-control"
+					id="phone" th:value="${cust.phone}" name="phone">
+			</div>
+		</form>
+					</div>													
+						<div id="btn">
+						<div style="display: inline-block">
+							<button id="itemoption" class="buy-now btn btn-sm btn-primary">이전단계</button>
+						</div>
 						<div style="display: inline-block">
 							<button id="order" class="buy-now btn btn-sm btn-primary">다음단계</button>
 						</div>
 						
-					</div>
+						 
 				</div>
 			</div>
 

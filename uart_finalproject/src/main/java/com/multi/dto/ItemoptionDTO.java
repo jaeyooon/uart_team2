@@ -17,4 +17,8 @@ public class ItemoptionDTO {
 	private Integer itemid;
 	private String obj;
 	private Integer price;
+	
+	 private Integer itemcnt1;
+	 private Integer itemcnt2;
+	 private Integer itemcnt3;
 }

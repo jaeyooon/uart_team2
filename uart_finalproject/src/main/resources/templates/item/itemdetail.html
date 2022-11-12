@@ -216,7 +216,7 @@ $(document).ready(function(){
 						style="display: none"></span><br>
 					<sapn class="title">장소</sapn>
 					<span class="con" th:text="${itemdetail.itemplace}"></span><br>
-					<sapn class="title">기간</sapn>
+					<span class="title">기간</span>
 					<span class="con"
 						th:text="${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}"
 						name="itemid"></span><br> <span class="title">관람등급</span><span
@@ -233,7 +233,7 @@ $(document).ready(function(){
 					<div id="btn">
 						<div style="display: inline-block">
 							<a id="order"
-								th:href="@{/itemoption(id=${session.logincust.custid})}"
+								th:href="@{/itemoption(itemid=${itemdetail.itemid})}"
 								class="buy-now btn btn-sm btn-primary"><strong>예매하기</strong></a>
 						</div>
 						<div class="star" style="display: inline-block">
