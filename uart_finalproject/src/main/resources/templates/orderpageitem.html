@@ -1,153 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="utf-8">
+</head>
 
 <style>
-.img-fluid {
-	width: 80%;
-	height: 550px;
-	border-radius: 10px;
+
+*{
+	margin: 0;
+	padding:0;
 }
 
-#tab_name{
-	font-size:15px;
-	font-weight:bold;
+a{
+	text-decoration: none;
 }
 
-#p1 {
-	font-style: italic;
-	font-weight: 400;
-}
-
-h6, #p2 {
-	color: black;
-}
-
-#p3 {
-	font-size: 14px;
-}
-
-.info_img {
-	width: 45%;
-	height: 600px;
-	border-radius: 10px;
-	margin-bottom: 50px;
-}
-
-#cancel_table {
-	width: 600px;
-}
-
-#price_table {
-	width: 400px;
-}
-
-#review {
-	font-size: 15px;
-}
-
-#re_att {
-	font-size: 13px;
-	color: #c44536;
-}
-
-#item_review {
-	margin-left: 10px;
-	margin-top: 10px;
-}
-
-hr.two_1 {
+/* 제품 목록 네비 */
+.navi_bar_area{
 	width: 100%;
-	border: none;
-	border: 1px solid #ced4da;
+    height: 70px;
+    background-color: #7696fd;
 }
 
-.star-ratings {
-	color: #aaa9a9;
-	position: relative;
-	unicode-bidi: bidi-override;
-	width: max-content;
-	-webkit-text-fill-color: transparent;
-	/* Will override color (regardless of order)
-	-webkit-text-stroke-width: 1.3px;
-	-webkit-text-stroke-color: #2b2a29; */
+/* 홈페이지 메인 제품 목록  */
+.content_area{
+	width: 100%;
+    min-height: 1000px;
 }
+	 table{
+	 	border-collapse: collapse;
+	 	width: 100%;
+	 }
+	 .table_text_align_center{
+				text-align: center;
+	 }	
+	 caption{
+	    visibility: hidden;
+	    width: 0;
+	    height: 0;
+	    font-size: 0;
+	    line-height: 0;
+	    overflow: hidden; 
+	 }	  
 
-.star-ratings-fill {
-	color: #fff58c;
-	padding: 0;
-	position: absolute;
-	z-index: 1;
-	display: flex;
-	top: 0;
-	left: 0;
-	overflow: hidden;
-	-webkit-text-fill-color: #f9c74f;
-}
+	 .content_subject{
+		height: 110px;
+	    line-height: 110px;
+	    background-color: #5080bd;
+	    margin-bottom: 60px; 
+	 
+	 }
+		 .content_subject span{ 
+		    padding-left: 30 px;
+		    display: inline-block;
+		    color: white;
+		    font-size: 50px;
+		    font-weight: bolder; 
+		 }
+	 
+	 .content_totalCount_section{
+	 	margin-bottom: 12px;
+	 }
+	 .content_btn_section{
+	 	margin-top: 20px;
+	 	text-align: right;
+	 }
+	 	.content_btn_section a{
+	    color: #fefeff;
+	    min-width: 125px;
+	    padding: 2.5px 10px;
+	    display: inline-block;
+	    height: 39px;
+	    font-size: 23px;
+	    font-weight: bold;
+	    text-align: center;
+	    margin-right: -2px;
+	    line-height: 39px; 	
+	 	}
+	 
 
-.star-ratings-base {
-	z-index: 0;
-	padding: 0;
-}
+	 .subject_table{
+		font-size: 14px;
+	    line-height: 20px;
+	    width: 100%;
+	    text-align: center; 	
+	 }
 
-.title {
-	display: inline-block;
+		 th{
+		text-align: center;
+	    color: #333;
+	    border-bottom: 1px solid #e7e7e7;
+	    border-top: 1px solid #3084d9;
+	    background: #f4f9fd;
+	    padding: 2px 0;	 
+		 }
+		.td_width_1{
+			width: 1%;
+		}	 	 	 
+		.td_width_2{
+			width: 20%;
+		}	 	 
+		.td_width_3{
+			width: 12%;
+		}	 
+		.td_width_4{
+			width: 15%;
+		}	
+		.cart_table{
+			font-size: 14px;
+			line-height: 20px;
+		}  
+			.cart_table tr{
+				height: 110px;
+			}
+			.price_td{
+				padding-left: 5px;
+			}
+				.red_color{
+					color : red;
+				}
+				.green_color{
+					color : green;
+				}
+			.cart_table td{
+				border-bottom: 1px solid #e7e7e7;
+			}
+			.quantity_div{
+				position: relative;
+			    width: 42px;
+			    height: 25px;
+			    text-align: left;
+			    margin: 5px auto;		
+			}
+			.quantity_input{
+				position: absolute;
+				width: 27px;
+			    height: 23px;
+			    text-align: center;
+			    border: 1px solid #c6c6c6;
+			    border-right: 0px;
+			    line-height: 19px;
+			    font-size: 16px;
+			    color: #4c4848;	
+			    left: 0;
+			}
+			.quantity_btn{
+				position: absolute;
+			    border: 1px solid #aaa;
+			    color: #FE6B00;
+			    width: 14px;
+			    height: 13px;
+			    padding: 0px;
+			    background-color: #fff;
+			    font-weight: bold;
+			    font-size: 7px;
+			    line-height: 6px;
+			    vertical-align: middle;	
+			}
+			.plus_btn{
+				top: 0;
+				right: 0
+			}
+			.minus_btn{
+				bottom: 0;
+				right: 0
+			}		
+			.quantity_modify_btn{
+				border: 1px solid #d0d0d0;
+			    height: 25px;
+			    line-height: 13px;
+			    background-color: #fff;
+			    text-align: center;
+			    width: 46px;
+			    display: inline-block;
+			    padding: 3px 6px 2px;
+			    margin-top: 3px;		
+			}
+			.table_text_align_center{
+				text-align: center;
+			}
+			
+		
+	.content_total_section{
+		    background-color: rgb(227, 237, 247);
+	}		
+		.total_wrap{
+			width: 80%;
+		    margin: auto;
+		    padding: 10px 0 10px 0;	
+		}
+			.total_wrap td{
+				width : 50%;
+			}
+			.finalTotalPrice_span{
+				color: #854A72;
+				font-size: 17px;
+				font-weight: bold;
+			}
+			
+			.boundary_div{
+				font-size: 0;
+			    border: 1px dotted #d1c7c7;
+			    margin: 5px 0 5px 0;		
+			}
+			
+		.input_size_20{
+			width:20px;
+			height:20px;
+		}
+		.all_check_input{
+			margin: 18px 0 18px 18px;
+		}
+		.all_chcek_span{
+			padding-left: 8px;
+	    	font-size: 20px;
+	    	font-weight: bold;		
+		}			
+
+table>tbody>tr>td>img {
 	width: 100px;
-	font-weight: bold;
 }
 
-.con {
-	font-weight: 500;
+table>tbody>tr>td>img:hover {
+	width: 99px;
+	border: 1px solid #FE6B00;
 }
 
-#order {
-	width: 200px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 200px;
-	float: left;
-}
-
-#itemoption {
-	width: 200px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 200px;
-	float: left;
-}
-
-#wishlist {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 200px;
-	float: left;
-	background-color: #cec2ff;
-	padding: 10px;
-	border-radius: 10px;
-	outline: 0;
-}
-
-.btn {
-	animation: bgColor 1st both;
-	background-color:#7971EA;
-}
-
-@keyframes byColor {
-	from {background: #cec2ff;
-}
-
-to {
-	background: blue;
+.btn:hover {
+	background-color: #FE6B00;
 	color: white;
 }
+
+table th, td {
+	text-align: center;
 }
 
-#btn {
-	width: 100%;
-	text-align: center;
-	color:#7971EA;
+
+table.table td {
+	border-bottom: solid #E9E9E9
 }
+
+ table.table th {
+	border-top: solid #E9E9E9
+}
+
+table.table th {
+	border-bottom: solid #E9E9E9
+}
+
+
 </style>
 
 <script>
@@ -161,99 +262,231 @@ $(document).ready(
 			function moveitemoption() {
 				var custid = '[[${session.logincust.custid}]]';
 				var itemid = $('#itemid').text();
-				
+
 				location.href = '/itemoption?id=' + custid
 						+ '&itemid=' + itemid;
 
 			}
 			;
 
-			
+
 				});
-	
+
 
 </script>
 
-
-
 <body>
-
-	<div class="site-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<img th:src="'/img/'+${itemdetail.itemimg}" alt="Image"
-						class="img-fluid">
+	<div class="wrapper">
+		<div class="wrap">
+		<div class="content_area">
+			<div class="container-fluid">
+				<h2>구매페이지</h2>
+			</div>
+			<!-- 장바구니 리스트 -->
+			<div class="content_middle_section"></div>
+			<!-- 장바구니 가격 합계 -->
+			<!-- cartInfo -->
+			<div class="content_totalCount_section">
+				<!-- 체크박스 전체 여부 -->
+				<div class="all_check_input_div">
+					<input type="checkbox" class="all_check_input input_size_20"
+						checked="checked"><span class="all_chcek_span">전체선택</span>
 				</div>
-				<div class="col-md-6">
-				<input type="text"
-							readonly="readonly" class="form-control" id="itemname"
-							th:value="${itemdetail.itemname}" name="itemname" style="display:none"> <br>
-					<h2 class="text-black" th:text="${itemdetail.itemname}"></h2>
-					<p></p>
-					<hr class="two_1">
-					<span id="itemid" th:text="${itemdetail.itemid}" name="itemid"
-						style="display: none"></span>
-					
-					<div style="color: black">
-					<span class="title">가격</span><span class="con"
-						th:text="${itemdetail.itemoption_obj1} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'"><label for="sel1"></label></span>
-						<span class="con" th:text="${itemcnt1}+'매'" ></span> <span class="con" th:text="${#numbers.formatInteger(itemcnt1*itemdetail.itemoption_price1, 3,'COMMA')}+'원'" ></span> 
-						
-					<br>
-					<span class="title"></span><span class="con"
-						th:text="${itemdetail.itemoption_obj2} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'"></span><label for="sel1"></label> 
-					<span class="con" th:text="${itemcnt2}+'매'" ></span> <span class="con" th:text="${#numbers.formatInteger(itemcnt2*itemdetail.itemoption_price2, 3,'COMMA')}+'원'" ></span> 
-					<br>
-					<span class="title"></span><span class="con"
-						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label for="sel1"></label> 
-					<span class="con" th:text="${itemcnt3}+'매'" ></span> <span class="con" th:text="${#numbers.formatInteger(itemcnt3*itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span> 
-					<br>
-					<span class="title">전체금액</span><span class="con"
-						th:text="${#numbers.formatInteger(itemcnt1*itemdetail.itemoption_price1+itemcnt2*itemdetail.itemoption_price2+itemcnt3*itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label for="sel1"></label> 
-					<hr>
-      
-                <div id="cd" ><h4 class="text-black h4" style="color:#785964">회원정보 조회</h4></div>
-             
-                </div>
-              
-           
-            
-            <div class="row mb-5">
-           	  <div class="col-md-12 mb-5">
-           		<div class="table-responsive">
-
-           <form id="cust_form">
-			<div class="form-group">
-				<label for="id">아이디:</label> <input type="text" readonly="readonly"
-					class="form-control" id="custid" th:value="${cust.custid}" name="custid">
-				<span id="ispan"></span>
-			</div>
-			
-			<div class="form-group">
-				<label for="name">이름:</label> <input type="text" readonly="readonly" class="form-control"
-					id="name" th:value="${cust.cname}" name="cname">
-			</div>
-			<div class="form-group">
-				<label for="name">전화번호:</label> <input type="text" readonly="readonly" class="form-control"
-					id="phone" th:value="${cust.phone}" name="phone">
-			</div>
-		</form>
-					</div>													
-						<div id="btn">
-						<div style="display: inline-block">
-							<button id="itemoption" class="buy-now btn btn-sm btn-primary">이전단계</button>
-						</div>
-						<div style="display: inline-block">
-							<button id="order" class="buy-now btn btn-sm btn-primary">다음단계</button>
-						</div>
-						
-						 
+				<table class="table table-hover">
+					<caption></caption>
+					<tbody>
+						<c:forEach items="${cartInfo}">	
+							<tr>
+								<th class="td_width_1"></th>
+								<th class="td_width_0">no</th>
+								<th class="td_width_2">상품 이미지</th>
+								<th class="td_width_3">상품명</th>
+								<th class="td_width_4">제품가격</th>
+								<th class="td_width_4">수량</th>
+								<th class="td_width_4">주문금액</th>
+								
+							</tr>
+							</thead>
+							<tbody>
+								
+									<td class="td_width_1 cart_info_td">
+										<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked"> 
+										<input type="hidden" class="individual_Price_input" th:value="${itemdetail.itemoption_price1+itemdetail.itemoption_price2+itemdetail.itemoption_price3}">
+										<input type="hidden" class="individual_Cnt_input" th:value="${itemcnt1+itemcnt2+itemcnt3}"> 
+										<input type="hidden" class="individual_totalPrice_input" th:value="${itemcnt1*itemdetail.itemoption_price1+itemcnt2*itemdetail.itemoption_price2+itemcnt3*itemdetail.itemoption_price3}"> 
+										<input type="hidden" class="individual_itemId_input" th:value="${itemdetail.itemid}">
+									</td>
+									<td id="itemid" th:text="${itemdetail.itemid}">no</td>
+									<td class="td_width_2"><img th:src="'/img/'+${itemdetail.itemimg}">
+									</td>
+									<td class="td_width_3" th:text="${itemdetail.itemname}">상품명</td>
+									
+										
+									<td class="td_width_4 price_td">
+										<form  th:text="${itemdetail.itemoption_obj1} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price1, 3, 'COMMA')}+'원'"></form>
+										<form  th:text="${itemdetail.itemoption_obj2} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price2, 3, 'COMMA')}+'원'"></form>
+										<form  th:text="${itemdetail.itemoption_obj3} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price3, 3, 'COMMA')}+'원'"></form>
+										
+									</td>
+									
+									<td class="td_width_4 table_text_align_center">
+										<div class="table_text_align_center quantity_div">
+											<input type="text" th:value="${itemcnt1}" class="quantity_input"><br>
+											<input type="text" th:value="${itemcnt2}" class="quantity_input"><br>
+											<input type="text" th:value="${itemcnt3}" class="quantity_input"><br>
+											
+										
+									</td>
+									<td class="td_width_4 table_text_align_center">
+										<form  th:text="${#numbers.formatInteger(itemcnt1*itemdetail.itemoption_price1, 3, 'COMMA')}+'원'"></form>
+										<form  th:text="${#numbers.formatInteger(itemcnt2*itemdetail.itemoption_price2, 3, 'COMMA')}+'원'"></form>
+										<form  th:text="${#numbers.formatInteger(itemcnt3*itemdetail.itemoption_price3, 3, 'COMMA')}+'원'"></form>
+										
+								</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			<!-- 가격 종합 -->
+			<div class="content_total_section">
+				<div class="total_wrap">
+					<table>
+						<tr>
+							<td>
+								<table>
+									<tr>
+										<td>총 주문금액</td>
+										<td><span class="totalPrice_span"></span> 원</td>
+									</tr>
+									
+									<tr>
+										<td>총 주문 상품수</td>
+										<td><span class="totalKind_span"></span>종&nbsp&nbsp<span
+											class="totalCount_span"></span>개</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<div class="boundary_div">구분선</div>
+					<table>
+						<tr>
+							<td>
+								<table>
+									<tbody>
+										<tr>
+											<td><strong>총 결제예정금액</strong></td>
+											<td><span class="finalTotalPrice_span"></span> 원</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
-
+			<!-- 구매 버튼 영역 -->
+			<div class="content_btn_section" >
+						<button id="itemoption" type="button" class="buy-now btn btn-sm btn-primary" style="display: inline-block">
+							이전단계
+						</button>
+						<button id="order" type="button" class="buy-now btn btn-sm btn-primary" style="display: inline-block">
+							다음단계
+						</button>
+				</div>
 			
 		</div>
 	</div>
+	<!-- class="wrap" -->
+	</div>
+	<!-- class="wrapper" -->
+
+	<script>
+$(document).ready(function(){
+	
+	/* 종합 정보 섹션 정보 삽입 */
+	setTotalInfo();	
+});	
+
+/* 체크여부에따른 종합 정보 변화 */
+$(".individual_cart_checkbox").on("change", function(){
+	/* 총 주문 정보 세팅(배송비, 총 주문금액, 마일리지, 물품 수, 종류) */
+	setTotalInfo($(".cart_info_td"));
+});
+
+/* 체크박스 전체 선택 */
+$(".all_check_input").on("click", function(){
+
+	/* 체크박스 체크/해제 */
+	if($(".all_check_input").prop("checked")){
+		$(".individual_cart_checkbox").attr("checked", true);
+	} else{
+		$(".individual_cart_checkbox").attr("checked", false);
+	}
+	
+	/* 총 주문 정보 세팅(배송비, 총 주문금액, 물품 수, 종류) */
+	setTotalInfo($(".cart_info_td"));	
+	
+});
+
+/* 총 주문 정보 세팅(배송비, 총 주문금액, 마일리지, 물품 수, 종류) */
+function setTotalInfo(){
+	
+	let totalPrice = 0;				// 총 주문금액
+	let totalCount = 0;				// 총 갯수
+	let totalKind = 0;				// 총 종류
+	let deliveryPrice = 0;			// 배송비
+	let finalTotalPrice = 0; 		// 최종 가격(총 주문금액 + 배송비)
+
+	
+	$(".cart_info_td").each(function(index, element){
+		
+		if($(element).find(".individual_cart_checkbox").is(":checked") === true){	//체크여부
+			// 총 주문금액
+			totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+			// 총 갯수
+			totalCount += parseInt($(element).find(".individual_Cnt_input").val());
+			// 총 종류
+			totalKind += 1;	
+		}
+
+	});
+	
+	/* 배송비 결정 */
+	if(totalPrice >= 30000){
+		deliveryPrice = 0;
+	} else if(totalPrice == 0){
+		deliveryPrice = 0;
+	} else {
+		deliveryPrice = 0;	
+	}
+		finalTotalPrice = totalPrice + deliveryPrice;
+	
+	
+	
+	/* ※ 세자리 컴마 Javscript Number 객체의 toLocaleString() */
+	
+	// 총 주문금액
+	$(".totalPrice_span").text(totalPrice.toLocaleString());
+	// 총 갯수
+	$(".totalCount_span").text(totalCount);
+	// 총 종류
+	$(".totalKind_span").text(totalKind);
+	// 최종 가격(총 주문금액 + 배송비)
+	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
+}
+
+
+
+
+
+</script>
 </body>
 </html>
