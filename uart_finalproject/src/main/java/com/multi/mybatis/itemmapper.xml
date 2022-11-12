@@ -38,6 +38,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE itemname LIKE CONCAT('%',#{txt},'%')		
 	</select>
 	
+	<select id="start_fast" resultType="itemDTO">
+		SELECT * FROM item AS i
+		WHERE i.cateid=#{cateid}
+		ORDER BY estart ASC;	
+	</select>
+	
+	<select id="end_fast" resultType="itemDTO">
+		SELECT * FROM item AS i
+		WHERE i.cateid=#{cateid}
+		ORDER BY efin ASC;	
+	</select>
+	
 	<select id="gethighgrade" resultType="itemDTO">
 		SELECT i.itemid, i.itemname, i.itemimg, i.estart, i.efin, 
 		r.reviewgrade as review_reviewgrade FROM item i 
