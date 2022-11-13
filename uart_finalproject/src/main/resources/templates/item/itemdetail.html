@@ -293,9 +293,9 @@ $(document).ready(function(){
 						data-bs-target="#nav-two" type="button" role="tab"
 						aria-controls="nav-two" aria-selected="false">한줄평</button>
 					&nbsp;&nbsp;
-					<button class="nav-link" id="nav-four-tab" data-bs-toggle="tab"
-						data-bs-target="#nav-four" type="button" role="tab"
-						aria-controls="nav-four" aria-selected="false">예매/취소안내</button>
+					<button class="nav-link" id="nav-three-tab" data-bs-toggle="tab"
+						data-bs-target="#nav-three" type="button" role="tab"
+						aria-controls="nav-three" aria-selected="false">예매/취소안내</button>
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
@@ -348,6 +348,15 @@ $(document).ready(function(){
 							
 						</tbody>
 					</table>
+					<!-- Kakao map -->
+					<br>
+				  	 <h5 style="color:#353535;">장소정보</h5>
+				  	 <div id="map" style="width:500px;height:400px;"></div>
+				  	 <input id="lat" type="hidden" th:value="${itemdetail.lat}" readonly="readonly">
+		             <input id="lng" type="hidden" th:value="${itemdetail.lng}" readonly="readonly">
+		             <p style="color:#353535;">▶ 찾아오시는 길</p>
+		             <p th:text="${itemdetail.itemplace_address}" style="color:#353535;"></p>
+		             <input id="place" type="hidden" th:value="${itemdetail.itemplace}" readonly="readonly">
 				</div>
 				<div class="tab-pane fade" id="nav-two" role="tabpanel"
 					aria-labelledby="nav-two-tab">
@@ -419,8 +428,8 @@ $(document).ready(function(){
 					</div>
 				</div>
 				
-				<div class="tab-pane fade" id="nav-four" role="tabpanel"
-					aria-labelledby="nav-four-tab">
+				<div class="tab-pane fade" id="nav-three" role="tabpanel"
+					aria-labelledby="nav-three-tab">
 					<br><br>
 					<h4>예매/취소안내</h4>
 					<br> <br>
@@ -462,14 +471,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<!-- tad end -->
-			<br>
-		  	 <h4 style="color:#353535;">장소정보</h4>
-		  	 <div id="map" style="width:500px;height:400px;"></div>
-		  	 <input id="lat" type="hidden" th:value="${itemdetail.lat}" readonly="readonly">
-             <input id="lng" type="hidden" th:value="${itemdetail.lng}" readonly="readonly">
-             <p style="color:#353535;">▶ 찾아오시는 길</p>
-             <p th:text="${itemdetail.itemplace_address}" style="color:#353535;"></p>
-             <input id="place" type="hidden" th:value="${itemdetail.itemplace}" readonly="readonly">
+			
 		</div>
 	</div>
 
