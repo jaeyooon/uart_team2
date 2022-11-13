@@ -35,6 +35,10 @@ h6, #p2 {
 	width: 500px;
 }
 
+#dataTable {
+	width: 500px;
+}
+
 #review {
 	font-size: 15px;
 }
@@ -132,6 +136,10 @@ to {
 	width: 100%;
 	text-align: center;
 }
+#map {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 </style>
 
 <script>
@@ -140,6 +148,7 @@ function display(){
 	var map;
 	var lat = $('#lat').val();
 	var lng = $('#lng').val(); 
+	var place = $('#place').val();
 	//alert(lat);
 	//alert(lng);  
 	  
@@ -154,6 +163,32 @@ function display(){
 	     map: map,
 	     position: new kakao.maps.LatLng(lat, lng),   /* 위도와 경도를 입력함으로써 넣어 줌 */
 	}); 
+	
+	var iwContent = '<div style="display:flex;flex-direction:column;text-align:center;padding:2px;width:200px;color:black;font-size:14px;"><p>' + '💡장소 : '+ place + '</p></div>';
+    iwPosition = new kakao.maps.LatLng(lat, lng); //인포윈도우 표시 위치
+
+var infowindow = new kakao.maps.InfoWindow({
+    position : iwPosition, 
+    content : iwContent 
+});
+  
+infowindow.open(map, marker); 
+
+ //각각의 marker에 이벤트를 붙임
+kakao.maps.event.addListener(marker, 'mouseover', mouseoverListener(marker, infowindow));
+kakao.maps.event.addListener(marker, 'mouseout', mouseoutListener(marker, infowindow));
+
+function mouseoverListener(marker, infowindow) {  
+	return function(){
+		infowindow.open(map, marker);
+	};
+}
+function mouseoutListener(marker, infowindow) { 
+    return function(){
+    	infowindow.close();
+	};
+}
+
 };
 
 $(document).ready(function(){
@@ -258,10 +293,6 @@ $(document).ready(function(){
 						data-bs-target="#nav-two" type="button" role="tab"
 						aria-controls="nav-two" aria-selected="false">한줄평</button>
 					&nbsp;&nbsp;
-					<button class="nav-link" id="nav-three-tab" data-bs-toggle="tab"
-						data-bs-target="#nav-three" type="button" role="tab"
-						aria-controls="nav-three" aria-selected="false">오시는 길</button>
-					&nbsp;&nbsp;
 					<button class="nav-link" id="nav-four-tab" data-bs-toggle="tab"
 						data-bs-target="#nav-four" type="button" role="tab"
 						aria-controls="nav-four" aria-selected="false">예매/취소안내</button>
@@ -317,8 +348,6 @@ $(document).ready(function(){
 							
 						</tbody>
 					</table>
-
-
 				</div>
 				<div class="tab-pane fade" id="nav-two" role="tabpanel"
 					aria-labelledby="nav-two-tab">
@@ -389,16 +418,7 @@ $(document).ready(function(){
 						</form>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="nav-three" role="tabpanel" 
-					aria-labelledby="nav-three-tab">
-					<br>
-					<h5>위치</h5>
-				  		 <div id="map" style="width:600px;height:500px;"></div>
-							<input id="lat" type="hidden" th:value="${itemdetail.lat}" readonly="readonly"> 
-							<input id="lng" type="hidden" th:value="${itemdetail.lng}" readonly="readonly">
-						<p>▶ 찾아오시는 길</p>
-             		    <input id="address" type="hidden" th:text="${itemdetail.itemplace_address}" readonly="readonly">
-				</div>
+				
 				<div class="tab-pane fade" id="nav-four" role="tabpanel"
 					aria-labelledby="nav-four-tab">
 					<br><br>
@@ -442,7 +462,14 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<!-- tad end -->
-
+			<br>
+		  	 <h4 style="color:#353535;">장소정보</h4>
+		  	 <div id="map" style="width:500px;height:400px;"></div>
+		  	 <input id="lat" type="hidden" th:value="${itemdetail.lat}" readonly="readonly">
+             <input id="lng" type="hidden" th:value="${itemdetail.lng}" readonly="readonly">
+             <p style="color:#353535;">▶ 찾아오시는 길</p>
+             <p th:text="${itemdetail.itemplace_address}" style="color:#353535;"></p>
+             <input id="place" type="hidden" th:value="${itemdetail.itemplace}" readonly="readonly">
 		</div>
 	</div>
 
