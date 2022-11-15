@@ -99,7 +99,7 @@ hr.two_1 {
 }
 
 #order {
-	width: 200px;
+	
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -124,20 +124,23 @@ hr.two_1 {
 	background-color:#7971EA;
 }
 
-@keyframes byColor {
-	from {background: #cec2ff;
+#option_price {
+display: flex;
 }
 
-to {
-	background: blue;
-	color: white;
-}
+.option {
+display: flex;
+justify-content: space-between;
+width: 65%;
 }
 
 #btn {
 	width: 100%;
 	text-align: center;
 	color:#7971EA;
+	display: flex;
+    justify-content: flex-end;
+    
 }
 </style>
 
@@ -171,7 +174,6 @@ $(document).ready(
 
 
 <body>
-
 	<div class="site-section">
 		<div class="container">
 			<div class="row">
@@ -190,16 +192,20 @@ $(document).ready(
 						style="display: none"></span><br>
 					<span class="title">장소</span>
 					<span class="con" th:text="${itemdetail.itemplace}"></span><br>
-					<sapn class="title">기간</sapn>
+					<span class="title">기간</span>
 					<span class="con"
 						th:text="${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}"
 						name="itemid"></span><br> <span class="title">관람등급</span><span
 						class="con" th:text="' '+${itemdetail.itemguide}"></span>
 					<hr style="color: black">
-					<span class="title">가격</span><span class="con"
+					<section id="option_price" >
+					<span class="title">가격</span>
+					<section style="width: 500px;">
+					<div class="option">
+						<span class="con"
 						th:text="${itemdetail.itemoption_obj1} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'"><label for="sel1"></label></span> 
 						<select
-							class="form-control" id="itemcnt1">
+							class="form-control col-sm-3" id="itemcnt1">
 							<option value="0">0</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -212,43 +218,45 @@ $(document).ready(
 							<option value="9">9</option>
 							<option value="10">10</option>
 						</select> 
-					<br>
-					<span class="title"></span><span class="con"
-						th:text="${itemdetail.itemoption_obj2} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'"></span><label for="sel1"></label> <select
-							class="form-control" id="itemcnt2">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> 
-					<br>
-					<span class="title"></span><span class="con"
-						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label for="sel1"></label> <select
-							class="form-control" id="itemcnt3">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> 
-						
-						
+					</div>
 				
-
-
+					<div class="option">
+					<span class="con"
+						th:text="${itemdetail.itemoption_obj2} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'"></span><label for="sel1"></label> <select
+							class="form-control col-sm-3" id="itemcnt2">
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select> 
+					</div>
+					
+					<div class="option">
+						<span class="con"
+						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label for="sel1"></label> <select
+							class="form-control col-sm-3" id="itemcnt3">
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select> 
+					</div>
+				</section>
+						</section>
 					<div id="btn">
 						<div style="display: inline-block">
 							<button id="order" class="buy-now btn btn-sm btn-primary">다음단계</button>

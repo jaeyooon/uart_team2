@@ -1,5 +1,7 @@
 package com.multi.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
@@ -9,11 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.multi.dto.CustomerDTO;
 import com.multi.dto.EmanageDTO;
 import com.multi.dto.EventblDTO;
+import com.multi.dto.ItemDTO;
+import com.multi.dto.OrderdetailDTO;
+import com.multi.dto.OrderlistDTO;
 import com.multi.frame.Util;
 import com.multi.ncp.OCR;
 import com.multi.service.CustomerService;
 import com.multi.service.EmanageService;
 import com.multi.service.EventblService;
+import com.multi.service.ItemService;
+import com.multi.service.OrderdetailService;
+import com.multi.service.OrderlistService;
 
 @RestController
 public class AJAXController {
@@ -27,12 +35,41 @@ public class AJAXController {
 	@Autowired
 	EventblService event_service;
 	
+	@Autowired
+	OrderlistService olist_service;
+	
+	@Autowired
+	OrderdetailService odetail_service;
+	
+	@Autowired
+	ItemService item_service;
+	
 	@Value("${custdir}")
 	String custdir;
 	
 	@Autowired
 	OCR ocr;
 	
+	@RequestMapping("/purchaseimpl")
+	public int purchaseimpl(int itemid, String custid, int ordercnt, int totalprice, String phone2, String item_itemname, String cust_name, Date candate) {
+		int neworderlistid = 0;
+		OrderlistDTO neworder = null;
+		ItemDTO item = null;
+		try {
+			neworder = new OrderlistDTO(0, itemid, custid, null, ordercnt, totalprice, "신용카드", phone2, candate, item_itemname, cust_name);
+			olist_service.register(neworder);
+			int r = neworder.getOrderlistid();
+			neworderlistid = r;
+			
+			item = item_service.get(itemid);
+			odetail_service.register(new OrderdetailDTO(0, r, itemid, item.getItemplace(), item.getEstart(), item.getEfin(), item.getItemimg(), item_itemname, ordercnt, null, candate, custid));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return neworderlistid;
+	}
 	
 	@RequestMapping("/checkid")
 	public Object checkid(String cid) {

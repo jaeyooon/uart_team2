@@ -1,13 +1,22 @@
 <meta charset="utf-8">
 <style>
+.site-section {
+	padding: 5em 0 17em;
+}
+
+.table table-hover{
+	margin: auto;
+	width: 95%;
+}
 
 img{
-width: 70px;
+	width: 80px;
+	border-radius: 5px;
 }
 
 img:hover {
-	width: 69px;
-	border: 2px solid #742f99;
+	width: 79px;
+	border: 1px solid #742f99;
 }
 
 
@@ -27,8 +36,17 @@ table.table th {
 	border-bottom: solid #E9E9E9
 }
 
-.text-info:hover{
- text-decoration: underline black; 
+#trash_icon{
+	font-size: 19px;
+
+}
+
+#delete_btn{
+ 	padding: 10px;
+ 	height: 35px;
+ 		display: flex;
+	align-items: center;
+	margin: auto;
  }
 </style>
 
@@ -46,53 +64,41 @@ function del(wishid) {
 </script>
 
 
-<div class="container">
-  <h4 class="text-black">위시리스트</h4>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-      	<th class="text-black">no</th>
-        <th class="text-black">이미지</th>
-        <th class="text-black">상품명</th>
-        <th class="text-black">전시일정</th>
-        <th class="text-black">등록일</th>
-        <th class="text-black">삭제</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="c : ${mywishlist}">
-        <td class="text-black" id="wishid" th:text="${c.wishid}">no</td>
-        <td class="text-black"><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><img th:src="@{/img/}+${c.itemimg}"></a></td>
-        <td><a class="text-info" th:href="@{/item/itemdetail(itemid=${c.itemid})}"><strong><txt th:text="${c.itemname}" class="text-black"></txt></strong></td>
-        <td class="text-black" th:text="${#dates.format(c.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(c.efin, 'yyyy.MM.dd')}">전시일정</td>
-        <td class="text-black" th:text="${#dates.format(c.wishdate, 'yyyy.MM.dd')}">등록일</td>
-        <td> 
-        	<button type="button" th:onclick="del([[${c.wishid}]]);" class="btn btn-dark btn-sm-sm">
-          		<span class="material-icons">delete</span>
-        	</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="site-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-12 mb-5">
+				  <h4 class="text-black">위시리스트</h4>
+				</div>
+				  <table class="table table-hover">
+				    <thead>
+				      <tr>
+				      	<th class="text-black">no</th>
+				        <th class="text-black">이미지</th>
+				        <th class="text-black">상품명</th>
+				        <th class="text-black">전시일정</th>
+				        <th class="text-black">등록일</th>
+				        <th class="text-black">삭제</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr th:each="c : ${mywishlist}">
+				        <td class="text-black" id="wishid" th:text="${c.wishid}">no</td>
+				        <td class="text-black"><a th:href="@{/item/itemdetail(itemid=${c.itemid})}"><img th:src="@{/img/}+${c.itemimg}"></a></td>
+				        <td><a class="text-info" th:href="@{/item/itemdetail(itemid=${c.itemid})}"><strong><txt th:text="${c.itemname}" class="text-black"></txt></strong></td>
+				        <td class="text-black" th:text="${#dates.format(c.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(c.efin, 'yyyy.MM.dd')}">전시일정</td>
+				        <td class="text-black" th:text="${#dates.format(c.wishdate, 'yyyy.MM.dd')}">등록일</td>
+				        <td> 
+				        	<button id="delete_btn" type="button" th:onclick="del([[${c.wishid}]]);" class="btn btn-dark btn-sm-sm">
+				          		<span id="trash_icon" class="material-icons">delete</span>
+				        	</button>
+				        </td>
+				      </tr>
+				    </tbody>
+				  </table>
+			</div>
+		</div>
 </div>
 
 
-
-<!-- 하단부 공백(테이블공간) 마련을 위해서 -->
-<meta charset="utf-8">
-  <div class="site-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-12 order-2">
-            <div class="row">
-              <div class="col-md-12 mb-4">
-                <div class="float-md-left mb-4"><h3 class="text-black h3"></h3></div>
-                <div class="d-flex">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 

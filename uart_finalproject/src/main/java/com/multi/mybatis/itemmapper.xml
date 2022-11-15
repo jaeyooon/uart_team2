@@ -52,10 +52,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="gethighgrade" resultType="itemDTO">
 		SELECT i.itemid, i.itemname, i.itemimg, i.estart, i.efin, 
-		r.reviewgrade as review_reviewgrade FROM item i 
+		round(avg(r.reviewgrade), 1) as review_reviewgrade FROM item i 
 		INNER JOIN review r ON i.itemid = r.itemid
-		INNER JOIN cate c ON c.cateid = i.cateid
-		ORDER BY r.reviewgrade DESC LIMIT 6;
+		GROUP BY i.itemid
+		ORDER BY review_reviewgrade DESC LIMIT 6;
 
 	</select>
 
