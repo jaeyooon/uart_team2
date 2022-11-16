@@ -91,12 +91,16 @@ th {
 	color: #333;
 	border-bottom: 1px solid #e7e7e7;
 	border-top: 1px solid #3084d9;
-	background: #f4f9fd;
+	background: #faf4ff;
 	padding: 2px 0;
 }
 
 .td_width_1 {
-	width: 1%;
+	width: 0%;
+}
+
+.td_width_0 {
+	width: 3%;
 }
 
 .td_width_2 {
@@ -104,7 +108,7 @@ th {
 }
 
 .td_width_3 {
-	width: 12%;
+	width: 25%;
 }
 
 .td_width_4 {
@@ -148,34 +152,10 @@ th {
 	color: #4c4848;
 }
 
-.quantity_btn {
-	position: absolute;
-	border: 1px solid #aaa;
-	color: #FE6B00;
-	width: 14px;
-	height: 13px;
-	padding: 0px;
-	background-color: #fff;
-	font-weight: bold;
-	font-size: 7px;
-	line-height: 6px;
-	vertical-align: middle;
-}
 
-.quantity_modify_btn {
-	border: 1px solid #d0d0d0;
-	height: 25px;
-	line-height: 13px;
-	background-color: #fff;
-	text-align: center;
-	width: 46px;
-	display: inline-block;
-	padding: 3px 6px 2px;
-	margin-top: 3px;
-}
 
 .content_total_section {
-	background-color: rgb(227, 237, 247);
+	background-color: #faf4ff;
 }
 
 .total_wrap {
@@ -350,7 +330,7 @@ $(document).ready(
 						<!-- 체크박스 전체 여부 -->
 						<div class="all_check_input_div">
 							<input type="checkbox" class="all_check_input input_size"
-								checked="checked"><span class="all_chcek_span">전체선택</span>
+								checked="checked" style="display:none;"><span class="all_chcek_span"></span>
 						</div>
 						<table class="table">
 							<caption></caption>
@@ -372,7 +352,7 @@ $(document).ready(
 										<td class="td_width_1 cart_info_td"><input
 											type="checkbox"
 											class="individual_cart_checkbox input_size"
-											checked="checked"> <input type="hidden"
+											checked="checked" style="display:none;"> <input type="hidden"
 											class="individual_Price_input"
 											th:value="${itemdetail.itemoption_price1+itemdetail.itemoption_price2+itemdetail.itemoption_price3}">
 											<input type="hidden" class="individual_Cnt_input"
@@ -429,9 +409,9 @@ $(document).ready(
 												</tr>
 
 												<tr>
-													<td>총 주문 상품수</td>
-													<td><span class="totalKind_span"></span>종&nbsp&nbsp<span
-														class="totalCount_span" id="ordercnt"></span>개</td>
+													<td>총 티켓수</td>
+													<td><span class="totalKind_span"></span><span
+														class="totalCount_span" id="ordercnt"></span> 장</td>
 												</tr>
 											</table>
 										</td>
