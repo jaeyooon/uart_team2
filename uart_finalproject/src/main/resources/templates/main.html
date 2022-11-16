@@ -18,10 +18,20 @@
     <link rel="stylesheet" th:href="@{/css/aos.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    
+    <!-- autocomplete -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
     <!-- Google icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Filled|Material+Icons+Rounded|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"> 
+
+
+	
+
 
    <!-- Kakao map API -->
    <script type="text/javascript"
@@ -42,6 +52,7 @@
 #top_search {
    display: flex;
    align-items: center;
+   margin-bottom: -310px;
 }
 
 #search_btn {
@@ -50,6 +61,7 @@
    width: 50px;
    height: 32px;
    background-color: #7971EA;
+   margin-right:100px;
 }
 
 #login, #register, #logout {
@@ -101,6 +113,11 @@ a#MOVE_TOP_BTN{
 	z-index:999;
 }
 
+#nav_home{
+	margin-top:10px;
+}
+
+
 </style>
 
 
@@ -121,6 +138,31 @@ function enterkey2(){
 	
 };
   $(document).ready(function() {
+	  
+	  
+	  $.ajax({
+			url:'/autosearch',
+			success:function(data){
+				
+				$("#search_input").autocomplete({  //오토 컴플릿트 시작
+					source: data,	// 상단의 List 배열
+					
+					select:function(event, ui){
+						str=ui.item.label;
+						location.href='/searchimpl'+'?txt='+str;
+					},
+					
+					focus : function(event, ui){ // 방향키로 자동완성단어 선택	
+						
+						return false;
+					},
+					minLength: 1,// 최소 글자수
+					delay: 100,	//autocomplete 딜레이 시간(ms)
+					//disabled: true, //자동완성 기능 끄기
+				});
+			}
+		});
+	  
       
       $('#search_btn').click(function() {
       		if($('#search_input').val()==''){
@@ -218,7 +260,7 @@ function enterkey2(){
          </div>
          <nav class="site-navigation text-right text-md-center"
             role="navigation">
-            <div class="container">
+            <div id="nav_home" class="container">
                <ul class="site-menu js-clone-nav d-none d-md-block">
                   <li class="has-children active"><a href="/">Home</a>
                      <ul class="dropdown">

@@ -1,7 +1,9 @@
 package com.multi.controller;
 
 import java.util.Date;
+import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import com.multi.dto.ItemDTO;
 import com.multi.dto.OrderdetailDTO;
 import com.multi.dto.OrderlistDTO;
 import com.multi.frame.Util;
+import com.multi.mapper.AJAXMapper;
 import com.multi.ncp.OCR;
 import com.multi.service.CustomerService;
 import com.multi.service.EmanageService;
@@ -43,6 +46,10 @@ public class AJAXController {
 	
 	@Autowired
 	ItemService item_service;
+	
+	@Autowired
+	AJAXMapper ajax_mapper;
+	
 	
 	@Value("${custdir}")
 	String custdir;
@@ -124,6 +131,26 @@ public class AJAXController {
 		
 		
 		return result;
+	}
+	
+	
+	@RequestMapping("/autosearch")
+	public Object autosearch() {
+		List<ItemDTO> list = null;
+		
+		try {
+			list=ajax_mapper.getname();  //전시이름 select
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		JSONArray ja=new JSONArray(); //배열선언
+
+		for(ItemDTO i:list) { //배열에 이름 담기
+			ja.add(i.getItemname());
+		}
+		
+		return ja;
 	}
 
 	
