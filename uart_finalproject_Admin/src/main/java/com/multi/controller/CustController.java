@@ -15,6 +15,11 @@ public class CustController {
 		model.addAttribute("center",dir+"get");
 		return "main";
 	}
+	@RequestMapping("/detail")
+	public String detail(Model model) {
+    model.addAttribute("center",dir+"detail");
+		return "main";
+	}
 	
 	
 }

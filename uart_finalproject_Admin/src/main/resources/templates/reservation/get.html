@@ -1,10 +1,92 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<meta charset="utf-8">
+<style>
+.table th{
+font-size:15px;
+}
+</style>
+<!-- Bootstrap Table with Header - Light -->
+<div class="card" style="width:90%; height:100%; margin:auto; margin-top:70px;">
+	<h4 class="card-header">예매내역 목록</h4>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="javascript:void(0)">Navbar</a>
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="javascript:void(0)">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Link</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a
+                          class="nav-link dropdown-toggle"
+                          href="javascript:void(0)"
+                          id="navbarDropdown"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                          <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li><a class="dropdown-item" href="javascript:void(0)">Something else here</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link disabled" href="javascript:void(0)" tabindex="-1">Disabled</a>
+                      </li>
+                    </ul>
+                    <form class="d-flex" onsubmit="return false">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                      <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+	<div class="table-responsive text-nowrap" style=" text-align:center" >
+		<table class="table">
+			<thead>
+				<tr>
+					<th>예약번호</th>
+					<th>전시명</th>
+					<th>예매날짜</th>
+					<th>이용일</th>
+					<th>매수</th>
+					<th>장소</th>
+					<th>취소가능일</th>
+					
+				</tr>
+			</thead>
+			<tbody class="table-border-bottom-0">
+				<tr>
+					<td>예약번호</td>
+					<td>전시명</td>
+					<td>예매날짜</td>
+					<td>이용일</td>
+					<td>매수</td>
+					<td>장소</td>
+					<td>취소가능일</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!-- Bootstrap Table with Header - Light -->
