@@ -1,7 +1,8 @@
 <meta charset="utf-8">
-
 <style>
-.table {
+
+
+.table table{
 	margin: auto;
 	width: 95%;
 	color: #22333b;
@@ -13,6 +14,7 @@
 
 th, td {
 	text-align: center;
+	
 }
 
 .site-blocks-table thead th {
@@ -44,32 +46,58 @@ th, td {
 	margin-bottom: 10px;
 }
 
+.site-section {
+	padding: 5em 0 17em;
+}
+
+.table table-hover{
+	margin: auto;
+	width: 95%;
+}
+
+table.table td {
+	border-bottom: solid #E9E9E9
+}
+
+table.table th {
+	border-top: solid #E9E9E9
+}
+
+table.table th {
+	border-bottom: solid #E9E9E9
+}
+
+
 </style>
 
-<body>
 
-	<div class="site-section">
+<script>
+
+	
+</script>
+
+
+<div class="site-section">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-md-12 mb-5">
-					<h4 class="text-black h4">예매내역</h4>
+				  <h4 class="text-black">예매내역</h4>
 				</div>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>전시명</th>
-							<th>예매일</th>
-							<th>예약번호</th>
-							<th>이용일<br>/매수
-							</th>
-							<th>장소</th>
-							<th>취소가능일</th> 
-						</tr>
-					</thead>
-					<tbody>
+				  <table class="table table">
+				    <thead>
+				      <tr>
+				      	<th class="text-black">전시명</th>
+				        <th class="text-black">예매일</th>
+				        <th class="text-black">예약번호</th>
+				        <th class="text-black">이용일/매수</th>
+				        <th class="text-black">장소</th>
+				        <th class="text-black">취소가능일</th>
+				      </tr>
+				    </thead>
+				    <tbody>
 						<tr th:each="d:${detaillist}">
-							<td style="display: flex; justify-content: center">
-								<div style="width: 180px">
+							<td style="text-align : center;">
+								<div>
 									<a th:href="@{/item/itemdetail(itemid=${d.itemid})}"><img
 										id="detailimg" th:src="'/img/' + ${d.item_itemimg}"
 										alt="Image" class="img-fluid"><br> <span id="pname"
@@ -100,8 +128,10 @@ th, td {
 							<td th:text="${#dates.format(d.orderlist_candate,'yyyy.MM.dd')}" style="color: #7971EA;"></td> 
 						</tr>
 					</tbody>
-				</table>
+				  </table>
 			</div>
 		</div>
-	</div>
-</body>
+</div>
+
+
+
