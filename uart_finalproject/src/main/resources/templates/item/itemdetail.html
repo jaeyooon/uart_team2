@@ -141,8 +141,30 @@ to {
 	margin-bottom: 10px;
 }
 </style>
-
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
+
+function sendLinkCustom() {
+	if (!Kakao.isInitialized()) {
+	    Kakao.init('2ab2bc71a878960bc90a3e506ccd19f4');
+	};
+    /* Kakao.init("2ab2bc71a878960bc90a3e506ccd19f4"); */
+    Kakao.Link.sendCustom({
+        templateId: 85788
+    });
+}
+
+ function shareTwitter() {
+	    var sendText = "U-ART에서 멋진 전시를 만나보세요!"; // 전달할 텍스트
+	    var sendUrl = "http://127.0.0.1"; // 전달할 URL
+	    window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+	}
+ 
+ function shareFacebook() {
+	    var sendUrl = "http://127.0.0.1"; // 전달할 URL
+	    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+	}
+
 
 function display(){
 	var map;
@@ -264,6 +286,12 @@ $(document).ready(function(){
 					<span class="title"></span><span class="con"
 						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span>
 
+					<br><br>
+					<div style="margin-top:50px;">
+					<a id="kakao_btn" href="javascript:sendLinkCustom();" ><img src="/img/icon-kakao.png" ></a>
+					<a id="btnTwitter" class="link-icon twitter" href="javascript:shareTwitter();"><img src="/img/icon-twitter.png" ></a>
+					<a id="btnFacebook" class="link-icon facebook" href="javascript:shareFacebook();"><img src="/img/icon-facebook.png" ></a>   
+					</div>
 
 					<div id="btn">
 						<div style="display: inline-block">
