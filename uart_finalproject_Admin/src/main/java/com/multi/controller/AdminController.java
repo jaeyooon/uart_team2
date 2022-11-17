@@ -39,7 +39,7 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		
-		return "main";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/detail")
