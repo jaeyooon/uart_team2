@@ -32,13 +32,12 @@ var inputValue = $("input[name='lev']:checked").val();
 					</div>
 				</div>
 				<div class="row mb-3">
-
 					<div class="select">
 						<label class="col-sm-2 col-form-label" for="basic-default-name">Level</label>
-						<label><input type="radio" name="lev" value="A"  >
-							Advanced</label> <label><input type="radio"  name="lev"
-							value="I"> Intermediate</label> <label><input
-							type="radio"  name="lev" value="B"> Beginner</label>
+						<label><input type="radio" name="lev" value="A" th:checked="${a.lev eq 'A'}" >
+							Advanced</label> <label><input type="radio"  name="lev" 
+							value="I" th:checked="${a.lev eq 'I'}"> Intermediate</label> <label><input
+							type="radio"  name="lev" value="B" th:checked="${a.lev eq 'B'}"> Beginner</label>
 					</div>
 				</div>
 				<div class="row mb-3">
