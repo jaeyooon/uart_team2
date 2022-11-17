@@ -62,4 +62,32 @@ public class OrderController {
 		model.addAttribute("center", dir+"orderdetail");
 		return "main";
 	}
+	
+	@RequestMapping("/alldetailinfo")
+	public String alldetailinfo(Model model, int orderlistid) {
+		OrderlistDTO orderinfo = null;  // 구매내역 페이지 정보 불러오기 위해
+		OrderdetailDTO orderdetail = null;  // 예매내역 페이지 정보 불러오기 위해
+		try {
+			orderinfo = olist_service.get(orderlistid);
+			orderdetail = odetail_service.getallinfo(orderlistid);
+			model.addAttribute("orderinfo", orderinfo);
+			model.addAttribute("orderdetail", orderdetail);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("center", dir+"alldetailinfo");
+		return "main";
+	}
+	
+	@RequestMapping("/cancel")
+	public String cancel(Model model, String custid, int orderlistid) {
+		try {
+			System.out.println(custid);
+			olist_service.remove(orderlistid);
+			odetail_service.remove(orderlistid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "main";
+	}
 }

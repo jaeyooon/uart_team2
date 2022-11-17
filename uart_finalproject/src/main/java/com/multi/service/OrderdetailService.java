@@ -43,5 +43,9 @@ public class OrderdetailService implements MyService<Integer, OrderdetailDTO>{
 	public List<OrderdetailDTO> getallorderdetail(String cust_custid) throws Exception {
 		return mapper.getallorderdetail(cust_custid);
 	}
+	
+	public OrderdetailDTO getallinfo(Integer orderlistid) throws Exception {
+		return mapper.getallinfo(orderlistid);
+	}
 
 }

@@ -1,6 +1,8 @@
 <meta charset="utf-8">
 <style>
-
+.container {
+	width: 85%;
+}
 
 .table table{
 	margin: auto;
@@ -14,7 +16,7 @@
 
 th, td {
 	text-align: center;
-	
+	color: #22333b;
 }
 
 .site-blocks-table thead th {
@@ -44,6 +46,11 @@ th, td {
 	height: 210px;
 	border-radius: 7px;
 	margin-bottom: 10px;
+}
+
+#orderlistid {
+	color: #22333b;
+	text-decoration: underline;
 }
 
 .site-section {
@@ -109,7 +116,8 @@ table.table th {
 								style="font-size: 17px;">
 								<h2 class="h5 text-black"></h2>
 							</td>
-							<td th:text="${d.orderlistid}"></td>
+							<!-- 예약번호 -->
+							<td><a th:href="@{/order/alldetailinfo(orderlistid=${d.orderlistid})}"><span id="orderlistid" th:text="${d.orderlistid}"></span></a></td>
 							<td>
 								<div style="display: flex; justify-content: center;">
 									<div id="s1" class="row input-group mb-3"

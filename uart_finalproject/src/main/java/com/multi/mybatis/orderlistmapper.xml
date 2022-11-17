@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		FROM orderlist o
 		INNER JOIN item i ON o.itemid = i.itemid
 		INNER JOIN customer c ON o.custid = c.custid
-		WHERE orderlistid=#{orderlistid};
+		WHERE orderlistid=#{orderlistid}
 		
 	</select>
 	<select id="selectall" resultType="OrderlistDTO">
@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</update>
 	<delete id="delete" parameterType="Integer">
-		
+		DELETE FROM orderlist WHERE orderlistid=#{orderlistid}
 	</delete>
 	
 </mapper>

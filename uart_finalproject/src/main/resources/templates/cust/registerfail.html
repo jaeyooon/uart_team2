@@ -1,23 +1,44 @@
 <meta charset="utf-8">
+
 <style>
-  h2{
-     text-align: center;
-	 color:black;  
-  }
-  
-  h3{
-      text-align:center;
-      font-size:40px;
-      color:black;
-      font-weight:bold;
-  }
-  p{
-      text-align:center; 
-      color:black;
-      font-weight:bold;
-  }
+#rfailcontainer {
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#rfail_inner {
+display:flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+margin-top: 20px;
+margin-bottom: 20px;
+width: 400px;
+height: 150px;
+background: #f8f9fa;
+}
+
+h5, p {
+color: #22333b;
+}
+
 </style>
-<h2>Register Fail Page</h2>
-<h2 th:text="${fid.custid}+'는 이미 사용 중인 아이디입니다	.'"></h2>
-<h3>"다시 만들어 주십시오."</h3>
-<p><a href="register/registered">Get into the Register page.</a></p>
+
+<div class="site-section block-8">
+<div id="rfailcontainer">
+	<div id="rfail_inner">‍
+		<p th:text="'📌'+${fid.custid}+'는 이미 사용 중인 아이디입니다.'" style="margin-top: 30px;"></p>
+		<p>다시 만들어 주십시오.</p>
+	<div id="rfail_inner">
+	<p><a href="/register/registered">Get into the Register page.</a></p>
+</div>
+</div>
+
+
+
+
+	

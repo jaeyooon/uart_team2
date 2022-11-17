@@ -1,0 +1,224 @@
+<meta charset="UTF-8">
+<style>
+th, td, h6 {
+	color: #22333b;
+}
+
+.section {
+width: 85%;
+margin: 0 auto;
+}
+
+.left {
+	width: 24%;
+	background: #edf2fb;
+}
+
+.secondtbl_td {
+	background: #edf2fb;
+}
+
+#cancel_div {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+}
+
+#cancelfail{
+ 	z-index: 10000;
+ }
+
+
+</style>
+<script>
+function cancelimpl() {
+	var custid = '[[${session.logincust.custid}]]';
+	var orderlistid = $('#getorderlistid').text();
+	intorderlistid = Number(orderlistid);
+	//alert(intorderlistid);
+	
+	/* 취소가능일인지 비교 */
+	var pcandate = $('#possible_candate').val();
+	pcandate = new Date(pcandate); // 문자열 날짜형으로 변환
+	//alert(pcandate);
+	
+	var today = new Date();
+	
+	if(pcandate < today) {
+		$('#cancelfail').modal('show');
+	}
+	else {
+	
+		$.ajax({
+			url:'/order/cancel',
+			async:false,
+			data:
+			{
+				'custid':custid,
+				'orderlistid':intorderlistid
+			},
+			success : function() {
+				console.log('success')
+				location.href='/order/detail?id='+custid
+			}
+		}); 
+	}
+}
+
+function getFormatDate(date) {
+	var year = date.getFullYear();	
+	var month = (1 + date.getMonth());
+	month = month >= 10 ? month : '0' + month;
+	var day = date.getDate();
+	day = day >=10 ? day : '0' + day;
+	return year + '.' + month + '.' + day;
+}
+
+$(document).ready(function(){
+	var today = getFormatDate(new Date());
+	//alert(today);
+	
+	$('#candate').text(today);
+});
+
+</script>
+
+<div class="site-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-12 mb-5">
+				  <section class="section">
+				  				  <h4 class="text-black" style="margin-bottom: 50px; margin-left: -30px">예매/결제 내역</h4>
+				  
+				  <h6 style="margin-bottom: 20px;">🔖예매내역</h6>
+				  <input id="possible_candate" type="hidden" th:value="${#dates.format(orderinfo.candate,'yyyy.MM.dd')}">
+				  
+				  <!-- table 1 -->
+				  <table class="table table-bordered table-sm">
+					  <thead>
+					    <tr>
+					      <th th:text="${orderdetail.item_itemname}" colspan="2" style="color:#1d4e89;"></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td class="left">예매자</td>
+					      <td th:text="${orderinfo.cust_cname}">
+					      </td>
+					    </tr>
+					    <tr>
+					      <td class="left">예매번호</td>
+					      <td id="getorderlistid" th:text="${orderdetail.orderlistid}"></td>
+					    </tr>
+					    <tr>
+					      <td class="left">이용일</td>
+					      <td>
+					      	<span th:text="${#dates.format(orderdetail.item_estart,'yyyy.MM.dd')}+'~'">시작</span>
+							<span th:text="${#dates.format(orderdetail.item_efin,'yyyy.MM.dd')}">끝</span>
+					      </td>
+					    </tr>
+					    <tr>
+					      <td class="left">장소</td>
+					      <td th:text="${orderdetail.item_place}"></td>
+					    </tr>
+					    <tr>
+					      <td class="left">총 티켓수</td>
+					      <td th:text="${orderinfo.ordercnt} + ' 매'"></td>
+					    </tr>
+					    <tr>
+					      <td class="left">티켓수령 방법</td>
+					      <td>온라인 수령</td>
+					    </tr>
+					  </tbody>
+					</table>
+				  </section>
+				  
+				  <!-- 결제내역 -->
+				  <section class="section">
+				  <h6 style="margin-top: 40px; margin-bottom: 20px;">🔖결제내역</h6>
+				  
+				  <!-- table 2 -->
+				   <table id="secondtbl" class="table table-bordered table-sm">
+					  <tbody>
+					    <tr>
+					      <td class="secondtbl_td">예매일</td>
+					      <td th:text="${#dates.format(orderinfo.orderdate,'yyyy.MM.dd')}"></td>
+					      <td class="secondtbl_td">취소일</td>
+					      <td id="candate"></td>
+					    </tr>
+					    <tr>
+					      <td class="secondtbl_td">결제수단</td>
+					      <td th:text="${orderinfo.pay}"></td>
+					      <td class="secondtbl_td">결제금액</td>
+					      <td th:text="${#numbers.formatInteger(orderinfo.totalprice, 3, 'COMMA')}+'원'"></td>
+					    </tr>
+					    <tr>
+					      <td class="secondtbl_td">환불금액</td>
+					      <td th:text="${#numbers.formatInteger(orderinfo.totalprice, 3, 'COMMA')}+'원'" style="font-weight: bold;" colspan="3"></td>
+					    </tr>
+					  </tbody>
+					</table>
+				  </section>
+				  
+				  <!-- 환불 상세내역 -->
+				  <section class="section">
+				  <h6 style="margin-top: 40px; margin-bottom: 20px;">🔖환불 상세내역</h6>
+				  
+				  <!-- table 3 -->
+				   <table class="table table-bordered table-sm">
+					  <tbody>
+					    <tr>
+					      <td class="left">환불방법</td>
+					      <td th:text="${orderinfo.pay} + ' 결제 취소'" style="color:#5a189a;">
+					      </td>
+					    </tr>
+					    <tr>
+					      <td class="left">환불금액</td>
+					      <td th:text="${#numbers.formatInteger(orderinfo.totalprice, 3, 'COMMA')}+'원'" style="font-weight: bold;"></td>
+					    </tr>
+					    <tr>
+					      <td class="left">카드종류</td>
+					      <td>**카드</td>
+					    </tr>
+					    <tr>
+					      <td class="left">환불일정</td>
+					      <td>
+					      	  일반적으로는 당사자의 취소처리가 완료된 후 3~6일 후 카드사의 취소가 확인됩니다.<br>
+					      	  예매 취소 시점과 해당 카드사의 환불처리 기준에 따라 취소금액의 환급방법과 환급일은 다소 차이가 있을 수 있음을 알려드립니다.
+					      </td>
+					    </tr>
+					  </tbody>
+					</table>
+				  </section>
+				  
+				</div>
+				<div id="cancel_div">
+					<button onclick="cancelimpl()" id="cancel_btn" type="button"
+						class="btn btn-sm btn-primary"
+						style="display: inline-block">예매취소</button>
+				</div>
+			</div>
+		</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="cancelfail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>예매 취소가능일이 아닙니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+        <!-- <button type="button" class="btn btn-secondary" th:onclick="logingo()">이동</button> -->
+      </div>
+    </div>
+  </div>
+</div>
