@@ -23,7 +23,12 @@ public class AdminController {
 		return "main";
 	}
 	
-
+	@RequestMapping("/detail")
+	public String detail(Model model) {
+    model.addAttribute("center",dir+"detail");
+		return "main";
+	}
+	
 	
 	
 	
