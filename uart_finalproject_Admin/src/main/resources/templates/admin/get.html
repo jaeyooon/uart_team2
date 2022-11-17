@@ -11,19 +11,20 @@ font-size:15px;
 		<table class="table">
 			<thead class="table-light">
 				<tr>
-					<th>LEVEL</th>
+					
 					<th>NAME</th>
 					<th>ID</th>
 					<th>PWD</th>
+					<th>LEVEL</th>
 					
 				</tr>
 			</thead>
 			<tbody class="table-border-bottom-0">
-				<tr>
-					<td>level</td>
-					<td><a href="/admin/detail">name</a></td>
-					<td>id</td>
-					<td>pwd</td>
+				<tr th:each="a:${list}">
+					<td><a th:href="@{/admin/detail(adminid=${a.adminid})}" th:text="${a.aname}"></a></td>
+					<td th:text=${a.adminid}></td>
+					<td th:text="${a.adminpwd}">pwd</td>
+					<td th:text="${a.lev}"></td>
 					
 				</tr>
 			</tbody>

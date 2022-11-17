@@ -1,5 +1,7 @@
 <meta charset="utf-8">
-
+<script>
+var inputValue = $("input[name='lev']:checked").val(); 
+</script>
 <!-- Basic Layout -->
 <div class="col-xxl">
 	<div class="card mb-4"
@@ -13,37 +15,37 @@
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="name"
+						<input type="text" class="form-control" id="name" th:value="${a.aname}" name="aname"
 							readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">ID</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="id">
+						<input type="text" class="form-control" id="id" th:value="${a.adminid}" name="adminid">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">PWD</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="pwd">
+						<input type="text" class="form-control" id="pwd" th:value="${a.adminpwd}" name="adminpwd">
 					</div>
 				</div>
 				<div class="row mb-3">
 
 					<div class="select">
 						<label class="col-sm-2 col-form-label" for="basic-default-name">Level</label>
-						<label><input type="radio" id="A" name="lev" value="A">
-							Advanced</label> <label><input type="radio" id="I" name="lev"
+						<label><input type="radio" name="lev" value="A"  >
+							Advanced</label> <label><input type="radio"  name="lev"
 							value="I"> Intermediate</label> <label><input
-							type="radio" id="B" name="lev" value="B"> Beginner</label>
+							type="radio"  name="lev" value="B"> Beginner</label>
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-email">Email</label>
 					<div class="col-sm-8">
 						<div class="input-group input-group-merge">
-							<input type="text" id="email" class="form-control">
+							<input type="text" id="email" class="form-control" th:value="${a.ademail}" name="ademail">
 						</div>
 					</div>
 				</div>
@@ -52,7 +54,7 @@
 						No</label>
 					<div class="col-sm-8">
 						<input type="text" id="basic-default-phone"
-							class="form-control phone-mask">
+							class="form-control phone-mask" th:value="${a.adphone}" name="adphone">
 					</div>
 				</div>
 				
@@ -65,10 +67,6 @@
 						update
 						</span></button>
 					</div>
-				
-				
-					
-				</div>
 		</div>
 	</div>
 </div>

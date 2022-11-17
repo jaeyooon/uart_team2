@@ -12,55 +12,55 @@
 			<form>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="name"
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="name" th:value="${c.cname}" name="cname"
 							readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">ID</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="id" readonly="readonly">
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="custid"  th:value="${c.custid}" name="custid" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">PWD</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="pwd" readonly="readonly">
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="pwd" th:value="${c.pwd}" name="pwd"readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">Gender</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="gender" readonly="readonly">
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="gender" th:value="${c.gender}" name="gender" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label class="col-sm-2 col-form-label" for="basic-default-name">Birth</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="birth" readonly="readonly">
+					<label class="col-sm-2 col-form-label" for="basic-default-name" >Birth</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="birth" th:value="${c.birth}" name="birth" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">Phone</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="phone" readonly="readonly">
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="phone" th:value="${c.phone}" name="phone" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-email">Email</label>
-					<div class="col-sm-8">
+					<div class="col-sm-3">
 						<div class="input-group input-group-merge">
-							<input type="text" id="email" class="form-control" readonly="readonly">
+							<input type="text" id="email" class="form-control" th:value="${c.email}" name="email" readonly="readonly">
 						</div>
 					</div>
 				</div>
-				<div class="row mb-3">
+				<!-- <div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-phone">Custdate</label>
-					<div class="col-sm-8">
-						<input type="text" id="custdate" class="form-control phone-mask" readonly="readonly">
+					<div class="col-sm-3">
+						<input type="text" id="custdate" class="form-control phone-mask" th:value="${#dates.format(c.custdate,'yyyy-MM-dd')}" name="custdate" readonly="readonly">
 					</div>
-				</div>
+				</div> -->
 			</form>
 		</div>
 	</div>

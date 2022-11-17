@@ -1,4 +1,16 @@
-
+<meta charset="utf-8">
+<script>
+$(document).ready(function(){
+   $('#login_btn').click(function(){
+      $('#login_form').attr({
+         method:'post',
+         action:'[[@{/loginimpl}]]'  // 해당 서버에 form 정보 전송, script안에서는 대괄호로 감쌈
+      });
+      $('#login_form').submit();
+   });
+  
+});
+</script>
 <head>
   <meta charset="utf-8" />
 
@@ -26,14 +38,14 @@
               </div>
               <!-- /Logo -->
               <h4 class="mb-2">Welcome to U-ART!😊</h4>
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="login_form" class="mb-3">
                 <div class="mb-3">
                   <label for="id" class="form-label">ID</label>
                   <input
                     type="text"
                     class="form-control"
                     id="id"
-                    name="id"
+                    name="adminid"
                     placeholder="Enter your ID"
                     autofocus
                   />
@@ -50,7 +62,7 @@
                       type="password"
                       id="password"
                       class="form-control"
-                      name="password"
+                      name="adminpwd"
                       placeholder="Enter your password"
                       aria-describedby="password"
                     />
@@ -63,10 +75,10 @@
                     <label class="form-check-label" for="remember-me"> Remember Me </label>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
-                </div>
               </form>
+              <div class="mb-3">
+                  <button id="login_btn" class="btn btn-primary d-grid w-100" type="button">Login</button>
+                </div>
 
               <p class="text-center">
                 <span>New on our platform?</span>

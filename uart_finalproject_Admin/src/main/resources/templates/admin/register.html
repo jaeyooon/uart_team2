@@ -1,4 +1,15 @@
 <meta charset="utf-8">
+<script>
+	$(document).ready(function(){
+		$('#register_btn').click(function(){
+			$('#register_form').attr({
+				'action':'/admin/registerimpl',
+				'method':'post'
+			});
+			$('#register_form').submit();
+		});
+	});
+</script>
 <div class="container-xxl flex-grow-1 container-p-y">
 
 	<!-- Basic Layout -->
@@ -10,14 +21,14 @@
 					<h4 class="mb-0">관리자 등록</h4>
 				</div>
 				<div class="card-body" >
-					<form>
+					<form id="register_form">
 						<div class="mb-3">
 							<label class="form-label" for="basic-icon-default-fullname">Full
 								Name</label>
 							<div class="input-group input-group-merge">
 								<span id="basic-icon-default-fullname2" class="input-group-text"><i
 									class="bx bx-user"></i></span> <input type="text" class="form-control"
-									id="name" placeholder="Enter your name" />
+									id="name" name="aname" placeholder="Enter your name" />
 							</div>
 						</div>
 						<div class="mb-3">
@@ -25,7 +36,7 @@
 							<div class="input-group input-group-merge">
 								<span id="id" class="input-group-text"><i
 									class="bx bx-user"></i></span> <input type="text" class="form-control"
-									id="name" placeholder="Enter your ID" />
+									id="id" name="adminid" placeholder="Enter your ID" />
 							</div>
 						</div>
 						<div class="mb-3">
@@ -33,22 +44,22 @@
 							<div class="input-group input-group-merge">
 								<span id="pwd" class="input-group-text"><i
 									class="bx bx-user"></i></span> <input type="text" class="form-control"
-									id="name" placeholder="Enter your password" />
+									id="pwd" name="adminpwd"  placeholder="Enter your password" />
 							</div>
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="basic-icon-default-fullname">LEVEL</label>
 							 <div class="select">
-							     <label><input type="radio" id="A" name="lev" value="A"> Advanced</label>
-							     <label><input type="radio" id="I" name="lev" value="I"> Intermediate</label>
-							     <label><input type="radio" id="B" name="lev" value="B"> Beginner</label>
+							     <label><input type="radio"  name="lev" value="A"> Advanced</label>
+							     <label><input type="radio"  name="lev" value="I"> Intermediate</label>
+							     <label><input type="radio"  name="lev" value="B"> Beginner</label>
 							</div>
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="basic-icon-default-email">Email</label>
 							<div class="input-group input-group-merge">
 								<span class="input-group-text"><i class="bx bx-envelope"></i></span>
-								<input type="text" id="email"
+								<input type="text" id="email" name="ademail" 
 									class="form-control" placeholder="ID @uart.com">
 							</div>
 							<div class="form-text">You can use letters, numbers &
@@ -60,13 +71,12 @@
 							<div class="input-group input-group-merge">
 								<span id="basic-icon-default-phone2" class="input-group-text"><i
 									class="bx bx-phone"></i></span> <input type="text"
-									id="basic-icon-default-phone" class="form-control phone-mask"
+									id="basic-icon-default-phone" class="form-control phone-mask" name="adphone" 
 									placeholder="010-1234-5678">
 							</div>
 						</div>
-						
-						<button type="button" class="btn btn-primary">Register</button>
 					</form>
+					<button id="register_btn" type="button" value="click" class="btn btn-primary">Register</button>
 				</div>
 			</div>
 		</div>

@@ -11,17 +11,17 @@ font-size:15px;
 		<table class="table">
 			<thead class="table-light">
 				<tr>
-					<th>NAME</th>
 					<th>ID</th>
+					<th>NAME</th>
 					<th>PWD</th>
 					
 				</tr>
 			</thead>
 			<tbody class="table-border-bottom-0">
-				<tr>
-					<td><a href="/cust/detail">name</a></td>
-					<td>id</td>
-					<td>pwd</td>
+				<tr th:each="c:${list}">
+					<td><a th:href="@{/cust/detail(custid=${c.custid})}" th:text="${c.custid}"></a></td>
+					<td th:text="${c.cname}"></td>
+					<td th:text="${c.pwd}"></td>
 					
 				</tr>
 			</tbody>
