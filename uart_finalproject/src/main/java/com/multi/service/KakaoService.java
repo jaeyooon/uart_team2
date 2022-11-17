@@ -57,7 +57,6 @@ public class KakaoService{
 		}
 		return access_Token;
 	}
-   
 	
 	public HashMap<String, Object> getUserInfo(String access_Token) {
 		HashMap<String, Object> userInfo = new HashMap<String, Object>();
