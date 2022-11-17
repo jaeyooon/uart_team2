@@ -1,8 +1,14 @@
 <meta charset="utf-8">
 <script>
-  function registerimpl(){
-	  
-  }
+	$(document).ready(function(){
+		$('#register_btn').click(function(){
+			$('#register_form').attr({
+				method:'post',
+				action:'/adm/registerimpl'
+			});
+			$('#register_form').submit();
+		});
+	});
 </script>
 <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -15,7 +21,7 @@
 					<h4 class="mb-0">관리자 등록</h4>
 				</div>
 				<div class="card-body" >
-					<form>
+					<form id="register_form">
 						<div class="mb-3">
 							<label class="form-label" for="basic-icon-default-fullname">Full
 								Name</label>
@@ -70,7 +76,7 @@
 							</div>
 						</div>
 						
-						<button type="button" value="click" onclick="registerimpl" class="btn btn-primary">Register</button>
+						<button id="register_btn" type="button" value="click" class="btn btn-primary">Register</button>
 					</form>
 				</div>
 			</div>
