@@ -40,6 +40,16 @@ public class EventblService implements MyService<Integer, EventblDTO> {
 		return mapper.selectall();
 	}
 	
-
+	public EventblDTO getcustevent(String k) throws Exception {
+		return mapper.getcustevent(k);
+	}
+	
+	public EventblDTO getcidevent(String k) throws Exception{
+		return mapper.getcidevent(k);
+	}
+	
+	public void deletecoupon(EventblDTO event) throws Exception{
+		mapper.deletecoupon(event);
+	}
 
 }

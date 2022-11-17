@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.multi.dto.EventblDTO;
 import com.multi.dto.OrderdetailDTO;
 import com.multi.dto.OrderlistDTO;
+import com.multi.service.EventblService;
 import com.multi.service.OrderdetailService;
 import com.multi.service.OrderlistService;
 
@@ -21,13 +23,24 @@ public class OrderController {
 	
 	@Autowired
 	OrderlistService olist_service;
+	
+	@Autowired
+	EventblService event_service;
 
 	String dir = "order/";
 	
 	@RequestMapping("/checknew")
-	public String checknew(Model model, int id) {
+	public String checknew(Model model, int id, String custid) {
+		System.out.println(custid);
+		EventblDTO event = null;
 		OrderlistDTO neworder = null;
+		
 		try {
+			event = event_service.getcidevent(custid);
+			if(event != null) {
+				event_service.deletecoupon(event);
+			}
+			
 			neworder = olist_service.get(id);
 			model.addAttribute("neworder", neworder);
 			model.addAttribute("center", dir+"checknew");

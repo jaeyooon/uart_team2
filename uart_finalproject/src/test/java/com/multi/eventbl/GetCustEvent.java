@@ -1,25 +1,26 @@
 package com.multi.eventbl;
 
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.multi.dto.CustomerDTO;
 import com.multi.dto.EventblDTO;
+import com.multi.service.CustomerService;
 import com.multi.service.EventblService;
 
 @SpringBootTest
-class InsertEventbl {
+class GetCustEvent {
 
 	@Autowired
 	EventblService service;
-	
+
 	@Test
 	void contextLoads() {
-		EventblDTO event = new EventblDTO(null, "id11", null, null, null, null, null, null, null, null);
+		EventblDTO event = null;
 		try {
-			service.register(event);
-			System.out.println("OK");
+			event = service.getcustevent("id10");
+			System.out.println(event);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

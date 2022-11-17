@@ -11,13 +11,27 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM eventbl
 	</select>
 	<insert id="insert" parameterType="eventblDTO">
-		INSERT INTO eventbl VALUES (NULL, #{custid},'2022-11-17', '2022-12-31', '수험표 인증시, 전시 50% 할인!','sevent.png', 50, sysdate())
+		INSERT INTO eventbl VALUES (NULL, #{custid},'2022-11-17', '2022-12-31', '수험표 인증시, 전시 50% 할인!','sevent.png', 50, sysdate(), 1)
 	</insert>
 	<update id="update" parameterType="eventblDTO">
-		
+		UPDATE eventbl SET sort=0 WHERE custid=#{custid}
 	</update>
 	<delete id="delete" parameterType="Integer">
 		
 	</delete>
+	
+	<select id="getcustevent" parameterType="String" resultType="eventblDTO">
+		SELECT * FROM eventbl e
+		INNER JOIN customer c ON c.custid = e.custid
+		WHERE e.custid=#{custid}
+	</select>
+	
+	<select id="getcidevent" parameterType="String" resultType="eventblDTO">
+		SELECT * FROM eventbl WHERE custid=#{custid}
+	</select>
+	
+	<update id="deletecoupon" parameterType="eventblDTO">
+		UPDATE eventbl SET sort=0 WHERE custid=#{custid}
+	</update>
 	
 </mapper>

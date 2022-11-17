@@ -78,6 +78,26 @@ public class AJAXController {
 		return neworderlistid;
 	}
 	
+	@RequestMapping("/checkcoupon")
+	public Object checkcoupon(String custid) {
+		boolean result = false;
+		EventblDTO event = null;
+		
+		try {
+			event = event_service.getcustevent(custid);
+			if(event != null) {
+				if(event.getSort() == 1) { // 50% 할인쿠폰 적용한적 없는 경우
+					result = true;  // 쿠폰적용가능
+				} else {
+					result = false;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	@RequestMapping("/checkid")
 	public Object checkid(String cid) {
 		String result ="";
@@ -122,7 +142,7 @@ public class AJAXController {
 				result = false;
 			}else {
 				emanage_service.register(new EmanageDTO(tnumber, null));
-				event_service.register(new EventblDTO(null, custid, null, null, null, null, null, null,null));
+				event_service.register(new EventblDTO(null, custid, null, null, null, null, null, null, null, null));
 				result = true;
 			}
 		} catch (Exception e) {

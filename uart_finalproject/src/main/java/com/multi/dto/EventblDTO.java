@@ -24,6 +24,7 @@ public class EventblDTO {
 	private String image;
 	private Integer sale;
 	private Date pdate;
+	private Integer sort;
 	
 	private MultipartFile uploadimg; // 수험표 업로드한 이미지
 }

@@ -15,18 +15,6 @@ a {
 	text-decoration: none;
 }
 
-/* 제품 목록 네비 */
-.navi_bar_area {
-	width: 100%;
-	height: 70px;
-	background-color: #7696fd;
-}
-
-/* 홈페이지 메인 제품 목록  */
-.content_area {
-	width: 100%;
-	min-height: 1000px;
-}
 
 table {
 	border-collapse: collapse;
@@ -42,20 +30,6 @@ caption {
 	overflow: hidden;
 }
 
-.content_subject {
-	height: 110px;
-	line-height: 110px;
-	background-color: #5080bd;
-	margin-bottom: 60px;
-}
-
-.content_subject span {
-	padding-left: 30 px;
-	display: inline-block;
-	color: white;
-	font-size: 50px;
-	font-weight: bolder;
-}
 
 .content_totalCount_section {
 	margin-bottom: 12px;
@@ -66,25 +40,6 @@ caption {
 	text-align: right;
 }
 
-.content_btn_section a {
-	color: #fefeff;
-	min-width: 125px;
-	padding: 2.5px 10px;
-	display: inline-block;
-	height: 39px;
-	font-size: 23px;
-	font-weight: bold;
-	text-align: center;
-	margin-right: -2px;
-	line-height: 39px;
-}
-
-.subject_table {
-	font-size: 14px;
-	line-height: 20px;
-	width: 100%;
-	text-align: center;
-}
 
 th {
 	text-align: center;
@@ -115,23 +70,6 @@ th {
 	width: 15%;
 }
 
-.cart_table {
-	font-size: 14px;
-	line-height: 20px;
-}
-
-.cart_table tr {
-	height: 110px;
-}
-
-.price_td {
-	padding-left: 5px;
-}
-
-.cart_table td {
-	border-bottom: 1px solid #e7e7e7;
-}
-
 .quantity_div {
 	position: relative;
 	width: 42px;
@@ -151,7 +89,6 @@ th {
 	font-size: 16px;
 	color: #4c4848;
 }
-
 
 
 .content_total_section {
@@ -223,9 +160,55 @@ margin-right: 8px;
 #cd {
 	margin-top: 20px;
 }
+
+#alertcoupon {
+	z-index: 10000;
+}
+
+#order {
+font-size: 12px;
+}
+
+#totalprice {
+margin-left:90px;
+}
+
 </style>
 
 <script>
+function checkCoupon(){
+	var result;
+	var custid = '[[${session.logincust.custid}]]';
+	$.ajax({
+		url:'/checkcoupon',
+		async: false, 
+		data:{'custid':custid},
+		success : function(data) {
+			result = data;
+			//alert(result);
+			if(result != true) {
+				$('#sale_totalprice').text('사용가능한 쿠폰이 없습니다❕');
+				$('#sale_totalprice').css('color', '#5a189a');
+				$('#sale_totalprice').css('font-size','15px');
+				$('#sale_totalprice').css('font-weight','bold');
+			} else {
+				var totalprice = $('#totalprice').text(); // 총 주문금액
+				totalprice = totalprice.replace(",","");  // 콤마 제거
+				inttotalprice = Number(totalprice);
+				inttotalprice = inttotalprice * 1/2; 
+				//alert(inttotalprice);
+				$('#sale_totalprice').text(inttotalprice.toLocaleString());
+				$('#sale_totalprice').css('color', '#854A72');
+				$('#sale_totalprice').css('font-size','17px');
+				$('#sale_totalprice').css('font-weight','bold');
+				$('#totalprice').css('text-decoration','line-through')
+				$('#won').text('원');
+			}
+		}
+	});
+	return result;
+}
+
 function requestPay() {
 	var custid = '[[${session.logincust.custid}]]';
 	//alert(custid);
@@ -237,8 +220,17 @@ function requestPay() {
 	var totalprice = $('#totalprice').text(); // 총 주문금액
 	totalprice = totalprice.replace(",","");  // 콤마 제거를 위해
 	//alert(totalprice);
+	
+	check_result = checkCoupon();  /* 쿠폰적용가능한지 확인 */
+	//alert('*'+check_result);
+	
 	inttotalprice = Number(totalprice);
-	//alert(inttotalprice);
+		if(check_result == true) { // 적용가능한 쿠폰이 있는 경우
+			inttotalprice = inttotalprice * 1/2;
+			//alert(inttotalprice);
+		} 
+		
+	
 	var name = $('#name').val();  // 예매자 정보
 	//alert(name);
 	var email = $('#email').val();  
@@ -253,13 +245,13 @@ function requestPay() {
 	candate.setDate(date.getDate()+3);
 	//alert(candate);
 	
-	  IMP.init('imp35808662'); 
+	 IMP.init('imp35808662'); 
 	  IMP.request_pay({
 	    pg: 'html5_inicis.INIpayTest',
 	    pay_method: 'card',
 	    merchant_uid : 'merchant_'+new Date().getTime(),
 	    name : itemname,
-	    amount : totalprice,
+	    amount : inttotalprice,
 	    buyer_email : email,
 	    buyer_name : name,
 	    buyer_tel : phone,
@@ -281,7 +273,7 @@ function requestPay() {
 	        	success : function(data) {
 	        		console.log(data)
 	        		var orderlistid = data;
-	        		location.href='/order/checknew?id='+orderlistid; 
+	        		location.href='/order/checknew?id='+orderlistid+'&custid='+custid;  
 	        	}
 	        });
 	      } else {
@@ -290,7 +282,7 @@ function requestPay() {
 	        alert(msg);
 	        return false;
 	      }
-	  });    
+	  });     
 	}
 
 $(document).ready(
@@ -316,7 +308,6 @@ $(document).ready(
 </script>
 
 <body>
-<div class="site-section">
 	<div class="container">
 		<div class="wrapper">
 			<div class="wrap">
@@ -331,7 +322,7 @@ $(document).ready(
 						<!-- 체크박스 전체 여부 -->
 						<div class="all_check_input_div">
 							<input type="checkbox" class="all_check_input input_size"
-								checked="checked" style="display:none;"><span class="all_chcek_span"></span>
+								checked="checked" style="display:none;"><span class="all_chcek_span">전체선택</span>
 						</div>
 						<table class="table">
 							<caption></caption>
@@ -388,11 +379,11 @@ $(document).ready(
 										</td>
 										<td class="td_width_4 table_text_align_center">
 											<form
-												th:text="${#numbers.formatInteger(itemcnt1*itemdetail.itemoption_price1, 3, 'COMMA')}+'원'"></form>
+												th:text="${itemcnt1*itemdetail.itemoption_price1}+'원'"></form>
 											<form
-												th:text="${#numbers.formatInteger(itemcnt2*itemdetail.itemoption_price2, 3, 'COMMA')}+'원'"></form>
+												th:text="${itemcnt2*itemdetail.itemoption_price2}+'원'"></form>
 											<form
-												th:text="${#numbers.formatInteger(itemcnt3*itemdetail.itemoption_price3, 3, 'COMMA')}+'원'"></form>
+												th:text="${itemcnt3*itemdetail.itemoption_price3}+'원'"></form>
 										</td>
 								</c:forEach>
 							</tbody>
@@ -411,8 +402,7 @@ $(document).ready(
 
 												<tr>
 													<td>총 티켓수</td>
-													<td><span class="totalKind_span" style="display:none;"></span><span
-														class="totalCount_span" id="ordercnt"></span> 장</td>
+													<td><span class="totalCount_span" id="ordercnt"></span> 매
 												</tr>
 											</table>
 										</td>
@@ -426,7 +416,17 @@ $(document).ready(
 												<tbody>
 													<tr>
 														<td><strong>총 결제예정금액</strong></td>
-														<td><span id="totalprice" class="finalTotalPrice_span"></span> 원</td>
+														<td>
+															<span id="totalprice" class="finalTotalPrice_span"></span> 원
+															<button onclick="checkCoupon()" id="order" type="button"
+															class="buy-now btn btn-primary"
+															style="display: inline-block">쿠폰적용</button>
+															<div>
+															<span id="sale_totalprice">
+															</span>
+															<span id="won"></span>
+															</div>
+														</td>
 													</tr>
 												</tbody>
 											</table>
@@ -461,7 +461,7 @@ $(document).ready(
 									<div class="form-group">
 										<label for="id">이메일:</label> <input type="text"
 											readonly="readonly" class="form-control" id="email"
-											th:value="${cust.email}" name="email"> <span
+											th:value="${cust.email}" name="email"><span
 											id="ispan"></span>
 									</div>
 								</form>
@@ -564,9 +564,7 @@ function setTotalInfo(){
 }
 
 
-
-
-
 </script>
+
 </body>
 </html>
