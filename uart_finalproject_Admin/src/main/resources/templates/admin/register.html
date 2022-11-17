@@ -3,8 +3,8 @@
 	$(document).ready(function(){
 		$('#register_btn').click(function(){
 			$('#register_form').attr({
-				method:'post',
-				action:'/admin/registerimpl'
+				'action':'/admin/registerimpl',
+				'method':'post'
 			});
 			$('#register_form').submit();
 		});
