@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO customer VALUES (#{custid},#{pwd},#{cname},#{birth},#{gender},#{email},#{phone},sysdate(),1)
 	</insert>
 	<update id="update" parameterType="customerDTO">
-		UPDATE customer SET pwd=#{pwd},cname=#{cname},birth=#{birth},gender=#{gender},phone=#{phone},custdate=#{custdate},withdrawal=1 WHERE custid=#{custid}
+		UPDATE customer SET pwd=#{pwd},cname=#{cname},birth=#{birth},gender=#{gender},phone=#{phone} WHERE custid=#{custid}
 	</update>
 	<delete id="delete" parameterType="String">
 		
