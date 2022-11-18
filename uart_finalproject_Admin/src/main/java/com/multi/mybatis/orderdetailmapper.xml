@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.OrderdetailMapper">
+	
+	<select id="select" parameterType="Integer" resultType="OrderdetailDTO"> 
+		
+	</select>
+	<select id="selectall" resultType="OrderdetailDTO">
+		
+	</select>
+	<insert id="insert" parameterType="OrderdetailDTO">
+		INSERT INTO orderdetail VALUES (NULL, #{orderlistid}, #{itemid})
+	</insert>
+	<update id="update" parameterType="OrderdetailDTO">
+		
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM orderdetail WHERE orderdetailid=#{orderdetailid};
+	</delete>
+	
+	<select id="getallorderdetail" parameterType="String" resultType="OrderdetailDTO">
+		SELECT c.custid as cust_custid, od.orderdetailid, od.orderlistid, od.itemid,
+		i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
+		i.itemname as item_itemname, i.itemimg as item_itemimg, ol.ordercnt as orderlist_ordercnt,
+		ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderdetail od
+		INNER JOIN orderlist ol ON ol.orderlistid = od.orderlistid
+		INNER JOIN customer c ON ol.custid = c.custid
+		INNER JOIN item i ON od.itemid = i.itemid
+		WHERE c.custid=#{custid};
+	</select>
+	
+</mapper>
