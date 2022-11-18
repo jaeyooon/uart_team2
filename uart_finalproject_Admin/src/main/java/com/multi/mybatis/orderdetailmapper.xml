@@ -8,26 +8,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</select>
 	<select id="selectall" resultType="OrderdetailDTO">
-		
+		SELECT i.itemname as item_itemname, i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
+		ol.orderlistid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place
+		,ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
+		INNER JOIN item i ON ol.itemid = i.itemid
 	</select>
 	<insert id="insert" parameterType="OrderdetailDTO">
-		INSERT INTO orderdetail VALUES (NULL, #{orderlistid}, #{itemid})
+		
 	</insert>
 	<update id="update" parameterType="OrderdetailDTO">
 		
 	</update>
 	<delete id="delete" parameterType="Integer">
-		DELETE FROM orderdetail WHERE orderdetailid=#{orderdetailid};
+		
 	</delete>
-	
-	<select id="getallorderdetail" parameterType="String" resultType="OrderdetailDTO">
-		SELECT i.itemname as item_itemname, i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
-		, i.itemimg as item_itemimg, ol.ordercnt as orderlist_ordercnt,
-		ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderdetail od
-		INNER JOIN orderlist ol ON ol.orderlistid = od.orderlistid
-		INNER JOIN customer c ON ol.custid = c.custid
-		INNER JOIN item i ON od.itemid = i.itemid
-		WHERE o.orderlistid=#{orderlistid};
-	</select>
 	
 </mapper>
