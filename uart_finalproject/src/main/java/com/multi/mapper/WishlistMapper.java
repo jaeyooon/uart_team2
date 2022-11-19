@@ -12,4 +12,8 @@ import com.multi.frame.MyMapper;
 @Mapper
 public interface WishlistMapper extends MyMapper<Integer, WishlistDTO>{
 	public List<WishlistDTO> wishlistall(String custid) throws Exception;
+	/* 카트 추가 */
+	public int addCart(WishlistDTO cart) throws Exception;
+	/* 카트 확인 */
+	public WishlistDTO checkCart(WishlistDTO cart);	
 }

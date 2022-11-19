@@ -37,5 +37,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN customer cu ON wi.custid = cu.custid
 		WHERE wi.custid= #{custid}
 	</select>
+	
+	<!-- 카트 추가 -->
+	<insert id="addCart">
+	
+		INSERT INTO wish VALUES (null,#{custid},#{itemid},sysdate())
+	
+	</insert>
+	<!-- 카트 확인 -->
+	<select id="checkCart" resultType="WishlistDTO">
+	
+		select * from wish
+		where custid = #{custid} and itemid = #{itemid}
+	
+	</select>
 
 </mapper>

@@ -43,5 +43,21 @@ public class WishlistService implements MyService<Integer, WishlistDTO>{
 	public List<WishlistDTO> wishlistall(String custid) throws Exception {
 		return mapper.wishlistall(custid);
 	}
+	public int addCart(WishlistDTO cart) {
 
+		// 장바구니 데이터 체크
+		WishlistDTO checkCart = mapper.checkCart(cart);
+		
+		if(checkCart != null) {
+			return 2;
+		}
+		
+		// 장바구니 등록 & 에러 시 0반환
+		try {
+			return mapper.addCart(cart);
+		} catch (Exception e) {
+			return 0;
+		}		
+		
+	}	
 }

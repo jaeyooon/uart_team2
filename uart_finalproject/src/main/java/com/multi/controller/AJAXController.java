@@ -7,7 +7,9 @@ import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.multi.dto.CustomerDTO;
@@ -178,7 +180,7 @@ public class AJAXController {
 		return ja;
 	}
 	
-	@RequestMapping("/wishlist/add")
+	/*@RequestMapping("/wishlist/add")
 	public Object addwishlist(WishlistDTO wish) {
 		try {
 			wishlist_service.register(wish);
@@ -186,5 +188,25 @@ public class AJAXController {
 			e.printStackTrace();
 		}
 		return "";
-	}
+	}*/
+	
+	/* 장바구니 추가 */
+	/**
+	 * 0: 등록 실패
+	 * 1: 등록 성공
+	 * 2: 등록된 데이터 존재
+	 * 5: 로그인 필요
+	 * 
+	 */
+	@RequestMapping("/wishlist/add")
+	@ResponseBody
+	public String addCartPOST(WishlistDTO cart) {
+		
+		
+		// 카트 등록
+		
+		int result = wishlist_service.addCart(cart);
+		
+		return result + "";
+	}	
 }
