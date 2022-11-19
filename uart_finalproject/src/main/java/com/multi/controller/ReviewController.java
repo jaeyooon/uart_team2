@@ -24,6 +24,6 @@ public class ReviewController {
 			e.printStackTrace();
 		}
 		
-		return "main";
+		return "redirect:item/itemdetail?itemid="+itemid;
 	}
 }
