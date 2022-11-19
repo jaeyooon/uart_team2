@@ -3,6 +3,9 @@ package com.multi.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -200,8 +203,13 @@ public class AJAXController {
 	 */
 	@RequestMapping("/wishlist/add")
 	@ResponseBody
-	public String addCartPOST(WishlistDTO cart) {
-		
+	public String addCartPOST(WishlistDTO cart,HttpServletRequest request) {
+		// 로그인 체크
+				HttpSession session = request.getSession();
+				CustomerDTO mvo = (CustomerDTO)session.getAttribute("logincust");
+				if(mvo == null) {
+					return "5";
+				}
 		
 		// 카트 등록
 		
