@@ -217,4 +217,46 @@ public class AJAXController {
 		
 		return result + "";
 	}	
+	
+	@RequestMapping("/naverlogin")
+	public Object naverlogin(Model model, String cname, String email, String gender, HttpSession session) {
+		boolean result = false;
+		
+		System.out.println("###이름 : "+cname);
+		System.out.println("###이메일 : "+ email);
+		System.out.println("###성별 : "+gender);
+		
+		String [] nemail = email.split("@"); // id 정보 가져오기 위해 @기준으로 문자열 자르기
+		String nid = nemail[0];
+		//System.out.println(nid);
+		
+		if(gender.equals("F")) {
+			gender = new String("여");
+		} else {
+			gender = new String("남");
+		}
+		//System.out.println(gender);
+		
+		CustomerDTO cust = null;
+		try {
+			cust = cust_service.get(nid);
+			if(cust == null) {
+				cust_service.register(new CustomerDTO(nid, null, cname, null, gender, email, null, null, null));
+			
+				CustomerDTO newnavercust = cust_service.get(nid);
+				System.out.println(newnavercust);
+				
+				session.setAttribute("logincust", newnavercust);
+				result = true;
+			} else {
+				session.setAttribute("logincust", cust);
+				result = false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(result);
+		return result;
+	}
 }

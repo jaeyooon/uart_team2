@@ -9,6 +9,9 @@
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./login.css">
     
+    <!-- Naver Login -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     
 </head>
 <style>
@@ -134,9 +137,10 @@ h2 {
   font-size: 1.2em;
   letter-spacing: 2px;
 }
-#naver,#kakao{
+#kakao{
 	width:100px;
-	height:45px;
+	height:44px;
+	margin-right: 160px;
 	
 }
 </style>
@@ -197,9 +201,21 @@ $(document).ready(function(){
 				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=48b96f6623867093002dbead41c00334&redirect_uri=http://127.0.0.1/oauth/kakao&response_type=code"> 
 					<img id="kakao" src="/img/kakao_login.png">
 				</a></li>
-				<li><a href='#'> 
-					<img id="naver" src="/img/naver_login.png">
-				</a></li> 
+				
+				<!-- 네이버 로그인 버튼 -->
+				  <div id="naver_id_login"></div>
+				  
+				  <script type="text/javascript">
+				  	var naver_id_login = new naver_id_login("NDkDf_szvxKsXLeeDzNd", "http://127.0.0.1/cust/callback"); 
+				  	var state = naver_id_login.getUniqState();
+				  	naver_id_login.setButton("white", 2, 43);
+				  	naver_id_login.setDomain("http://127.0.0.1");
+				  	naver_id_login.setState(state);
+				  	/* naver_id_login.setPopup(); */
+				  	naver_id_login.init_naver_id_login();
+				  	
+				  </script>
+				
 				<br>
             </div>
         </div>
