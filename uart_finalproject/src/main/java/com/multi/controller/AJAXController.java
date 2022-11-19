@@ -16,6 +16,7 @@ import com.multi.dto.EventblDTO;
 import com.multi.dto.ItemDTO;
 import com.multi.dto.OrderdetailDTO;
 import com.multi.dto.OrderlistDTO;
+import com.multi.dto.WishlistDTO;
 import com.multi.frame.Util;
 import com.multi.mapper.AJAXMapper;
 import com.multi.ncp.OCR;
@@ -25,6 +26,7 @@ import com.multi.service.EventblService;
 import com.multi.service.ItemService;
 import com.multi.service.OrderdetailService;
 import com.multi.service.OrderlistService;
+import com.multi.service.WishlistService;
 
 @RestController
 public class AJAXController {
@@ -49,6 +51,9 @@ public class AJAXController {
 	
 	@Autowired
 	AJAXMapper ajax_mapper;
+	
+	@Autowired
+	WishlistService wishlist_service;
 	
 	
 	@Value("${custdir}")
@@ -172,6 +177,14 @@ public class AJAXController {
 		
 		return ja;
 	}
-
 	
+	@RequestMapping("/wishlist/add")
+	public Object addwishlist(WishlistDTO wish) {
+		try {
+			wishlist_service.register(wish);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
 }

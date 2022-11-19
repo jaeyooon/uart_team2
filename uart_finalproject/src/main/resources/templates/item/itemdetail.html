@@ -215,23 +215,23 @@ function mouseoutListener(marker, infowindow) {
 
 $(document).ready(function(){
 	display();
- 	$('#wishlist').click(function(){
- 		$(this).toggleClass("btn");
- 		var itemid = $('#itemid').text();
-		//alert(itemid);
-		var custid = '[[${session.logincust.custid}]]';
-		//alert(custid);
-		$.ajax({
-			url:'[[@{/addwishlist}]]',
-			data:{
-				'custid':custid,
-				'itemid':itemid
-				},
-				success:function(data){
-					
-				}
-		});
+	$('#wishlist').click(function(){
+		$(this).toggleClass("btn");
+		var itemid = $('#itemid').text();
+	//alert(itemid);
+	var custid = '[[${session.logincust.custid}]]';
+	//alert(custid);
+	$.ajax({
+		url:'[[@{/wishlist/add}]]',
+		data:{
+			'custid':custid,
+			'itemid':itemid
+			},
+			success:function(data){
+				
+			}
 	});
+});
  	
  	$('#review_btn').click(function(){
 		var custid = '[[${session.logincust.custid}]]';
@@ -241,6 +241,8 @@ $(document).ready(function(){
 		location.href="[[@{/registerreview?custid=}]]"+custid+"&[[@{itemid=}]]"+itemid+"&[[@{reviewgrade=}]]"+reviewgrade+"&[[@{reviewcontent=}]]"+reviewcontent;
 	});
 });
+
+
 </script>
 
 <head>
