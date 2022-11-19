@@ -63,7 +63,25 @@ public class AdminController {
 		return "main";
 	}
 	
+	@RequestMapping("/delete")
+	public String delete(Model model, String adminid) {
+		try {
+			service.remove(adminid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:get";		// 삭제 후 전체조회로 가라
+	}
 	
+	@RequestMapping("/update")
+	public String update(Model model, AdminDTO adm) {
+		try {
+			service.modify(adm);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:detail?adminid="+adm.getAdminid();
+	}
 	
 }
 

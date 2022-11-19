@@ -1,4 +1,26 @@
 <meta charset="utf-8">
+<script>
+$(document).ready(function() {
+	$('#delete_btn').click(function() {
+		var c = confirm('💡삭제하시겠습니까?');
+		if (c == true) {
+			var id = $('#adminid').val(); 
+			location.href = '[[@{/admin/delete?adminid=}]]' + id;
+		}
+	});
+	$('#update_btn').click(function() {
+	    alert('💡수정하시겠습니까?');
+		$('#detail_form').attr({
+			'method' : 'post',
+			'action' : '[[@{/admin/update}]]'
+		});
+		$('#detail_form').submit();	
+		
+	}); 
+
+});
+</script>
+</script>
 <!-- Basic Layout -->
 <div class="col-xxl">
 	<div class="card mb-4"
@@ -8,7 +30,7 @@
 			<h4 class="mb-0">관리자 상세정보</h4>
 		</div>
 		<div class="card-body">
-			<form>
+			<form id="detail_form">
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
 					<div class="col-sm-8">
@@ -19,7 +41,7 @@
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="basic-default-name">ID</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="id" th:value="${a.adminid}" name="adminid">
+						<input type="text" class="form-control" id="adminid" th:value="${a.adminid}" name="adminid" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -29,6 +51,7 @@
 					</div>
 				</div>
 				<div class="row mb-3">
+
 					<div class="select">
 						<label class="col-sm-2 col-form-label" for="basic-default-name">Level</label>
 						<label><input type="radio" name="lev" value="A" th:checked="${a.lev eq 'A'}" >
