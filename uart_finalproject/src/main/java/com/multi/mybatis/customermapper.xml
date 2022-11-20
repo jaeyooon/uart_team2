@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</delete>
 	<update id="delete1" parameterType="customerDTO">
-		UPDATE customer SET pwd=#{pwd},cname=#{cname},email=#{email},phone=#{phone},withdrawal=0 WHERE custid=#{custid}
+		UPDATE customer SET withdrawal=0 WHERE custid=#{custid}
 	</update>
 </mapper>
+

@@ -120,7 +120,7 @@ public class CustController {
 	public String custwithdrawimpl(Model model, CustomerDTO cust, HttpSession session) {
 
 		try {
-			cust_service.modify(cust);
+			cust_service.delete1(cust);
 			if (session != null) {
 				session.invalidate();
 			}
