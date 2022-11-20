@@ -73,6 +73,7 @@ public class KakaoController {
 				model.addAttribute("center", dir+"SNSregister"); 
 			}
 			else {
+				if(cust.getWithdrawal() == 1)	// 탈퇴하지 않은 회원일 때만 로그인 가능하도록
 				session.setAttribute("logincust", cust);
 			}
 		} catch (Exception e) {

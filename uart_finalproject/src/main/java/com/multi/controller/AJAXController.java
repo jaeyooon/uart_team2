@@ -249,6 +249,7 @@ public class AJAXController {
 				session.setAttribute("logincust", newnavercust);
 				result = true;
 			} else {
+				if(cust.getWithdrawal() == 1)	// 탈퇴하지 않은 회원일 때만 로그인 가능하도록
 				session.setAttribute("logincust", cust);
 				result = false;
 			}
@@ -256,7 +257,7 @@ public class AJAXController {
 			e.printStackTrace();
 		}
 		
-		System.out.println(result);
+		//System.out.println(result);
 		return result;
 	}
 }
