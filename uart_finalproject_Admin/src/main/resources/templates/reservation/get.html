@@ -77,7 +77,7 @@ font-size:15px;
 			
 			<!-- Here is your worksheet. Using with th -->
 			<tbody class="table-border-bottom-0">
-				<tr th:each="o:${list}">
+				<tr th:object="o:${list}">
 					<td th:text=${o.orderlistid}>예약번호</td>   <!-- In ${o.~~~}, part of a blank-~~~- is DTO's name. -->
 					<td th:text=${o.item_itemname}>전시명</td>
 					<td th:text=${o.orderlist_orderdate}>예매날짜</td>
