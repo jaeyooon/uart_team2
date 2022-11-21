@@ -13,19 +13,15 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class OrderdetailDTO {
-
-	private Integer orderdetailid;
+public class OrderlistDTO {
 	private Integer orderlistid;
-	private Integer itemid;
-	
-	private String item_place;
+	private String custid;
+	private String item_itemname;
+	private Date orderlist_orderdate;
 	private Date item_estart;
 	private Date item_efin;
-	private String item_itemimg;
-	private String item_itemname;
 	private Integer orderlist_ordercnt;
-	private Date orderlist_orderdate;
+	private String item_itemimg;
+	private String item_place;
 	private Date orderlist_candate;
-	private String cust_custid;
 }

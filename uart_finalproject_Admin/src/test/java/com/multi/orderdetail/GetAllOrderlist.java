@@ -5,19 +5,18 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import com.multi.dto.OrderdetailDTO;
-import com.multi.service.OrderdetailService;
+import com.multi.dto.OrderlistDTO;
+import com.multi.service.OrderlistService;
 
 @SpringBootTest
-class GetAllOrderdetail {
+class GetAllOrderlist {
 	
 	@Autowired
-	OrderdetailService service;
+	OrderlistService service;
 	
 	@Test
 	void contextloads() {
-		List<OrderdetailDTO> list = null;
+		List<OrderlistDTO> list = null;
 		
 		try {
 			list = service.get();
@@ -26,7 +25,7 @@ class GetAllOrderdetail {
 			e.printStackTrace();
 		}
 		
-		for(OrderdetailDTO o:list) {
+		for(OrderlistDTO o:list) {
 			System.out.println(o);
 		}
 	}
