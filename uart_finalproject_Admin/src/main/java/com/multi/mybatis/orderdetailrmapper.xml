@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</insert>
 	<update id="update" parameterType="OrderlistDTO">
-		
+		 
 	</update>
 	<delete id="delete" parameterType="Integer">
 		

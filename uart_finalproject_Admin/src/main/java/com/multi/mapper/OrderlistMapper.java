@@ -10,3 +10,4 @@ import com.multi.frame.MyMapper;
 @Mapper
 public interface OrderlistMapper extends MyMapper<Integer, OrderlistDTO>{	
 }
+ 
