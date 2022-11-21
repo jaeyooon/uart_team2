@@ -5,7 +5,7 @@ font-size:15px;
 }
 </style>
 <!-- Bootstrap Table with Header - Light -->
-<div class="card" style="width:90%; height:100%; margin:auto; margin-top:70px;">
+<div class="card" style="width:90%; margin:auto; margin-top:70px; margin-bottom:70px;">
 	<h4 class="card-header">예매내역 목록</h4>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
                 <div class="container-fluid">
@@ -80,11 +80,11 @@ font-size:15px;
 					<td th:text="${o.orderlistid}">예약번호</td>   <!-- In ${o.~~~}, part of a blank-~~~- is DTO's name. -->
 					<td th:text="${o.custid}">고객id</td>
 					<td th:text="${o.item_itemname}">전시명</td>
-					<td th:text="${o.orderlist_orderdate}">예매날짜</td>
-					<td th:text="${o.item_estart}+ '&nbsp;~&nbsp;'+ ${o.item_efin}" >이용일</td>
+					<td th:text=" ${#dates.format(o.orderlist_orderdate, 'yyyy.MM.dd')}">예매날짜</td>
+					<td th:text=" ${#dates.format(o.item_estart, 'yyyy.MM.dd')}+ '&nbsp;~&nbsp;'+  ${#dates.format(o.item_efin, 'yyyy.MM.dd')}" >이용일</td>
 					<td th:text="${o.orderlist_ordercnt}">매수</td>
 					<td th:text="${o.item_place}">장소</td>
-					<td th:text="${o.orderlist_candate}">취소가능일</td>	
+					<td th:text="${#dates.format(o.orderlist_candate, 'yyyy.MM.dd')}">취소가능일</td>	
 				</tr>
 			</tbody>
 		</table>
