@@ -16,6 +16,8 @@ public class ReservationController {
 		return "main";
 	}
 	
+	//리스트를 담아야 한다.
+	
 
 }
 
