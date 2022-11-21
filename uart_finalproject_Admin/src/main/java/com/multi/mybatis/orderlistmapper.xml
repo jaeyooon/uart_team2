@@ -2,21 +2,21 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.multi.mapper.OrderdetailMapper">
+<mapper namespace="com.multi.mapper.OrderlistMapper">
 	
-	<select id="select" parameterType="Integer" resultType="OrderdetailDTO"> 
+	<select id="select" parameterType="Integer" resultType="OrderlistDTO"> 
 		
 	</select>
-	<select id="selectall" resultType="OrderdetailDTO">
+	<select id="selectall" resultType="OrderlistDTO">
 		SELECT i.itemname as item_itemname, i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
-		ol.orderlistid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place
+		ol.orderlistid, ol.custid , ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place
 		,ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
 		INNER JOIN item i ON ol.itemid = i.itemid
 	</select>
-	<insert id="insert" parameterType="OrderdetailDTO">
+	<insert id="insert" parameterType="OrderlistDTO">
 		
 	</insert>
-	<update id="update" parameterType="OrderdetailDTO">
+	<update id="update" parameterType="OrderlistDTO">
 		
 	</update>
 	<delete id="delete" parameterType="Integer">

@@ -7,21 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.dto.OrderdetailDTO;
-import com.multi.service.OrderdetailService;
+import com.multi.dto.OrderlistDTO;
+import com.multi.service.OrderlistService;
 
 @Controller
 @RequestMapping("/reservation")
 public class ReservationController {
 	
 	@Autowired
-	OrderdetailService service;
+	OrderlistService service;
 	
 	String dir = "reservation/";
 	
 	@RequestMapping("/get")
 	public String get(Model model) {
-		List<OrderdetailDTO> list = null;
+		List<OrderlistDTO> list = null;
 		
 		try {
 			list=service.get();

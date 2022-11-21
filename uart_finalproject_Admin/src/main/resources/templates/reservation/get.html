@@ -65,6 +65,7 @@ font-size:15px;
 			<thead calss="table-light">
 				<tr>
 					<th>예약번호</th>
+					<th>고객id</th>
 					<th>전시명</th>
 					<th>예매날짜</th>
 					<th>이용일</th>
@@ -79,6 +80,7 @@ font-size:15px;
 			<tbody class="table-border-bottom-0">
 				<tr th:each="o:${list}">
 					<td th:text="${o.orderlistid}">예약번호</td>   <!-- In ${o.~~~}, part of a blank-~~~- is DTO's name. -->
+					<td th:text="${o.custid}">고객id</td>
 					<td th:text="${o.item_itemname}">전시명</td>
 					<td th:text="${o.orderlist_orderdate}">예매날짜</td>
 					<td th:text="${o.item_estart}+ '&nbsp;~&nbsp;'+ ${o.item_efin}">이용일</td>

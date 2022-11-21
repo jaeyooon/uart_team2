@@ -13,8 +13,9 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class OrderdetailDTO {
+public class OrderlistDTO {
 	private Integer orderlistid;
+	private String custid;
 	private String item_itemname;
 	private Date orderlist_orderdate;
 	private Date item_estart;
