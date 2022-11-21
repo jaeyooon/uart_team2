@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ItemoptionMapper">
+	
+	<select id="select" parameterType="Integer" resultType="ItemoptionDTO"> 
+		
+	</select>
+	<select id="selectall" resultType="ItemoptionDTO">
+
+	</select>
+	<insert id="insert" parameterType="ItemoptionDTO">
+	INSERT INTO itemoption VALUES (NULL, #{itemid}, #{obj1}, #{price1}, #{obj2}, #{price2}, #{obj3}, #{price3})
+	</insert>
+	<update id="update" parameterType="ItemoptionDTO">
+	UPDATE itemoption SET price1=#{price1}, price2=#{price2}, price3=#{price3} WHERE itemid=#{itemid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		
+	</delete>
+	<select id="getitem" parameterType="Integer" resultType="ItemoptionDTO">
+	SELECT * FROM itemoption WHERE itemid=#{itemid}
+	</select>
+</mapper>

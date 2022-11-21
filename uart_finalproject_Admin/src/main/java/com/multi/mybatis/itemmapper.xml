@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ItemMapper">
+	
+	<select id="select" parameterType="Integer" resultType="itemDTO">
+		SELECT c.cateid, (c.catename) AS cate_catename, i.itemid, i.itemname, i.itemimg, i.itemplace,i.itemplace_address, i.lat, i.lng, i.itemguide, i.itemticket,
+		i.estart, i.efin, i.rdate,
+		(o.obj1) AS itemoption_obj1, (o.price1) AS itemoption_price1,
+		(o.obj2) AS itemoption_obj2, (o.price2) AS itemoption_price2, 
+		(o.obj3) AS itemoption_obj3, (o.price3) AS itemoption_price3 FROM item AS i
+		INNER JOIN cate AS c ON c.cateid=i.cateid
+		INNER JOIN itemoption AS o ON o.itemid=i.itemid
+		WHERE i.itemid=#{itemid}
+	</select>
+
+	<select id="selectall" resultType="itemDTO">
+		SELECT c.cateid, (c.catename) AS cate_catename, i.itemid, i.itemname, i.itemimg, i.itemplace,i.itemplace_address, i.lat, i.lng, i.itemguide, i.itemticket,
+		i.estart, i.efin, i.rdate,
+		(o.obj1) AS itemoption_obj1, (o.price1) AS itemoption_price1,
+		(o.obj2) AS itemoption_obj2, (o.price2) AS itemoption_price2, 
+		(o.obj3) AS itemoption_obj3, (o.price3) AS itemoption_price3 FROM item AS i
+		INNER JOIN cate AS c ON c.cateid=i.cateid
+		INNER JOIN itemoption AS o ON o.itemid=i.itemid
+	</select>
+	
+	<insert id="insert" parameterType="itemDTO">
+		INSERT INTO item VALUES (NULL, #{cateid}, #{itemname}, #{itemimg}, #{itemplace}, #{itemplace_address}, #{lat}, #{lng}, #{itemguide}, #{itemticket}, #{itemstock}, #{estart}, #{efin}, SYSDATE())
+	</insert>
+	
+	<update id="update" parameterType="itemDTO">
+		UPDATE item SET cateid=#{cateid}, estart=#{estart}, efin=#{efin}, rdate=SYSDATE()
+		WHERE itemid=#{itemid}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM item WHERE itemid=#{itemid}
+	</delete>
+	
+</mapper>
