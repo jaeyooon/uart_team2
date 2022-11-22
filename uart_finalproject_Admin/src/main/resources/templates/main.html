@@ -44,25 +44,47 @@
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
-
+    
+    <!-- style CSS -->
+    <style>
+      .btn{
+         float:right;
+         width:200px;
+         height:50px;
+         border-radius:50px;
+         font-size:15px;
+         text-align:center;
+         background-color:black;
+         color:white;
+         margin-top:20px;
+         border:1px solid gray; 
+      }
+    </style>
+    <!-- Script wrapper -->
+    <script>
+      var body = document.querySelector('body');
+      var btn = document.getElementByld('btnDisplayMode');
+      if(self.value ==='다크모드로 전환'){ //다크모드로 전환 버튼을 누를 때
+    	  body.style.backgroundColor='black'; //modifying the colour
+    	  body.style.color='white';//modifying values of the default with not applying CSS style
+    	  btn.style.backgroundColor="yellow"; //background colour: → Yellow
+    	  btn.style.color="black"; // text color: → Black
+    	  self.value='라이트 모드로 전환';  	  
+      } else{//라이트 모드로 전환 버튼을 누른 경우
+    	  body.style.backgroundColor='white';
+          body.style.color='black';
+          btn.syyle.backgroundColor="black";
+          btn.style.color="white";
+          self.value='다크 모드로 전환';
+      }
+    </script>
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
-    <script>
-      function lightdark(){
-    	  if(document.querySelector('body').dataset.theme == 'dark'){
-        	  document.body.classList.add("dark-mode");
-          }
-      }
-      
-      window.onload=function(){
-    	  var button = document.getElementById("button");
-    	  button.onclick = lightdark;
-      }
-    </script>
+    
     
     
     
@@ -272,9 +294,7 @@
                   <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
                 </div>
                 <div>
-                  <button id="darkmode_btn" type="button" role="button" class="btn_theme" aria-pressed="true"> <!-- aria-pressed가 false일 때는 라이트 모드로 보기로 바뀌어야 함 -->
-					  <span class="blind">다크 모드로 보기</span>
-				  </button>
+                  <input id="btnDisplayMode" class="btn" type="button" value="다크모드로 전환" onclick="setDisplayAppreance(this);">
                   <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
 
                   <a
