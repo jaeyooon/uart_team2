@@ -169,8 +169,9 @@ function clock(){
 					<div class="d-flex align-items-end row">
 						<div class="col-sm-7">
 							<div class="card-body">
-								<h5 class="card-title text-primary">환영합니다 관리자님!
-									🎉</h5>
+								<div th:if="${session.loginadmin != null}">
+								<h5 class="card-title text-primary" th:text="'환영합니다 '+${session.loginadmin.aname}
+									+'님! 🎉'" ></h5></div>
 								<h1 id="clock" style="color: black;">clock</h1>
 
 
