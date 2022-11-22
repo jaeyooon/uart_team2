@@ -51,7 +51,7 @@ function cancelimpl() {
 	else {
 	
 		$.ajax({
-			url:'/order/cancel',
+			url:'[[@{/order/cancel}]]',
 			async:false,
 			data:
 			{
@@ -60,7 +60,7 @@ function cancelimpl() {
 			},
 			success : function() {
 				console.log('success')
-				location.href='/order/detail?id='+custid
+				location.href='[[@{/order/detail?id=}]]'+custid
 			}
 		}); 
 	}
@@ -194,7 +194,7 @@ $(document).ready(function(){
 				  
 				</div>
 				<div id="cancel_div">
-					<button onclick="cancelimpl()" id="cancel_btn" type="button"
+					<button th:onclick="cancelimpl()" id="cancel_btn" type="button"
 						class="btn btn-sm btn-primary"
 						style="display: inline-block">예매취소</button>
 				</div>
@@ -217,7 +217,6 @@ $(document).ready(function(){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
-        <!-- <button type="button" class="btn btn-secondary" th:onclick="logingo()">이동</button> -->
       </div>
     </div>
   </div>

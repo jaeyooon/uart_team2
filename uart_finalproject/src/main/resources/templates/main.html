@@ -130,7 +130,7 @@ function enterkey2(){
 		else {
 		$('#search_form').attr({
 			'method':'get',
-			'action':'/searchimpl'
+			'action':'[[@{/searchimpl}]]'
 		});
 		$('#search_form').submit();
 		}
@@ -141,7 +141,7 @@ function enterkey2(){
 	  
 	  
 	  $.ajax({
-			url:'/autosearch',
+			url:'[[@{/autosearch}]]',
 			success:function(data){
 				
 				$("#search_input").autocomplete({  //오토 컴플릿트 시작
@@ -149,7 +149,7 @@ function enterkey2(){
 					
 					select:function(event, ui){
 						str=ui.item.label;
-						location.href='/searchimpl'+'?txt='+str;
+						location.href='[[@{/searchimpl?txt=}]]'+str;
 					},
 					
 					focus : function(event, ui){ // 방향키로 자동완성단어 선택	
@@ -171,7 +171,7 @@ function enterkey2(){
       		}else{
          $('#search_form').attr({
             'method' : 'get',
-            'action' : '/searchimpl'
+            'action' : '[[@{/searchimpl}]]'
          });
          $('#search_form').submit();
       	}
@@ -333,7 +333,7 @@ function enterkey2(){
                      <ul class="list-unstyled">
                         <li id="address" class="address">서울특별시 강남구 삼성로 42 삼성동빌딩 5층</li>
                         <li class="phone"><a href="#">+82 02-2387-2387</a></li>
-                        <li class="email">emailaddress@domain.com</li>
+                        <li class="email">emailaddress@uart.com</li>
                      </ul>
                   </div>
                </div>
@@ -357,14 +357,14 @@ function enterkey2(){
          </div>
       </footer>
 
-  <script src="/js/jquery-ui.js"></script>
-  <script src="/js/popper.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  <script src="/js/owl.carousel.min.js"></script>
-  <script src="/js/jquery.magnific-popup.min.js"></script>
-  <script src="/js/aos.js"></script>
+  <script th:src="@{/js/jquery-ui.js}"></script>
+  <script th:src="@{/js/popper.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/owl.carousel.min.js}"></script>
+  <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+  <script th:src="@{/js/aos.js}"></script>
 
-  <script src="/js/main.js"></script>
+  <script th:src="@{/js/main.js}"></script>
   
   <!-- Modal -->
  

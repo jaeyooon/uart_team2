@@ -44,6 +44,9 @@ public class ReviewService implements MyService<Integer,ReviewDTO> {
 		return mapper.select_itemreview(itemid);
 	}
 	
+	public List<ReviewDTO> getitemreview(Integer itemid) throws Exception {
+		return mapper.getitemreview(itemid);
+	}
 
 
 }

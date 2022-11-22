@@ -47,5 +47,9 @@ public class OrderdetailService implements MyService<Integer, OrderdetailDTO>{
 	public OrderdetailDTO getallinfo(Integer orderlistid) throws Exception {
 		return mapper.getallinfo(orderlistid);
 	}
+	
+	public List<OrderdetailDTO> checkorderdetail(Integer itemid) throws Exception {
+		return mapper.checkorderdetail(itemid);
+	}
 
 }

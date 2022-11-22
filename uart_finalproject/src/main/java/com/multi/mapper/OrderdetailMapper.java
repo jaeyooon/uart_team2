@@ -13,4 +13,5 @@ import com.multi.frame.MyMapper;
 public interface OrderdetailMapper extends MyMapper<Integer, OrderdetailDTO>{	
 	public List<OrderdetailDTO> getallorderdetail(String cust_custid) throws Exception;
 	public OrderdetailDTO getallinfo(Integer orderlistid) throws Exception;
+	public List<OrderdetailDTO> checkorderdetail(Integer itemid) throws Exception;
 }

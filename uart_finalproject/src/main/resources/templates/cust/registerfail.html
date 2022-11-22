@@ -34,7 +34,7 @@ color: #22333b;
 		<p th:text="'📌'+${fid.custid}+'는 이미 사용 중인 아이디입니다.'" style="margin-top: 30px;"></p>
 		<p>다시 만들어 주십시오.</p>
 	<div id="rfail_inner">
-	<p><a href="/register/registered">Get into the Register page.</a></p>
+	<p><a th:href="@{/register/registered}">Get into the Register page.</a></p>
 </div>
 </div>
 

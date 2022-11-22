@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" th:href="@{./login.css}">
     
     <!-- Naver Login -->
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -151,7 +151,7 @@ function enterkey(){
 	if(window.event.keyCode == 13){
 		$('#login_form').attr({
 
-			'action':'/cust/loginimpl',
+			'action':'[[@{/cust/loginimpl}]]',
 			'method':'post'			
 		});
 		$('#login_form').submit();
@@ -163,7 +163,7 @@ $(document).ready(function(){
 	   $('#submit').click(function(){
 	       $('#login_form').attr(
 	         {
-	            'action':'/cust/loginimpl',
+	            'action':'[[@{/cust/loginimpl}]]',
 	            'method':'post'
 	         }
 	      );
@@ -191,25 +191,25 @@ $(document).ready(function(){
 		            </div>
 		            <div class="login_etc">
 		                <div class="new_account">
-		                <a href="/register/registered">아직 계정이 없으신가요? 계정을 만들어 보세요!</a>
+		                <a th:href="@{/register/registered}">아직 계정이 없으신가요? 계정을 만들어 보세요!</a>
 		                </div>
 		            </div>
 		             </form>
                 <button id="submit" class="buy-now btn btn-sm btn-primary">Login</button>
          
              <div class="login_sns">
-				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=48b96f6623867093002dbead41c00334&redirect_uri=http://127.0.0.1/oauth/kakao&response_type=code"> 
-					<img id="kakao" src="/img/kakao_login.png">
+				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=48b96f6623867093002dbead41c00334&redirect_uri=http://101.101.219.170/oauth/kakao&response_type=code"> 
+					<img id="kakao" th:src="@{/img/kakao_login.png}">
 				</a></li>
 				
 				<!-- 네이버 로그인 버튼 -->
 				  <div id="naver_id_login"></div>
 				  
 				  <script type="text/javascript">
-				  	var naver_id_login = new naver_id_login("NDkDf_szvxKsXLeeDzNd", "http://127.0.0.1/cust/callback"); 
+				  	var naver_id_login = new naver_id_login("NDkDf_szvxKsXLeeDzNd", "http://101.101.219.170/cust/callback"); 
 				  	var state = naver_id_login.getUniqState();
 				  	naver_id_login.setButton("white", 2, 43);
-				  	naver_id_login.setDomain("http://127.0.0.1");
+				  	naver_id_login.setDomain("http://101.101.219.170");
 				  	naver_id_login.setState(state);
 				  	/* naver_id_login.setPopup(); */
 				  	naver_id_login.init_naver_id_login();

@@ -140,8 +140,12 @@ to {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+#checkreview, #alreadywrite{ 
+ 	z-index: 10000;
+ }
 </style>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script th:src="@{//developers.kakao.com/sdk/js/kakao.min.js}"></script>
 <script>
 
 function sendLinkCustom() {
@@ -157,7 +161,7 @@ function sendLinkCustom() {
  function shareTwitter() {
 	    var sendText = "U-ART에서 멋진 전시를 만나보세요!"; // 전달할 텍스트
 	    var sendUrl = "http://127.0.0.1"; // 전달할 URL
-	    window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+	    window.open("https://twitter.com/intent/tweet?text=" + sendText + "&[[@{url=}]]" + sendUrl);
 	}
  
  function shareFacebook() {
@@ -243,15 +247,64 @@ $(document).ready(function(){
 			alert("로그인이 필요합니다.");	
 		}
 	}
- 	
- 	$('#review_btn').click(function(){
-		var custid = '[[${session.logincust.custid}]]';
-		var itemid = $('#itemid').text();
-		var reviewgrade = $('#reviewgrade').val();
-		var reviewcontent = $('#reviewcontent').val();
-		location.href="[[@{/registerreview?custid=}]]"+custid+"&[[@{itemid=}]]"+itemid+"&[[@{reviewgrade=}]]"+reviewgrade+"&[[@{reviewcontent=}]]"+reviewcontent;
+	
+	$('#close_btn1').click(function(){
+		$('#checkreview').modal('hide');
+	});
+	$('#close_btn2').click(function(){
+		$('#alreadywrite').modal('hide');
 	});
 });
+
+function registerReview() {
+	var custid = '[[${session.logincust.custid}]]';
+	var itemid = $('#itemid').text();
+	var reviewgrade = $('#reviewgrade').val();
+	var reviewcontent = $('#reviewcontent').val();
+	$.ajax({
+		url:'[[@{/registerreview}]]',
+		async:false,
+		data:{
+			'custid':custid,
+			'itemid':itemid,
+			'reviewgrade':reviewgrade,
+			'reviewcontent':reviewcontent 
+		},
+		success : function(data) {
+			//alert('**'+data); 
+			var result = data;
+			if(result == false) {
+				$('#alreadywrite').modal('show');
+			} else {
+				location.href='[[@{/item/itemdetail?itemid=}]]'+itemid; 
+			}
+		}
+	});
+}
+
+function checkOrderdetail() {
+	var custid = '[[${session.logincust.custid}]]';
+	var itemid = $('#itemid').text();
+	
+	$.ajax({
+		url:'[[@{/checkorderdetail}]]',
+		async:false,
+		data:{
+			'custid':custid,
+			'itemid':itemid,
+		},
+		success : function(data) {
+			//alert('*'+data);
+			var result = data;
+			if (result == true) { // 해당 전시에 대한 예매내역이 있는 경우
+				registerReview();
+			} 
+			else {
+				$('#checkreview').modal('show');
+			}
+		}
+	})
+}
 
 
 </script>
@@ -275,7 +328,7 @@ $(document).ready(function(){
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<img th:src="'/img/'+${itemdetail.itemimg}" alt="Image"
+					<img th:src="@{/img/}+${itemdetail.itemimg}" alt="Image"
 						class="img-fluid">
 				</div>
 				<div class="col-md-6">
@@ -301,9 +354,9 @@ $(document).ready(function(){
 
 					<br><br>
 					<div style="margin-top:50px;">
-					<a id="kakao_btn" href="javascript:sendLinkCustom();" ><img src="/img/icon-kakao.png" ></a>
-					<a id="btnTwitter" class="link-icon twitter" href="javascript:shareTwitter();"><img src="/img/icon-twitter.png" ></a>
-					<a id="btnFacebook" class="link-icon facebook" href="javascript:shareFacebook();"><img src="/img/icon-facebook.png" ></a>   
+					<a id="kakao_btn" href="javascript:sendLinkCustom();" ><img th:src="@{/img/icon-kakao.png}" ></a>
+					<a id="btnTwitter" class="link-icon twitter" href="javascript:shareTwitter();"><img th:src="@{/img/icon-twitter.png}" ></a>
+					<a id="btnFacebook" class="link-icon facebook" href="javascript:shareFacebook();"><img th:src="@{/img/icon-facebook.png}" ></a>   
 					</div>
 
 					<div id="btn">
@@ -348,7 +401,7 @@ $(document).ready(function(){
 					<p id="p1">멋진 전시를 U-ART에서 만나보세요</p>
 					<br> <br>
 					<h6 th:text="'▶전시명: &nbsp;   ' + ${itemdetail.itemname}">▶전시명:</h6>
-					<br> <img th:src="'/img/'+${itemdetail.itemimg}" alt="Image"
+					<br> <img th:src="@{/img/}+${itemdetail.itemimg}" alt="Image"
 						class="info_img">
 					<h6 th:text="'▶전시장소: &nbsp;   ' + ${itemdetail.itemplace}">▶전시장소:</h6>
 					<br>
@@ -443,7 +496,7 @@ $(document).ready(function(){
                         	    
                             <textarea id="reviewcontent" name="text" style="width:500px;"  placeholder='관람후기를 남겨주세요!'></textarea><br>
                         </form>
-                        <button type="button" id="review_btn" class="btn btn-primary btn-xs" style="font-size:13px;">✏등록</button><br><br>
+                        <button type="button" th:onclick="checkOrderdetail()" id="review_btn" class="btn btn-primary btn-xs" style="font-size:13px;">✏등록</button><br><br>
 						<form id="itemreview_form" th:each="re : ${review}">
 							<div>
 								<div class="star-ratings">
@@ -517,4 +570,46 @@ $(document).ready(function(){
 	</div>
 
 </body>
+
+<!-- Modal 1 -->
+<div class="modal fade" id="checkreview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>해당 상품에 대한 예매내역이 없습니다.</p>
+        <p>예매내역에 있는 상품에 대해서만 리뷰작성이 가능합니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button id="close_btn1" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="alreadywrite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>이미 작성한 리뷰입니다.📝</p>
+      </div>
+      <div class="modal-footer">
+        <button id="close_btn2" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </html>

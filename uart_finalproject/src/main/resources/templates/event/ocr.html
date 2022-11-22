@@ -23,7 +23,7 @@ function tnumber_check(num) {
 	var result;
 	var custid = '[[${session.logincust.custid}]]';
 	$.ajax({
-		url:'/ocrTnumberCheck',
+		url:'[[@{/ocrTnumberCheck}]]',
 		async: false, 
 		data:{'tnumber':num, 'custid':custid},
 		success : function(data) {
@@ -116,16 +116,16 @@ function upload() {
 	 $.ajax({
 			type : 'POST',
 			enctype: 'multipart/form-data',
-			url : '/ocrimpl',
+			url : '[[@{/ocrimpl}]]',
 			processData : false,
 			contentType : false,
 		 	data: formData,
 			success : function(data) {
-				//alert(data);
-				/* alert(data.images[0].fields[0].inferText);
+				/* alert(data);
+				alert(data.images[0].fields[0].inferText);
 				alert(data.images[0].fields[1].inferText);
 				alert(data.images[0].fields[2].inferText);
-				alert(data.images[0].fields[3].inferText); */
+				alert(data.images[0].fields[3].inferText);  */
 				result(data);
 			}
 		});
@@ -159,7 +159,7 @@ function upload() {
 				  </div>
 				</form>
 				<div>
-					<button onclick="upload()" id="register_btn" class="btn btn-primary btn-xm">인증</button>
+					<button th:onclick="upload()" id="register_btn" class="btn btn-primary btn-xm">인증</button>
 				</div>
 				<span id="upload_result"></span>
               <div class="col-md-12 mb-5">

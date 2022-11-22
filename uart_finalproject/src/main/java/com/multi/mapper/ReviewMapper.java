@@ -13,4 +13,5 @@ import com.multi.frame.MyMapper;
 public interface ReviewMapper extends MyMapper<Integer, ReviewDTO>{
 	public List<ReviewDTO> select_itemreview(Integer itemid) throws Exception;
 	public List<ReviewDTO> getall() throws Exception;
+	public List<ReviewDTO> getitemreview(Integer itemid) throws Exception;
 }

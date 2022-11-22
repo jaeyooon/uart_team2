@@ -40,7 +40,7 @@
  
  function logingo(){
 		$('#alertlogin').modal('hide');
-		location.href ="/cust/login";
+		location.href ="[[@{/cust/login}]]";
 		
 	}
  
@@ -54,7 +54,7 @@
 	 }
 	 else {
 		 var custid = cust.custid;
-		 location.href="/event/ocr?custid="+custid+'&id='+eid;
+		 location.href="[[@{/event/ocr?custid=}]]"+custid+'&[[@{id=}]]'+eid;
 	 }
  }
  
@@ -69,7 +69,7 @@
         </div>
         <div class="row align-items-center">
 	          <div class="col-md-12 col-lg-7 mb-5">
-	            <img th:src="'/img/' + ${event.image}" alt="Image placeholder" class="img-fluid rounded">
+	            <img th:src="@{/img/} + ${event.image}" alt="Image placeholder" class="img-fluid rounded">
 	            <input type="hidden" th:value="${event.eid}" readonly="readonly">
 	          </div>
 	          <div id="eventinfo" class="col-md-12 col-lg-5 text-center pl-md-5">
@@ -96,21 +96,21 @@
         <div class="row">
 		  <div class="col-sm-6">
 		    <div class="card">
-		    <a href="/event/getinfo1"><img class="card-img-top" src="/img/event/eventinfo1.jpg" alt="Card image cap"></a>
+		    <a th:href="@{/event/getinfo1}"><img class="card-img-top" th:src="@{/img/event/eventinfo1.jpg}" alt="Card image cap"></a>
 		      <div class="card-body">
 		        <h6 class="card-title">스티커 아트북 인기 3종 선물!</h6>
 		        <p class="card-text">방구석 문화생활하고 힐링하자!</p>
-		        <a href="/event/getinfo1" class="btn btn-primary btn-sm">✨CLICK</a>
+		        <a th:href="@{/event/getinfo1}" class="btn btn-primary btn-sm">✨CLICK</a>
 		      </div>
 		    </div>
 		  </div>
 		  <div class="col-sm-6">
 		    <div class="card">
-		    <a href="/event/getinfo2"><img class="card-img-top" src="/img/event/eventinfo2.jpg" alt="Card image cap"></a>
+		    <a th:href="@{/event/getinfo2}"><img class="card-img-top" th:src="@{/img/event/eventinfo2.jpg}" alt="Card image cap"></a>
 		      <div class="card-body">
 		        <h6 class="card-title">마이클 크레이그 마틴전 초대 이벤트</h6>
 		        <p class="card-text">세계 최초 영국 현대미술 거장의 회고전!</p>
-		        <a href="/event/getinfo2" class="btn btn-primary btn-sm">👆CLICK</a>
+		        <a th:href="@{/event/getinfo2}" class="btn btn-primary btn-sm">👆CLICK</a>
 		      </div>
 		    </div>
 		  </div>

@@ -106,7 +106,7 @@ table.table th {
 							<td style="text-align : center;">
 								<div>
 									<a th:href="@{/item/itemdetail(itemid=${d.itemid})}"><img
-										id="detailimg" th:src="'/img/' + ${d.item_itemimg}"
+										id="detailimg" th:src="@{/img/} + ${d.item_itemimg}"
 										alt="Image" class="img-fluid"><br> <span id="pname"
 										th:text="${d.item_itemname}" class="product-name"></span></a>
 								</div>

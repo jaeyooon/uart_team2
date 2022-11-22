@@ -13,7 +13,7 @@
 
 <body>
 <script type="text/javascript">
-  var naver_id_login = new naver_id_login("NDkDf_szvxKsXLeeDzNd", "http://127.0.0.1/cust/callback");
+  var naver_id_login = new naver_id_login("NDkDf_szvxKsXLeeDzNd", "http://101.101.219.170/cust/callback");
   // 접근 토큰 값 출력
   //alert(naver_id_login.oauthParams.access_token);
   // 네이버 사용자 프로필 조회
@@ -26,7 +26,7 @@
 	    var gender = naver_id_login.getProfileData('gender');
 	    
 	    $.ajax({
-	    	url:'/naverlogin',
+	    	url:'[[@{/naverlogin}]]',
 	    	async:false,
 	    	data:{
 	    		'cname':name,
@@ -38,9 +38,9 @@
 	    		var result = data;
 
 				if(result == false) {  // 네이버 로그인 계정이 이미 있는 경우
-					location.href="/"
+					location.href="[[@{/}]]"
 				} else {		// 네이버 계정으로 회원가입하는 경우
-					location.href="/cust/register"
+					location.href="[[@{/cust/register}]]"
 				}
 	    	}
 	    });

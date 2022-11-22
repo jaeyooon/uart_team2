@@ -37,8 +37,8 @@
                       보 기 
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="/item/end_s">전시마감순</a>
-                      <a class="dropdown-item" href="/item/start_s">전시시작순</a>
+                      <a class="dropdown-item" th:href="@{/item/end_s}">전시마감순</a>
+                      <a class="dropdown-item" th:href="@{/item/start_s}">전시시작순</a>
                     
                     </div>
                   </div>
@@ -52,7 +52,7 @@
 	              <div th:each="it : ${itemlist4}" class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
-	                    <a th:href="@{/item/itemdetail(itemid=${it.itemid})}"><img th:src="'/img/' +${it.itemimg}" alt="Image placeholder" class="img-fluid"></a>
+	                    <a th:href="@{/item/itemdetail(itemid=${it.itemid})}"><img th:src="@{/img/} +${it.itemimg}" alt="Image placeholder" class="img-fluid"></a>
 	                  </figure>
 	                  <div class="block-4-text p-4">
 	                    <h3><a id="h3" th:href="@{/item/itemdetail(itemid=${it.itemid})}" th:text="${it.itemname}"></a></h3>

@@ -158,7 +158,7 @@ $(document).ready(
 				var itemcnt1 = $('#itemcnt1').val();
 				var itemcnt2 = $('#itemcnt2').val();
 				var itemcnt3 = $('#itemcnt3').val();
-				location.href = '/orderpageitem?custid=' + custid
+				location.href = '[[@{/orderpageitem?custid=}]]' + custid
 						+ '&itemid=' + itemid 
 						+ '&itemcnt1=' + itemcnt1 + '&itemcnt2=' + itemcnt2
 						+ '&itemcnt3=' + itemcnt3;
@@ -178,7 +178,7 @@ $(document).ready(
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<img th:src="'/img/'+${itemdetail.itemimg}" alt="Image"
+					<img th:src="@{/img/}+${itemdetail.itemimg}" alt="Image"
 						class="img-fluid">
 				</div>
 				<div class="col-md-6">

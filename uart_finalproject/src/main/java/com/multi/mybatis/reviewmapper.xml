@@ -23,4 +23,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM review WHERE itemid=#{itemid}
 	</select>
 	
+	<select id="getitemreview" parameterType="Integer" resultType="reviewDTO">
+		SELECT * FROM review WHERE itemid=#{itemid}
+	</select>
 </mapper>

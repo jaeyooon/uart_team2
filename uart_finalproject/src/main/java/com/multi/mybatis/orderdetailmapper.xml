@@ -43,4 +43,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	</select>
 	
+	<select id="checkorderdetail" parameterType="Integer" resultType="OrderdetailDTO">
+		SELECT c.custid as cust_custid, od.orderdetailid, od.itemid 
+		FROM orderdetail od
+		INNER JOIN orderlist ol ON ol.orderlistid = od.orderlistid
+		INNER JOIN customer c ON ol.custid = c.custid
+		INNER JOIN item i ON od.itemid = i.itemid
+        WHERE i.itemid=#{itemid};
+
+	</select>
+	
 </mapper>

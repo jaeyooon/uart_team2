@@ -180,7 +180,7 @@ function checkCoupon(){
 	var result;
 	var custid = '[[${session.logincust.custid}]]';
 	$.ajax({
-		url:'/checkcoupon',
+		url:'[[@{/checkcoupon}]]',
 		async: false, 
 		data:{'custid':custid},
 		success : function(data) {
@@ -258,7 +258,7 @@ function requestPay() {
 	  }, function (rsp) { // callback
 	      if (rsp.success) {
 	        $.ajax({
-	        	url:'/purchaseimpl',
+	        	url:'[[@{/purchaseimpl}]]',
 	        	async: false, 
 	        	data:
 	        	{'itemid':intitemid,
@@ -273,7 +273,7 @@ function requestPay() {
 	        	success : function(data) {
 	        		console.log(data)
 	        		var orderlistid = data;
-	        		location.href='/order/checknew?id='+orderlistid+'&custid='+custid;  
+	        		location.href='[[@{/order/checknew?id=}]]'+orderlistid+'&[[@{custid=}]]'+custid;  
 	        	}
 	        });
 	      } else {
@@ -296,8 +296,8 @@ $(document).ready(
 				var custid = '[[${session.logincust.custid}]]';
 				var itemid = $('#itemid').text();
 
-				location.href = '/itemoption?id=' + custid
-						+ '&itemid=' + itemid;
+				location.href = '[[@{/itemoption?id=}]]' + custid
+						+ '&[[@{itemid=}]]' + itemid;
 
 			};
 
@@ -356,7 +356,7 @@ $(document).ready(
 											th:value="${itemdetail.itemid}"></td>
 										<td id="itemid" th:text="${itemdetail.itemid}">no</td>
 										<td class="td_width_2"><img
-											th:src="'/img/'+${itemdetail.itemimg}"></td>
+											th:src="@{/img/}+${itemdetail.itemimg}"></td>
 										<td id="itemname" class="td_width_3" th:text="${itemdetail.itemname}">상품명</td>
 
 
@@ -419,7 +419,7 @@ $(document).ready(
 														<td><strong>총 결제예정금액</strong></td>
 														<td>
 															<span id="totalprice" class="finalTotalPrice_span"></span> 원
-															<button onclick="checkCoupon()" id="order" type="button"
+															<button th:onclick="checkCoupon()" id="order" type="button"
 															class="buy-now btn btn-primary"
 															style="display: inline-block">쿠폰적용</button>
 															<div>
@@ -477,7 +477,7 @@ $(document).ready(
 					<button id="itemoption" type="button"
 						class="buy-now btn btn-sm btn-primary"
 						style="display: inline-block">이전단계</button>
-					<button onclick="requestPay()" id="order" type="button"
+					<button th:onclick="requestPay()" id="order" type="button"
 						class="buy-now btn btn-sm btn-primary"
 						style="display: inline-block">결제하기</button>
 				</div>

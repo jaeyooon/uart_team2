@@ -78,7 +78,7 @@
 
    function getdata(loc){   /* getdata 함수 */
    	$.ajax({
-   		url : '/getmarker',
+   		url : '[[@{/getmarker}]]',
    		data : {'loc' : loc},
    		success : function(data){   /* 성공하면 fucntion, 실패하면 displaymarker */
    			displaymarker(data);
@@ -128,20 +128,7 @@
           		<div>
                   <div id ="map" style="width:700px;height:400px;"></div> 
                 </div>
-  
-            <!-- <div class="block-38 text-center">
-             <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <div id ="map style="width:700px;height:500px;"></div> 
-                </div>
-              </div>
-             </div>
-            </div> -->
           </div>
-          
-          
-          
         </div>
       </div>
     </div>

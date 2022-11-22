@@ -40,7 +40,7 @@
               <div class="col-sm-6 col-lg-4 mb-4" th:each="s:${list}" data-aos="fade-up" >
                 <div class="block-4 text-center border">
                  <figure class="block-4-image">
-                    <a th:href="@{/item/itemdetail(itemid=${s.itemid})}"><img th:src="'/img/'+${s.itemimg}" alt="Image placeholder" class="img-fluid"></a>
+                    <a th:href="@{/item/itemdetail(itemid=${s.itemid})}"><img th:src="@{/img/}+${s.itemimg}" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
                     <a id="h3" th:href="@{/item/itemdetail(itemid=${s.itemid})}"><h3 th:text="${s.itemname}">GUSTAV KLIMT</a></h3>

@@ -10,7 +10,6 @@ import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +20,7 @@ import com.multi.dto.EventblDTO;
 import com.multi.dto.ItemDTO;
 import com.multi.dto.OrderdetailDTO;
 import com.multi.dto.OrderlistDTO;
+import com.multi.dto.ReviewDTO;
 import com.multi.dto.WishlistDTO;
 import com.multi.frame.Util;
 import com.multi.mapper.AJAXMapper;
@@ -31,6 +31,7 @@ import com.multi.service.EventblService;
 import com.multi.service.ItemService;
 import com.multi.service.OrderdetailService;
 import com.multi.service.OrderlistService;
+import com.multi.service.ReviewService;
 import com.multi.service.WishlistService;
 
 @RestController
@@ -60,6 +61,8 @@ public class AJAXController {
 	@Autowired
 	WishlistService wishlist_service;
 	
+	@Autowired
+	ReviewService review_service;
 	
 	@Value("${custdir}")
 	String custdir;
@@ -255,6 +258,61 @@ public class AJAXController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		//System.out.println(result);
+		return result;
+	}
+	
+	@RequestMapping("/checkorderdetail")
+	public Object checkorderdetail(Model model,  Integer itemid, String custid) {
+		boolean result = false;
+		
+		List<OrderdetailDTO> list1 = null;
+		try {
+			list1 = odetail_service.checkorderdetail(itemid); // itemid로 예매내역 조회
+			if(list1 != null) {
+				for(OrderdetailDTO list : list1) {
+					if(list.getCust_custid().equals(custid)) { // itemid로 예매내역 조회한것 중에 해당 custid의 예매내역이 존재할 경우
+						result = true;
+					} else {
+						result = false;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//System.out.println(result);
+		return result;
+	}
+	
+	@RequestMapping("/registerreview")
+	public Object registerreview(Model model,  Integer itemid, String custid, String reviewcontent, Float reviewgrade) {
+		boolean result = false;
+		
+		List<ReviewDTO> lastreview = null;
+		try {
+			lastreview = review_service.getitemreview(itemid);
+			System.out.println(lastreview);
+			if(lastreview == null || lastreview.isEmpty()) {  // 해당상품에 대한 리뷰를 작성한적이 없는 경우
+				ReviewDTO review = new ReviewDTO(0,itemid,custid,reviewcontent,reviewgrade, null);
+				review_service.register(review);
+		
+				result = true;
+			} 
+			else {
+				for(ReviewDTO review : lastreview) {
+					if(review.getCustid().equals(custid)) {  // 해당상품에 대한 리뷰를 작성한 적이 있는 경우
+						result = false;
+					} else {								// itemid에 대한 리뷰 중 해당회원이 작성한 리뷰는 없는 경우
+						result = true;
+					}
+				}
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
 		
 		//System.out.println(result);

@@ -14,16 +14,13 @@ public class ReviewController {
 	@Autowired
 	ReviewService service;
 	
-	@RequestMapping("/registerreview")
-	public String registerreview(Model model,  Integer itemid, String custid, String reviewcontent, Float reviewgrade) {
-		ReviewDTO review = new ReviewDTO(0,itemid,custid,reviewcontent,reviewgrade, null);
-		try {
-			service.register(review);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return "redirect:item/itemdetail?itemid="+itemid;
-	}
+	/*
+	 * @RequestMapping("/registerreview") public String registerreview(Model model,
+	 * Integer itemid, String custid, String reviewcontent, Float reviewgrade) {
+	 * ReviewDTO review = new ReviewDTO(0,itemid,custid,reviewcontent,reviewgrade,
+	 * null); try { service.register(review); } catch (Exception e) { // TODO
+	 * Auto-generated catch block e.printStackTrace(); }
+	 * 
+	 * return "redirect:item/itemdetail?itemid="+itemid; }
+	 */
 }
