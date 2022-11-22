@@ -169,6 +169,8 @@ function clock(){
 					<div class="d-flex align-items-end row">
 						<div class="col-sm-7">
 							<div class="card-body">
+							<div th:if="${session.loginadmin == null}">
+								<h5 class="card-title text-primary" th:text="'지금은 로그아웃 상태입니다'" ></h5></div>
 								<div th:if="${session.loginadmin != null}">
 								<h5 class="card-title text-primary" th:text="'환영합니다 '+${session.loginadmin.aname}
 									+'님! 🎉'" ></h5></div>
