@@ -1,0 +1,96 @@
+<meta charset="utf-8">
+
+<script>
+$(document).ready(function(){
+	$('#register_btn').click(function(){
+		$('#register_form').attr({
+			'method':'get',
+			'action':'/exhibition/registerimpl_price'
+		});
+		$('#register_form').submit();
+	});
+	
+	
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+	<!-- Basic Layout -->
+	<div class="row">
+		<div class="col-xl">
+			<div class="card mb-4">
+				<div
+					class="card-header d-flex justify-content-between align-items-center">
+					<h4 class="mb-0">티켓가격 등록</h4>
+
+				</div>
+				<div class="card-body">
+					<form id="register_form">
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-fullname">Exhibition
+								ID</label> <input type="text" class="form-control"
+								id="basic-default-fullname" name="itemid"
+								placeholder="exhibition id" />
+						</div>
+						<div class="mb-3">
+							<label for="defaultSelect" class="form-label">대상</label> <select
+								id="defaultSelect" name="obj1" class="form-select">
+								<option>대상 선택</option>
+								<option value="성인">성인</option>
+								<option value="청소년">청소년</option>
+								<option value="어린이">어린이</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Price1</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="price1" placeholder="price1" />
+						</div>
+						<div class="mb-3">
+							<label for="defaultSelect" class="form-label">대상</label> <select
+								id="defaultSelect" name="obj2" class="form-select">
+								<option>대상 선택</option>
+								<option value="성인">성인</option>
+								<option value="청소년">청소년</option>
+								<option value="어린이">어린이</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Price2</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="price2" placeholder="price2" />
+						</div>
+						<div class="mb-3">
+							<label for="defaultSelect" class="form-label">대상</label> <select
+								id="defaultSelect" name="obj3" class="form-select">
+								<option>대상 선택</option>
+								<option value="성인">성인</option>
+								<option value="청소년">청소년</option>
+								<option value="어린이">어린이</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Price3</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="price3" placeholder="price3" />
+						</div>
+					</form>
+					<button type="submit" id="register_btn" class="btn btn-primary">Register</button>
+
+				</div>
+			</div>
+		</div>

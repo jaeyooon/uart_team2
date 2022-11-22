@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<meta charset="utf-8">
+<style>
+.table th{
+font-size:15px;
+}
 
-</body>
-</html>
+#img{
+	width:100px;
+	height:120px;
+	border-radius: 7px;
+}
+
+</style>
+
+<!-- Hoverable Table rows -->
+			<br><br><br>
+              <div class="card" style="width:90%; margin:auto; margin-top:20px; margin-bottom:70px;">
+                <h4 class="card-header">전시 목록</h4>
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th># Cate ID:&nbsp;&nbsp;Cate Name</th>
+                        <th>Exhibition ID</th>
+                        <th>Exhibition Name</th>
+                        <th>Image</th>
+                        <th>Rdate</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <tr th:each="e:${list}">
+                        <td th:text=" '# '+${e.cateid}+': '+${e.cate_catename}"><i class="fab fa-angular fa-lg text-danger me-3"></i></td>
+                        <td th:text="${e.itemid}"></td>
+                        <td><a th:href="@{#}" th:text="${e.itemname}"></a></td>
+                        <td><img id="img" th:src="@{/img/}+${e.itemimg}"></td>
+                        <td th:text="${#dates.format(e.rdate, 'yyyy-MM-dd')}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--/ Hoverable Table rows -->
