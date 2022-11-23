@@ -31,7 +31,7 @@ font-size:15px;
                       <tr th:each="e:${list}">
                         <td th:text=" '# '+${e.cateid}+': '+${e.cate_catename}"><i class="fab fa-angular fa-lg text-danger me-3"></i></td>
                         <td th:text="${e.itemid}"></td>
-                        <td><a th:href="@{#}" th:text="${e.itemname}"></a></td>
+                        <td><a th:href="@{/exhibition/itemdetail(itemid=${e.itemid})}" th:text="${e.itemname}"></a></td>
                         <td><img id="img" th:src="@{/img/}+${e.itemimg}"></td>
                         <td th:text="${#dates.format(e.rdate, 'yyyy-MM-dd')}"></td>
                       </tr>

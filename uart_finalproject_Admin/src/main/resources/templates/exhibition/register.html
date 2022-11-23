@@ -1,0 +1,109 @@
+<meta charset="utf-8">
+
+<script>
+$(document).ready(function(){
+	$('#register_btn').click(function(){
+		$('#register_form').attr({
+			'enctype':'multipart/form-data',
+			'method':'post',  //file upload는 get방식 안됌!
+			'action': '/exhibition/registerimpl'
+		});
+		$('#register_form').submit();
+	});
+	
+});
+
+
+
+
+
+</script>
+
+
+
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+	<!-- Basic Layout -->
+	<div class="row">
+		<div class="col-xl">
+			<div class="card mb-4">
+				<div
+					class="card-header d-flex justify-content-between align-items-center">
+					<h4 class="mb-0">전시 등록</h4>
+
+				</div>
+				<div class="card-body">
+					<form id="register_form">
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-fullname">Exhibition
+								Name</label> <input type="text" class="form-control"
+								id="basic-default-fullname" name="itemname"
+								placeholder="exhibition name" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Cate
+								ID</label> <input type="text" class="form-control"
+								id="basic-default-company" name="cateid" placeholder="cate id" />
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">Image</label> <input
+								class="form-control" type="file" id="formFile" name="img" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Place</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="itemplace" placeholder="place" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Place_address</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="itemplace_address"
+								placeholder="place_address" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Lat</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="lat" placeholder="lat" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Lng</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="lng" placeholder="lng" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Exhibition
+								Guide</label> <input type="text" class="form-control"
+								id="basic-default-company" name="itemguide"
+								placeholder="exhibition guide" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Ticket</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="itemticket"
+								placeholder="ticket" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Stock</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="itemstock" placeholder="stock" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Exhibition
+								Start</label> <input type="date" class="form-control"
+								id="basic-default-company" name="f_estart"
+								placeholder="exhibition start" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Exhibition
+								Finish</label> <input type="date" class="form-control"
+								id="basic-default-company" name="f_efin"
+								placeholder="exhibition finish" />
+						</div>
+					</form>
+					<button type="submit" id="register_btn" class="btn btn-primary">Register</button>
+
+				</div>
+			</div>
+		</div>

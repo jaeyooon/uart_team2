@@ -1,0 +1,123 @@
+<meta charset="utf-8">
+
+<style>
+#img{
+	width:160px;
+	
+}
+
+
+</style>
+
+<script>
+$(document).ready(function(){
+	$('#update_btn').click(function(){
+		var c = confirm('✔수정하시겠습니까?');
+		if(c==true){
+			$('#detail_form').attr({
+				'method':'post',
+				'action':'/exhibition/updateimpl'
+			});
+			$('#detail_form').submit();
+		}
+	});
+	
+	$('#delete_btn').click(function(){
+		var c=confirm('✔삭제하시겠습니까?');
+		if(c==true){
+			var itemid=$('#itemid').val();
+			location.href='/exhibition/delete?itemid='+itemid
+		}
+	})
+});
+
+</script>
+
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+	<!-- Basic Layout -->
+	<div class="row">
+		<div class="col-xl">
+			<div class="card mb-4">
+				<div
+					class="card-header d-flex justify-content-between align-items-center">
+					<h4 class="mb-0">전시 상세정보</h4>
+
+				</div>
+				<div class="card-body">
+					<form id="detail_form">
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-fullname">Exhibition
+								ID</label> <input type="text" class="form-control"
+								id="itemid" name="itemid" th:value="${itemdetail.itemid}"
+								readonly="readonly" placeholder="exhibition id" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-fullname">Exhibition
+								Name</label> <input type="text" class="form-control"
+								id="basic-default-fullname" name="itemname" th:value="${itemdetail.itemname}"
+								readonly="readonly" placeholder="exhibition name" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Cate
+								ID</label> <input type="text" class="form-control"
+								id="basic-default-company" name="cateid" th:value="${itemdetail.cateid}" placeholder="cate id" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Image</label><br>
+							<img id="img" th:src="@{/img/}+${itemdetail.itemimg}">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Place</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="itemplace" th:value="${itemdetail.itemplace}" readonly="readonly" placeholder="place" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Place_address</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="itemplace_address" th:value="${itemdetail.itemplace_address}"
+								readonly="readonly" placeholder="place_address" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Lat</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="lat" th:value="${itemdetail.lat}" placeholder="lat" readonly="readonly"/>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Lng</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="lng" th:value="${itemdetail.lng}" placeholder="lng" readonly="readonly"/>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Exhibition
+								Guide</label> <input type="text" class="form-control"
+								id="basic-default-company" name="itemguide" th:value="${itemdetail.itemguide}"
+								readonly="readonly" placeholder="exhibition guide" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Ticket</label>
+							<input type="text" class="form-control"
+								id="basic-default-company" name="itemticket" th:value="${itemdetail.itemticket}"
+								readonly="readonly" placeholder="ticket" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Exhibition
+								Start</label> <input type="date" class="form-control"
+								id="basic-default-company" name="f_estart" th:value="${itemdetail.f_estart}"
+								placeholder="exhibition start" />
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="basic-default-company">Exhibition
+								Finish</label> <input type="date" class="form-control" 
+								id="basic-default-company" name="f_efin" th:value="${itemdetail.f_efin}"
+								placeholder="exhibition finish" />
+						</div>
+					</form>
+					<button type="submit" id="update_btn" class="btn btn-primary">Update</button>
+					<button type="submit" id="delete_btn" class="btn btn-primary">Delete</button>
+
+				</div>
+			</div>
+		</div>
