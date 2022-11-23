@@ -1,5 +1,16 @@
 <meta charset="utf-8">
 <script>
+function enterkey(){
+	if(window.event.keyCode == 13){
+		$('#login_form').attr({
+
+			'action':'[[@{/loginimpl}]]',
+			'method':'post'			
+		});
+		$('#login_form').submit();
+	};
+
+};
 $(document).ready(function(){
    $('#login_btn').click(function(){
       $('#login_form').attr({
@@ -48,6 +59,7 @@ $(document).ready(function(){
                     name="adminid"
                     placeholder="Enter your ID"
                     autofocus
+                    onkeyup="enterkey()"
                   />
                 </div>
                 <div class="mb-3 form-password-toggle">
@@ -64,7 +76,8 @@ $(document).ready(function(){
                       class="form-control"
                       name="adminpwd"
                       placeholder="Enter your password"
-                      aria-describedby="password"
+                      aria-describedby="password" 
+                      onkeyup="enterkey()"
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>

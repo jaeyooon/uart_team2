@@ -132,6 +132,7 @@ function clock(){
 	var h=time.getHours();
 	var m=time.getMinutes();
 	var s=time.getSeconds();
+	h=detail(h);
 	m=detail(m);
 	s=detail(s);
 	document.getElementById('clock').innerHTML=year+"년 "+month+"월 "+date+"일 "+dd[d]+"요일 "+h+":"+m+":"+s;
