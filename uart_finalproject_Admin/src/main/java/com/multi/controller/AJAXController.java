@@ -1,8 +1,10 @@
 package com.multi.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.multi.dto.ChartDTO;
+import com.multi.dto.ItemDTO;
 import com.multi.mapper.AJAXMapper;
+import com.multi.service.ItemService;
 
 @RestController
 public class AJAXController {
 
 	@Autowired
 	AJAXMapper mapper;
+	
+	@Autowired
+	ItemService item_service;
 	
 	@RequestMapping("/custcnt")
 	public String custcnt() {
@@ -81,6 +88,44 @@ public class AJAXController {
 		result.put("month", month_ja);
 		result.put("result", ja);
 		return result;
+	}
+	
+	@RequestMapping("/getschedule")
+	public List<Map<String, Object>> getschedule() {
+		List<Map<String, Object>> schelist = new ArrayList<Map<String, Object>>();
+		List<ItemDTO> list = null;
+		
+		JSONObject jo = new JSONObject();
+		JSONArray ja = new JSONArray();
+		// [{"color":"", "start":"", "end":"", "title":"", "textColor":""},{},..]
+		try {
+			list = item_service.get();
+			List<String> colorlist = new ArrayList<String>(); // 캘린더 이벤트 줄 색상
+			
+			colorlist.add("#fbf8cc");
+			colorlist.add("#d8f3dc");
+			colorlist.add("#ffcfd2");
+			colorlist.add("#f1c0e8");
+			
+			for(int i = 0; i < list.size(); i++) {
+				Map<String, Object> sche = new HashMap<String, Object>();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				
+				sche.put("title", list.get(i).getItemname());
+				sche.put("start", sdf.format(list.get(i).getEstart()));
+				sche.put("end", sdf.format(list.get(i).getEfin()));
+				sche.put("textColor", "#003566");
+				sche.put("color", colorlist.get(i%4));   
+				
+				schelist.add(sche);
+			}
+			//System.out.println(schelist);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return schelist;
 	}
 	
 }

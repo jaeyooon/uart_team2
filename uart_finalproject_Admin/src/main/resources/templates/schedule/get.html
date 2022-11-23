@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<meta charset='utf-8' />
+<link href='/fullcalendar-5.11.3/lib/main.css' rel='stylesheet' />
+<script src='/fullcalendar-5.11.3/lib/main.js'></script>
+<style>
+#calendar {
+	margin: 50px auto;
+	width: 90%;
+}
+</style>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var request = $.ajax({
+            url: "/getschedule",
+            method: "GET",
+          });
+        request.done(function(data){
+        	console.log(data);
+        	
+	        var calendar = new FullCalendar.Calendar(calendarEl, {
+	        	locale: "ko",
+	            headerToolbar: {
+	              left: 'prev,next today',
+	              center: 'title',
+	              right: 'dayGridMonth,timeGridDay'
+	            },
+	            initialDate: '2022-12-01', // 초기 로딩 날짜.
+	            navLinks: true, 
+	            selectable: true,
+	            selectMirror: true,
+	            // 이벤트명 : function(){} : 각 날짜에 대한 이벤트를 통해 처리할 내용
+	            select: function(arg) {
+	          	  console.log(arg);
+	
+	          /*     var title = prompt('입력할 일정:');
+	          // title 값이 있을때, 화면에 calendar.addEvent() json형식으로 일정을 추가
+	              if (title) {
+	                calendar.addEvent({
+	                  title: title,
+	                  start: arg.start,
+	                  end: arg.end,
+	                  allDay: false,
+	                })
+	              } */
+	              calendar.unselect()
+	            },
+	            eventClick: function(arg) {
+	          	  // 있는 일정 클릭시,
+	          	  console.log("#등록된 일정 클릭#");
+	          	  console.log(arg.event);
+	          	  
+	              if (confirm('해당 일정을 삭제하시겠습니까?')) {
+	                arg.event.remove()
+	              }
+	            },
+	            editable: true,
+	            dayMaxEvents: true, // 이벤트가 너무 많을 때 "more"클릭해서 볼 수 있도록 함
+	            events: data   // ajax로 불러온 데이터
+	        });
+	        calendar.render();
+        });
+         
+          
+        request.fail(function( jqXHR, textStatus ) {
+            alert( "Request failed: " + textStatus );
+        });
+ 	});
+    
+</script>
 
+<body>
+	<div id='calendar'></div>
 </body>
-</html>
