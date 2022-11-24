@@ -47,41 +47,22 @@
     
     <!-- style CSS -->
     <style>
-	 .day{ 
-	   background: #eee; color: black; 
+	 .darkmode_btn {
+	   border-radius: 15px;
+	   box-shadow: 0.5px 0.5px 2px 1px #eee;
+	   padding: 15px;
+	   background-color: #282828;
+	   color: white;
+	   margin-left: 10px;
+	   margin-top: 5px;
+	   border: none;
 	 }
-	.night{ 
-	  background: #333; color: white; 
-	}
-
-    @media (prefers-color-scheme: dark) {
-	  .day.dark-scheme   { background:  #333; color: white; }
-	  .night.dark-scheme { background: black; color:  #ddd; }
-    }
-
-	@media (prefers-color-scheme: light) {
-	  .day.light-scheme   { background: white; color:  #555; }
-	  .night.light-scheme { background:  #eee; color: black; }
-    }
-
-	.day, .night {
-	  display: inline-block;
-	  padding: 1em;
-	  width: 7em;
-	  height: 2em;
-	  vertical-align: middle;
-	}
+	 
+	 .dark{
+	   background-color: #282828;
+	   color: white;
+	 }
     </style>
-    <!-- Script wrapper
-    <script>
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.classList.add("dark")
-    }
-
-    document.getElementById("btnDisplayMode").addEventListener("click",() => {
-      document.documentElement.classList.toggle("dark")
-    })
-    </script> -->
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
 
@@ -95,31 +76,28 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   </head>
 
-  <body>
+  <body data-theme="dark">
     <!-- Script sheet -->
     <script>
-    function setDisplayAppreance(self){
-        var body = document.querySelector('body'); 
-        var btn = document.getElementById('btnDisplayMode'); 
-        if(self.value === '다크모드로 전환'){  //다크모드로 전환 버튼을 누른 경우
-          body.style.backgroundColor = 'black';  //배경색 변경
-          body.style.color = 'white'; //css가 적용되지 않은 기본 텍스트 색상 변경
-          btn.style.backgroundColor = "yellow"; //버튼의 배경색 변경
-          btn.style.color = "black"; //버튼의 텍스트 색상 변경
-          self.value = '라이트모드로 전환';
-        } else { //라이트모드로 전환 버튼을 누른 경우
-          body.style.backgroundColor = 'white';
-          body.style.color = 'black';
-          btn.style.backgroundColor = "black";
-          btn.style.color = "white";
-          self.value = '다크모드로 전환';
-        }
-      }
+     let darkmode_switch = true
+     
+     $(".darkmode_btn").on("click", function(){
+    	 if(darkmode_switch === true){
+    		 $("#white-box").removeClass("dark");
+    		 
+    		 $(".darkmode_span").html("🌗 다크 모드로 보기");
+    	 } else{
+    		 $("#white-box").addClass("dark");
+    		 
+    		 $(".darkmode_span").html("☀️ 일반 모드로 보기")
+    	 }
+     })
     </script>
     
     <!-- Layout wrapper -->
+    <div class="dark" id="white-box" style="width:200px; height:200px;"></div>
     <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container">
+      <div class="layout-container" id="white-box">
         <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
@@ -318,11 +296,13 @@
                   , made with ❤️ by
                   <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
                 </div>
+                <div class="darkmode">
+			        <button class="darkmode_btn" type="button">
+			            <span class="darkmode_span">🌗 다크 모드로 보기</span>
+			        </button>
+    			</div>
                 <div>
-                  <!-- <button onclick="darkmode()">다크 모드로 전환</button> -->
-                  <input id="btnDisplayMode" class="btn" type="button" value="다크모드로 전환" onclick="setDisplayAppreance(this);">
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
+                  
                   <a
                     href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
                     target="_blank"
