@@ -146,26 +146,11 @@ function clock(){
 	
 	
 </script>
-
-<!-- Content -->
+	<!-- Content -->
 <body onload="clock()">
 	<div class="container-xxl flex-grow-1 container-p-y">
 		<div class="row">
-			<div class="col-lg-3 col-md-12 mb-4">
-				<div class="card border-left-primary shadow h-100 py-2">
-					<div class="card-body">
-						<div class="row no-gutters align-items-center">
-							<div class="col mr-2">
-								<div class="h5 card-title text-primary mb-1">Customer
-									Count</div>
-								<div id="cust_cnt" class="h1 mb-0 font-weight-bold text-gray-800" style="color: black;"></div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-9 mb-4 order-0">
+		<div class="col-lg-9 mb-4 order-0">
 				<div class="card">
 					<div class="d-flex align-items-end row">
 						<div class="col-sm-7">
@@ -191,14 +176,29 @@ function clock(){
 					</div>
 				</div>
 			</div>
+			
+	<div class="col-lg-3 col-md-12 mb-4">
+				<div class="card border-left-primary shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="h5 card-title text-primary mb-1">Customer
+									Count</div>
+								<div id="cust_cnt" class="h1 mb-0 font-weight-bold text-gray-800" style="color: black;"></div>
+							</div>
 
-			<!-- Total Revenue -->
-			<!-- Content Row -->
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		<div class="row">
 
-			<div class="row">
-				<!-- Hist Chart -->
-				<div class="col-xl-6 col-lg-6 ">
-					<div class="card shadow mb-4">
+			<!-- Hist Chart -->
+			<div class="col-md-6 order-1 mb-4">
+				<div class="card h-100">
 						<!-- Card Header - Dropdown -->
 						<div
 							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -208,12 +208,13 @@ function clock(){
 						<div class="card-body">
 							<div id="container"></div>
 						</div>
-					</div>
-				</div>
+			</div>
+			</div>
+			<!--/ Expense Overview -->
 
-				<!-- Pie Chart -->
-				<div class="col-xl-6 col-lg-6">
-					<div class="card shadow mb-4">
+			<!-- Transactions -->
+			<div class="col-md-6 order-2 mb-4">
+				<div class="card h-100">
 						<!-- Card Header - Dropdown -->
 						<div
 							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -256,10 +257,10 @@ function clock(){
 							<div id="container2"></div>
 						</div>
 					</div>
+
 				</div>
 			</div>
-
+			<!--/ Transactions -->
 		</div>
-	</div>
-</body>
-<!-- / Content -->
+	</body>
+	<!-- / Content -->
