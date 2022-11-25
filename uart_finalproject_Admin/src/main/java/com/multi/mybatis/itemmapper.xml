@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="update" parameterType="itemDTO">
-		UPDATE item SET cateid=#{cateid}, estart=#{estart}, efin=#{efin}, rdate=SYSDATE()
+		UPDATE item SET cateid=#{cateid}, itemname=#{itemname}, estart=#{estart}, efin=#{efin}, rdate=SYSDATE()
 		WHERE itemid=#{itemid}
 	</update>
 	

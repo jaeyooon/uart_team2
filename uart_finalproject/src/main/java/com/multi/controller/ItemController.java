@@ -84,6 +84,20 @@ public class ItemController {
 		return "main";
 	}
 	
+	@RequestMapping("/artinfolist")
+	public String artinfolist(Model model) {
+		List<ItemDTO> list = null;
+		try {
+			list = item_service.select_cate(5);
+			model.addAttribute("itemlist5", list);
+			model.addAttribute("center", dir+"artinfolist");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "main";
+	}
+	
 	
 	@RequestMapping("/end_m")
 	public String end_m(Model model) {
@@ -141,6 +155,20 @@ public class ItemController {
 		return "main";
 	}
 	
+	@RequestMapping("/end_a")
+	public String end_a(Model model) {
+		List<ItemDTO> list = null;
+		try {		
+			list = item_mapper.end_fast(5);
+			model.addAttribute("itemlist5", list);
+			model.addAttribute("center", dir+"artinfolist");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "main";
+	}
+	
 	
 	@RequestMapping("/start_m")
 	public String start_m(Model model) {
@@ -191,6 +219,20 @@ public class ItemController {
 			list = item_mapper.start_fast(4);
 			model.addAttribute("itemlist4", list);
 			model.addAttribute("center", dir+"speciallist");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "main";
+	}
+	
+	@RequestMapping("/start_a")
+	public String start_a(Model model) {
+		List<ItemDTO> list = null;
+		try {			
+			list = item_mapper.start_fast(5);
+			model.addAttribute("itemlist5", list);
+			model.addAttribute("center", dir+"artinfolist");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
