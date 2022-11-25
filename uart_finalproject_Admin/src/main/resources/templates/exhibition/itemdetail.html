@@ -16,7 +16,7 @@ $(document).ready(function(){
 		if(c==true){
 			$('#detail_form').attr({
 				'method':'post',
-				'action':'/exhibition/updateimpl'
+				'action':'[[@{/exhibition/updateimpl}]]'
 			});
 			$('#detail_form').submit();
 		}
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		var c=confirm('✔삭제하시겠습니까?');
 		if(c==true){
 			var itemid=$('#itemid').val();
-			location.href='/exhibition/delete?itemid='+itemid
+			location.href='[[@{/exhibition/delete?itemid=}]]'+itemid
 		}
 	})
 });

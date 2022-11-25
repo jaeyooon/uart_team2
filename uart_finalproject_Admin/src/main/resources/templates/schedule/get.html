@@ -1,6 +1,6 @@
 <meta charset='utf-8' />
-<link href='/fullcalendar-5.11.3/lib/main.css' rel='stylesheet' />
-<script src='/fullcalendar-5.11.3/lib/main.js'></script>
+<link th:href='@{/fullcalendar-5.11.3/lib/main.css}' rel='stylesheet' />
+<script th:src='@{/fullcalendar-5.11.3/lib/main.js}'></script>
 <style>
 #calendar {
 	margin: 50px auto;
@@ -11,7 +11,7 @@
    document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var request = $.ajax({
-            url: "/getschedule",
+            url: "[[@{/getschedule}]]",
             method: "GET",
           });
         request.done(function(data){

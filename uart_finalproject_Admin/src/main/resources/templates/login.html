@@ -28,7 +28,7 @@ $(document).ready(function(){
   <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
   <!-- Page -->
-  <link rel="stylesheet" href="../assets/vendor/css/pages/page-auth.css" />
+  <link rel="stylesheet" th:href="@{/assets/vendor/css/pages/page-auth.css}" />
 
 </head>
 
@@ -95,7 +95,7 @@ $(document).ready(function(){
 
               <p class="text-center">
                 <span>New on our platform?</span>
-                <a href="/admin/register">
+                <a th:href="@{/admin/register}">
                   <span>Create an account</span>
                 </a>
               </p>

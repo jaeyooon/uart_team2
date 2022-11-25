@@ -5,7 +5,7 @@ $(document).ready(function(){
 	$('#register_btn').click(function(){
 		$('#register_form').attr({
 			'method':'get',
-			'action':'/exhibition/registerimpl_price'
+			'action':'[[@{/exhibition/registerimpl_price}]]'
 		});
 		$('#register_form').submit();
 	});

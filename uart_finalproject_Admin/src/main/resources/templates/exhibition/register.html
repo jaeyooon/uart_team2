@@ -6,7 +6,7 @@ $(document).ready(function(){
 		$('#register_form').attr({
 			'enctype':'multipart/form-data',
 			'method':'post',  //file upload는 get방식 안됌!
-			'action': '/exhibition/registerimpl'
+			'action': '[[@{/exhibition/registerimpl}]]'
 		});
 		$('#register_form').submit();
 	});

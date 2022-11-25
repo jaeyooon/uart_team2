@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
 	class="light-style layout-menu-fixed" dir="ltr"
-	data-theme="theme-default" data-assets-path="../assets/"
+	data-theme="theme-default" data-assets-path="/assets/"
 	data-template="vertical-menu-template-free">
 <head>
 <meta charset="utf-8" />
@@ -15,7 +15,7 @@
 
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon"
-	href="../assets/img/favicon/favicon.ico" />
+	th:href="@{/assets/img/favicon/favicon.ico}" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,30 +25,30 @@
 	rel="stylesheet" />
 
 <!-- Icons. Uncomment required icon fonts -->
-<link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+<link rel="stylesheet" th:href="@{/assets/vendor/fonts/boxicons.css}" />
 
 <!-- Core CSS -->
-<link rel="stylesheet" href="../assets/vendor/css/core.css"
+<link rel="stylesheet" th:href="@{/assets/vendor/css/core.css}"
 	class="template-customizer-core-css" />
-<link rel="stylesheet" href="../assets/vendor/css/theme-default.css"
+<link rel="stylesheet" th:href="@{/assets/vendor/css/theme-default.css}"
 	class="template-customizer-theme-css" />
-<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" th:href="@{/assets/css/demo.css}" />
 
 <!-- Vendors CSS -->
 <link rel="stylesheet"
-	href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+	th:href="@{/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
 
 <link rel="stylesheet"
-	href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+	th:href="@{/assets/vendor/libs/apex-charts/apex-charts.css}" />
 
 <!-- Page CSS -->
 
 <!-- Helpers -->
-<script src="../assets/vendor/js/helpers.js"></script>
+<script th:src="@{/assets/vendor/js/helpers.js}"></script>
 
 <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-<script src="../assets/js/config.js"></script>
+<script th:src="@{/assets/js/config.js}"></script>
 
 <!-- Charts Library -->
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -59,7 +59,7 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<script src="../assets/vendor/libs/jquery/jquery.js"></script>
+<script th:src="@{/assets/vendor/libs/jquery/jquery.js}"></script>
 </head>
 
 <body>
@@ -73,7 +73,7 @@
 				<div class="app-brand demo">
 					<a href="/"><span
 						class="app-brand-text demo menu-text fw-bolder ms-2"
-						style="text-transform: uppercase">U-ART</span></a> </a> <a href="/"
+						style="text-transform: uppercase">U-ART</span></a> </a> <a th:href="@{/}"
 						class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
 						<i class="bx bx-chevron-left bx-sm align-middle"></i>
 					</a>
@@ -94,7 +94,7 @@
 							<div data-i18n="Account Settings">고객정보</div>
 					</a>
 						<ul class="menu-sub" th:if="${session.loginadmin != null}">
-							<li class="menu-item"><a href="/cust/get" class="menu-link">
+							<li class="menu-item"><a th:href="@{/cust/get}" class="menu-link">
 									<div data-i18n="Account">조회</div>
 							</a></li>
 
@@ -111,11 +111,11 @@
 								<div data-i18n="Account Settings">관리자정보</div>
 						</a>
 							<ul class="menu-sub">
-								<li class="menu-item"><a href="/admin/get"
+								<li class="menu-item"><a th:href="@{/admin/get}"
 									class="menu-link">
 										<div data-i18n="Account">조회</div>
 								</a></li>
-								<li class="menu-item"><a href="/admin/register"
+								<li class="menu-item"><a th:href="@{/admin/register}"
 									class="menu-link">
 										<div data-i18n="Notifications">등록</div>
 								</a></li>
@@ -133,15 +133,15 @@
 							<div data-i18n="User interface">전시목록</div>
 					</a>
 						<ul class="menu-sub" th:if="${session.loginadmin != null}">
-							<li class="menu-item"><a href="/exhibition/get"
+							<li class="menu-item"><a th:href="@{/exhibition/get}"
 								class="menu-link">
 									<div data-i18n="Accordion">조회</div>
 							</a></li>
-							<li class="menu-item"><a href="/exhibition/register"
+							<li class="menu-item"><a th:href="@{/exhibition/register}"
 								class="menu-link">
 									<div data-i18n="Alerts">등록</div>
 							</a></li>
-							<li class="menu-item"><a href="/exhibition/register_price"
+							<li class="menu-item"><a th:href="@{/exhibition/register_price}"
 								class="menu-link">
 									<div data-i18n="Alerts">티켓가격등록</div>
 							</a></li>
@@ -158,7 +158,7 @@
 							<div data-i18n="Tables">예매내역</div>
 					</a>
 						<ul class="menu-sub" th:if="${session.loginadmin != null}">
-							<li class="menu-item"><a href="/reservation/get"
+							<li class="menu-item"><a th:href="@{/reservation/get}"
 								class="menu-link">
 									<div data-i18n="Accordion">조회</div>
 							</a></li>
@@ -172,7 +172,7 @@
 							<div data-i18n="Tables">전시일정</div>
 					</a>
 						<ul class="menu-sub" th:if="${session.loginadmin != null}">
-							<li class="menu-item"><a href="/schedule/get"
+							<li class="menu-item"><a th:href="@{/schedule/get}"
 								class="menu-link">
 									<div data-i18n="Accordion">조회</div>
 							</a></li>
@@ -203,7 +203,7 @@
 							<!-- User -->
 							<ul th:if="${session.loginadmin == null}"
 								style="list-style: none;">
-								<li><a class="dropdown-item" href="/login"> <span
+								<li><a class="dropdown-item" th:href="@{/login}"> <span
 										class="material-symbols-outlined"> login </span> Login
 								</a></li>
 							</ul>
@@ -236,7 +236,7 @@
 
 									<div
 										style="display: flex; justify-content: center; align-items: center;">
-										<li><a href="/logout" style="color: grey"> <span
+										<li><a th:href="@{/logout}" style="color: grey"> <span
 												class="material-symbols-outlined"> logout </span>Logout
 										</a></li>
 									</div>
@@ -298,22 +298,22 @@
 	<!-- Core JS -->
 	<!-- build:js assets/vendor/js/core.js -->
 
-	<script src="../assets/vendor/libs/popper/popper.js"></script>
-	<script src="../assets/vendor/js/bootstrap.js"></script>
+	<script th:src="@{/assets/vendor/libs/popper/popper.js}"></script>
+	<script th:src="@{/assets/vendor/js/bootstrap.js}"></script>
 	<script
-		src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+		th:src="@{/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js}"></script>
 
-	<script src="../assets/vendor/js/menu.js"></script>
+	<script th:src="@{/assets/vendor/js/menu.js}"></script>
 	<!-- endbuild -->
 
 	<!-- Vendors JS -->
-	<script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+	<script th:src="@{/assets/vendor/libs/apex-charts/apexcharts.js}"></script>
 
 	<!-- Main JS -->
-	<script src="../assets/js/main.js"></script>
+	<script th:src="@{/assets/js/main.js}"></script>
 
 	<!-- Page JS -->
-	<script src="../assets/js/dashboards-analytics.js"></script>
+	<script th:src="@{/assets/js/dashboards-analytics.js}"></script>
 
 	<!-- Place this tag in your head or just before your close body tag. -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
