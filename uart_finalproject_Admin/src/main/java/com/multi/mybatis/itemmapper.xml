@@ -38,4 +38,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM item WHERE itemid=#{itemid}
 	</delete>
 	
+	<select id="gethighgrade" resultType="itemDTO">
+		SELECT i.itemid, i.itemname, i.itemimg, i.estart, i.efin, 
+		round(avg(r.reviewgrade), 1) as review_reviewgrade FROM item i 
+		INNER JOIN review r ON i.itemid = r.itemid
+		GROUP BY i.itemid
+		ORDER BY review_reviewgrade DESC LIMIT 6;
+
+	</select>
+	
 </mapper>

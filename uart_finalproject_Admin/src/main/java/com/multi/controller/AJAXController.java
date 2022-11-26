@@ -127,7 +127,25 @@ public class AJAXController {
 		
 		return schelist;
 	}
-	
+	@RequestMapping("/getdata")
+	public Object getdata() throws Exception {
+		int count = 6;
+		int a=1;
+		
+		List<ItemDTO> list =null;
+		list=item_service.gethighgrade();
+		
+		JSONArray ja = new JSONArray();
+		for(ItemDTO c:list) {
+			JSONObject jo = new JSONObject();
+			jo.put("title", c.getItemname());
+			
+				jo.put("num", a++);
+			
+			ja.add(jo);
+		}
+		return ja;
+}
 }
 
 
