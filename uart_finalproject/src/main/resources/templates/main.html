@@ -29,14 +29,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Filled|Material+Icons+Rounded|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"> 
 
-
-	
-
-
    <!-- Kakao map API -->
    <script type="text/javascript"
       th:src="@{//dapi.kakao.com/v2/maps/sdk.js?appkey=f541c133e4befeb47a03d1471b0f1748}"></script>
 
+	<!-- Websocket Library -->
+	<script th:src="@{/webjars/sockjs-client/sockjs.min.js}"></script>
+	<script th:src="@{/webjars/stomp-websocket/stomp.min.js}"></script>
 
    <!-- logo font -->   
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -277,7 +276,7 @@ function enterkey2(){
                   <li><a th:href="@{/item/artinfolist}">공연예술</a></li>
                   <li><a th:href="@{/event/get}">이벤트</a></li>
                   <li><a th:href="@{/faq}">FAQ</a></li>
-                  <li><a href="#"><img id="chatbot-icon" th:src="@{/img_c/chatbot.jpg}"></a></li>
+                  <li><a th:href="@{/chatbot}"><img id="chatbot-icon" th:src="@{/img_c/chatbot.jpg}"></a></li>
                </ul>
             </div>
          </nav>

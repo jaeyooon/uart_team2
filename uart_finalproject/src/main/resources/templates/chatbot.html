@@ -1,0 +1,279 @@
+<meta charset="utf-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+
+<style>
+#cover{
+	background-image: linear-gradient( to bottom,  rgba(255,244,228,1) 100%, rgba(240,246,238,1) 0% );
+	width:500px;
+	height:1000px;
+
+}
+
+#chat {
+	width: 400px;
+	height: 560px;
+	overflow: auto;
+	border: 2px solid #7971EA;
+	margin-left:40px;
+	color:black;
+	
+	
+}
+
+#h2 {
+	font-size: 22px;
+}
+
+#h1{
+	font-size:28px;
+	color:gray;
+	font-weight:normal;
+	text-align:center;
+	margin-bottom:-10px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+#p1{
+	font-size:16px;
+	font-weight:normal;
+	text-align:center;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+#n{
+	color:black;
+	font-size: 20px;
+	font-weight:normal;
+	margin-left:15px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+#c{
+	color:black;
+	font-size: 20px;
+	font-weight:normal;
+	margin-left:15px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+#status{
+	color:black;
+	font-size: 20px;
+	font-weight:normal;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+#connect{
+	width:90px;
+	height:30px;
+	color:white;
+	background-color:#7971EA;
+	border: 2px solid #7971EA;
+	border-radius: 5px;
+}
+
+#connect:hover{
+color:black;
+}
+
+#disconnect{
+	width:90px;
+	height:30px;
+	color:white;
+	background-color:#7971EA;
+	border: 2px solid #7971EA;
+	border-radius: 5px;
+}
+
+#disconnect:hover{
+color:black;
+}
+
+#metext{
+	width: 330px;
+	height: 40px;
+	margin-left:40px;
+	
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: 22px;
+}
+
+#send_btn{
+	color:white;
+	background-color:#7971EA;
+	border: 8px solid #7971EA;
+	border-radius: 5px;
+	margin-left:-4px;
+	width:70px;
+	height:40px;
+	
+	
+}
+
+#bot{
+	text-align:left;
+	font-family: 'Dongle', sans-serif;
+	font-size:27px;
+}
+
+#cust{
+	text-align:right;
+	font-family: 'Dongle', sans-serif;
+	font-size:27px;
+}
+</style>
+
+<script>
+	var stompClient = null;
+	var id = '[[${session.logincust.custid}]]';
+	var cname = '[[${session.logincust.cname}]]';
+	// 서버소켓에 연결
+	function connect() {
+		var socket = new SockJS('http://101.101.219.170:8080/chatbot');  //관리자페이지에 서버소켓있으므로 관리자페이지 주소쓰기
+		stompClient = Stomp.over(socket);
+
+		stompClient.connect({}, function(frame) {
+			setConnected(true);
+			console.log('Connected: ' + frame);
+
+			stompClient.subscribe('/send/' + id,
+					function(chatchat) {
+				
+				var uartid="U-ART🔅";				
+					$("#chat").append(
+								"<h4 id='bot'>" + "<strong>"+uartid+":  "+"</strong>"
+										+ JSON.parse(chatchat.body).content1
+										+ JSON.parse(chatchat.body).content2
+										+ "</h4>");
+					
+					
+					});
+
+		});
+	}
+
+	// 서버소켓에 연결끊기
+	function disconnect() {
+		if (stompClient !== null) {
+			stompClient.disconnect();
+		}
+		setConnected(false);
+		console.log("Disconnected");
+	}
+
+	// connect&disconnect버튼 활성화/비활성화
+	function setConnected(connected) {
+		if (connected) {
+			$("#status").text("시작💬");
+			$("#status").css('color', 'black');
+			
+	} else {
+			$("#status").text("종료");
+			$("#status").css('color', 'red');
+		
+			
+		}
+
+	}
+
+	function chat() {
+		var msg = JSON.stringify({
+			'chatbotid' : id,
+			'content1' : $('#metext').val()
+		});
+		stompClient.send("/uart_chatbot", {}, msg);
+		
+		$('#chat').append(
+				"<h4 id='cust'>"+"<strong>"+cname+":  "+"</strong>"+$('#metext').val()
+				+ "</h4>" );
+		
+	}
+	
+	function enterkey2(){
+		if(window.event.keyCode==13){ //enter키로 전송
+			chat();
+			$('#metext').val(''); //입력창 공백만들어 주기
+			
+			}
+	};
+
+	$(document).ready(function() {
+		$("#connect").click(function() {
+			connect();
+		});
+		$("#disconnect").click(function() {
+			disconnect();
+		});
+
+		$("#send_btn").click(function() {
+			chat();
+			$('#metext').val(''); //입력창 공백으로 만들어주기
+		});
+
+	});
+</script>
+
+<body>
+
+	<div class="site-section">
+		<div class="container">
+
+			<div class="row mb-5">
+				<div class="col-md-12 order-2">
+
+					<div class="row">
+						<div class="col-md-12 mb-5">
+							<div class="float-md-left mb-4">
+								<h2 id="h2" class="text-black h5">Chatbot</h2>
+								
+							</div>
+						</div>
+					</div>
+					<!-- center 화면 ------------------------------------------------>
+
+					<div class="container">
+						<div class="row mb-5">
+
+							<div class="col-sm-12">
+								<div class="container">
+									<div class="col-sm-5">
+										<div id="cover" class="site-blocks-cover" data-aos="fade">
+										<br>
+										<h1 id="h1">U-ART Chatbot</h1>
+										<hr style="background-color:gray; width:50%; height:1px; text-align:center;">
+										&nbsp;<h2 id="n" th:text="'이름:&nbsp;' +${session.logincust.cname}">Name</h2>
+											  <h2 id="c" style="display:inline;" >연결상태:&nbsp;</h2>
+											  <h2 id="status" style="display:inline;" >대기</h2><br>
+										&nbsp;&nbsp;&nbsp;&nbsp;<button id="connect">Connect</button>&nbsp;	  
+										<button id="disconnect">Disconnect</button>	  
+											  
+										<br><br>
+										<p id="p1">chatbot을 시작하시려면 입력창에 <strong>'문의'</strong>를 입력해주세요!</p>
+										
+										
+											
+											<div id="chat"></div>
+											<input type="text" id="metext" onkeyup="enterkey2()"> <!-- enter키로 전송 -->
+											<button id="send_btn">Send</button>
+										</div>
+										</div>
+									</div>
+
+								</div>
+
+
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+

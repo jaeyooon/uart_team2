@@ -76,6 +76,12 @@ public class MainController {
 		}
 		return "main";
 	
-	}	
+	}
+	
+	@RequestMapping("/chatbot")
+	public String chatbot(Model model) {
+		model.addAttribute("center", "chatbot");
+		return "main";
+	}
 	
 }
