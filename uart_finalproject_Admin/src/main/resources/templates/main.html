@@ -65,6 +65,89 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <script th:src="@{/assets/vendor/libs/jquery/jquery.js}"></script>
 </head>
+<style>
+.rollingbanner{
+    position: relative;
+    width: 500px;
+    height: 32px;
+    font-size: .875rem;
+    letter-spacing: -1px;
+    padding: 7px 15px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 16px;
+}
+/* 타이틀 */
+.rollingbanner > .title{
+    font-weight: bold;
+    float: left;
+    padding-right: 10px;
+}
+/* 롤링 배너 */
+.rollingbanner > .wrap{
+    position: relative;
+    width: auto;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}        
+.rolling ul{
+    list-style: none;
+}
+.rollingbanner li{
+    position: absolute;
+    top: -36px;
+    left: 0;
+}
+/* 이전, 현재, 다음 롤링 배너 표시 */
+.rollingbanner li.prev{
+    top: 36px;
+    transition: top 0.5s ease;
+}
+.rollingbanner li.current{
+    top: 0;
+    transition: top 0.5s ease;
+}
+.rollingbanner li.next{
+    top: -36px;
+}
+.rollingbanner a{
+    display: block;
+    display: -webkit-box;
+    text-decoration: none;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient:vertical;
+    overflow: hidden;
+    color: #000;
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+    var interval = window.setInterval(rollingCallback, 3000);
+})
+function rollingCallback(){
+    //.prev 클래스 삭제
+    document.querySelector('.rollingbanner .prev').classList.remove('prev');
+
+    //.current -> .prev
+    let current = document.querySelector('.rollingbanner .current');
+    current.classList.remove('current');
+    current.classList.add('prev');
+
+    //.next -> .current
+    let next = document.querySelector('.rollingbanner .next');
+    //다음 목록 요소가 널인지 체크
+    if(next.nextElementSibling == null){
+        document.querySelector('.rollingbanner ul li:first-child').classList.add('next');
+    }else{
+    	//목록 처음 요소를 다음 요소로 선택
+        next.nextElementSibling.classList.add('next');
+    }
+    next.classList.remove('next');
+    next.classList.add('current');
+}
+
+</script>
 
 <body>
 	<!-- Layout wrapper -->
@@ -203,7 +286,19 @@
 
 
 						<ul class="navbar-nav flex-row align-items-center ms-auto">
-
+<div class="rollingbanner ">
+    <div class="title" style="color: black;">리뷰별점 높은 순서대로 추천전시6 > </div>
+    <div class="wrap">
+        <ul>
+            <li class="current"><a href="#">1. GUSTAV KLIMT(구스타프 클림트)</a></li>
+            <li class="next"><a href="#">2. LOGOUT(로그아웃)</a></li>
+            <li><a href="#">3. MONET INSIDE(모네)</a></li>
+            <li><a href="#">4. DUBUFFET(뒤뷔페전)</a></li>
+            <li><a href="#">5. Road To Purple</a></li>
+            <li class="prev"><a href="#">6. Tube Seoul</a></li>
+        </ul>
+    </div>
+</div>
 							<!-- User -->
 							<ul th:if="${session.loginadmin == null}"
 								style="list-style: none;">
