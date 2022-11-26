@@ -1,360 +1,324 @@
 <!DOCTYPE html>
-<html
-  lang="ko" xmlns:th="http://www.thymeleaf.org"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="../assets/"
-  data-template="vertical-menu-template-free"
->
-  
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	class="light-style layout-menu-fixed" dir="ltr"
+	data-theme="theme-default" data-assets-path="/assets/"
+	data-template="vertical-menu-template-free">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+<title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin
+	Template - Pro</title>
 
-    <meta name="description" content="" />
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+<meta name="description" content="" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon"
+	th:href="@{/assets/img/favicon/favicon.ico}" />
 
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+	rel="stylesheet" />
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../assets/css/demo.css" />
+<!-- Icons. Uncomment required icon fonts -->
+<link rel="stylesheet" th:href="@{/assets/vendor/fonts/boxicons.css}" />
 
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+<!-- Core CSS -->
+<link rel="stylesheet" th:href="@{/assets/vendor/css/core.css}"
+	class="template-customizer-core-css" />
+<link rel="stylesheet" th:href="@{/assets/vendor/css/theme-default.css}"
+	class="template-customizer-theme-css" />
+<link rel="stylesheet" th:href="@{/assets/css/demo.css}" />
 
-    <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+<!-- Vendors CSS -->
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
 
-    <!-- Page CSS -->
-    
-    <!-- style CSS -->
-    <style>
-	 .darkmode_btn {
-	   border-radius: 15px;
-	   box-shadow: 0.5px 0.5px 2px 1px #eee;
-	   padding: 15px;
-	   background-color: #282828;
-	   color: white;
-	   margin-left: 10px;
-	   margin-top: 5px;
-	   border: none;
-	 }
-	 
-	 .dark{
-	   background-color: #282828;
-	   color: white;
-	 }
-    </style>
-    <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
+<link rel="stylesheet"
+	th:href="@{/assets/vendor/libs/apex-charts/apex-charts.css}" />
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
-    
-    
-    
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  </head>
+<!-- Page CSS -->
 
-  <body data-theme="dark">
-    <!-- Script sheet -->
-    <script>
-     let darkmode_switch = true
-     
-     $(".darkmode_btn").on("click", function(){
-    	 if(darkmode_switch === true){
-    		 $("#white-box").removeClass("dark");
-    		 
-    		 $(".darkmode_span").html("🌗 다크 모드로 보기");
-    	 } else{
-    		 $("#white-box").addClass("dark");
-    		 
-    		 $(".darkmode_span").html("☀️ 일반 모드로 보기")
-    	 }
-     })
-    </script>
-    
-    <!-- Layout wrapper -->
-    <div class="dark" id="white-box" style="width:200px; height:200px;"></div>
-    <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container" id="white-box">
-        <!-- Menu -->
+<!-- Helpers -->
+<script th:src="@{/assets/vendor/js/helpers.js}"></script>
 
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-          <div class="app-brand demo">
-      		<a href="/"><span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform :uppercase">U-ART</span></a>
-            </a>
+<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+<script th:src="@{/assets/js/config.js}"></script>
 
-            <a href="/" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-              <i class="bx bx-chevron-left bx-sm align-middle"></i>
-            </a>
-          </div>
+<!-- Websocket Library -->
+<script th:src="@{/webjars/sockjs-client/sockjs.min.js}"></script>
+<script th:src="@{/webjars/stomp-websocket/stomp.min.js}"></script>
 
-          <div class="menu-inner-shadow"></div>
+<!-- Charts Library -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  	
 
-          <ul class="menu-inner py-1">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<script th:src="@{/assets/vendor/libs/jquery/jquery.js}"></script>
+</head>
+
+<body>
+	<!-- Layout wrapper -->
+	<div class="layout-wrapper layout-content-navbar">
+		<div class="layout-container">
+			<!-- Menu -->
+
+			<aside id="layout-menu"
+				class="layout-menu menu-vertical menu bg-menu-theme">
+				<div class="app-brand demo">
+					<a href="/"><span
+						class="app-brand-text demo menu-text fw-bolder ms-2"
+						style="text-transform: uppercase">U-ART</span></a> </a> <a th:href="@{/}"
+						class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+						<i class="bx bx-chevron-left bx-sm align-middle"></i>
+					</a>
+				</div>
+
+				<div class="menu-inner-shadow"></div>
+
+				<ul class="menu-inner py-1">
 
 
-          
-			 <!-- Customer -->
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Customer</span>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link menu-toggle">
-              <span class="material-symbols-outlined">
-				group </span>
-                <div data-i18n="Account Settings">고객정보</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/cust/get" class="menu-link">
-                    <div data-i18n="Account">조회</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          
-            <!-- Admin -->
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Admin</span>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link menu-toggle">
-              <span class="material-symbols-outlined">
-               admin_panel_settings</span>
-                <div data-i18n="Account Settings">관리자정보</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/admin/get" class="menu-link">
-                    <div data-i18n="Account">조회</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/admin/register" class="menu-link">
-                    <div data-i18n="Notifications">등록</div>
-                  </a>
-                </li>
-                
-              </ul>
-            </li>
-            
-            <!-- Exhibition -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Exhibition</span></li>
-           
-            <li class="menu-item">
-              <a href="#" class="menu-link menu-toggle">
-                <span class="material-symbols-outlined">
-				list </span>
-                <div data-i18n="User interface">전시목록</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/exhibition/get" class="menu-link">
-                    <div data-i18n="Accordion">조회</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/exhibition/register" class="menu-link">
-                    <div data-i18n="Alerts">등록</div>
-                  </a>
-                </li>
-              
-              </ul>
-            </li>
 
-           
-            <!-- Reservation -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Reservation</span></li>
-            <li class="menu-item">
-              <a href="/reservation/get" class="menu-link">
-                <span class="material-symbols-outlined">
-				book_online </span>
-                <div data-i18n="Tables"> 예매내역 조회</div>
-              </a>
-            </li>
-            <!-- Schedule -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Schedule</span></li>
-            <li class="menu-item">
-              <a href="/schedule/get"
-                target="_blank"
-                class="menu-link">
-                <span class="material-symbols-outlined">
-				calendar_month </span>
-                <div data-i18n="Support">일정관리</div>
-              </a>
-            </li>
-          </ul>
-        </aside>
-        <!-- / Menu -->
+					<!-- Customer -->
+					<li class="menu-header small text-uppercase"><span
+						class="menu-header-text">Customer</span></li>
+					<li class="menu-item"><a href="#"
+						class="menu-link menu-toggle"> <span
+							class="material-symbols-outlined"> group </span>
+							<div data-i18n="Account Settings">고객정보</div>
+					</a>
+						<ul class="menu-sub" th:if="${session.loginadmin != null}">
+							<li class="menu-item"><a th:href="@{/cust/get}" class="menu-link">
+									<div data-i18n="Account">조회</div>
+							</a></li>
 
-        <!-- Layout container -->
-        <div class="layout-page">
-          <!-- Navbar -->
+						</ul></li>
 
-          <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar"
-          >
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                <i class="bx bx-menu bx-sm"></i>
-              </a>
-            </div>
+					<!-- Admin -->
+					<div
+						th:if="${session.loginadmin != null} and ${session.loginadmin.lev == 'A'}">
+						<li class="menu-header small text-uppercase"><span
+							class="menu-header-text">Admin</span></li>
+						<li class="menu-item"><a href="#"
+							class="menu-link menu-toggle"> <span
+								class="material-symbols-outlined"> admin_panel_settings</span>
+								<div data-i18n="Account Settings">관리자정보</div>
+						</a>
+							<ul class="menu-sub">
+								<li class="menu-item"><a th:href="@{/admin/get}"
+									class="menu-link">
+										<div data-i18n="Account">조회</div>
+								</a></li>
+								<li class="menu-item"><a th:href="@{/admin/register}"
+									class="menu-link">
+										<div data-i18n="Notifications">등록</div>
+								</a></li>
 
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- User -->
-                <li>
-                      <a class="dropdown-item" href="/login">
-                      <span class="material-symbols-outlined">
-						login
-						</span> Login
-                      </a>
-                    </li>
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                     <span class="material-symbols-outlined" style="font-size:40px;">
-						emoji_people
-						</span>
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="/logout">
-                        
-                        <span class="material-symbols-outlined">
-						logout
-						</span>Logout
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <!--/ User -->
-              </ul>
-            </div>
-          </nav>
+							</ul></li>
+					</div>
 
-          <!-- / Navbar -->
-          <!-- Content wrapper -->
-			<div class="content-wrapper">
-			 <!-- Main Center Start -->
-      <div th:insert="${center} ? ${center} : maincenter"></div>
-      <!-- Main Center End -->   
-            <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                <div class="mb-2 mb-md-0">
-                  ©
-                  <script>
+					<!-- Exhibition -->
+					<li class="menu-header small text-uppercase"><span
+						class="menu-header-text">Exhibition</span></li>
+
+					<li class="menu-item"><a href="#"
+						class="menu-link menu-toggle"> <span
+							class="material-symbols-outlined"> list </span>
+							<div data-i18n="User interface">전시목록</div>
+					</a>
+						<ul class="menu-sub" th:if="${session.loginadmin != null}">
+							<li class="menu-item"><a th:href="@{/exhibition/get}"
+								class="menu-link">
+									<div data-i18n="Accordion">조회</div>
+							</a></li>
+							<li class="menu-item"><a th:href="@{/exhibition/register}"
+								class="menu-link">
+									<div data-i18n="Alerts">등록</div>
+							</a></li>
+							<li class="menu-item"><a th:href="@{/exhibition/register_price}"
+								class="menu-link">
+									<div data-i18n="Alerts">티켓가격등록</div>
+							</a></li>
+
+						</ul></li>
+
+
+					<!-- Reservation -->
+					<li class="menu-header small text-uppercase"><span
+						class="menu-header-text">Reservation</span></li>
+					<li class="menu-item"><a href="#"
+						class="menu-link menu-toggle"> <span
+							class="material-symbols-outlined"> book_online </span>
+							<div data-i18n="Tables">예매내역</div>
+					</a>
+						<ul class="menu-sub" th:if="${session.loginadmin != null}">
+							<li class="menu-item"><a th:href="@{/reservation/get}"
+								class="menu-link">
+									<div data-i18n="Accordion">조회</div>
+							</a></li>
+						</ul></li>
+					<!-- Schedule -->
+					<li class="menu-header small text-uppercase"><span
+						class="menu-header-text">Schedule</span></li>
+					<li class="menu-item"><a href="#"
+						class="menu-link menu-toggle"> <span
+							class="material-symbols-outlined"> calendar_month </span>
+							<div data-i18n="Tables">전시일정</div>
+					</a>
+						<ul class="menu-sub" th:if="${session.loginadmin != null}">
+							<li class="menu-item"><a th:href="@{/schedule/get}"
+								class="menu-link">
+									<div data-i18n="Accordion">조회</div>
+							</a></li>
+						</ul>
+			</aside>
+			<!-- / Menu -->
+
+			<!-- Layout container -->
+			<div class="layout-page">
+				<!-- Navbar -->
+
+				<nav
+					class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+					id="layout-navbar">
+					<div
+						class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+						<a class="nav-item nav-link px-0 me-xl-4"
+							href="javascript:void(0)"> <i class="bx bx-menu bx-sm"></i>
+						</a>
+					</div>
+
+					<div class="navbar-nav-right d-flex align-items-center"
+						id="navbar-collapse">
+
+
+						<ul class="navbar-nav flex-row align-items-center ms-auto">
+
+							<!-- User -->
+							<ul th:if="${session.loginadmin == null}"
+								style="list-style: none;">
+								<li><a class="dropdown-item" th:href="@{/login}"> <span
+										class="material-symbols-outlined"> login </span> Login
+								</a></li>
+							</ul>
+							<li th:if="${session.loginadmin != null}"
+								class="nav-item navbar-dropdown dropdown-user dropdown"><a
+								class="nav-link dropdown-toggle hide-arrow" href="#"
+								data-bs-toggle="dropdown">
+									<div class="avatar avatar-online">
+										<span class="material-symbols-outlined"
+											style="font-size: 40px;"> emoji_people </span>
+									</div>
+							</a>
+								<ul class="dropdown-menu dropdown-menu-end">
+									<li>
+
+										<div>
+											<div
+												style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+												<a id="cname" style="color: #4361ee"
+													th:text="${session.loginadmin.aname}+'님'"
+													th:href="@{/admin/detail(adminid=${session.loginadmin.adminid})}"><span
+													class="caret"></span></a> <small class="text-muted">Admin</small>
+											</div>
+										</div>
+
+									</li>
+									<li>
+										<div class="dropdown-divider"></div>
+									</li>
+
+									<div
+										style="display: flex; justify-content: center; align-items: center;">
+										<li><a th:href="@{/logout}" style="color: grey"> <span
+												class="material-symbols-outlined"> logout </span>Logout
+										</a></li>
+									</div>
+
+								</ul></li>
+							<!--/ User -->
+						</ul>
+					</div>
+				</nav>
+
+				<!-- / Navbar -->
+				<!-- Content wrapper -->
+				<div class="content-wrapper">
+					<!-- Main Center Start -->
+					<div th:insert="${center} ? ${center} : maincenter"></div>
+					<!-- Main Center End -->
+					<!-- Footer -->
+					<footer class="content-footer footer bg-footer-theme">
+						<div
+							class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+							<div class="mb-2 mb-md-0">
+								©
+								<script>
                     document.write(new Date().getFullYear());
                   </script>
-                  , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                </div>
-                <div class="darkmode">
-			        <button class="darkmode_btn" type="button">
-			            <span class="darkmode_span">🌗 다크 모드로 보기</span>
-			        </button>
-    			</div>
-                <div>
-                  
-                  <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
+								, 이 페이지의 관리는 주식회사 (주)U-ART가 담당하고 있습니다. 관계자 외 접속을 금합니다. 
+							</div>
+							<div>
+								<a href="https://themeselection.com/license/"
+									class="footer-link me-4" target="_blank">License</a> <a
+									href="https://themeselection.com/" target="_blank"
+									class="footer-link me-4">More Themes</a> <a
+									href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+									target="_blank" class="footer-link me-4">Documentation</a>
 
-                  <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  >
-                </div>
-              </div>
-            </footer>
-            <!-- / Footer -->
+								<a
+									href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+									target="_blank" class="footer-link me-4">Support</a>
+							</div>
+						</div>
+					</footer>
+					<!-- / Footer -->
 
-            <div class="content-backdrop fade"></div>
-          </div>
-          <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-      </div>
+					<div class="content-backdrop fade"></div>
+				</div>
+				<!-- Content wrapper -->
+			</div>
+			<!-- / Layout page -->
+		</div>
 
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
-    <!-- / Layout wrapper -->
+		<!-- Overlay -->
+		<div class="layout-overlay layout-menu-toggle"></div>
+	</div>
+	<!-- / Layout wrapper -->
 
-    
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+	<!-- Core JS -->
+	<!-- build:js assets/vendor/js/core.js -->
 
-    <!-- Vendors JS -->
-    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+	<script th:src="@{/assets/vendor/libs/popper/popper.js}"></script>
+	<script th:src="@{/assets/vendor/js/bootstrap.js}"></script>
+	<script
+		th:src="@{/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js}"></script>
 
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
+	<script th:src="@{/assets/vendor/js/menu.js}"></script>
+	<!-- endbuild -->
 
-    <!-- Page JS -->
-    <script src="../assets/js/dashboards-analytics.js"></script>
+	<!-- Vendors JS -->
+	<script th:src="@{/assets/vendor/libs/apex-charts/apexcharts.js}"></script>
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
+	<!-- Main JS -->
+	<script th:src="@{/assets/js/main.js}"></script>
+
+	<!-- Page JS -->
+	<script th:src="@{/assets/js/dashboards-analytics.js}"></script>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
 </html>
