@@ -1,5 +1,6 @@
 package com.multi.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,15 @@ public class AdminService implements MyService<String, AdminDTO>{
 	@Override
 	public List<AdminDTO> get() throws Exception {
 		return mapper.selectall();
+	}
+
+	public AdminDTO login(AdminDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void keepLogin(Object userId, String id, Date sessionLimit) {
+		// TODO Auto-generated method stub
+		
 	}
 }

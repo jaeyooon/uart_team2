@@ -7,6 +7,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="select" parameterType="String" resultType="AdminDTO">
 		SELECT * FROM admintbl WHERE adminid=#{adminid}
 	</select>
+	<select id="login" resultType="AdminDTO">
+	    select * from admintbl where adminid=#{adminid} and adminpwd=#{adminpwd}
+	</select>
 	<select id="selectall" resultType="AdminDTO">
 		SELECT * FROM admintbl
 	</select>
@@ -16,6 +19,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id="update" parameterType="AdminDTO">
 		UPDATE admintbl SET adminpwd=#{adminpwd},aname=#{aname},ademail=#{ademail},adphone=#{adphone},lev=#{lev} WHERE adminid=#{adminid}
 	</update>
+	<update id="keeplogin">
+	    update admintbl set sessionkey=#{sessionid}, sessionLimit=#{next} where adminid=#{adminid}
+	</update>
+	<select id="checkUserWithSessionKey" resultType="AdminDTO">
+	    select * from admintbl where sessionkey=#{sessionid} and sessionLimint > now()
+	</select>
 	<delete id="delete" parameterType="String">
 		DELETE FROM admintbl WHERE adminid=#{adminid}
 	</delete>
