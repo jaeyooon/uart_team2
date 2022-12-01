@@ -2,7 +2,7 @@
 
 <!-- autocomplete -->
 <link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	th:href="@{//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css}">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -17,7 +17,7 @@ function enterkey2(){
 	if(window.event.keyCode==13){ //enter키로도 검색가능
 		$('#search_form').attr({
 			'method':'get',
-			'action':'/reservation/searchimpl'
+			'action':'[[@{/reservation/searchimpl}]]'
 		});
 		$('#search_form').submit();
 	};
@@ -25,14 +25,14 @@ function enterkey2(){
 
 $(document).ready(function(){
 	$.ajax({
-		url:'/autosearch',
+		url:'[[@{/autosearch}]]',
 		success:function(data){
 			
 			$("#search_input").autocomplete({ //검색어 자동완성 기능
 				source:data,
 				select:function(event, ui){
 					str=ui.item.label;
-					location.href='/reservation/searchimpl'+'?txt='+str; //검색어 마우스로 클릭해도 이동가능
+					location.href='[[@{/reservation/searchimpl?txt=}]]'+str; //검색어 마우스로 클릭해도 이동가능
 				},
 				focus:function(event, ui){ //키보드로 방향움직이기 가능
 					return false;
@@ -46,7 +46,7 @@ $(document).ready(function(){
 	$('#search_btn').click(function(){ //버튼클릭하면 검색가능
 		$('#search_form').attr({
 			'method':'get',
-			'action':'/reservation/searchimpl'
+			'action':'[[@{/reservation/searchimpl}]]'
 		});
 		$('#search_form').submit();
 	});
