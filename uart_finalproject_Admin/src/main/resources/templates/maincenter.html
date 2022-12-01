@@ -137,7 +137,8 @@ function clock(){
 	h=detail(h);
 	m=detail(m);
 	s=detail(s);
-	document.getElementById('clock').innerHTML=year+"년 "+month+"월 "+date+"일 "+dd[d]+"요일 "+h+":"+m+":"+s;
+	document.getElementById('clock').innerHTML=year+"년 "+month+"월 "+date+"일 "+"<br>"
+	+dd[d]+"요일 "+h+":"+m+":"+s;
 	var t=setTimeout(function(){clock()},1000);
 	}
 
