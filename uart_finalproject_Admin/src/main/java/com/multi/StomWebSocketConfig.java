@@ -12,7 +12,7 @@ public class StomWebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) { //웹소켓 서버들(end point)
-		registry.addEndpoint("/chatbot").setAllowedOrigins("http://101.101.219.170", "http://101.101.219.170:8080").withSockJS();  //나와의 채팅을 위해, 챗봇기능도 이와같음
+		registry.addEndpoint("/chatbot").setAllowedOrigins("http://101.101.219.170", "http://101.101.219.170/admin/chatbot").withSockJS();  //나와의 채팅을 위해, 챗봇기능도 이와같음
 	}
 
 	/* 어플리케이션 내부에서 사용할 path를 지정할 수 있음 */

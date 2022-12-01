@@ -163,7 +163,7 @@ font-size: 22px;
 	var cname = '[[${session.logincust.cname}]]';
 	// 서버소켓에 연결
 	function connect() {
-		var socket = new SockJS('http://101.101.219.170:8080/chatbot');  //관리자페이지에 서버소켓있으므로 관리자페이지 주소쓰기
+		var socket = new SockJS('http://101.101.219.170/admin/chatbot');  //관리자페이지에 서버소켓있으므로 관리자페이지 주소쓰기
 		stompClient = Stomp.over(socket);
 
 		stompClient.connect({}, function(frame) {
