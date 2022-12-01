@@ -27,8 +27,8 @@
  * 
  * @RequestMapping(value="/loginProcess",method=RequestMethod.POST) public
  * String loginProcess(HttpSession session,AdminDTO dto, HttpServletResponse
- * response, int amount){ String returnURL = ""; if (
- * session.getAttribute("login") != null ){ // 기존에 login이란 세션 값이 존재한다면
+ * response, int amount){ String returnURL = ""; 
+ * if ( session.getAttribute("login") != null ){ // 기존에 login이란 세션 값이 존재한다면
  * session.removeAttribute("login"); // 기존값을 제거해 준다. }
  * 
  * // 로그인이 성공하면 UserVO 객체를 반환함. AdminDTO vo = service.login(dto);
