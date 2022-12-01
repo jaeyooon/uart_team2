@@ -47,6 +47,11 @@ table.table th {
 	align-items: center;
 	margin: auto;
  }
+ @media ( max-width : 768px) {
+ .col-md-4{
+ padding-right: 0px;
+ }
+ }
 </style>
 
 
@@ -64,7 +69,7 @@ function del(wishid) {
 
 
 <div class="site-section">
-		<div class="container">
+		<div class="container" style="overflow-x: auto;">
 			<div class="row mb-5">
 				<div class="col-md-12 mb-5">
 				  <h4 class="text-black">위시리스트</h4>
@@ -98,6 +103,7 @@ function del(wishid) {
 			</div>
 		</div>
 </div>
+
 
 
 

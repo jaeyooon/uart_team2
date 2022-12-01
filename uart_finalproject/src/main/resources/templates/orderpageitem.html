@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 
 <!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
 </head>
 
@@ -14,7 +16,6 @@
 a {
 	text-decoration: none;
 }
-
 
 table {
 	border-collapse: collapse;
@@ -30,7 +31,6 @@ caption {
 	overflow: hidden;
 }
 
-
 .content_totalCount_section {
 	margin-bottom: 12px;
 }
@@ -39,7 +39,6 @@ caption {
 	margin-top: 20px;
 	text-align: right;
 }
-
 
 th {
 	text-align: center;
@@ -78,10 +77,10 @@ th {
 }
 
 .quantity_input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 3px auto;
 	width: 27px;
 	height: 23px;
 	text-align: center;
@@ -89,7 +88,6 @@ th {
 	font-size: 16px;
 	color: #4c4848;
 }
-
 
 .content_total_section {
 	background-color: #faf4ff;
@@ -135,7 +133,6 @@ table>tbody>tr>td>img {
 	width: 100px;
 }
 
-
 table th, td {
 	text-align: center;
 	color: #353535;
@@ -154,7 +151,7 @@ table.table th {
 }
 
 #itemoption {
-margin-right: 8px;
+	margin-right: 8px;
 }
 
 #cd {
@@ -166,154 +163,162 @@ margin-right: 8px;
 }
 
 #order {
-font-size: 12px;
+	font-size: 12px;
 }
 
 #totalprice {
-margin-left:90px;
+	margin-left: 90px;
 }
 
+@media ( max-width : 768px) {
+	#totalprice {
+		margin-left: 0;
+	}
+	#order {
+		font-size: 3px;
+	}
+}
 </style>
 
 <script>
-function checkCoupon(){
-	var result;
-	var custid = '[[${session.logincust.custid}]]';
-	$.ajax({
-		url:'[[@{/checkcoupon}]]',
-		async: false, 
-		data:{'custid':custid},
-		success : function(data) {
-			result = data;
-			//alert(result);
-			if(result != true) {
-				$('#sale_totalprice').text('😅사용 가능한 쿠폰이 없습니다!');
-				$('#sale_totalprice').css('color', '#5a189a');
-				$('#sale_totalprice').css('font-size','15px');
-				$('#sale_totalprice').css('font-weight','bold');
-			} else {
-				var totalprice = $('#totalprice').text(); // 총 주문금액
-				totalprice = totalprice.replace(",","");  // 콤마 제거
-				inttotalprice = Number(totalprice);
-				inttotalprice = inttotalprice * 1/2; 
-				//alert(inttotalprice);
-				$('#sale_totalprice').text(inttotalprice.toLocaleString());
-				$('#sale_totalprice').css('color', '#854A72');
-				$('#sale_totalprice').css('font-size','17px');
-				$('#sale_totalprice').css('font-weight','bold');
-				$('#totalprice').css('text-decoration','line-through')
-				$('#won').text('원');
+	function checkCoupon() {
+		var result;
+		var custid = '[[${session.logincust.custid}]]';
+		$.ajax({
+			url : '[[@{/checkcoupon}]]',
+			async : false,
+			data : {
+				'custid' : custid
+			},
+			success : function(data) {
+				result = data;
+				//alert(result);
+				if (result != true) {
+					$('#sale_totalprice').text('😅사용 가능한 쿠폰이 없습니다!');
+					$('#sale_totalprice').css('color', '#5a189a');
+					$('#sale_totalprice').css('font-size', '15px');
+					$('#sale_totalprice').css('font-weight', 'bold');
+				} else {
+					var totalprice = $('#totalprice').text(); // 총 주문금액
+					totalprice = totalprice.replace(",", ""); // 콤마 제거
+					inttotalprice = Number(totalprice);
+					inttotalprice = inttotalprice * 1 / 2;
+					//alert(inttotalprice);
+					$('#sale_totalprice').text(inttotalprice.toLocaleString());
+					$('#sale_totalprice').css('color', '#854A72');
+					$('#sale_totalprice').css('font-size', '17px');
+					$('#sale_totalprice').css('font-weight', 'bold');
+					$('#totalprice').css('text-decoration', 'line-through')
+					$('#won').text('원');
+				}
 			}
-		}
-	});
-	return result;
-}
-
-function requestPay() {
-	var custid = '[[${session.logincust.custid}]]';
-	//alert(custid);
-	var itemid = $('#itemid').text();
-	intitemid = Number(itemid);
-	//alert(intitemid);
-	var itemname = $('#itemname').text(); // 상품이름
-	//alert(itemname); 
-	var totalprice = $('#totalprice').text(); // 총 주문금액
-	totalprice = totalprice.replace(",","");  // 콤마 제거를 위해
-	//alert(totalprice);
-	
-	check_result = checkCoupon();  /* 쿠폰적용가능한지 확인 */
-	//alert('*'+check_result);
-	
-	inttotalprice = Number(totalprice);
-		if(check_result == true) { // 적용가능한 쿠폰이 있는 경우
-			inttotalprice = inttotalprice * 1/2;
-			//alert(inttotalprice);
-		} 
-		
-	
-	var name = $('#name').val();  // 예매자 정보
-	//alert(name);
-	var email = $('#email').val();  
-	//alert(email);
-	var phone = $('#phone').val();
-	//alert(phone); 
-	var ordercnt = $('#ordercnt').text();
-	intordercnt = Number(ordercnt);
-	//alert(intordercnt); 
-	var date = new Date();
-	var candate = new Date();
-	candate.setDate(date.getDate()+3);
-	//alert(candate);
-	
-	 IMP.init('imp35808662'); 
-	  IMP.request_pay({
-	    pg: 'html5_inicis.INIpayTest',
-	    pay_method: 'card',
-	    merchant_uid : 'merchant_'+new Date().getTime(),
-	    name : itemname,
-	    amount : inttotalprice,
-	    buyer_email : email,
-	    buyer_name : name,
-	    buyer_tel : phone,
-	  }, function (rsp) { // callback
-	      if (rsp.success) {
-	        $.ajax({
-	        	url:'[[@{/purchaseimpl}]]',
-	        	async: false, 
-	        	data:
-	        	{'itemid':intitemid,
-	        	 'custid':custid,
-	        	 'ordercnt':intordercnt,
-	        	 'totalprice':inttotalprice,
-	        	 'phone2':phone,
-	        	 'item_itemname':itemname,
-	        	 'cust_cname':name,
-	        	 'candate':candate
-	        		},
-	        	success : function(data) {
-	        		console.log(data)
-	        		var orderlistid = data;
-	        		location.href='[[@{/order/checknew?id=}]]'+orderlistid+'&[[@{custid=}]]'+custid;  
-	        	}
-	        });
-	      } else {
-	        var msg = '결제에 실패하였습니다.\n';
-	        msg += rsp.error_msg;
-	        alert(msg);
-	        return false;
-	      }
-	  });     
+		});
+		return result;
 	}
 
-$(document).ready(
-		function() {
-			$('#itemoption').click(function() {
+	function requestPay() {
+		var custid = '[[${session.logincust.custid}]]';
+		//alert(custid);
+		var itemid = $('#itemid').text();
+		intitemid = Number(itemid);
+		//alert(intitemid);
+		var itemname = $('#itemname').text(); // 상품이름
+		//alert(itemname); 
+		var totalprice = $('#totalprice').text(); // 총 주문금액
+		totalprice = totalprice.replace(",", ""); // 콤마 제거를 위해
+		//alert(totalprice);
 
-				moveitemoption();
+		check_result = checkCoupon(); /* 쿠폰적용가능한지 확인 */
+		//alert('*'+check_result);
+
+		inttotalprice = Number(totalprice);
+		if (check_result == true) { // 적용가능한 쿠폰이 있는 경우
+			inttotalprice = inttotalprice * 1 / 2;
+			//alert(inttotalprice);
+		}
+
+		var name = $('#name').val(); // 예매자 정보
+		//alert(name);
+		var email = $('#email').val();
+		//alert(email);
+		var phone = $('#phone').val();
+		//alert(phone); 
+		var ordercnt = $('#ordercnt').text();
+		intordercnt = Number(ordercnt);
+		//alert(intordercnt); 
+		var date = new Date();
+		var candate = new Date();
+		candate.setDate(date.getDate() + 3);
+		//alert(candate);
+
+		IMP.init('imp35808662');
+		IMP.request_pay({
+			pg : 'html5_inicis.INIpayTest',
+			pay_method : 'card',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : itemname,
+			amount : inttotalprice,
+			buyer_email : email,
+			buyer_name : name,
+			buyer_tel : phone,
+		}, function(rsp) { // callback
+			if (rsp.success) {
+				$.ajax({
+					url : '[[@{/purchaseimpl}]]',
+					async : false,
+					data : {
+						'itemid' : intitemid,
+						'custid' : custid,
+						'ordercnt' : intordercnt,
+						'totalprice' : inttotalprice,
+						'phone2' : phone,
+						'item_itemname' : itemname,
+						'cust_cname' : name,
+						'candate' : candate
+					},
+					success : function(data) {
+						console.log(data)
+						var orderlistid = data;
+						location.href = '[[@{/order/checknew?id=}]]'
+								+ orderlistid + '&[[@{custid=}]]' + custid;
+					}
+				});
+			} else {
+				var msg = '결제에 실패하였습니다.\n';
+				msg += rsp.error_msg;
+				alert(msg);
+				return false;
+			}
+		});
+	}
+
+	$(document).ready(
+			function() {
+				$('#itemoption').click(function() {
+
+					moveitemoption();
+				});
+
+				function moveitemoption() {
+					var custid = '[[${session.logincust.custid}]]';
+					var itemid = $('#itemid').text();
+
+					location.href = '[[@{/itemoption?id=}]]' + custid
+							+ '&[[@{itemid=}]]' + itemid;
+
+				}
+				;
+
 			});
-
-			function moveitemoption() {
-				var custid = '[[${session.logincust.custid}]]';
-				var itemid = $('#itemid').text();
-
-				location.href = '[[@{/itemoption?id=}]]' + custid
-						+ '&[[@{itemid=}]]' + itemid;
-
-			};
-
-
-});
-
-
 </script>
 
 <body>
-<div class="site-section">
-	<div class="container">
-		<div class="wrapper">
-			<div class="wrap">
+	<div class="site-section">
+		<div class="container">
+			<div class="wrapper">
+				<div class="wrap">
 					<div class="container-fluid">
-						<h4 style="color: #353535;margin-top: 20px;">예매/결제</h4>
+						<h4 style="color: #353535; margin-top: 20px;">예매/결제</h4>
 					</div>
 					<!-- 장바구니 리스트 -->
 					<div class="content_middle_section"></div>
@@ -323,72 +328,70 @@ $(document).ready(
 						<!-- 체크박스 전체 여부 -->
 						<div class="all_check_input_div">
 							<input type="checkbox" class="all_check_input input_size"
-								checked="checked" style="display:none;"><span class="all_chcek_span"></span>
+								checked="checked" style="display: none;"><span
+								class="all_chcek_span"></span>
 						</div>
-						<table class="table">
-							<caption></caption>
-							<tbody>
-								<c:forEach items="${cartInfo}">
-									<tr>
-										<th class="td_width_1"></th>
-										<th class="td_width_0">no</th>
-										<th class="td_width_2">상품 이미지</th>
-										<th class="td_width_3">상품명</th>
-										<th class="td_width_4">제품가격</th>
-										<th class="td_width_4">수량</th>
-										<th class="td_width_4">주문금액</th>
+						<div class="table-responsive text-nowrap"
+							style="text-align: center">
+							<table class="table">
+								<caption></caption>
+								<tbody>
+									<c:forEach items="${cartInfo}">
+										<tr>
+											<th class="td_width_1"></th>
+											<th class="td_width_0">no</th>
+											<th class="td_width_2">상품 이미지</th>
+											<th class="td_width_3">상품명</th>
+											<th class="td_width_4">제품가격</th>
+											<th class="td_width_4">수량</th>
+											<th class="td_width_4">주문금액</th>
 
-									</tr>
-									</thead>
-									<tbody>
+										</tr>
+										</thead>
+										<tbody>
 
-										<td class="td_width_1 cart_info_td"><input
-											type="checkbox"
-											class="individual_cart_checkbox input_size"
-											checked="checked" style="display:none;"> <input type="hidden"
-											class="individual_Price_input"
-											th:value="${itemdetail.itemoption_price1+itemdetail.itemoption_price2+itemdetail.itemoption_price3}">
-											<input type="hidden" class="individual_Cnt_input"
-											th:value="${itemcnt1+itemcnt2+itemcnt3}"> <input
-											type="hidden" class="individual_totalPrice_input"
-											th:value="${itemcnt1*itemdetail.itemoption_price1+itemcnt2*itemdetail.itemoption_price2+itemcnt3*itemdetail.itemoption_price3}">
-											<input type="hidden" class="individual_itemId_input"
-											th:value="${itemdetail.itemid}"></td>
-										<td id="itemid" th:text="${itemdetail.itemid}">no</td>
-										<td class="td_width_2"><img
-											th:src="@{/img/}+${itemdetail.itemimg}"></td>
-										<td id="itemname" class="td_width_3" th:text="${itemdetail.itemname}">상품명</td>
+											<td class="td_width_1 cart_info_td"><input
+												type="checkbox" class="individual_cart_checkbox input_size"
+												checked="checked" style="display: none;"> <input
+												type="hidden" class="individual_Price_input"
+												th:value="${itemdetail.itemoption_price1+itemdetail.itemoption_price2+itemdetail.itemoption_price3}">
+												<input type="hidden" class="individual_Cnt_input"
+												th:value="${itemcnt1+itemcnt2+itemcnt3}"> <input
+												type="hidden" class="individual_totalPrice_input"
+												th:value="${itemcnt1*itemdetail.itemoption_price1+itemcnt2*itemdetail.itemoption_price2+itemcnt3*itemdetail.itemoption_price3}">
+												<input type="hidden" class="individual_itemId_input"
+												th:value="${itemdetail.itemid}"></td>
+											<td id="itemid" th:text="${itemdetail.itemid}">no</td>
+											<td class="td_width_2"><img
+												th:src="@{/img/}+${itemdetail.itemimg}"></td>
+											<td id="itemname" class="td_width_3"
+												th:text="${itemdetail.itemname}">상품명</td>
 
+											<td class="td_width_4 price_td">
+												<form
+													th:text="${itemdetail.itemoption_obj1} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price1, 3, 'COMMA')}+'원'"></form>
+												<form
+													th:text="${itemdetail.itemoption_obj2} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price2, 3, 'COMMA')}+'원'"></form>
+												<form
+													th:text="${itemdetail.itemoption_obj3} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price3, 3, 'COMMA')}+'원'"></form>
 
-										<td class="td_width_4 price_td">
-											<form
-												th:text="${itemdetail.itemoption_obj1} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price1, 3, 'COMMA')}+'원'"></form>
-											<form
-												th:text="${itemdetail.itemoption_obj2} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price2, 3, 'COMMA')}+'원'"></form>
-											<form
-												th:text="${itemdetail.itemoption_obj3} +'권 '+${#numbers.formatInteger(itemdetail.itemoption_price3, 3, 'COMMA')}+'원'"></form>
-
-										</td>
-
-										<td class="td_width_4">
-											<div class="quantity_div">
-												<input type="text" th:value="${itemcnt1}"
-													class="quantity_input"> <input type="text"
-													th:value="${itemcnt2}" class="quantity_input">
-												<input type="text" th:value="${itemcnt3}"
-													class="quantity_input">
-										</td>
-										<td class="td_width_4 table_text_align_center">
-											<form
-												th:text="${itemcnt1*itemdetail.itemoption_price1}+'원'"></form>
-											<form
-												th:text="${itemcnt2*itemdetail.itemoption_price2}+'원'"></form>
-											<form
-												th:text="${itemcnt3*itemdetail.itemoption_price3}+'원'"></form>
-										</td>
-								</c:forEach>
-							</tbody>
-						</table>
+											</td>
+											<td class="td_width_4">
+												<div class="quantity_div">
+													<input type="text" th:value="${itemcnt1}"
+														class="quantity_input"> <input type="text"
+														th:value="${itemcnt2}" class="quantity_input"> <input
+														type="text" th:value="${itemcnt3}" class="quantity_input">
+											</td>
+											<td class="td_width_4 table_text_align_center">
+												<form th:text="${itemcnt1*itemdetail.itemoption_price1}+'원'"></form>
+												<form th:text="${itemcnt2*itemdetail.itemoption_price2}+'원'"></form>
+												<form th:text="${itemcnt3*itemdetail.itemoption_price3}+'원'"></form>
+											</td>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
 						<!-- 가격 종합 -->
 						<div class="content_total_section">
 							<div class="total_wrap">
@@ -403,7 +406,8 @@ $(document).ready(
 
 												<tr>
 													<td>총 티켓수</td>
-													<td><span class="totalCount_span" id="ordercnt"></span> 매
+													<td><span class="totalCount_span" id="ordercnt"></span>
+														매
 												</tr>
 											</table>
 										</td>
@@ -417,17 +421,14 @@ $(document).ready(
 												<tbody>
 													<tr>
 														<td><strong>총 결제예정금액</strong></td>
-														<td>
-															<span id="totalprice" class="finalTotalPrice_span"></span> 원
-															<button th:onclick="checkCoupon()" id="order" type="button"
-															class="buy-now btn btn-primary"
-															style="display: inline-block">쿠폰적용</button>
+														<td><span id="totalprice"
+															class="finalTotalPrice_span"></span> 원
+															<button th:onclick="checkCoupon()" id="order"
+																type="button" class="buy-now btn btn-primary"
+																style="display: inline-block">쿠폰적용</button>
 															<div>
-															<span id="sale_totalprice">
-															</span>
-															<span id="won"></span>
-															</div>
-														</td>
+																<span id="sale_totalprice"> </span> <span id="won"></span>
+															</div></td>
 													</tr>
 												</tbody>
 											</table>
@@ -472,100 +473,99 @@ $(document).ready(
 
 
 					</div>
-				<!-- 구매 버튼 영역 -->
-				<div class="content_btn_section">
-					<button id="itemoption" type="button"
-						class="buy-now btn btn-sm btn-primary"
-						style="display: inline-block">이전단계</button>
-					<button th:onclick="requestPay()" id="order" type="button"
-						class="buy-now btn btn-sm btn-primary"
-						style="display: inline-block">결제하기</button>
-				</div>
+					<!-- 구매 버튼 영역 -->
+					<div class="content_btn_section">
+						<button id="itemoption" type="button"
+							class="buy-now btn btn-sm btn-primary"
+							style="display: inline-block">이전단계</button>
+						<button th:onclick="requestPay()" id="order" type="button"
+							class="buy-now btn btn-sm btn-primary"
+							style="display: inline-block">결제하기</button>
+					</div>
 
+				</div>
 			</div>
+			<!-- class="wrap" -->
 		</div>
-		<!-- class="wrap" -->
-	</div>
-	<!-- class="wrapper" -->
+		<!-- class="wrapper" -->
 	</div>
 
 	<script>
-$(document).ready(function(){
-	
-	/* 종합 정보 섹션 정보 삽입 */
-	setTotalInfo();	
-});	
+		$(document).ready(function() {
 
-/* 체크여부에따른 종합 정보 변화 */
-$(".individual_cart_checkbox").on("change", function(){
-	/* 총 주문 정보 세팅(배송비, 총 주문금액, 마일리지, 물품 수, 종류) */
-	setTotalInfo($(".cart_info_td"));
-});
+			/* 종합 정보 섹션 정보 삽입 */
+			setTotalInfo();
+		});
 
-/* 체크박스 전체 선택 */
-$(".all_check_input").on("click", function(){
+		/* 체크여부에따른 종합 정보 변화 */
+		$(".individual_cart_checkbox").on("change", function() {
+			/* 총 주문 정보 세팅(배송비, 총 주문금액, 마일리지, 물품 수, 종류) */
+			setTotalInfo($(".cart_info_td"));
+		});
 
-	/* 체크박스 체크/해제 */
-	if($(".all_check_input").prop("checked")){
-		$(".individual_cart_checkbox").attr("checked", true);
-	} else{
-		$(".individual_cart_checkbox").attr("checked", false);
-	}
-	
-	/* 총 주문 정보 세팅(배송비, 총 주문금액, 물품 수, 종류) */
-	setTotalInfo($(".cart_info_td"));	
-	
-});
+		/* 체크박스 전체 선택 */
+		$(".all_check_input").on("click", function() {
 
-/* 총 주문 정보 세팅(배송비, 총 주문금액, 마일리지, 물품 수, 종류) */
-function setTotalInfo(){
-	
-	let totalPrice = 0;				// 총 주문금액
-	let totalCount = 0;				// 총 갯수
-	let totalKind = 0;				// 총 종류
-	let deliveryPrice = 0;			// 배송비
-	let finalTotalPrice = 0; 		// 최종 가격(총 주문금액 + 배송비)
+			/* 체크박스 체크/해제 */
+			if ($(".all_check_input").prop("checked")) {
+				$(".individual_cart_checkbox").attr("checked", true);
+			} else {
+				$(".individual_cart_checkbox").attr("checked", false);
+			}
 
-	
-	$(".cart_info_td").each(function(index, element){
-		
-		if($(element).find(".individual_cart_checkbox").is(":checked") === true){	//체크여부
+			/* 총 주문 정보 세팅(배송비, 총 주문금액, 물품 수, 종류) */
+			setTotalInfo($(".cart_info_td"));
+
+		});
+
+		/* 총 주문 정보 세팅(배송비, 총 주문금액, 마일리지, 물품 수, 종류) */
+		function setTotalInfo() {
+
+			let totalPrice = 0; // 총 주문금액
+			let totalCount = 0; // 총 갯수
+			let totalKind = 0; // 총 종류
+			let deliveryPrice = 0; // 배송비
+			let finalTotalPrice = 0; // 최종 가격(총 주문금액 + 배송비)
+
+			$(".cart_info_td").each(
+					function(index, element) {
+
+						if ($(element).find(".individual_cart_checkbox").is(
+								":checked") === true) { //체크여부
+							// 총 주문금액
+							totalPrice += parseInt($(element).find(
+									".individual_totalPrice_input").val());
+							// 총 갯수
+							totalCount += parseInt($(element).find(
+									".individual_Cnt_input").val());
+							// 총 종류
+							totalKind += 1;
+						}
+
+					});
+
+			/* 배송비 결정 */
+			if (totalPrice >= 30000) {
+				deliveryPrice = 0;
+			} else if (totalPrice == 0) {
+				deliveryPrice = 0;
+			} else {
+				deliveryPrice = 0;
+			}
+			finalTotalPrice = totalPrice + deliveryPrice;
+
+			/* ※ 세자리 컴마 Javscript Number 객체의 toLocaleString() */
+
 			// 총 주문금액
-			totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+			$(".totalPrice_span").text(totalPrice.toLocaleString());
 			// 총 갯수
-			totalCount += parseInt($(element).find(".individual_Cnt_input").val());
+			$(".totalCount_span").text(totalCount);
 			// 총 종류
-			totalKind += 1;	
+			$(".totalKind_span").text(totalKind);
+			// 최종 가격(총 주문금액 + 배송비)
+			$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());
 		}
-
-	});
-	
-	/* 배송비 결정 */
-	if(totalPrice >= 30000){
-		deliveryPrice = 0;
-	} else if(totalPrice == 0){
-		deliveryPrice = 0;
-	} else {
-		deliveryPrice = 0;	
-	}
-		finalTotalPrice = totalPrice + deliveryPrice;
-	
-	
-	
-	/* ※ 세자리 컴마 Javscript Number 객체의 toLocaleString() */
-	
-	// 총 주문금액
-	$(".totalPrice_span").text(totalPrice.toLocaleString());
-	// 총 갯수
-	$(".totalCount_span").text(totalCount);
-	// 총 종류
-	$(".totalKind_span").text(totalKind);
-	// 최종 가격(총 주문금액 + 배송비)
-	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
-}
-
-
-</script>
+	</script>
 
 </body>
 </html>

@@ -15,6 +15,18 @@
 	   text-align: right;
 	 } */
 
+@media ( max-width : 1000px) {
+#map{
+ width:100%;
+ height:400px;
+ }
+}
+@media ( min-width : 800px) {
+  #map{
+ width:70%;
+ height:400px;
+ }
+ }
    </style>  
    <script>
    var lat = 37.513000551397035;   /* javascript 안에서 변수 선언  */
@@ -126,7 +138,7 @@
         <div class="row">
           <div class="col-md-12">
           		<div>
-                  <div id ="map" style="width:700px;height:400px;"></div> 
+                  <div id ="map" style="height:400px;"></div> 
                 </div>
           </div>
         </div>

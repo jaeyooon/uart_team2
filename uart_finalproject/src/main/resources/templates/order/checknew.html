@@ -32,13 +32,13 @@ th, td {
 }
 
 #first_td {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
-#checkcnt{
+#checkcnt {
 	text-align: center;
 	width: 67px;
 	background-color: #eef5db;
@@ -49,43 +49,44 @@ th, td {
 <body>
 	<div class="site-section">
 		<div class="container">
-			<div class="row mb-5">
+			<div class="table-responsive text-nowrap" style="text-align: center">
 				<div class="col-md-12 mb-5">
 					<h4 class="text-black h4">구매내역</h4>
 				</div>
 				<table class="table-bordered">
-				  <thead>
-				    <tr>
-				      <th>예매일</th>
-				      <th>예약번호</th>
-				      <th>예매자</th>
-				      <th>상품명</th>
-				      <th>결제금액<br>
-				      		/매수</th>
-				      <th>결제수단</th>
-				      <th>취소가능일</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <td th:text="${#dates.format(neworder.orderdate,'yyyy.MM.dd')}"></td>
-				      <td th:text="${neworder.orderlistid}"></td>
-				      <td th:text="${neworder.cust_cname}"></td>
-				      <td th:text="${neworder.item_itemname}"></td>
-				      <td id="first_td">
-				      	<div>
-				      		<span th:text="${neworder.totalprice}+'원'"></span>
-				      	</div>
-				      	<div id="checkcnt" th:text="'총 '+${neworder.ordercnt}+'매'"></div>
-				      </td>
-				      <td th:text="${neworder.pay}"></td>
-				      <td th:text="${#dates.format(neworder.candate,'yyyy.MM.dd')}" style="color: #7971EA;"></td>
-				    </tr>
-				  </tbody>
+					<thead>
+						<tr>
+							<th>예매일</th>
+							<th>예약번호</th>
+							<th>예매자</th>
+							<th>상품명</th>
+							<th>결제금액<br> /매수
+							</th>
+							<th>결제수단</th>
+							<th>취소가능일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td th:text="${#dates.format(neworder.orderdate,'yyyy.MM.dd')}"></td>
+							<td th:text="${neworder.orderlistid}"></td>
+							<td th:text="${neworder.cust_cname}"></td>
+							<td th:text="${neworder.item_itemname}"></td>
+							<td id="first_td">
+								<div>
+									<span th:text="${neworder.totalprice}+'원'"></span>
+								</div>
+								<div id="checkcnt" th:text="'총 '+${neworder.ordercnt}+'매'"></div>
+							</td>
+							<td th:text="${neworder.pay}"></td>
+							<td th:text="${#dates.format(neworder.candate,'yyyy.MM.dd')}"
+								style="color: #7971EA;"></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 </html>

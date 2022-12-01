@@ -72,7 +72,7 @@
 }
 
 #icons {
-   display: flex;
+  /*  display: flex; */
    align-items: center;
    height: 100px;
 }
@@ -116,6 +116,21 @@ a#MOVE_TOP_BTN{
 	margin-top:10px;
 }
 
+@media ( max-width : 768px) {
+#top_search{
+ display: flex;
+   align-items: center;
+   margin-bottom:-100px;
+}
+
+#search_input{
+width:100px;
+}
+
+#MOVE_TOP_BTN{
+display:none !important;
+}
+}
 
 </style>
 
@@ -234,6 +249,7 @@ function enterkey2(){
                            <li><a th:href="@{/register/registered}"> <span
                                  class="material-symbols-outlined" id="register">
                                     potted_plant회원가입 </span></a></li>
+                            <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                         </ul>
                         <ul th:if="${session.logincust != null}">
                            <a id="cname" style="color: #9f86c0"
@@ -249,7 +265,7 @@ function enterkey2(){
                            <li><a th:href="@{/order/detail(id=${session.logincust.custid})}" class="site-cart" id='orderlist'>
                                  <span class="material-symbols-outlined"> list_alt </span>
                            </a></li>
-
+							<li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                         </ul>
                      </div>
                   </div>
@@ -291,6 +307,38 @@ function enterkey2(){
 	arrow_circle_up
 	</span></a>
 
+
+  <script th:src="@{/js/jquery-ui.js}"></script>
+  <script th:src="@{/js/popper.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/owl.carousel.min.js}"></script>
+  <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+  <script th:src="@{/js/aos.js}"></script>
+
+  <script th:src="@{/js/main.js}"></script>
+  
+  <!-- Modal -->
+ 
+<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>검색어를 입력하세요.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+</body>
 <footer class="site-footer border-top">
          <div class="container">
             <div class="row">
@@ -342,13 +390,12 @@ function enterkey2(){
                <div class="col-md-12">
                   <p>
                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                     Copyright &copy;
+                      &copy;
                      <script data-cfasync="false"
                         src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                      <script>document.write(new Date().getFullYear());</script>
-                     All rights reserved | This template is made with <i
-                        class="icon-heart" aria-hidden="true"></i> by <a
-                        href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+                   <span class="material-symbols-outlined" style="font-size: 40px; color:#9f86c0;" >emoji_people </span><a
+                        href="#" target="_blank" class="text-primary"> (주)U-ART</a>
                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                   </p>
                </div>
@@ -356,37 +403,5 @@ function enterkey2(){
             </div>
          </div>
       </footer>
-
-  <script th:src="@{/js/jquery-ui.js}"></script>
-  <script th:src="@{/js/popper.min.js}"></script>
-  <script th:src="@{/js/bootstrap.min.js}"></script>
-  <script th:src="@{/js/owl.carousel.min.js}"></script>
-  <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
-  <script th:src="@{/js/aos.js}"></script>
-
-  <script th:src="@{/js/main.js}"></script>
-  
-  <!-- Modal -->
- 
-<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>검색어를 입력하세요.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
-</div>
-  
-</body>
 
 </html>

@@ -3,7 +3,7 @@
 <style>
 .img-fluid {
 	width: 80%;
-	height: 550px;
+	height: 95%;
 	border-radius: 10px;
 }
 
@@ -22,7 +22,7 @@ h6, #p2 {
 
 .info_img {
 	width: 45%;
-	height: 600px;
+	height: 60%;
 	border-radius: 10px;
 	margin-bottom: 50px;
 }
@@ -136,14 +136,42 @@ to {
 	width: 100%;
 	text-align: center;
 }
+
 #map {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
-#checkreview, #alreadywrite{ 
- 	z-index: 10000;
- }
+#checkreview, #alreadywrite {
+	z-index: 10000;
+}
+
+@media ( max-width : 1000px) {
+	#price_table {
+		width: 100%;
+	}
+	#dataTable {
+		width: 100%;
+	}
+	#map {
+		width: 100%;
+		height: 400px;
+	}
+	.info_img {
+		width: 85%;
+		height: 100%;
+	}
+	.text-black {
+		font-size: 25px;
+	}
+}
+
+@media ( min-width : 900px) {
+	#map {
+		width: 50%;
+		height: 400px;
+	}
+}
 </style>
 <script th:src="@{//developers.kakao.com/sdk/js/kakao.min.js}"></script>
 <script>
@@ -327,7 +355,7 @@ function checkOrderdetail() {
 	<div class="site-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
+				<div id="i_img" class="col-md-6">
 					<img th:src="@{/img/}+${itemdetail.itemimg}" alt="Image"
 						class="img-fluid">
 				</div>
@@ -339,8 +367,7 @@ function checkOrderdetail() {
 						style="display: none"></span>
 					<sapn class="title">장소</sapn>
 					<span class="con" th:text="${itemdetail.itemplace}"></span><br>
-					<span class="title">기간</span>
-					<span class="con"
+					<span class="title">기간</span> <span class="con"
 						th:text="${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}"
 						name="itemid"></span><br> <span class="title">관람등급</span><span
 						class="con" th:text="${itemdetail.itemguide}"></span>
@@ -352,11 +379,15 @@ function checkOrderdetail() {
 					<span class="title"></span><span class="con"
 						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span>
 
-					<br><br>
-					<div style="margin-top:50px;">
-					<a id="kakao_btn" href="javascript:sendLinkCustom();" ><img th:src="@{/img/icon-kakao.png}" ></a>
-					<a id="btnTwitter" class="link-icon twitter" href="javascript:shareTwitter();"><img th:src="@{/img/icon-twitter.png}" ></a>
-					<a id="btnFacebook" class="link-icon facebook" href="javascript:shareFacebook();"><img th:src="@{/img/icon-facebook.png}" ></a>   
+					<br>
+					<br>
+					<div style="margin-top: 50px;">
+						<a id="kakao_btn" href="javascript:sendLinkCustom();"><img
+							th:src="@{/img/icon-kakao.png}"></a> <a id="btnTwitter"
+							class="link-icon twitter" href="javascript:shareTwitter();"><img
+							th:src="@{/img/icon-twitter.png}"></a> <a id="btnFacebook"
+							class="link-icon facebook" href="javascript:shareFacebook();"><img
+							th:src="@{/img/icon-facebook.png}"></a>
 					</div>
 
 					<div id="btn">
@@ -427,30 +458,36 @@ function checkOrderdetail() {
 							<tr>
 								<td th:text="${itemdetail.itemoption_obj1}">성인</td>
 								<td>20세 이상</td>
-								<td th:text="${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'">가격</td>
+								<td
+									th:text="${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'">가격</td>
 							</tr>
 							<tr>
 								<td th:text="${itemdetail.itemoption_obj2}">청소년</td>
 								<td>14세-19세</td>
-								<td th:text="${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'">가격</td>
+								<td
+									th:text="${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'">가격</td>
 							</tr>
 							<tr>
 								<td th:text="${itemdetail.itemoption_obj3}">아동</td>
 								<td>13세 이하</td>
-								<td th:text="${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'">가격</td>
+								<td
+									th:text="${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'">가격</td>
 							</tr>
-							
+
 						</tbody>
 					</table>
 					<!-- Kakao map -->
 					<br>
-				  	 <h5 style="color:#353535;">장소정보</h5>
-				  	 <div id="map" style="width:500px;height:400px;"></div>
-				  	 <input id="lat" type="hidden" th:value="${itemdetail.lat}" readonly="readonly">
-		             <input id="lng" type="hidden" th:value="${itemdetail.lng}" readonly="readonly">
-		             <p style="color:#353535;">▶ 찾아오시는 길</p>
-		             <p th:text="${itemdetail.itemplace_address}" style="color:#353535;"></p>
-		             <input id="place" type="hidden" th:value="${itemdetail.itemplace}" readonly="readonly">
+					<h5 style="color: #353535;">장소정보</h5>
+					<div id="map" style="height: 400px;"></div>
+					<input id="lat" type="hidden" th:value="${itemdetail.lat}"
+						readonly="readonly"> <input id="lng" type="hidden"
+						th:value="${itemdetail.lng}" readonly="readonly">
+					<p style="color: #353535;">▶ 찾아오시는 길</p>
+					<p th:text="${itemdetail.itemplace_address}"
+						style="color: #353535;"></p>
+					<input id="place" type="hidden" th:value="${itemdetail.itemplace}"
+						readonly="readonly">
 				</div>
 				<div class="tab-pane fade" id="nav-two" role="tabpanel"
 					aria-labelledby="nav-two-tab">
@@ -477,26 +514,34 @@ function checkOrderdetail() {
 					</div>
 					<div class=reviews>
 						<h3>Reviews</h3>
-									<form id="review_form" method="post">
-                        	<div class="col-2 mb-3"></div><div id="itemid" th:text="${itemid}" style="display:none"></div>
-                        	   <div>
-                        	      <span class="input-group-addon">⭐ * </span><select name="reviewgrade" id="reviewgrade">
-                        	    <option value="0.5" data-icon="img/star.5.png">0.5</option>
-                        	    <option value="1.0">1.0</option>
-                        	    <option value="1.5">1.5</option>
-                        	    <option value="2.0">2.0</option>
-                        	    <option value="2.5">2.5</option>
-                        	    <option value="3.0">3.0</option>
-                        	    <option value="3.5">3.5</option>
-                        	    <option value="4.0">4.0</option>
-                        	    <option value="4.5">4.5</option>
-                        	    <option value="5.0">5.0</option>
-                        	    </select>
-                        	    </div>
-                        	    
-                            <textarea id="reviewcontent" name="text" style="width:500px;"  placeholder='관람후기를 남겨주세요!'></textarea><br>
-                        </form>
-                        <button type="button" th:onclick="checkOrderdetail()" id="review_btn" class="btn btn-primary btn-xs" style="font-size:13px;">✏등록</button><br><br>
+						<form id="review_form" method="post">
+							<div class="col-2 mb-3"></div>
+							<div id="itemid" th:text="${itemid}" style="display: none"></div>
+							<div>
+								<span class="input-group-addon">⭐ * </span><select
+									name="reviewgrade" id="reviewgrade">
+									<option value="0.5" data-icon="img/star.5.png">0.5</option>
+									<option value="1.0">1.0</option>
+									<option value="1.5">1.5</option>
+									<option value="2.0">2.0</option>
+									<option value="2.5">2.5</option>
+									<option value="3.0">3.0</option>
+									<option value="3.5">3.5</option>
+									<option value="4.0">4.0</option>
+									<option value="4.5">4.5</option>
+									<option value="5.0">5.0</option>
+								</select>
+							</div>
+
+							<textarea id="reviewcontent" name="text" style="width: 380px;"
+								placeholder='관람후기를 남겨주세요!'></textarea>
+							<br>
+						</form>
+						<button type="button" th:onclick="checkOrderdetail()"
+							id="review_btn" class="btn btn-primary btn-xs"
+							style="font-size: 13px;">✏등록</button>
+						<br>
+						<br>
 						<form id="itemreview_form" th:each="re : ${review}">
 							<div>
 								<div class="star-ratings">
@@ -521,10 +566,11 @@ function checkOrderdetail() {
 						</form>
 					</div>
 				</div>
-				
+
 				<div class="tab-pane fade" id="nav-three" role="tabpanel"
 					aria-labelledby="nav-three-tab">
-					<br><br>
+					<br>
+					<br>
 					<h4>예매/취소안내</h4>
 					<br> <br>
 					<h5>티켓 수령안내</h5>
@@ -565,51 +611,57 @@ function checkOrderdetail() {
 				</div>
 			</div>
 			<!-- tad end -->
-			
+
 		</div>
 	</div>
 
 </body>
 
 <!-- Modal 1 -->
-<div class="modal fade" id="checkreview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>해당 상품에 대한 예매내역이 없습니다.</p>
-        <p>예매내역에 있는 상품에 대해서만 리뷰작성이 가능합니다.</p>
-      </div>
-      <div class="modal-footer">
-        <button id="close_btn1" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
+<div class="modal fade" id="checkreview" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>해당 상품에 대한 예매내역이 없습니다.</p>
+				<p>예매내역에 있는 상품에 대해서만 리뷰작성이 가능합니다.</p>
+			</div>
+			<div class="modal-footer">
+				<button id="close_btn1" type="button" class="btn btn-primary"
+					data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Modal 2 -->
-<div class="modal fade" id="alreadywrite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>이미 작성한 리뷰입니다.📝</p>
-      </div>
-      <div class="modal-footer">
-        <button id="close_btn2" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
+<div class="modal fade" id="alreadywrite" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>이미 작성한 리뷰입니다.📝</p>
+			</div>
+			<div class="modal-footer">
+				<button id="close_btn2" type="button" class="btn btn-primary"
+					data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 </html>

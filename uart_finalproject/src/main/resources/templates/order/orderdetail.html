@@ -4,9 +4,10 @@
 	width: 85%;
 }
 
-.table table{
+.table table {
 	margin: auto;
 	width: 95%;
+	min-width: 1000px;
 	color: #22333b;
 }
 
@@ -43,7 +44,6 @@ th, td {
 
 #detailimg {
 	width: 150px;
-	height: 210px;
 	border-radius: 7px;
 	margin-bottom: 10px;
 }
@@ -57,7 +57,7 @@ th, td {
 	padding: 5em 0 17em;
 }
 
-.table table-hover{
+.table table-hover {
 	margin: auto;
 	width: 95%;
 }
@@ -74,71 +74,76 @@ table.table th {
 	border-bottom: solid #E9E9E9
 }
 
-
+@media ( max-width : 768px) {
+ .col-md-4{
+ padding-right: 0px;
+ }
+ }
 </style>
 
 
 <script>
-
 	
 </script>
 
 
 <div class="site-section">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md-12 mb-5">
-				  <h4 class="text-black">예매내역</h4>
-				</div>
-				  <table class="table table">
-				    <thead>
-				      <tr>
-				      	<th class="text-black">전시명</th>
-				        <th class="text-black">예매일</th>
-				        <th class="text-black">예약번호</th>
-				        <th class="text-black">이용일/매수</th>
-				        <th class="text-black">장소</th>
-				        <th class="text-black">취소가능일</th>
-				      </tr>
-				    </thead>
-				    <tbody>
-						<tr th:each="d:${detaillist}">
-							<td style="text-align : center;">
-								<div>
-									<a th:href="@{/item/itemdetail(itemid=${d.itemid})}"><img
-										id="detailimg" th:src="@{/img/} + ${d.item_itemimg}"
-										alt="Image" class="img-fluid"><br> <span id="pname"
-										th:text="${d.item_itemname}" class="product-name"></span></a>
-								</div>
-							</td>
-							<td
-								th:text="${#dates.format(d.orderlist_orderdate,'yyyy.MM.dd')}"
-								style="font-size: 17px;">
-								<h2 class="h5 text-black"></h2>
-							</td>
-							<!-- 예약번호 -->
-							<td><a th:href="@{/order/alldetailinfo(orderlistid=${d.orderlistid})}"><span id="orderlistid" th:text="${d.orderlistid}"></span></a></td>
-							<td>
-								<div style="display: flex; justify-content: center;">
-									<div id="s1" class="row input-group mb-3"
-										style="max-width: 120px;">
-										<div>
-											<span
-												th:text="${#dates.format(d.item_estart,'yyyy.MM.dd')}+'~'">시작</span>
-											<span th:text="${#dates.format(d.item_efin,'yyyy.MM.dd')}">끝</span>
-											<span th:text="${d.itemid}" style="display: none;"></span>
-										</div>
-										<div id="s1_1" th:text="'총 '+${d.orderlist_ordercnt}+'매'"></div>
-									</div>
-								</div>
-							</td>
-							<td th:text="${d.item_place}"></td>
-							<td th:text="${#dates.format(d.orderlist_candate,'yyyy.MM.dd')}" style="color: #7971EA;"></td> 
-						</tr>
-					</tbody>
-				  </table>
+	<div class="container">
+		<div class="table-responsive text-nowrap" style="text-align: center">
+			<div class="col-md-12 mb-5">
+				<h4 class="text-black" style="text-align: left">예매내역</h4>
 			</div>
+			<table class="table table">
+				<thead>
+					<tr>
+						<th class="text-black">전시명</th>
+						<th class="text-black">예매일</th>
+						<th class="text-black">예약번호</th>
+						<th class="text-black">이용일/매수</th>
+						<th class="text-black">장소</th>
+						<th class="text-black">취소가능일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="d:${detaillist}">
+						<td style="text-align: center;">
+							<div>
+								<a th:href="@{/item/itemdetail(itemid=${d.itemid})}"><img
+									id="detailimg" th:src="@{/img/} + ${d.item_itemimg}"
+									alt="Image" class="img-fluid"><br> <span id="pname"
+									th:text="${d.item_itemname}" class="product-name"></span></a>
+							</div>
+						</td>
+						<td th:text="${#dates.format(d.orderlist_orderdate,'yyyy.MM.dd')}"
+							style="font-size: 17px;">
+							<h2 class="h5 text-black"></h2>
+						</td>
+						<!-- 예약번호 -->
+						<td><a
+							th:href="@{/order/alldetailinfo(orderlistid=${d.orderlistid})}"><span
+								id="orderlistid" th:text="${d.orderlistid}"></span></a></td>
+						<td>
+							<div style="display: flex; justify-content: center;">
+								<div id="s1" class="row input-group mb-3"
+									style="max-width: 120px;">
+									<div>
+										<span
+											th:text="${#dates.format(d.item_estart,'yyyy.MM.dd')}+'~'">시작</span><br>
+										<span th:text="${#dates.format(d.item_efin,'yyyy.MM.dd')}">끝</span>
+										<span th:text="${d.itemid}" style="display: none;"></span>
+									</div>
+									<div id="s1_1" th:text="'총 '+${d.orderlist_ordercnt}+'매'"></div>
+								</div>
+							</div>
+						</td>
+						<td th:text="${d.item_place}"></td>
+						<td th:text="${#dates.format(d.orderlist_candate,'yyyy.MM.dd')}"
+							style="color: #7971EA;"></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+	</div>
 </div>
 
 

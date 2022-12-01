@@ -7,9 +7,9 @@
 	border-radius: 10px;
 }
 
-#tab_name{
-	font-size:15px;
-	font-weight:bold;
+#tab_name {
+	font-size: 15px;
+	font-weight: bold;
 }
 
 #p1 {
@@ -99,7 +99,6 @@ hr.two_1 {
 }
 
 #order {
-	
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -121,54 +120,62 @@ hr.two_1 {
 
 .btn {
 	animation: bgColor 1st both;
-	background-color:#7971EA;
+	background-color: #7971EA;
 }
 
 #option_price {
-display: flex;
+	display: flex;
 }
 
 .option {
-display: flex;
-justify-content: space-between;
-width: 65%;
+	display: flex;
+	justify-content: space-between;
+	width: 65%;
 }
 
 #btn {
 	width: 100%;
 	text-align: center;
-	color:#7971EA;
+	color: #7971EA;
 	display: flex;
-    justify-content: flex-end;
-    
+	justify-content: flex-end;
+}
+
+@media ( max-width : 768px) {
+	.img-fluid {
+		width: 90%;
+		height: 400px;
+	}
+	.text-black {
+		font-size: 22px;
+	}
 }
 </style>
 
 <script>
-$(document).ready(
-		function() {
-			$('#order').click(function() {
+	$(document)
+			.ready(
+					function() {
+						$('#order').click(function() {
 
-				moveorder();
-			});
+							moveorder();
+						});
 
-			function moveorder() {
-				var custid = '[[${session.logincust.custid}]]';
-				var itemid = $('#itemid').text();
-				var itemcnt1 = $('#itemcnt1').val();
-				var itemcnt2 = $('#itemcnt2').val();
-				var itemcnt3 = $('#itemcnt3').val();
-				location.href = '[[@{/orderpageitem?custid=}]]' + custid
-						+ '&itemid=' + itemid 
-						+ '&itemcnt1=' + itemcnt1 + '&itemcnt2=' + itemcnt2
-						+ '&itemcnt3=' + itemcnt3;
+						function moveorder() {
+							var custid = '[[${session.logincust.custid}]]';
+							var itemid = $('#itemid').text();
+							var itemcnt1 = $('#itemcnt1').val();
+							var itemcnt2 = $('#itemcnt2').val();
+							var itemcnt3 = $('#itemcnt3').val();
+							location.href = '[[@{/orderpageitem?custid=}]]'
+									+ custid + '&itemid=' + itemid
+									+ '&itemcnt1=' + itemcnt1 + '&itemcnt2='
+									+ itemcnt2 + '&itemcnt3=' + itemcnt3;
 
-			}
-			;
+						}
+						;
 
-			
-				});
-	
+					});
 </script>
 
 
@@ -182,91 +189,91 @@ $(document).ready(
 						class="img-fluid">
 				</div>
 				<div class="col-md-6">
-				<input type="text"
-							readonly="readonly" class="form-control" id="itemname"
-							th:value="${itemdetail.itemname}" name="itemname" style="display:none"> <br>
+					<input type="text" readonly="readonly" class="form-control"
+						id="itemname" th:value="${itemdetail.itemname}" name="itemname"
+						style="display: none"> <br>
 					<h2 class="text-black" th:text="${itemdetail.itemname}"></h2>
 					<p></p>
 					<hr class="two_1">
 					<span id="itemid" th:text="${itemdetail.itemid}" name="itemid"
-						style="display: none"></span>
-					<span class="title">장소</span>
-					<span class="con" th:text="${itemdetail.itemplace}"></span><br>
-					<span class="title">기간</span>
-					<span class="con"
+						style="display: none"></span> <span class="title">장소</span> <span
+						class="con" th:text="${itemdetail.itemplace}"></span><br> <span
+						class="title">기간</span> <span class="con"
 						th:text="${#dates.format(itemdetail.estart, 'yyyy.MM.dd')} + '&nbsp;~&nbsp;' + ${#dates.format(itemdetail.efin, 'yyyy.MM.dd')}"
 						name="itemid"></span><br> <span class="title">관람등급</span><span
 						class="con" th:text="' '+${itemdetail.itemguide}"></span>
 					<hr style="color: black">
-					<section id="option_price" >
-					<span class="title">가격</span>
-					<section style="width: 500px;">
-					<div class="option">
-						<span class="con"
-						th:text="${itemdetail.itemoption_obj1} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'"><label for="sel1"></label></span> 
-						<select
-							class="form-control col-sm-3" id="itemcnt1">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> 
-					</div>
-				
-					<div class="option">
-					<span class="con"
-						th:text="${itemdetail.itemoption_obj2} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'"></span><label for="sel1"></label> <select
-							class="form-control col-sm-3" id="itemcnt2">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> 
-					</div>
-					
-					<div class="option">
-						<span class="con"
-						th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label for="sel1"></label> <select
-							class="form-control col-sm-3" id="itemcnt3">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> 
-					</div>
-				</section>
+					<section id="option_price">
+						<span class="title">가격</span>
+						<section style="width: 500px;">
+							<div class="option">
+								<span class="con"
+									th:text="${itemdetail.itemoption_obj1} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price1, 3,'COMMA')}+'원'"><label
+									for="sel1"></label></span> <select class="form-control col-sm-3"
+									id="itemcnt1">
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+							</div>
+
+							<div class="option">
+								<span class="con"
+									th:text="${itemdetail.itemoption_obj2} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price2, 3,'COMMA')}+'원'"></span><label
+									for="sel1"></label> <select class="form-control col-sm-3"
+									id="itemcnt2">
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+							</div>
+
+							<div class="option">
+								<span class="con"
+									th:text="${itemdetail.itemoption_obj3} +'권 '+ ${#numbers.formatInteger(itemdetail.itemoption_price3, 3,'COMMA')}+'원'"></span><label
+									for="sel1"></label> <select class="form-control col-sm-3"
+									id="itemcnt3">
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+							</div>
 						</section>
+					</section>
 					<div id="btn">
 						<div style="display: inline-block">
 							<button id="order" class="buy-now btn btn-sm btn-primary">다음단계</button>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
 
-			
+
 		</div>
 	</div>
 </body>

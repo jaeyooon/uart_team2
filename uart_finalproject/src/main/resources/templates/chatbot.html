@@ -127,6 +127,34 @@ color:black;
 	font-family: 'Dongle', sans-serif;
 	font-size:27px;
 }
+
+@media ( max-width : 500px){
+#cover{
+width:100%;
+margin:auto;
+height:850px;
+}
+#chat{
+width:90%;
+margin:auto;
+height:420px;
+}
+
+#metext{
+width:62%;
+font-size: 15px;
+margin-left:15px;
+}
+#p1, #c, #n, #status{
+font-size:15px;
+}
+#bot,#cust{
+font-size: 20px;
+}
+#h1{
+font-size: 22px;
+}
+}
 </style>
 
 <script>
@@ -152,7 +180,8 @@ color:black;
 										+ JSON.parse(chatchat.body).content2
 										+ "</h4>");
 					
-					
+					 let chat = document.querySelector('#chat');
+				     chat.scrollTop = chat.scrollHeight;
 					});
 
 		});
