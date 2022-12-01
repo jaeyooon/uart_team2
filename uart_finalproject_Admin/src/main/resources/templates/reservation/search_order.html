@@ -69,9 +69,9 @@ $(document).ready(function(){
 						aria-expanded="false"> 옵&nbsp;션 </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item"
-								th:href="@{/reservation/latest_r}">예매날짜 최신순</a></li>
+								th:href="@{/reservation/latest2_r(txt=${txt})}">예매날짜 최신순</a></li>
 							<li><a class="dropdown-item"
-								th:href="@{/reservation/early_r}">예매날짜 빠른순</a></li>
+								th:href="@{/reservation/early2_r(txt=${txt})}">예매날짜 빠른순</a></li>
 						</ul></li>
 				</ul>
 				<form id="search_form" class="d-flex">
