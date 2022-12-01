@@ -67,14 +67,13 @@
 </head>
 <style>
 .rollingbanner{
-    position: relative;
-    width: 500px;
+    position: left;
+    width: 550px;
     height: 32px;
     font-size: .875rem;
     letter-spacing: -1px;
     padding: 7px 15px;
     box-sizing: border-box;
-    background-color: white;
     border-radius: 16px;
 }
 /* 타이틀 */
@@ -286,19 +285,20 @@ function rollingCallback(){
 
 
 						<ul class="navbar-nav flex-row align-items-center ms-auto">
-<div class="rollingbanner ">
-    <div class="title" style="color: black;">리뷰별점 높은 순서대로 추천전시6 > </div>
-    <div class="wrap">
-        <ul>
-            <li class="current"><a href="#">1. GUSTAV KLIMT(구스타프 클림트)</a></li>
-            <li class="next"><a href="#">2. LOGOUT(로그아웃)</a></li>
-            <li><a href="#">3. MONET INSIDE(모네)</a></li>
-            <li><a href="#">4. DUBUFFET(뒤뷔페전)</a></li>
-            <li><a href="#">5. Road To Purple</a></li>
-            <li class="prev"><a href="#">6. Tube Seoul</a></li>
-        </ul>
-    </div>
-</div>
+							<div class="rollingbanner ">
+								<div class="title" style="color: black;">
+								리뷰별점 추천전시 6 ></div>
+								<div class="wrap" style="color: black;">
+									<ul>
+										<li class="current">1. GUSTAV KLIMT(구스타프클림트)</a></li>
+										<li class="next">2. LOGOUT(로그아웃)</a></li>
+										<li>3. MONET INSIDE(모네)</a></li>
+										<li>4. DUBUFFET(뒤뷔페전)</a></li>
+										<li>5. Road To Purple</a></li>
+										<li class="prev">6. Tube Seoul</a></li>
+									</ul>
+								</div>
+							</div>
 							<!-- User -->
 							<ul th:if="${session.loginadmin == null}"
 								style="list-style: none;">
