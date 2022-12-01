@@ -21,6 +21,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		GROUP BY gender
 	</select>
 	
+	<select id="getname" resultType="itemDTO">
+		SELECT i.itemname  FROM item AS i
+	</select>
+	
 </mapper>
 
 

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.OrderlistDTO;
+import com.multi.mapper.OrderlistMapper;
 import com.multi.service.OrderlistService;
 
 @Controller
@@ -16,6 +17,9 @@ public class ReservationController {
 	
 	@Autowired
 	OrderlistService service;
+	
+	@Autowired
+	OrderlistMapper mapper;
 	
 	String dir = "reservation/";
 	
@@ -35,6 +39,21 @@ public class ReservationController {
 	}
 	
 	//리스트를 담아야 한다.
+	
+	@RequestMapping("/searchimpl")
+	public String searchimpl(Model model, String txt) {
+		
+		List<OrderlistDTO> list=null;
+		try {
+			list=mapper.searchitem(txt);
+			model.addAttribute("list", list);
+			model.addAttribute("center", dir+"search_order");	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "main";
+	
+	}
 	
 
 } 

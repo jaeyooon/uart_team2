@@ -13,6 +13,49 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		,ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
 		INNER JOIN item i ON ol.itemid = i.itemid
 	</select>
+	
+	<select id="searchitem" parameterType="String" resultType="OrderlistDTO">
+		SELECT i.itemname as item_itemname, i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
+		ol.orderlistid,ol.custid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place,
+		ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
+		INNER JOIN item i ON ol.itemid = i.itemid
+		WHERE i.itemname LIKE CONCAT('%',#{txt},'%')		
+	</select>
+	
+	<select id="latest_r" resultType="OrderlistDTO">
+		SELECT i.itemname as item_itemname, i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
+		ol.orderlistid,ol.custid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place,
+		ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
+		INNER JOIN item i ON ol.itemid = i.itemid
+		ORDER BY ol.orderdate DESC
+	</select>
+	
+	<select id="early_r" resultType="OrderlistDTO">
+		SELECT i.itemname as item_itemname, i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
+		ol.orderlistid,ol.custid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place,
+		ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
+		INNER JOIN item i ON ol.itemid = i.itemid
+		ORDER BY ol.orderdate ASC
+	</select>
+	
+	<select id="latest2_r" parameterType="String" resultType="OrderlistDTO">
+		SELECT i.itemname as item_itemname, i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
+		ol.orderlistid,ol.custid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place
+		,ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
+		INNER JOIN item i ON ol.itemid = i.itemid
+		WHERE i.itemname LIKE CONCAT('%',#{txt},'%')
+		ORDER BY ol.orderdate DESC
+	</select>
+	
+	<select id="early2_r" parameterType="String" resultType="OrderlistDTO">
+		SELECT i.itemname as item_itemname, i.itemplace as item_place, i.estart as item_estart, i.efin as item_efin,
+		ol.orderlistid,ol.custid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place
+		,ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
+		INNER JOIN item i ON ol.itemid = i.itemid
+		WHERE i.itemname LIKE CONCAT('%',#{txt},'%')
+		ORDER BY ol.orderdate ASC
+	</select>
+	
 	<insert id="insert" parameterType="OrderlistDTO">
 		
 	</insert>
@@ -22,5 +65,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="Integer">
 		
 	</delete>
+	
+	
 	
 </mapper>

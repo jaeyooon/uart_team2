@@ -146,6 +146,24 @@ public class AJAXController {
 		}
 		return ja;
 }
+	
+	
+	@RequestMapping("/autosearch")
+	public Object autosearch() {
+		List<ItemDTO> list=null;
+		try {
+			list=mapper.getname();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		JSONArray ja=new JSONArray(); //배열선언
+		
+		for(ItemDTO i:list) {
+			ja.add(i.getItemname()); //배열에 자료담기
+		}
+		return ja;
+	}
+	
 }
 
 
