@@ -47,4 +47,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	</select>
 	
+	<select id="getTotal" resultType="Integer">
+		SELECT count(*) FROM item
+
+	</select>
+	
+	<select id="selectpage" parameterType="Integer" resultType="itemDTO">
+		SELECT c.cateid, (c.catename) AS cate_catename, i.itemid, i.itemname, i.itemimg, i.rdate FROM item AS i
+		INNER JOIN cate AS c ON c.cateid=i.cateid
+        ORDER BY itemid
+        LIMIT #{offset}, 6;
+	</select>
+	
 </mapper>

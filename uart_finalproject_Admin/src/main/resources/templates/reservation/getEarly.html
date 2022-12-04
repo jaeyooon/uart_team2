@@ -143,29 +143,29 @@ $(document).ready(function(){
                <ul class="pagination">
                	<!-- 맨 처음으로 이동 -->
                  <li th:if="${startpage} != 1" class="page-item first">
-                   <a id="first" class="page-link" th:href="@{/reservation/get(page=1)}"
+                   <a id="first" class="page-link" th:href="@{/reservation/early_r(page=1)}"
                      ><i class="tf-icon bx bx-chevrons-left"></i
                    ></a>
                  </li>
                  <!-- 이전 페이지로 이동 -->
                  <li th:if="${prev} != 1" class="page-item prev">
-                   <a id="prev" class="page-link" th:href="@{/reservation/get(page=${cpage-1})}"
+                   <a id="prev" class="page-link" th:href="@{/reservation/early_r(page=${cpage-1})}"
                      ><i class="tf-icon bx bx-chevron-left"></i
                    ></a>
                  </li>
                  <!-- 한 블럭에 해당하는 페이지만틈 화면에 나오도록 설정 -->
                  <li th:each="page : ${#numbers.sequence(startpage,endpage)}" class="page-item">
-                   <a class="page-link" th:text=${page} th:href="@{/reservation/get(page=${page})}">1</a>
+                   <a class="page-link" th:text=${page} th:href="@{/reservation/early_r(page=${page})}">1</a>
                  </li>
                  <!-- 다음 페이지로 이동, if문을 통해 > 기호 화면에 나타낼지 여부 설정 -->
                  <li th:if="${cpage} != ${totalpages}" class="page-item next">
-                   <a id="next" class="page-link" th:href="@{/reservation/get(page=${cpage+1})}"
+                   <a id="next" class="page-link" th:href="@{/reservation/early_r(page=${cpage+1})}"
                      ><i class="tf-icon bx bx-chevron-right"></i
                    ></a>
                  </li>
                  <!-- 맨 끝 페이지로 이동, if문을 통해 >> 기호 화면에 나타낼지 여부 설정 -->
                  <li th:if="${endpage} != ${totalpages}" class="page-item last">
-                   <a id="last" class="page-link" th:href="@{/reservation/get(page=${totalpages})}"
+                   <a id="last" class="page-link" th:href="@{/reservation/early_r(page=${totalpages})}"
                      ><i class="tf-icon bx bx-chevrons-right"></i
                    ></a>
                  </li>

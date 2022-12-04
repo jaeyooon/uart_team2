@@ -12,4 +12,6 @@ import com.multi.frame.MyMapper;
 @Mapper
 public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
 	public List<ItemDTO> gethighgrade() throws Exception;
+	public int getTotal();  // 상품목록 총 갯수
+	public List<ItemDTO> selectpage(Integer offset) throws Exception;
 }
