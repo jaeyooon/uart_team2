@@ -75,12 +75,15 @@
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
-                   <li th:if="${prev} != 1"><a th:href="@{/item/artinfolist(page=${cpage-1})}">&lt;</a></li>
+                    <!-- 이전 페이지로 이동, if문을 통해 < 기호 화면에 나타낼지 여부 설정 -->
+                    <li th:if="${prev} != 1"><a th:href="@{/item/end_a(page=${cpage-1})}">&lt;</a></li>
+                    <!-- 한 블럭에 해당하는 페이지만틈 화면에 나오도록 설정 -->
                     <li th:each="page : ${#numbers.sequence(startpage,endpage)}">
-                    	<a id="paging" th:text=${page} th:href="@{/item/artinfolist(page=${page})}"> 
+                    	<a id="paging" th:text=${page} th:href="@{/item/end_a(page=${page})}"> 
                     	</a>
                     </li>
-                    <li th:if="${cpage} != ${endpage}"><a th:href="@{/item/artinfolist(page=${cpage+1})}">&gt;</a></li>
+                    <!-- 다음 페이지로 이동, if문을 통해 > 기호 화면에 나타낼지 여부 설정 -->
+                    <li th:if="${cpage} != ${endpage}"><a th:href="@{/item/end_a(page=${cpage+1})}">&gt;</a></li>
                   </ul>
                 </div>
               </div>

@@ -85,12 +85,54 @@ public class ItemController {
 	}
 	
 	@RequestMapping("/artinfolist")
-	public String artinfolist(Model model) {
+	public String artinfolist(Model model, String page) {
 		List<ItemDTO> list = null;
+		int totalrows = 0;
+		int totalpages = 0;
+		int cpage = 0;		// 현재 페이지
+		int cblock = 0; 	// 시작페이지와 마지막 페이지 포함하는 하나의 블럭
+		int startpage = 0;
+		int endpage = 0;
+		int selectstart = 0;	// mapper의 selectpage 인수로 들어감
+		int prev = 0;		// 현재 1페이지에 있는데 이전페이지로 가려고 할때를 위해 필요
+		
 		try {
-			list = item_service.select_cate(5);
+			if(page == null || page.isEmpty()) {
+				cpage = 1;
+			} else {
+				cpage = Integer.parseInt(page);
+			}
+			
+			if(cpage == 1) {    
+				prev = 1;
+			}
+			
+			cblock = cpage % 3 == 0? cpage / 3 : (cpage / 3) + 1;  // 한 블럭 당 세 페이지로 구성
+			startpage = (cblock - 1) * 3 + 1;  // 첫번째 블럭에서는 1 그 다음 4 , 7 
+			endpage = startpage + 3 - 1;   // 첫 번째 블럭에서는 3 그 다음 6, 9
+			
+			totalrows = item_mapper.getTotal(); 
+			totalpages = totalrows % 6 == 0 ? totalrows / 6 : (totalrows / 6) + 1;
+//			System.out.println(totalpages);  // 총 페이지 수 3 
+//			System.out.println(totalrows);   // 총 데이터 수 17
+			if(totalpages == 0) {
+				totalpages = 1;
+			}
+			if(endpage > totalpages) {	// 마지막 페이지가 총 페이지 수를 넘어가면 끝 페이지를 마지막 페이지 숫자로 지정
+				endpage = totalpages;
+			}
+			
+			// -------- 페이징 처리(한 페이지당 6개씩 상품목록 나오도록 select)
+			selectstart = (cpage - 1) * 6;
+			list = item_mapper.selectpage(selectstart);
+			
 			model.addAttribute("itemlist5", list);
 			model.addAttribute("center", dir+"artinfolist");
+			model.addAttribute("totalpages", totalpages);
+			model.addAttribute("startpage", startpage);
+			model.addAttribute("endpage", endpage);
+			model.addAttribute("cpage", cpage);
+			model.addAttribute("prev", prev);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -156,12 +198,54 @@ public class ItemController {
 	}
 	
 	@RequestMapping("/end_a")
-	public String end_a(Model model) {
+	public String end_a(Model model, String page) {
 		List<ItemDTO> list = null;
-		try {		
-			list = item_mapper.end_fast(5);
+		int totalrows = 0;
+		int totalpages = 0;
+		int cpage = 0;		
+		int cblock = 0; 	
+		int startpage = 0;
+		int endpage = 0;
+		int selectstart = 0;	// mapper의 selectpage 인수로 들어감
+		int prev = 0;		// 현재 1페이지에 있는데 이전페이지로 가려고 할때를 위해 필요
+		
+		try {
+			if(page == null || page.isEmpty()) {
+				cpage = 1;
+			} else {
+				cpage = Integer.parseInt(page);
+			}
+			
+			if(cpage == 1) {    
+				prev = 1;
+			}
+			
+			cblock = cpage % 3 == 0? cpage / 3 : (cpage / 3) + 1;  // 한 블럭 당 세 페이지로 구성
+			startpage = (cblock - 1) * 3 + 1;  
+			endpage = startpage + 3 - 1;  
+			
+			totalrows = item_mapper.getTotal(); 
+			totalpages = totalrows % 6 == 0 ? totalrows / 6 : (totalrows / 6) + 1;
+//			System.out.println(totalpages);  // 총 페이지 수 3 
+//			System.out.println(totalrows);   // 총 데이터 수 17
+			if(totalpages == 0) {
+				totalpages = 1;
+			}
+			if(endpage > totalpages) {	
+				endpage = totalpages;
+			}
+			
+			// -------- 페이징 처리(한 페이지당 6개씩 상품목록 나오도록 select)
+			selectstart = (cpage - 1) * 6;
+			list = item_mapper.end_fastPaging(selectstart);
+			
 			model.addAttribute("itemlist5", list);
-			model.addAttribute("center", dir+"artinfolist");
+			model.addAttribute("center", dir+"artinfolistEF");
+			model.addAttribute("totalpages", totalpages);
+			model.addAttribute("startpage", startpage);
+			model.addAttribute("endpage", endpage);
+			model.addAttribute("cpage", cpage);
+			model.addAttribute("prev", prev);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -227,12 +311,54 @@ public class ItemController {
 	}
 	
 	@RequestMapping("/start_a")
-	public String start_a(Model model) {
+	public String start_a(Model model, String page) {
 		List<ItemDTO> list = null;
-		try {			
-			list = item_mapper.start_fast(5);
+		int totalrows = 0;
+		int totalpages = 0;
+		int cpage = 0;		
+		int cblock = 0; 	
+		int startpage = 0;
+		int endpage = 0;
+		int selectstart = 0;	// mapper의 selectpage 인수로 들어감
+		int prev = 0;		// 현재 1페이지에 있는데 이전페이지로 가려고 할때를 위해 필요
+		
+		try {
+			if(page == null || page.isEmpty()) {
+				cpage = 1;
+			} else {
+				cpage = Integer.parseInt(page);
+			}
+			
+			if(cpage == 1) {    
+				prev = 1;
+			}
+			
+			cblock = cpage % 3 == 0? cpage / 3 : (cpage / 3) + 1;  // 한 블럭 당 세 페이지로 구성
+			startpage = (cblock - 1) * 3 + 1;  
+			endpage = startpage + 3 - 1;  
+			
+			totalrows = item_mapper.getTotal(); 
+			totalpages = totalrows % 6 == 0 ? totalrows / 6 : (totalrows / 6) + 1;
+//			System.out.println(totalpages);  // 총 페이지 수 3 
+//			System.out.println(totalrows);   // 총 데이터 수 17
+			if(totalpages == 0) {
+				totalpages = 1;
+			}
+			if(endpage > totalpages) {	
+				endpage = totalpages;
+			}
+			
+			// -------- 페이징 처리(한 페이지당 6개씩 상품목록 나오도록 select)
+			selectstart = (cpage - 1) * 6;
+			list = item_mapper.start_fastPaging(selectstart);
+			
 			model.addAttribute("itemlist5", list);
-			model.addAttribute("center", dir+"artinfolist");
+			model.addAttribute("center", dir+"artinfolistSF");
+			model.addAttribute("totalpages", totalpages);
+			model.addAttribute("startpage", startpage);
+			model.addAttribute("endpage", endpage);
+			model.addAttribute("cpage", cpage);
+			model.addAttribute("prev", prev);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

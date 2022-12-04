@@ -50,6 +50,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		ORDER BY efin ASC;	
 	</select>
 	
+	<select id="start_fastPaging" resultType="itemDTO">
+		SELECT * FROM item AS i
+		WHERE i.cateid=5
+		ORDER BY estart ASC	
+		LIMIT #{offset}, 6	
+	</select>
+	
+	<select id="end_fastPaging" resultType="itemDTO">
+		SELECT * FROM item AS i
+		WHERE i.cateid=5
+		ORDER BY efin ASC	
+		LIMIT #{offset}, 6	
+	</select>
+	
 	<select id="gethighgrade" resultType="itemDTO">
 		SELECT i.itemid, i.itemname, i.itemimg, i.estart, i.efin, 
 		round(avg(r.reviewgrade), 1) as review_reviewgrade FROM item i 
@@ -57,6 +71,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		GROUP BY i.itemid
 		ORDER BY review_reviewgrade DESC LIMIT 6;
 
+	</select>
+	
+	<select id="getTotal" resultType="Integer">
+		SELECT count(*) FROM item
+		WHERE cateid=5
+
+	</select>
+	
+	<select id="selectpage" parameterType="Integer" resultType="itemDTO">
+		SELECT c.cateid, c.catename, i.itemid, i.itemname, i.itemimg FROM item AS i
+		INNER JOIN cate AS c ON c.cateid=i.cateid
+		WHERE c.cateid = 5
+        ORDER BY itemid
+        LIMIT #{offset}, 6	
 	</select>
 
 </mapper>

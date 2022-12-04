@@ -18,5 +18,9 @@ public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
 	public <V> V select3(Integer k) throws Exception;
 	public List<ItemDTO> start_fast(Integer k) throws Exception;  //Service에 없음
 	public List<ItemDTO> end_fast(Integer k) throws Exception;  //Service에 없음
+	public List<ItemDTO> start_fastPaging(Integer k) throws Exception;
+	public List<ItemDTO> end_fastPaging(Integer k) throws Exception;
+	public int getTotal();  // 상품목록 총 갯수
+	public List<ItemDTO> selectpage(Integer offset) throws Exception;
 
 }

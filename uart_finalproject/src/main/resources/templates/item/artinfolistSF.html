@@ -75,12 +75,12 @@
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
-                   <li th:if="${prev} != 1"><a th:href="@{/item/artinfolist(page=${cpage-1})}">&lt;</a></li>
+                   <li th:if="${prev} != 1"><a th:href="@{/item/start_a(page=${cpage-1})}">&lt;</a></li>
                     <li th:each="page : ${#numbers.sequence(startpage,endpage)}">
-                    	<a id="paging" th:text=${page} th:href="@{/item/artinfolist(page=${page})}"> 
+                    	<a id="paging" th:text=${page} th:href="@{/item/start_a(page=${page})}"> 
                     	</a>
                     </li>
-                    <li th:if="${cpage} != ${endpage}"><a th:href="@{/item/artinfolist(page=${cpage+1})}">&gt;</a></li>
+                    <li th:if="${cpage} != ${endpage}"><a th:href="@{/item/start_a(page=${cpage+1})}">&gt;</a></li>
                   </ul>
                 </div>
               </div>
