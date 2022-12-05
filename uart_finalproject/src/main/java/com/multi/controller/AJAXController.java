@@ -98,12 +98,15 @@ public class AJAXController {
 		
 		try {
 			event = event_service.getcustevent(custid);
-			if(event != null) {
+			if(event != null) { // 이벤트 참여한 경우
 				if(event.getSort() == 1) { // 50% 할인쿠폰 적용한적 없는 경우
 					result = true;  // 쿠폰적용가능
 				} else {
 					result = false;
 				}
+			} 
+			else {		// 이벤트 참여하지 않은 경우
+				result = false;		// 적용할 수 있는 쿠폰 없으므로
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

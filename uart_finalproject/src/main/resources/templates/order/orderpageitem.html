@@ -167,7 +167,7 @@ table.table th {
 }
 
 #totalprice {
-	margin-left: 90px;
+	margin-left: 178px;
 }
 
 @media ( max-width : 768px) {
@@ -193,24 +193,21 @@ table.table th {
 			success : function(data) {
 				result = data;
 				//alert(result);
-				if (result != true) {
-					$('#sale_totalprice').text('😅사용 가능한 쿠폰이 없습니다!');
-					$('#sale_totalprice').css('color', '#5a189a');
-					$('#sale_totalprice').css('font-size', '15px');
-					$('#sale_totalprice').css('font-weight', 'bold');
-				} else {
+				if(result == true) {  // 사용가능한 쿠폰이 있는 경우
 					var totalprice = $('#totalprice').text(); // 총 주문금액
-					totalprice = totalprice.replace(",", ""); // 콤마 제거
+					totalprice = totalprice.replace(",","");  // 콤마 제거
 					inttotalprice = Number(totalprice);
-					inttotalprice = inttotalprice * 1 / 2;
+					inttotalprice = inttotalprice * 1/2; 
 					//alert(inttotalprice);
 					$('#sale_totalprice').text(inttotalprice.toLocaleString());
 					$('#sale_totalprice').css('color', '#854A72');
-					$('#sale_totalprice').css('font-size', '17px');
-					$('#sale_totalprice').css('font-weight', 'bold');
-					$('#totalprice').css('text-decoration', 'line-through')
+					$('#sale_totalprice').css('font-size','17px');
+					$('#sale_totalprice').css('font-weight','bold');
+					$('#totalprice').css('text-decoration','line-through')
 					$('#won').text('원');
-				}
+					$('#order').attr("disabled", true);   // 쿠폰 적용한 후에는 버튼 비활성화
+					$(".notice_coupon").text(' (보유 쿠폰: 0장)')
+				} 
 			}
 		});
 		return result;
@@ -306,8 +303,11 @@ table.table th {
 					location.href = '[[@{/itemoption?id=}]]' + custid
 							+ '&[[@{itemid=}]]' + itemid;
 
+				};
+				
+				if($('.notice_coupon').text() == ' (보유 쿠폰: 0장)') {
+					$('#order').attr("disabled", true);  // 보유 쿠폰이 없는 경우 쿠폰적용 버튼 비활성화
 				}
-				;
 
 			});
 </script>
@@ -426,6 +426,8 @@ table.table th {
 															<button th:onclick="checkCoupon()" id="order"
 																type="button" class="buy-now btn btn-primary"
 																style="display: inline-block">쿠폰적용</button>
+															<span class="notice_coupon" id="zero_coupon" th:if="${result == false}" th:text="' (보유 쿠폰: 0장)'" th:style="'font-size: 13px'"></span>
+															<span class="notice_coupon" th:if="${result == true}" th:text="' (보유 쿠폰: 1장)'" th:style="'font-size: 13px'"></span>
 															<div>
 																<span id="sale_totalprice"> </span> <span id="won"></span>
 															</div></td>
