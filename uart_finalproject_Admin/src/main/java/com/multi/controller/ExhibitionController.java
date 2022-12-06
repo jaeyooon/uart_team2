@@ -51,7 +51,7 @@ public class ExhibitionController {
 		int startpage = 0;
 		int endpage = 0;
 		int selectstart = 0;	// mapper의 selectpage 인수로 들어감
-		int prev = 0;		// 현재 1페이지에 있는데 이전페이지로 가려고 할때를 위해 필요=>prev 없을경우 0페이지 존재, 1페이지에서도 이전으로 가는 꺽쇠 생김
+		int prev = 0;		// 현재 1페이지에 있는데 이전페이지로 가려고 할때를 위해 필요 =>prev 없을 경우 0페이지 존재, 1페이지에서도 이전으로 가는 꺽쇠 생김
 
 		
 		//System.out.println(page);
