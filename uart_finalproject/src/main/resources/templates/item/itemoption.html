@@ -141,6 +141,10 @@ hr.two_1 {
 	justify-content: flex-end;
 }
 
+#alertcnt {
+	z-index: 10000;
+}
+
 @media ( max-width : 768px) {
 	.img-fluid {
 		width: 90%;
@@ -153,29 +157,35 @@ hr.two_1 {
 </style>
 
 <script>
-	$(document)
-			.ready(
-					function() {
-						$('#order').click(function() {
+function moveorder(itemcnt1, itemcnt2, itemcnt3) {
+	var custid = '[[${session.logincust.custid}]]';
+	var itemid = $('#itemid').text();
+	
+	location.href = '[[@{/orderpageitem?custid=}]]' + custid
+			+ '&itemid=' + itemid 
+			+ '&itemcnt1=' + itemcnt1 + '&itemcnt2=' + itemcnt2
+			+ '&itemcnt3=' + itemcnt3;
 
-							moveorder();
-						});
+};
 
-						function moveorder() {
-							var custid = '[[${session.logincust.custid}]]';
-							var itemid = $('#itemid').text();
-							var itemcnt1 = $('#itemcnt1').val();
-							var itemcnt2 = $('#itemcnt2').val();
-							var itemcnt3 = $('#itemcnt3').val();
-							location.href = '[[@{/orderpageitem?custid=}]]'
-									+ custid + '&itemid=' + itemid
-									+ '&itemcnt1=' + itemcnt1 + '&itemcnt2='
-									+ itemcnt2 + '&itemcnt3=' + itemcnt3;
 
-						}
-						;
+function checkcntzero(itemcnt1, itemcnt2, itemcnt3){
+		if(itemcnt1 == 0 && itemcnt2 == 0 && itemcnt3 == 0) {
+			$('#alertcnt').modal('show');
+		} 
+		else {
+			moveorder(itemcnt1, itemcnt2, itemcnt3);
+		}
+}
 
-					});
+function order(){
+		var itemcnt1 = $('#itemcnt1').val();
+		var itemcnt2 = $('#itemcnt2').val();
+		var itemcnt3 = $('#itemcnt3').val();
+		
+		checkcntzero(itemcnt1, itemcnt2, itemcnt3);
+
+};
 </script>
 
 
@@ -266,15 +276,35 @@ hr.two_1 {
 					</section>
 					<div id="btn">
 						<div style="display: inline-block">
-							<button id="order" class="buy-now btn btn-sm btn-primary">다음단계</button>
+							<button id="order" th:onclick="order()" class="buy-now btn btn-sm btn-primary">다음단계</button>
 						</div>
-
+						
 					</div>
 				</div>
 			</div>
 
-
+			
 		</div>
 	</div>
 </body>
+
+<!-- Modal -->
+<div class="modal fade" id="alertcnt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>상품 수량을 선택해주세요.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
 </html>

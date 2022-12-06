@@ -17,6 +17,8 @@ public class ItemoptionController {
 	
 	@Autowired
 	ItemService item_service;
+	
+	String dir = "item/";
 		
 	@RequestMapping("/itemoption")
 	public String itemdetail(Model model, int itemid) {
@@ -30,7 +32,7 @@ public class ItemoptionController {
 			model.addAttribute("itemdetail", item);
 		
 			
-			model.addAttribute("center", "itemoption");
+			model.addAttribute("center", dir+"itemoption");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
