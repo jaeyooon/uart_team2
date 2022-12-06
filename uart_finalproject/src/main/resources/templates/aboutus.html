@@ -49,64 +49,8 @@
    };
 
 
-
-   function displaymarker(){
-   	var imageSrc = "/img/mk.png";  //어떤 이미지를 올릴 것인가? → 마커 확장자 png인걸 올리겠다 
-       var imageSize = new kakao.maps.Size(24, 35);    
-       var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);   //이미지 사이즈 조정 및 bla bla 
-   	
-   	  //for 문 빼고 lat이랑 데이터 lng넣어보기
-   		 var marker = new kakao.maps.Marker({  //여기다가 이미지를 집어넣자   /* 마커 데이터를 생성(생성자 연산) */
-   	        map: map,
-   	        position: new kakao.maps.LatLng(37.56014367008594, 126.98071970839374),   /* 위도와 경도를 입력함으로써 넣어 줌 */
-   		 });
-
-   	     var iwPosition = new kakao.maps.LatLng(37.56014367008594, 126.98071970839374);
-
-   		 var infowindow = new kakao.maps.InfoWindow({
-   		     position : iwPosition, 
-   		     content : iwContent
-   		 });
-   		 kakao.maps.event.addListener(marker, 'mouseover', mouseoverListener(marker, infowindow)); /* 커서를 가져다 대면, 보이게 함.  */
-   		 kakao.maps.event.addListener(marker, 'mouseout', mouseoutListener(marker, infowindow));
-   	
-   	
-   	function mouseoverListener(marker, infowindow) {
-   		return function(){
-   			infowindow.open(map, marker);
-   		};
-   	}
-   	function mouseoutListener(marker, infowindow) {
-   		return function(){
-   			infowindow.close();
-   		};
-   	}
-   	function mouseclickListener(target) {
-   	  	return function(){
-   	  		location.href = target;
-   	  	};
-   	}
-   }
-
-   function getdata(loc){   /* getdata 함수 */
-   	$.ajax({
-   		url : '[[@{/getmarker}]]',
-   		data : {'loc' : loc},
-   		success : function(data){   /* 성공하면 fucntion, 실패하면 displaymarker */
-   			displaymarker(data);
-   		}
-   	});
-   };
-
-   function go(lat,lng,loc){  //위도 경도 지역명
-   	var moveLatLon = new kakao.maps.LatLng(lat,lng);
-       map.panTo(moveLatLon);      /* 지도가 이동했으면 데이터를 가져와야됨 */ 
-       getdata(loc);                 //marker information request
-   };
-
    $(document).ready(function(){
    	display();
-   	displaymarker();
    	
    });
   
@@ -122,9 +66,6 @@
 			  <div style="text-align:center;color:black;">원하는 전시도 보고, 지친 심신을 전시를 보면서 완화시키십시오.</div>
 			  <div style="text-align:center;color:black;">이 모든 전시회는 당신을 위해서 준비된 겁니다.</div>
 		 
-          <div>
-              <!-- <img id="about_img" src="@{img/healing.jpg}" style="text-align:right;"> -->
-          </div>
     </div>
      
 
@@ -147,67 +88,64 @@
   
   </body>
   <footer class="site-footer border-top">
-   <div class="container">
-      <div class="row">
-      <!-- enter -->
-      <!-- enter -->
-      <!-- enter -->
-         <div class="col-lg-6 mb-5 mb-lg-0">
+         <div class="container">
             <div class="row">
+               <div class="col-lg-6 mb-5 mb-lg-0">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <h3 class="footer-heading mb-4">주식회사 U-ART</h3>
+                     </div>
+                     <div class="col-md-6 col-lg-4">
+                        <ul class="list-unstyled">
+                           <li><a href="#">개인정보처리방침</a></li>
+                           <li><a href="#">청소년보호정책</a></li>
+                           <li><a href="#">이용약관</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-md-6 col-lg-4">
+                        <ul class="list-unstyled">
+                           <li><a href="#">회사소개</a></li>
+                           <li><a href="#">고객센터</a></li>
+                           <li><a href="#">티켓판매안내</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-md-7 col-lg-4">
+                        <ul class="list-unstyled">
+                           <li><a href="#">웹사이트 개발</a></li>
+                           <li><a href="#">채용안내</a></li>
+                           <li><a href="#">광고/제휴안내</a></li>
+                        </ul>
+                     </div>
+                  
+                  </div>
+               </div>
+               <div class="col-md-6 col-lg-1 mb-4 mb-lg-0"></div>
+               <div class="col-md-6 col-lg-4">
+                  <div class="block-5 mb-5">
+                     <h3 class="footer-heading mb-4">Contact U-ART</h3>
+                     <ul class="list-unstyled">
+                        <li id="address" class="address">서울특별시 강남구 삼성로 42 삼성동빌딩 5층</li>
+                        <li class="phone"><a href="#">+82 02-2387-2387</a></li>
+                        <li class="email">emailaddress@uart.com</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="row pt-5 mt-5 text-center">
                <div class="col-md-12">
-                  <h3 class="footer-heading mb-4">주식회사 U-ART</h3>
+                  <p>
+                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      &copy;
+                     <script data-cfasync="false"
+                        src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                     <script>document.write(new Date().getFullYear());</script>
+                   <span class="material-symbols-outlined" style="font-size: 40px; color:#9f86c0;" >emoji_people </span><a
+                        href="#" target="_blank" class="text-primary"> (주)U-ART</a>
+                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  </p>
                </div>
-               <div class="col-md-6 col-lg-4">
-                  <ul class="list-unstyled">
-                     <li><a href="#">개인정보처리방침</a></li>
-                     <li><a href="#">청소년보호정책</a></li>
-                     <li><a href="#">이용약관</a></li>
-                  </ul>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <ul class="list-unstyled">
-                     <li><a href="#">회사소개</a></li>
-                     <li><a href="#">고객센터</a></li>
-                     <li><a href="#">티켓판매안내</a></li>
-                  </ul>
-               </div>
-               <div class="col-md-7 col-lg-4">
-                  <ul class="list-unstyled">
-                     <li><a href="#">웹사이트 개발</a></li>
-                     <li><a href="#">채용안내</a></li>
-                     <li><a href="#">광고/제휴안내</a></li>
-                  </ul>
-               </div>
-            
-            </div>
-         </div>
-         <div class="col-md-6 col-lg-1 mb-4 mb-lg-0"></div>
-         <div class="col-md-6 col-lg-4">
-            <div class="block-5 mb-5">
-               <h3 class="footer-heading mb-4">Contact U-ART</h3>
-               <ul class="list-unstyled">
-                  <li id="address" class="address">서울특별시 강남구 삼성로 42 삼성동빌딩 5층</li>
-                  <li class="phone"><a href="#">+82 02-2387-2387</a></li>
-                  <li class="email">emailaddress@uart.com</li>
-               </ul>
-            </div>
-         </div>
-      </div>
-      <div class="row pt-5 mt-5 text-center">
-         <div class="col-md-12">
-            <p>
-               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                &copy;
-               <script data-cfasync="false"
-                  src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-               <script>document.write(new Date().getFullYear());</script>
-             <span class="material-symbols-outlined" style="font-size: 40px; color:#9f86c0;" >emoji_people </span><a
-                  href="#" target="_blank" class="text-primary"> (주)U-ART</a>
-               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-         </div>
 
-      </div>
-   </div>
- </footer>
+            </div>
+         </div>
+   </footer>
 </html>
