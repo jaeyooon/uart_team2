@@ -142,7 +142,7 @@ to {
 	margin-bottom: 10px;
 }
 
-#checkreview, #alreadywrite {
+#checkreview, #alreadywrite, #firstwishlist, #duplicatewishlist {
 	z-index: 10000;
 }
 
@@ -172,6 +172,11 @@ to {
 		height: 400px;
 	}
 }
+#towardwish_btn1, #towardwish_btn2{
+background-color: #7971EA;
+border-color: #7971EA;
+} 
+
 </style>
 <script th:src="@{//developers.kakao.com/sdk/js/kakao.min.js}"></script>
 <script>
@@ -260,17 +265,17 @@ $(document).ready(function(){
 			'itemid':itemid
 			},
 			success:function(result){
-				cartAlert(result);
+				wishAlert(result);
 			}
 	});
 });
-	function cartAlert(result){
+	function wishAlert(result){
 		if(result == '0'){
 			alert("위시리스트에 추가를 하지 못하였습니다.");
 		} else if(result == '1'){
-			alert("위시리스트에 추가되었습니다.");
+			$('#firstwishlist').modal('show');
 		} else if(result == '2'){
-			alert("위시리스트에 이미 추가되어져 있습니다.");
+			$('#duplicatewishlist').modal('show');
 		} else if(result == '5'){
 			alert("로그인이 필요합니다.");	
 		}
@@ -279,9 +284,28 @@ $(document).ready(function(){
 	$('#close_btn1').click(function(){
 		$('#checkreview').modal('hide');
 	});
+	$('#close1').click(function(){
+		$('#checkreview').modal('hide');
+	});
 	$('#close_btn2').click(function(){
 		$('#alreadywrite').modal('hide');
 	});
+	$('#close2').click(function(){
+		$('#alreadywrite').modal('hide');
+	});
+	$('#close_btn3').click(function(){
+		$('#firstwishlist').modal('hide');
+	});
+	$('#close3').click(function(){
+		$('#firstwishlist').modal('hide');
+	});
+	$('#close_btn4').click(function(){
+		$('#duplicatewishlist').modal('hide');
+	});
+	$('#close4').click(function(){
+		$('#duplicatewishlist').modal('hide');
+	});
+	
 });
 
 function registerReview() {
@@ -347,6 +371,7 @@ function checkOrderdetail() {
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+	 
 
 </head>
 
@@ -625,7 +650,7 @@ function checkOrderdetail() {
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
 				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+					aria-label="Close" id="close1">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -649,7 +674,7 @@ function checkOrderdetail() {
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
 				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+					aria-label="Close" id="close2">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -660,8 +685,54 @@ function checkOrderdetail() {
 				<button id="close_btn2" type="button" class="btn btn-primary"
 					data-dismiss="modal">닫기</button>
 			</div>
+			
 		</div>
 	</div>
 </div>
+<!--Modal3-->
+<div class="modal fade" id="firstwishlist" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" id="close3">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>위시리스트에 추가되었습니다.</p>
+			</div>
+                <div class="modal-footer">
+                    <button id="close_btn3" class="btn btn-secondary" type="button" data-dismiss="modal">쇼핑 계속하기</button>
+                    <a class="btn btn-info" id="towardwish_btn1"  th:href="@{/wishlist(id=${session.logincust.custid})}">위시리스트로</a>
+                </div>
+		</div>
+	</div>
+</div>
+<!--Modal4-->
+<div class="modal fade" id="duplicatewishlist" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" id="close4">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>위시리스트에 이미 추가되어있습니다.</p>
+			</div>
+                <div class="modal-footer">
+                    <button id="close_btn4" class="btn btn-secondary" type="button" data-dismiss="modal">쇼핑 계속하기</button>
+                    <a class="btn btn-info" id="towardwish_btn2" th:href="@{/wishlist(id=${session.logincust.custid})}">위시리스트로</a>
+                </div>
+		</div>
+	</div>
+</div>
+
 
 </html>

@@ -211,6 +211,13 @@ function enterkey2(){
 			return false;
 		});
 	});
+  
+  $('#close_btn5').click(function(){
+		$('#duplicatewishlist').modal('hide');
+	});
+	$('#close5').click(function(){
+		$('#duplicatewishlist').modal('hide');
+	}); 
   </script>
 
 </head>
@@ -327,7 +334,7 @@ function enterkey2(){
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" id="close5" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -335,7 +342,7 @@ function enterkey2(){
         <p>검색어를 입력하세요.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+        <button type="button" id="close_btn5" class="btn btn-primary" data-dismiss="modal">닫기</button>
       </div>
     </div>
   </div>

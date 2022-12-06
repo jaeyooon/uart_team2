@@ -199,7 +199,7 @@ public class AJAXController {
 		return "";
 	}*/
 	
-	/* 장바구니 추가 */
+	/* 위시리스트 추가 */
 	/**
 	 * 0: 등록 실패
 	 * 1: 등록 성공
@@ -209,17 +209,17 @@ public class AJAXController {
 	 */
 	@RequestMapping("/wishlist/add")
 	@ResponseBody
-	public String addCartPOST(WishlistDTO cart,HttpServletRequest request) {
+	public String addWishPOST(WishlistDTO wish,HttpServletRequest request) {
 		// 로그인 체크
 				HttpSession session = request.getSession();
-				CustomerDTO mvo = (CustomerDTO)session.getAttribute("logincust");
-				if(mvo == null) {
+				CustomerDTO cust = (CustomerDTO)session.getAttribute("logincust");
+				if(cust == null) {
 					return "5";
 				}
 		
 		// 카트 등록
 		
-		int result = wishlist_service.addCart(cart);
+		int result = wishlist_service.addWish(wish);
 		
 		return result + "";
 	}	

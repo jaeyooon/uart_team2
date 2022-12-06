@@ -39,13 +39,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 카트 추가 -->
-	<insert id="addCart">
+	<insert id="addWish">
 	
 		INSERT INTO wish VALUES (null,#{custid},#{itemid},sysdate())
 	
 	</insert>
 	<!-- 카트 확인 -->
-	<select id="checkCart" resultType="WishlistDTO">
+	<select id="checkWish" resultType="WishlistDTO">
 	
 		select * from wish
 		where custid = #{custid} and itemid = #{itemid}
