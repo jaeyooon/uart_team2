@@ -51,6 +51,7 @@ function getdata1(){
 		url:'[[@{/chart1}]]',
 		success:function(data){
 			// {"month":[1,2,3,4,5,6],"result":[{},{}]}
+			alert(data);
 			display1(data);			
 		}
 	});
@@ -114,8 +115,9 @@ $(document).ready(function(){
 	}, 30000);
 	
 	getdata1();
-	getdata2(1,8);
-	getdata();
+	getdata2(1,12);
+	getdata3();
+	
 	
 	$('#send_btn').click(function(){
 		var sm = $('#sm').val();
@@ -146,27 +148,54 @@ function clock(){
 	if(i<10) {i="0"+i};
 	return i;
 	}
-
-	function display(data){
-		var result = '';
-		$(data).each(function(index,item){
-			result += '<h3>';
-			result += item.num+' '+item.title+' ';
-			result += '</h3>';
-		});
-		$('#result').html(result);
-	};
-
-	function getdata(){
-		$.ajax({
-			url:'/getdata',
-			success:function(data){
-				display(data);
-			}
-		});
-	};
 	
+	 function display3(data){
+		Highcharts.chart('container3', {
 	
+		  chart: {
+		    type: 'column'
+		  },
+		  title: {
+		    text: '2022년 카테고리별 월별 매출액'
+		  },
+		  xAxis: {
+			categories: data['month'],
+		    crosshair: true
+		  },
+		  yAxis: {
+			  title: {
+		            useHTML: true,
+		            text: '월별 매출(원)'
+		        }
+		  },
+		  tooltip: {
+		    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+		    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		      '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+		    footerFormat: '</table>',
+		    shared: true,
+		    useHTML: true
+		  },
+		  plotOptions: {
+		    column: {
+		      pointPadding: 0.2,
+		      borderWidth: 0
+		    }
+		  },
+		  series: data['result']
+		});
+	};
+	 
+	 function getdata3(){
+			$.ajax({
+				url:'[[@{/chart3}]]',
+				success:function(data){
+					alert(data);
+					display3(data);			
+				}
+			});
+
+		};
 </script>
 	<!-- Content -->
 <body onload="clock()">
@@ -217,9 +246,28 @@ function clock(){
 			
 			
 		</div>
+		
+
+			<!-- High Chart -->
+			<div class="col-md-12 order-1 mb-12">
+				<div class="card h-100">
+						<!-- Card Header - Dropdown -->
+						<div
+							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+							<h6 class="m-0 font-weight-bold text-primary"></h6>
+						</div>
+						<!-- Card Body -->
+						<div class="card-body">
+							<div id="container3">
+							</div>
+						</div>
+			</div>
+			</div>
+			<div>
+			<br>
 		<div class="row">
 
-			<!-- Hist Chart -->
+			<!-- High Chart -->
 			<div class="col-md-6 order-1 mb-4">
 				<div class="card h-100">
 						<!-- Card Header - Dropdown -->

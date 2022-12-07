@@ -15,4 +15,9 @@ public class ChartDTO {
 	private String month;
 	private String gender;
 	private int total_price;
+	
+	private String cateid; 
+	private String catename;
+	private int itemid;
+	private int orderlistid;
 }

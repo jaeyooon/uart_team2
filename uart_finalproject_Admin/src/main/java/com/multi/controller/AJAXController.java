@@ -90,6 +90,68 @@ public class AJAXController {
 		return result;
 	}
 	
+	@RequestMapping("/chart3")
+	public Object chart3() {
+		JSONObject result = new JSONObject();
+		
+		
+		JSONArray ja = new JSONArray();
+		JSONObject mobj = new JSONObject();
+		JSONObject eobj = new JSONObject();
+		JSONObject pobj = new JSONObject();
+		JSONObject sobj = new JSONObject();
+		JSONObject ieobj = new JSONObject();
+		mobj.put("name", "미디어전시");
+		eobj.put("name", "체험전시");
+		pobj.put("name", "개인전시");
+		sobj.put("name", "특별전시");
+		ieobj.put("name", "공연예술전시");
+		
+		
+		JSONArray mja = new JSONArray();
+		JSONArray eja = new JSONArray();
+		JSONArray pja = new JSONArray();
+		JSONArray sja = new JSONArray();
+		JSONArray ieja = new JSONArray();
+		
+		List<ChartDTO> list = null;
+		
+		list = mapper.chart3();
+		
+		JSONArray month_ja = new JSONArray();
+		int m = 0;
+		for(ChartDTO c:list) {
+			if(c.getCateid().equals("1")) {
+				mja.add(c.getTotal_price());
+			}else if(c.getCateid().equals("2")) {
+				eja.add(c.getTotal_price());
+			}else if(c.getCateid().equals("3")) {
+				pja.add(c.getTotal_price());
+			}else if(c.getCateid().equals("4")) {
+				sja.add(c.getTotal_price());
+			}else if(c.getCateid().equals("5")) {
+				ieja.add(c.getTotal_price());
+				m++;
+				month_ja.add(m);
+			}
+		}
+		mobj.put("data", mja);
+		eobj.put("data", eja);
+		pobj.put("data", pja);
+		sobj.put("data", sja);
+		ieobj.put("data", ieja);
+		ja.add(mobj);
+		ja.add(eobj);
+		ja.add(pobj);
+		ja.add(sobj);
+		ja.add(ieobj);
+		
+		result.put("month", month_ja);
+		result.put("result", ja);
+		System.out.println(month_ja);
+		return result;
+	}
+	
 	@RequestMapping("/getschedule")
 	public List<Map<String, Object>> getschedule() {
 		List<Map<String, Object>> schelist = new ArrayList<Map<String, Object>>();

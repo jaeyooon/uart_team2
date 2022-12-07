@@ -21,6 +21,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		GROUP BY gender
 	</select>
 	
+	<select id="chart3" resultType="ChartDTO"> 
+		SELECT DATE_FORMAT(ol.orderdate,'%m') AS month, SUM(ol.totalprice) AS total_price, 
+		ol.orderlistid, c.cateid, c.catename as catename, it.itemid FROM orderlist ol 
+		INNER JOIN customer cu ON ol.custid = cu.custid 
+		INNER JOIN item it ON it.itemid = ol.itemid 
+		INNER JOIN cate c ON c.cateid = it.cateid 
+		GROUP BY month, cateid 
+	</select>
+	
 	<select id="getname" resultType="itemDTO">
 		SELECT i.itemname  FROM item AS i
 	</select>
