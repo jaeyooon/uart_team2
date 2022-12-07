@@ -148,7 +148,7 @@ public class AJAXController {
 		
 		result.put("month", month_ja);
 		result.put("result", ja);
-		System.out.println(month_ja);
+		//System.out.println(month_ja);
 		return result;
 	}
 	
