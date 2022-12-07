@@ -1,177 +1,154 @@
 <meta charset="utf-8">
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Josefin+Sans&display=swap"
+	rel="stylesheet">
 <style>
 #withdraw_form {
-width:40%;
-margin: auto;
-margin-bottom:40px;
+	width: 40%;
+	margin: auto;
+	margin-bottom: 40px;
 }
-#withdraw_btn{
- margin:auto;
- display:block;
-	
+
+#withdraw_btn {
+	margin: auto;
+	display: block;
 }
-#cd{
-text-align: center;
+
+#cd {
+	text-align: center;
+	font-family: 'Gamja Flower', cursive;
+}
+
+input {
+	font-family: 'Gamja Flower', cursive;
 }
 
 #check {
 	text-align: center;
-	font-size: 17px;
+	font-size: 20px;
 	font-weight: 600;
 	margin-top: 20px;
-    color:#118ab2;
+	color: grey;
+	font-family: 'Gamja Flower', cursive;
 }
+
+hr {
+	margin-top: 70px;
+	border: none;
+	border-top: 1px solid grey;
+	overflow: visible;
+	text-align: center;
+	height: 30px;
+}
+
+hr:after {
+	font-family: 'Gamja Flower', cursive;
+	content: "회원 탈퇴✂";
+	position: relative;
+	top: -22px;
+	background: white;
+	border-radius: 20px;
+	padding: 0 10px;
+	color: grey;
+	font-size: 25px;
+}
+
 @media ( max-width : 768px) {
-#withdraw_form {
-width:100%;
-}
+	#withdraw_form {
+		width: 100%;
+	}
 }
 </style>
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 
-	$('#withdraw_btn').click(function() {
+		$('#withdraw_btn').click(function() {
 
-		var c = confirm('회원 탈퇴시 해당 아이디로 재가입할 수 없습니다. 탈퇴 하시겠습니까?');
-		if (c == true) {
-			$('#withdraw_form').attr({
-				'method' : 'post',
-				'action' : '[[@{/cust/withdrawimpl}]]'
-			});
-			//보낸다.
-			$('#withdraw_form').submit();
-		} else {
-			return;
-		}
+			var c = confirm('회원 탈퇴시 해당 아이디로 재가입할 수 없습니다. 탈퇴 하시겠습니까?');
+			if (c == true) {
+				$('#withdraw_form').attr({
+					'method' : 'post',
+					'action' : '[[@{/cust/withdrawimpl}]]'
+				});
+				//보낸다.
+				$('#withdraw_form').submit();
+			} else {
+				return;
+			}
+		});
 	});
-});
 </script>
 
-<body>
-  <div class="site-section">
-      <div class="container">
+<div class="site-section">
+	<div class="container">
 
-        <div class="row mb-5">
-          <div class="col-md-12 order-2">
+		<div class="row mb-5">
+			<div class="col-md-12 order-2">
 
-            <div class="row">
-              <div class="col-md-12 mb-4">
-                <div id="cd"><h3 class="text-black h3" style="color:#785964">계정 탈퇴</h3></div>
-                <div class="d-flex">
-                </div>
-              </div>
-            </div>
-            
-            <div class="row mb-5">
-           	  <div class="col-md-12 mb-5">
-           		<div class="table-responsive">
+				<div class="row">
+					<div class="col-md-12 mb-4">
+						<hr>
+					</div>
+				</div>
 
-           <form id="withdraw_form">
-			<div class="form-group">
-				<label for="id">아이디:</label> <input type="text" readonly="readonly"
-					class="form-control" id="id" th:value="${cust.custid}" name="custid">
-				<span id="ispan"></span>
-			</div>
-			<div class="form-group">
-				<label for="pwd">비밀번호:</label> <input type="text" readonly="readonly"
-					class="form-control" id="pwd" th:value="${cust.pwd}" name="pwd">
-			</div>
-			<div class="form-group">
-				<label for="name">이름:</label> <input type="text" readonly="readonly" class="form-control"
-					id="name" th:value="${cust.cname}" name="cname">
-			</div>
-			<div class="form-group">
-				<label for="name">전화번호:</label> <input type="text" readonly="readonly" class="form-control"
-					id="phone" th:value="${cust.phone}" name="phone">
-			</div>
-			<div class="form-group">
-				<label for="birth">출생일:</label> <input type="text" readonly="readonly" class="form-control"
-					id="birth" th:value="${cust.birth}" name="birth">
-			</div>
-			<div class="form-group">
-				<label for="name">성별:</label> <input type="text" readonly="readonly" class="form-control"
-					id="gender" th:value="${cust.gender}" name="gender">
-			</div>
-			<div class="form-group">
-			 <input type="hidden" readonly="readonly" class="form-control"
-			id="withdrawal" th:value=0 name="withdrawal">
-			</div>
-			<p id="check">정말 떠나시는 건가요...?😢</p>
-		</form>
-		<button id="withdraw_btn" class="btn btn-primary btn-sm">탈퇴하기</button>
-		
-         </div>
-              </div>
-           </div>
-           
-          </div>
-        </div>
-      </div>
-    </div>
-</body>
-<footer class="site-footer border-top">
-   <div class="container">
-      <div class="row">
-      <!-- enter -->
-      <!-- enter -->
-      <!-- enter -->
-         <div class="col-lg-6 mb-5 mb-lg-0">
-            <div class="row">
-               <div class="col-md-12">
-                  <h3 class="footer-heading mb-4">주식회사 U-ART</h3>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <ul class="list-unstyled">
-                     <li><a href="#">개인정보처리방침</a></li>
-                     <li><a href="#">청소년보호정책</a></li>
-                     <li><a href="#">이용약관</a></li>
-                  </ul>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <ul class="list-unstyled">
-                     <li><a href="#">회사소개</a></li>
-                     <li><a href="#">고객센터</a></li>
-                     <li><a href="#">티켓판매안내</a></li>
-                  </ul>
-               </div>
-               <div class="col-md-7 col-lg-4">
-                  <ul class="list-unstyled">
-                     <li><a href="#">웹사이트 개발</a></li>
-                     <li><a href="#">채용안내</a></li>
-                     <li><a href="#">광고/제휴안내</a></li>
-                  </ul>
-               </div>
-            
-            </div>
-         </div>
-         <div class="col-md-6 col-lg-1 mb-4 mb-lg-0"></div>
-         <div class="col-md-6 col-lg-4">
-            <div class="block-5 mb-5">
-               <h3 class="footer-heading mb-4">Contact U-ART</h3>
-               <ul class="list-unstyled">
-                  <li id="address" class="address">서울특별시 강남구 삼성로 42 삼성동빌딩 5층</li>
-                  <li class="phone"><a href="#">+82 02-2387-2387</a></li>
-                  <li class="email">emailaddress@uart.com</li>
-               </ul>
-            </div>
-         </div>
-      </div>
-      <div class="row pt-5 mt-5 text-center">
-         <div class="col-md-12">
-            <p>
-               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                &copy;
-               <script data-cfasync="false"
-                  src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-               <script>document.write(new Date().getFullYear());</script>
-             <span class="material-symbols-outlined" style="font-size: 40px; color:#9f86c0;" >emoji_people </span><a
-                  href="#" target="_blank" class="text-primary"> (주)U-ART</a>
-               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-         </div>
+				<div class="row mb-5">
+					<div class="col-md-12 mb-5">
+						<div class="table-responsive">
 
-      </div>
-   </div>
-</footer>
+							<form id="withdraw_form">
+								<div class="form-group">
+									<label for="id">아이디:</label> <input
+										style="border-radius: 20px; background-color: white; font-size: 22px;"
+										type="text" readonly="readonly" class="form-control" id="id"
+										th:value="${cust.custid}" name="custid"> <span
+										id="ispan"></span>
+								</div>
+								<div class="form-group">
+									<label for="pwd">비밀번호:</label> <input
+										style="border-radius: 20px; background-color: white; font-size: 22px;"
+										type="text" readonly="readonly" class="form-control" id="pwd"
+										th:value="${cust.pwd}" name="pwd">
+								</div>
+								<div class="form-group">
+									<label for="name">이름:</label> <input
+										style="border-radius: 20px; background-color: white; font-size: 22px;"
+										type="text" readonly="readonly" class="form-control" id="name"
+										th:value="${cust.cname}" name="cname">
+								</div>
+								<div class="form-group">
+									<label for="name">전화번호:</label> <input
+										style="border-radius: 20px; background-color: white; font-size: 22px;"
+										type="text" readonly="readonly" class="form-control"
+										id="phone" th:value="${cust.phone}" name="phone">
+								</div>
+								<div class="form-group">
+									<label for="birth">출생일:</label> <input
+										style="border-radius: 20px; background-color: white; font-size: 22px;"
+										type="text" readonly="readonly" class="form-control"
+										id="birth" th:value="${cust.birth}" name="birth">
+								</div>
+								<div class="form-group">
+									<label for="name">성별:</label> <input
+										style="border-radius: 20px; background-color: white; font-size: 22px;"
+										type="text" readonly="readonly" class="form-control"
+										id="gender" th:value="${cust.gender}" name="gender">
+								</div>
+								<div class="form-group">
+									<input
+										style="border-radius: 20px; background-color: white; font-size: 22px;"
+										type="hidden" readonly="readonly" class="form-control"
+										id="withdrawal" th:value=0 name="withdrawal">
+								</div>
+								<p id="check">정말 떠나시는 건가요...? 다시 한번 생각해 주세요😢</p>
+							</form>
+							<button id="withdraw_btn" class="btn btn-primary btn-sm">탈퇴하기</button>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
 
