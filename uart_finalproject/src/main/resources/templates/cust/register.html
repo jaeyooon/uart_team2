@@ -1,3 +1,15 @@
+<style>
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+#ispan, #pspan {
+	width: 100%;
+	height: 2px;
+	text-align: center; 
+}
+
+</style>
 <script>
 $(document).ready(function(){
 	$('#register_btn').click(function(){  /* button의 id와 일치시키는 것. JQUERY, $(선택자).method(parameter, 매개변수) */
@@ -11,6 +23,8 @@ $(document).ready(function(){
 	$('#pwd2').keyup(function(){
 		var pwd = $('#pwd').val();
 		var pwd2 = $('#pwd2').val();
+		
+		$('#pspan').css('color','#ef476f');
 		if(pwd == pwd2){
 			$('#pspan').text('Correct');
 		}else{
@@ -24,10 +38,11 @@ $(document).ready(function(){
 			url:'[[@{/checkid}]]',    /*ajax 넘겨서 데이터는 cid로 받고*/
 			data:{'cid':id},
 			success:function(result){       /*함수 돌리고*/
+				$('#ispan').css('color','#ef476f');
 				if(result == 't'){             
 					$('#ispan').text('Available');   /*결과가 t라면 available(사용할수 있음)*/
 				}else{
-					$('#ispan').text('Not Available, Already Using.');   /*아니라면  Not available(사용불가능)*/
+					$('#ispan').text('Not Available, Already Used.');   /*아니라면  Not available(사용불가능)*/
 				}
 			}
 		});

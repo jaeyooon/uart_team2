@@ -292,6 +292,8 @@ hr:after {
 			buyer_email : email,
 			buyer_name : name,
 			buyer_tel : phone,
+			m_redirect_url: "http://101.101.219.170/thankyou?id="+custid+'&itemid='+intitemid
+							+'&ordercnt='+intordercnt+'&totalprice='+inttotalprice+'&phone2='+phone,
 		}, function(rsp) { // callback
 			if (rsp.success) {
 				$.ajax({

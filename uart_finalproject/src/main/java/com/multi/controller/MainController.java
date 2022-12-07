@@ -1,6 +1,7 @@
 package com.multi.controller;
 
-import java.awt.ItemSelectable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.ItemDTO;
+import com.multi.dto.OrderdetailDTO;
+import com.multi.dto.OrderlistDTO;
 import com.multi.mapper.ItemMapper;
+import com.multi.service.CustomerService;
 import com.multi.service.ItemService;
+import com.multi.service.OrderdetailService;
+import com.multi.service.OrderlistService;
 
 @Controller
 public class MainController {
@@ -19,10 +25,54 @@ public class MainController {
 	ItemService item_service;
 	
 	@Autowired
+	CustomerService cust_service;
+	
+	@Autowired
 	ItemMapper item_mapper;
+	
+	@Autowired
+	OrderlistService olist_service;
+	
+	@Autowired
+	OrderdetailService odetail_service;
 	
 	@RequestMapping("/")
 	public String main() {
+		return "main";
+	}
+	
+	@RequestMapping("/thankyou")
+	public String thankyou(Model model, String id, int itemid, int ordercnt, int totalprice, String phone2) {
+		int neworderlistid = 0;
+		
+		String item_itemname = null;
+		String cust_name = null;
+		
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, 3);	// candate(취소가능일)는 오늘 날짜 + 3을 해야하므로
+		Date candate = new Date(cal.getTimeInMillis());
+		
+		OrderlistDTO neworder = null;
+		ItemDTO item = null;
+		try {
+			item_itemname = item_service.get(itemid).getItemname();
+			cust_name = cust_service.get(id).getCname();
+			
+			neworder = new OrderlistDTO(0, itemid, id, null, ordercnt, totalprice, "신용카드", phone2, candate, item_itemname, cust_name);
+			olist_service.register(neworder);
+			int r = neworder.getOrderlistid();
+			neworderlistid = r;
+			
+			item = item_service.get(itemid);
+			odetail_service.register(new OrderdetailDTO(0, r, itemid, item.getItemplace(), item.getEstart(), item.getEfin(), item.getItemimg(), item_itemname, ordercnt, null, candate, id));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("custname", cust_name);
+		model.addAttribute("neworderlistid", neworderlistid);
+		model.addAttribute("center", "thankyou");
 		return "main";
 	}
 	
