@@ -105,7 +105,7 @@ public class AJAXController {
 			colorlist.add("#fbf8cc");
 			colorlist.add("#d8f3dc");
 			colorlist.add("#ffcfd2");
-			colorlist.add("#f1c0e8");
+			colorlist.add("#dee2ff");
 			
 			for(int i = 0; i < list.size(); i++) {
 				Map<String, Object> sche = new HashMap<String, Object>();
@@ -116,6 +116,7 @@ public class AJAXController {
 				sche.put("end", sdf.format(list.get(i).getEfin()));
 				sche.put("textColor", "#003566");
 				sche.put("color", colorlist.get(i%4));   
+				sche.put("url", "http://101.101.219.170/admin/exhibition/get");   
 				
 				schelist.add(sche);
 			}
