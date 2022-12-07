@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Josefin+Sans&display=swap"
+	rel="stylesheet">
 <!-- jQuery -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -169,6 +171,35 @@ table.table th {
 #totalprice {
 	margin-left: 178px;
 }
+hr {
+	margin-top: 80px;
+	border: none;
+	border-top: 1px solid grey;
+	overflow: visible;
+	text-align: center;
+	height: 30px;
+}
+
+hr:after {
+	font-family: 'Gamja Flower', cursive;
+	content: "예매자 정보👩🏻‍🤝‍🧑🏼 ";
+	position: relative;
+	top: -22px;
+	background: white;
+	border-radius: 20px;
+	padding: 0 10px;
+	color: grey;
+	font-size: 23px;
+}
+#cust_form {
+	width: 30%;
+	margin: auto;
+	margin-bottom: 40px;
+}
+input {
+	font-family: 'Gamja Flower', cursive;
+	color: grey;
+}
 
 @media ( max-width : 768px) {
 	#totalprice {
@@ -180,7 +211,11 @@ table.table th {
 	.notice_coupon{
 	display:block;
 	}
+	#cust_form {
+		width: 100%;
+	}
 }
+
 </style>
 
 <script>
@@ -443,7 +478,7 @@ table.table th {
 							</div>
 						</div>
 						<div id="cd">
-							<h5 class="text-black h5" style="color: #785964;">예매자 정보</h5>
+							<hr>
 						</div>
 
 					</div>
@@ -453,23 +488,24 @@ table.table th {
 					<div class="row mb-5">
 						<div class="col-md-12 mb-5">
 							<div class="table-responsive">
-
-								<form class="col-sm-4" id="cust_form">
+								<form id="cust_form">
 									<div class="form-group">
-										<label for="name">이름:</label> <input type="text"
-											readonly="readonly" class="form-control" id="name"
-											th:value="${cust.cname}" name="cname">
+										<label for="name">이름:</label> <input
+											style="border-radius: 20px; background-color: white; font-size: 20px;"
+											type="text" readonly="readonly" class="form-control"
+											id="name" th:value="${cust.cname}" name="cname">
 									</div>
 									<div class="form-group">
-										<label for="name">연락처:</label> <input type="text"
-											readonly="readonly" class="form-control" id="phone"
-											th:value="${cust.phone}" name="phone">
+										<label for="name">전화번호:</label> <input
+											style="border-radius: 20px; background-color: white; font-size: 20px;"
+											type="text" readonly="readonly" class="form-control"
+											id="phone" th:value="${cust.phone}" name="phone">
 									</div>
 									<div class="form-group">
-										<label for="id">이메일:</label> <input type="text"
-											readonly="readonly" class="form-control" id="email"
-											th:value="${cust.email}" name="email"><span
-											id="ispan"></span>
+										<label for="name">이메일:</label> <input
+											style="border-radius: 20px; background-color: white; font-size: 20px;"
+											type="text" readonly="readonly" class="form-control"
+											id="phone" th:value="${cust.email}" name="email">
 									</div>
 								</form>
 							</div>
