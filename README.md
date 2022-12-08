@@ -1,4 +1,4 @@
-# uart_team2  
+# uart_team2 👨‍🎨🖼 
 팀장: 조재윤  팀원: 김서윤, 조재원, 이현지, 박재형  
 기간: 22.10.25~22.12.16
 
@@ -41,7 +41,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 2)관리자
 
-<img width="435" alt="관리자UI" src="https://user-images.githubusercontent.com/111713782/206355901-d1cce8e7-57ff-48a1-aeb4-ad329f945960.PNG">>
+<img width="435" alt="관리자UI" src="https://user-images.githubusercontent.com/111713782/206355901-d1cce8e7-57ff-48a1-aeb4-ad329f945960.PNG">
 
 ## 4. 프로젝트 구현 기능
 
