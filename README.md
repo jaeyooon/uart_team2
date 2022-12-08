@@ -3,8 +3,8 @@
 기간: 22.10.25~22.12.16
 
 
- ### 1. 프로젝트 주제 및 기획의도
-#### 주제
+## 1. 프로젝트 주제 및 기획의도
+**주제**:
 AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개발 
 
 #### 기획의도  
@@ -13,7 +13,8 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 3. 소비자 페이지와 관리자 페이지 별도 개발, 페이지 간 적절히 연동
 4. 사용자의 편의를 고려한 화면구성과 기능 구현
 
-### 2. 프로젝트 역할분담
+## 2. 프로젝트 역할분담
+
 |이름|역할|
 |--|--| 
 |조재윤|sns로그인(Kakao&Naver)|  
@@ -21,24 +22,35 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 조재원
 이현지
 박재형
-### 3. 프로젝트 수행 방법 및 도구 
-✨시스템 구성도
+## 3. 프로젝트 수행 방법 및 도구 
+✨**시스템 구성도**  
 
+✨**개발 도구**
 
-✨개발 도구
+<img width="533" alt="수행도구" src="https://user-images.githubusercontent.com/111713782/206355323-a8d441b2-cdcb-4fee-912f-03fbabf051ba.PNG">
 
-<img width="532" alt="수행도구" src="https://user-images.githubusercontent.com/111713782/206342721-43673b9d-0647-484b-a1ca-211ae7636308.PNG">
-
-✨DB 설계
+✨**DB 설계**
 
 <img width="550" alt="ERD최종" src="https://user-images.githubusercontent.com/111713782/206343172-b33ae936-56e1-4e92-a82d-7237596124b5.PNG">
 
-### 4. 프로젝트 구현 기능
+✨**UI 설계**
+
+1)소비자
+
+<img width="434" alt="소비자UI" src="https://user-images.githubusercontent.com/111713782/206353557-5609219f-790e-4b57-b371-9fd62dac1252.PNG">
+
+2)관리자
+
+<img width="435" alt="관리자UI" src="https://user-images.githubusercontent.com/111713782/206355901-d1cce8e7-57ff-48a1-aeb4-ad329f945960.PNG">>
+
+## 4. 프로젝트 구현 기능
+
 #### 소비자
 
 #### 관리자
 
-### 5. Troubleshooting
+## 5. Troubleshooting
+
 |Issues|Problem solving|
 |--|--| 
 |..|..| 
