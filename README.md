@@ -25,9 +25,9 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ## 3. 프로젝트 수행 방법 및 도구 
 ✨**시스템 구성도**  
 
-✨**개발 도구**
+✨**개발 환경 및 수행 도구**
 
-<img width="520" alt="수행도구" src="https://user-images.githubusercontent.com/111713782/206358554-f712a41e-6eed-4b7b-8cd3-baedc6cddae7.PNG">
+<img width="795" alt="수행도구" src="https://user-images.githubusercontent.com/111713782/206395972-69b8e9d4-2889-4567-a7f3-8be94c00f1fc.PNG">
 
 ✨**DB 설계**
 
