@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN customer cu ON ol.custid = cu.custid 
 		INNER JOIN item it ON it.itemid = ol.itemid 
 		INNER JOIN cate c ON c.cateid = it.cateid 
-		GROUP BY month, cateid, orderlistid, cateid, catename, itemid
+		GROUP BY month, cateid, orderlistid, catename, itemid
 	</select>
 	
 	<select id="getname" resultType="itemDTO">
