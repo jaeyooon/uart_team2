@@ -35,13 +35,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ✨**UI 설계**
 
-1)소비자
-
-<img width="434" alt="소비자UI" src="https://user-images.githubusercontent.com/111713782/206353557-5609219f-790e-4b57-b371-9fd62dac1252.PNG">
-
-2)관리자
-
-<img width="435" alt="관리자UI" src="https://user-images.githubusercontent.com/111713782/206355901-d1cce8e7-57ff-48a1-aeb4-ad329f945960.PNG">
+<img width="933" alt="통합UI" src="https://user-images.githubusercontent.com/111713782/206375750-e2ce8aac-66f5-427b-97c1-596ae4f5ae28.PNG">
 
 ## 4. 프로젝트 구현 기능
 
