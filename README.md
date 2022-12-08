@@ -27,7 +27,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ✨**개발 도구**
 
-<img width="533" alt="수행도구" src="https://user-images.githubusercontent.com/111713782/206355323-a8d441b2-cdcb-4fee-912f-03fbabf051ba.PNG">
+<img width="520" alt="수행도구" src="https://user-images.githubusercontent.com/111713782/206358554-f712a41e-6eed-4b7b-8cd3-baedc6cddae7.PNG">
 
 ✨**DB 설계**
 
