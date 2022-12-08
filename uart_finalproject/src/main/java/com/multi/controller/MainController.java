@@ -49,7 +49,7 @@ public class MainController {
 		String cust_name = null;
 		
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 3);	// candate(취소가능일)는 오늘 날짜 + 3을 해야하므로
+		cal.add(Calendar.MONTH, 1);	// candate(취소가능일)는 오늘 날짜 + 1달이므로
 		Date candate = new Date(cal.getTimeInMillis());
 		
 		OrderlistDTO neworder = null;

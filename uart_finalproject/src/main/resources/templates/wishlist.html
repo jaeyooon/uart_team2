@@ -4,6 +4,11 @@
 	width: 85%;
 }
 
+.site-section {
+	padding: 5em 0 13em;
+}
+
+
 .table table-hover{
 	margin: auto;
 	width: 95%;
@@ -47,6 +52,10 @@ table.table th {
 	align-items: center;
 	margin: auto;
  }
+ 
+ #removeimpl_wish{
+ 	z-index: 10000;
+ }
  @media ( max-width : 768px) {
  .col-md-4{
  padding-right: 0px;
@@ -58,10 +67,12 @@ table.table th {
 <script>
 function del(wishid) {
 	var custid = '[[${session.logincust.custid}]]';
-	var c = confirm('삭제 하시겠습니까 ?');
-	if (c == true) {
+	
+	$('#removeimpl_wish').modal('show');
+	$('#remove_wishbtn').click(function(){
 		location.href = '[[@{/deletewishlist?id=}]]' + wishid + '&[[@{custid=}]]' + custid;
-	}
+	});
+	
 }
 
 	
@@ -102,6 +113,26 @@ function del(wishid) {
 				  </table>
 			</div>
 		</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="removeimpl_wish" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">알림❗❗</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>위시리스트에서 삭제하시겠습니까?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+        <button class="btn btn-primary" id="remove_wishbtn" type="button">확인</button>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 <footer class="site-footer border-top">
