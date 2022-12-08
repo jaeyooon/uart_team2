@@ -35,14 +35,13 @@ public class CustController {
 	}
 
 	@RequestMapping("/loginimpl")
-	public String loginimpl(HttpSession session, Model model, String custid, String pwd) {
+	public String loginimpl(HttpSession session, String custid, String pwd) {
 		CustomerDTO cust = null;
 		try {
 			cust = cust_service.get(custid);
 			if (cust.getWithdrawal() == 1) {
 				if (pwd.equals(cust.getPwd())) {
 					session.setAttribute("logincust", cust);
-					model.addAttribute("center", "main");
 				}
 			}
 
@@ -50,7 +49,7 @@ public class CustController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/";
+		return "main";
 	}
 
 	@RequestMapping("/detail")
