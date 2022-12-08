@@ -50,7 +50,7 @@ public class MainController {
 		
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, 1);	// candate(취소가능일)는 오늘 날짜 + 1달이므로
-		Date candate = new Date(cal.getTimeInMillis());
+		Date candate = cal.getTime();
 		
 		OrderlistDTO neworder = null;
 		ItemDTO item = null;

@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN customer c ON ol.custid = c.custid
 		INNER JOIN item i ON od.itemid = i.itemid
 		WHERE c.custid=#{custid}
-		ORDER BY ol.orderdate DESC
+		ORDER BY ol.orderlistid DESC
 	</select>
 	
 	<select id="getallinfo" parameterType="Integer" resultType="OrderdetailDTO">
