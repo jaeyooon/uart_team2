@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="chart3" resultType="ChartDTO"> 
 		SELECT DATE_FORMAT(ol.orderdate,'%m') AS month, SUM(ol.totalprice) AS total_price, 
-		c.cateid,  FROM orderlist ol 
+		c.cateid FROM orderlist ol 
 		INNER JOIN customer cu ON ol.custid = cu.custid 
 		INNER JOIN item it ON it.itemid = ol.itemid 
 		INNER JOIN cate c ON c.cateid = it.cateid 

@@ -44,7 +44,7 @@ public class MainController {
 		e.printStackTrace();
 		}
 	
-		return "redirect:/";				//로그인 하고 메인으로
+		return "main";				//로그인 하고 메인으로
 	}
 	
 	@RequestMapping("/logout")
