@@ -17,7 +17,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 |이름|역할|
 |--|--| 
-|조재윤|예매 & 예매내역 DB구축 및 CRUD 설계<br>sns로그인(Kakao&Naver)<br>이벤트 OCR 기능, Fullcalendar전시 일정<br>공공데이터api, 결제api(i'mport)<br>예매내역 조회/취소|  
+|조재윤|예매 & 예매내역 DB구축 및 CRUD 설계<br>sns로그인(Kakao&Naver)<br>이벤트 OCR_CLOVA OCR<br>Fullcalendar전시 일정<br>공공데이터api, 결제api(i'mport)<br>예매내역 조회/취소<br>소비자&관리자 페이징처리|  
 |김서윤|위시리스트 DB 구축 및 CRUD 설계<br>주문페이지, 위시리스트 추가/중복방지/삭제<br>매출 차트|
 |조재원| 고객 & 티켓 DB 구축 및 CRUD 설계<br>sns공유하기_카카오api<br>소비자&관리자 login/logout 및 조회/수정/탈퇴<br>FAQ, 한줄평, @media작업, favicon|
 |이현지|상품 & 카테고리 DB 구축 및 CRUD 설계<br>챗봇_CLOVA Chatbot<br>검색기능_Autocomplete<br>소비자 메인, 전시목록, 상세정보페이지<br>관리자페이지 전시목록 조회/등록/수정/삭제|
