@@ -42,9 +42,11 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ## 4. 프로젝트 구현 기능
 
-#### 소비자
+<img width="80" height="30" alt="fav" src="https://user-images.githubusercontent.com/111713782/206620993-70808226-5ae0-478e-82c5-41bb216121b2.png">  
 
-#### 관리자
+
+<img width="120" height="30" alt="afav" src="https://user-images.githubusercontent.com/111713782/206620706-641f588a-cb24-4f06-81d8-17bb45c01b91.PNG">  
+
 
 ## 5. Troubleshooting
 
