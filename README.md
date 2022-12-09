@@ -30,7 +30,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 |개발도구|협업도구|언어|웹|DB|프레임워크|API|라이브러리|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|Eclipse|Zoom<br><br>Github<br><br>ERD Cloud<br><br>Google Docs<br><br>Naver Band|Java<br><br>SQL|HTML<br><br>CSS<br>JS<br><br>jQuery<br><br>Ajax<br><br>Bootstrap<br><br>Thymeleaf|MySQL|Spring Boot<br><br>MyBatis|API로그인<br><br>Naver OCR<br><br>Naver Chatbot<br><br>Kakao Map<br><br>i'mport|Fullcalendar<br><br>Autocomplete|
+|Eclipse|Zoom<br>Github<br>ERD Cloud<br>Google Docs<br>Naver Band|Java<br>SQL|HTML<br>CSS<br>JS<br>jQuery<br>Ajax<br>Bootstrap<br>Thymeleaf|MySQL|Spring Boot<br>MyBatis|API로그인<br>Naver OCR<br>Naver Chatbot<br>Kakao Map<br>i'mport|Fullcalendar<br>Autocomplete|
 
 ✨**DB 설계**
 
