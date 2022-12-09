@@ -27,7 +27,9 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ✨**개발 환경 및 수행 도구**
 
-<img width="795" alt="수행도구" src="https://user-images.githubusercontent.com/111713782/206395972-69b8e9d4-2889-4567-a7f3-8be94c00f1fc.PNG">
+|개발도구|협업도구|언어|웹|DB|프레임워크|API|라이브러리|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|Eclipse|Zoom<br><br>Github<br><br>ERD Cloud<br><br>Google Docs<br><br>Naver Band|Java<br><br>SQL|HTML<br><br>CSS<br>JS<br><br>jQuery<br><br>Ajax<br><br>Bootstrap<br><br>Thymeleaf|MySQL|Spring Boot<br><br>MyBatis|API로그인<br><br>Naver OCR<br><br>Naver Chatbot<br><br>Kakao Map<br><br>Import|Fullcalendar<br><br>Autocomplete|
 
 ✨**DB 설계**
 
