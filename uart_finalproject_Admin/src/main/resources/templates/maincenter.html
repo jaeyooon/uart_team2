@@ -1,5 +1,7 @@
 <meta charset="utf-8">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
 function getCustCnt(){
 	$.ajax({
@@ -26,13 +28,14 @@ function display1(data){
 	    yAxis: {
 	        title: {
 	            useHTML: true,
-	            text: '월별 매출(원)'
+	            text: '월별 매출액(원)'
+	            
 	        }
 	    },
 	    tooltip: {
-	        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+	        headerFormat: '<span style="font-size:10px">{point.key}월</span><table>',
 	        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-	            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+	            '<td style="padding:0"><b>{point.y:.0f}원</b></td></tr>',
 	        footerFormat: '</table>',
 	        shared: true,
 	        useHTML: true
@@ -67,7 +70,7 @@ function display2(data){
 	        type: 'pie'
 	    },
 	    title: {
-	        text: '2022년도 기간별 매출비율'
+	        text: '2022년 기간별 매출비율'
 	    },
 	    tooltip: {
 	        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -117,7 +120,38 @@ $(document).ready(function(){
 	getdata1();
 	getdata2(1,12);
 	getdata3();
+	getdata4();
+	getdata5();
 	
+	$('#container3').show(); //페이지를 로드할 때 표시할 요소
+	$('#container4').hide(); //페이지를 로드할 때 숨길 요소
+	$('#container5').hide(); //클릭 시 첫 번째 요소 숨김
+	$('#bt0').click(function(){
+		//alert('456');
+	$ ('#container3').hide(); //클릭 시 첫 번째 요소 숨김
+	$ ('#container4').hide(); //클릭 시 첫 번째 요소 숨김
+	$ ('#container5').show(); //클릭 시 두 번째 요소 표시
+	
+	return false;
+	});
+	$('#bt1').click(function(){
+		//alert('123');
+	$ ('#container4').hide(); //클릭 시 첫 번째 요소 숨김
+	$ ('#container5').hide(); //클릭 시 첫 번째 요소 숨김
+	$ ('#container3').show(); //클릭 시 두 번째 요소 표시
+	
+	return false;
+	});
+	$('#bt2').click(function(){
+		//alert('456');
+	$ ('#container3').hide(); //클릭 시 첫 번째 요소 숨김
+	$ ('#container5').hide(); //클릭 시 첫 번째 요소 숨김
+	$ ('#container4').show(); //클릭 시 두 번째 요소 표시
+	
+	return false;
+	});
+
+
 	
 	$('#send_btn').click(function(){
 		var sm = $('#sm').val();
@@ -165,13 +199,13 @@ function clock(){
 		  yAxis: {
 			  title: {
 		            useHTML: true,
-		            text: '월별 매출(원)'
+		            text: '월별 매출액(원)'
 		        }
 		  },
 		  tooltip: {
-		    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+		    headerFormat: '<span style="font-size:10px">{point.key}월</span><table>',
 		    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		      '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+		      '<td style="padding:0"><b>{point.y:.0f}</b>원</td></tr>',
 		    footerFormat: '</table>',
 		    shared: true,
 		    useHTML: true
@@ -196,22 +230,142 @@ function clock(){
 			});
 
 		};
+
+		function display4(data) { 
+			Highcharts.chart('container4', {
+			    chart: {
+			        type: 'column'
+			    },
+			    title: {
+			        text: '2022년 카테고리별 매출액'
+			    },
+			    
+			    xAxis: {
+			    	type: 'category',
+			        labels: {
+			            
+			            style: {
+			                fontSize: '13px',
+			                fontFamily: 'Verdana, sans-serif'
+			            }
+			        }
+			    },
+			    yAxis: {
+			        min: 0,
+			        title: {
+			            text: '연매출액(원)'
+			        }
+			    },
+			    legend: {
+			        enabled: false
+			    },
+			    tooltip: {
+			    	
+			    	 pointFormat: '<b>{point.y:.0f}원</b>'
+					   
+					    
+					    },
+			   
+
+			    series: [{
+			        name: 'catename',
+			        colorByPoint: true,
+			        data: data
+			    }],
+			        dataLabels: {
+			            enabled: true,
+			            rotation: -90,
+			            color: '#FFFFFF',
+			            align: 'right',
+			            format: '{point.y:.1f}', // one decimal
+			            y: 10, // 10 pixels down from the top
+			            style: {
+			                fontSize: '13px',
+			                fontFamily: 'Verdana, sans-serif'
+			            }
+			        }
+			    });
+		 };
+			
+		function getdata4(){
+			$.ajax({
+				url:'[[@{/chart4}]]',
+				success:function(data){
+					//alert(data);
+					display4(data);			
+				}
+			});
+
+		};
+		
+		function display5(data){
+			Highcharts.chart('container5', {
+		
+			  chart: {
+			    type: 'column'
+			  },
+			  title: {
+			    text: '2022년 카테고리별 주간 매출액'
+			  },
+			  xAxis: {
+				categories: data['DateRange'],
+			    crosshair: true
+			  },
+			  yAxis: {
+				  title: {
+			            useHTML: true,
+			            text: '주간 매출액(원)'
+			        }
+			  },
+			  tooltip: {
+			    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+			    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+			      '<td style="padding:0"><b>{point.y:.0f}</b>원</td></tr>',
+			    footerFormat: '</table>',
+			    shared: true,
+			    useHTML: true
+			  },
+			  plotOptions: {
+			    column: {
+			      pointPadding: 0.2,
+			      borderWidth: 0
+			    }
+			  },
+			  series: data['result']
+			});
+		};
+		 
+		 function getdata5(){
+				$.ajax({
+					url:'[[@{/chart5}]]',
+					success:function(data){
+						//alert(data);
+						display5(data);			
+					}
+				});
+
+			};
+		
+		
 </script>
-	<!-- Content -->
+<!-- Content -->
 <body onload="clock()">
 	<div class="container-xxl flex-grow-1 container-p-y">
-		<div id="result" style="display:none;"></div>
+		<div id="result" style="display: none;"></div>
 		<div class="row">
-		<div class="col-lg-9 mb-4 order-0">
+			<div class="col-lg-9 mb-4 order-0">
 				<div class="card">
 					<div class="d-flex align-items-end row">
 						<div class="col-sm-7">
 							<div class="card-body">
-							<div th:if="${session.loginadmin == null}">
-								<h5 class="card-title text-primary" th:text="'지금은 로그아웃 상태입니다'" ></h5></div>
+								<div th:if="${session.loginadmin == null}">
+									<h5 class="card-title text-primary" th:text="'지금은 로그아웃 상태입니다'"></h5>
+								</div>
 								<div th:if="${session.loginadmin != null}">
-								<h5 class="card-title text-primary" th:text="'환영합니다 '+${session.loginadmin.aname}
-									+'님! 🎉'" ></h5></div>
+									<h5 class="card-title text-primary"
+										th:text="'환영합니다 '+${session.loginadmin.aname}
+									+'님! 🎉'"></h5>
+								</div>
 								<h1 id="clock" style="color: black;">clock</h1>
 
 
@@ -219,7 +373,8 @@ function clock(){
 						</div>
 						<div class="col-sm-5 text-center text-sm-left">
 							<div class="card-body pb-0 px-0 px-md-4">
-								<img th:src="@{/assets/img/illustrations/man-with-laptop-light.png}"
+								<img
+									th:src="@{/assets/img/illustrations/man-with-laptop-light.png}"
 									height="140" alt="View Badge User"
 									data-app-dark-img="illustrations/man-with-laptop-dark.png"
 									data-app-light-img="illustrations/man-with-laptop-light.png" />
@@ -228,48 +383,69 @@ function clock(){
 					</div>
 				</div>
 			</div>
-			
-	<div class="col-lg-3 col-md-12 mb-4">
+
+			<div class="col-lg-3 col-md-12 mb-4">
 				<div class="card border-left-primary shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
-								<div class="h5 card-title text-primary mb-1">총 회원수
-									</div>
-								<div id="cust_cnt" class="h1 mb-0 font-weight-bold text-gray-800" style="color: black;"></div>
+								<div class="h5 card-title text-primary mb-1">총 회원수</div>
+								<div id="cust_cnt"
+									class="h1 mb-0 font-weight-bold text-gray-800"
+									style="color: black;"></div>
 							</div>
 
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			
+
+
 		</div>
-		
 
-			<!-- High Chart -->
-			<div class="col-md-12 order-1 mb-12">
-				<div class="card h-100">
-						<!-- Card Header - Dropdown -->
-						<div
-							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-							<h6 class="m-0 font-weight-bold text-primary"></h6>
+
+		<!-- High Chart -->
+		<div class="col-md-12 order-1 mb-12">
+			<div class="card h-100">
+				<!-- Card Header - Dropdown -->
+				<div
+					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+					<h6 class="m-0 font-weight-bold text-primary"></h6>
+				</div>
+
+
+				<!-- Card Body -->
+
+				<div class="card-body">
+				
+				    <button type="button" class="btn btn-primary" id="bt0">주간매출액</button>
+    <button type="button" class="btn btn-primary" id="bt1">월별매출액</button>
+    <button type="button" class="btn btn-primary" id="bt2">연매출액</button>
+						<br>
+					<div id="container3"></div>
+					<div>
+						<div>
+							<div id="container4"></div>
 						</div>
-						<!-- Card Body -->
-						<div class="card-body">
-							<div id="container3">
-							</div>
+					</div>
+					<div>
+						<div>
+							<div id="container5"></div>
+							<br>
 						</div>
+					</div>
+				</div>
 			</div>
-			</div>
-			<div>
+		</div>
+
+
+		<div>
 			<br>
-		<div class="row">
+			<div class="row">
 
-			<!-- High Chart -->
-			<div class="col-md-6 order-1 mb-4">
-				<div class="card h-100">
+				<!-- High Chart -->
+				<div class="col-md-6 order-1 mb-4">
+					<div class="card h-100">
 						<!-- Card Header - Dropdown -->
 						<div
 							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -279,19 +455,19 @@ function clock(){
 						<div class="card-body">
 							<div id="container"></div>
 						</div>
-			</div>
-			</div>
-			<!--/ Expense Overview -->
+					</div>
+				</div>
+				<!--/ Expense Overview -->
 
-			<!-- Transactions -->
-			<div class="col-md-6 order-2 mb-4">
-				<div class="card h-100">
+				<!-- Transactions -->
+				<div class="col-md-6 order-2 mb-4">
+					<div class="card h-100">
 						<!-- Card Header - Dropdown -->
 						<div
 							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 							<div class="form-group">
-								<label for="sel1">시작(월):</label> <select
-									class="form-control" id="sm">
+								<label for="sel1">시작(월):</label> <select class="form-control"
+									id="sm">
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -305,8 +481,8 @@ function clock(){
 									<option value="11">11</option>
 									<option value="12">12</option>
 
-								</select> <label for="sel1">마감(월):</label> <select
-									class="form-control" id="em">
+								</select> <label for="sel1">마감(월):</label> <select class="form-control"
+									id="em">
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -333,5 +509,5 @@ function clock(){
 			</div>
 			<!--/ Transactions -->
 		</div>
-	</body>
-	<!-- / Content -->
+</body>
+<!-- / Content -->

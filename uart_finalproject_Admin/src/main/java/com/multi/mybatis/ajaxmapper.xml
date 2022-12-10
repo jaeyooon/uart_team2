@@ -3,37 +3,76 @@
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.mapper.AJAXMapper">
-	
+
 	<select id="getCustCnt" resultType="Integer">
 		SELECT count(*) FROM customer
 	</select>
-	
+
 	<select id="chart1" resultType="ChartDTO">
-		SELECT DATE_FORMAT(ol.orderdate,'%m') AS month, cu.gender AS gender, SUM(ol.totalprice) AS total_price FROM orderlist ol
-		INNER JOIN customer cu ON ol.custid = cu.custid
+		SELECT
+		DATE_FORMAT(ol.orderdate,'%m') AS month, cu.gender AS gender,
+		SUM(ol.totalprice) AS total_price FROM orderlist ol
+		INNER JOIN customer
+		cu ON ol.custid = cu.custid
 		GROUP BY month, gender
 	</select>
-	
-	<select id="chart2" resultType="ChartDTO" parameterType="java.util.HashMap">
-		SELECT cu.gender AS gender, SUM(ol.totalprice) AS total_price FROM orderlist ol
-		INNER JOIN customer cu ON ol.custid = cu.custid
+
+	<select id="chart2" resultType="ChartDTO"
+		parameterType="java.util.HashMap">
+		SELECT cu.gender AS gender, SUM(ol.totalprice) AS
+		total_price FROM orderlist ol
+		INNER JOIN customer cu ON ol.custid =
+		cu.custid
 		WHERE MONTH(ol.orderdate) BETWEEN #{sm} AND #{em}
 		GROUP BY gender
 	</select>
-	
-	<select id="chart3" resultType="ChartDTO"> 
-		SELECT DATE_FORMAT(ol.orderdate,'%m') AS month, SUM(ol.totalprice) AS total_price, 
-		c.cateid FROM orderlist ol 
-		INNER JOIN customer cu ON ol.custid = cu.custid 
-		INNER JOIN item it ON it.itemid = ol.itemid 
-		INNER JOIN cate c ON c.cateid = it.cateid 
+
+	<select id="chart3" resultType="ChartDTO">
+		SELECT DATE_FORMAT(ol.orderdate,'%m') AS month, SUM(ol.totalprice) AS
+		total_price,
+		c.cateid FROM orderlist ol
+		INNER JOIN customer cu ON ol.custid = cu.custid
+		INNER JOIN item it ON it.itemid = ol.itemid
+		INNER JOIN cate c ON c.cateid = it.cateid
 		GROUP BY month, cateid
 	</select>
-	
-	<select id="getname" resultType="itemDTO">
-		SELECT i.itemname  FROM item AS i
+
+	<select id="chart4" resultType="ChartDTO">
+		SELECT DATE_FORMAT(ol.orderdate,'%Y') AS year, SUM(ol.totalprice) AS
+		total_price,
+		c.cateid, c.catename FROM orderlist ol
+		INNER JOIN customer cu ON ol.custid = cu.custid
+		INNER JOIN item it ON it.itemid = ol.itemid
+		INNER JOIN cate c ON c.cateid = it.cateid
+		GROUP BY year, cateid, catename
 	</select>
-	
+
+	<select id="chart5" resultType="ChartDTO">
+
+		SELECT
+		CASE DAYOFWEEK(ol.orderdate)
+		WHEN 1 THEN "Sunday"
+		WHEN 2 THEN "Monday"
+		WHEN 3 THEN "Tuesday"
+		WHEN 4 THEN "Wednesday"
+		WHEN 5 THEN "Thursday"
+		WHEN 6 THEN "Friday"
+		WHEN 7 THEN "Saturday"
+		END AS DateRange
+		,SUM(ol.totalprice) AS total_price,
+		c.cateid FROM orderlist ol
+		INNER JOIN customer cu ON ol.custid = cu.custid
+		INNER JOIN item it ON it.itemid = ol.itemid
+		INNER JOIN cate c ON c.cateid = it.cateid
+		WHERE date_format(ol.orderdate,"%Y%m%d") BETWEEN "20221205" AND "20221211"
+		GROUP BY DateRange, cateid
+
+	</select>
+
+	<select id="getname" resultType="itemDTO">
+		SELECT i.itemname FROM item AS i
+	</select>
+
 </mapper>
 
 

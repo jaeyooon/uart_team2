@@ -16,5 +16,7 @@ public interface AJAXMapper {
 	public List<ChartDTO> chart1();
 	public List<ChartDTO> chart2(HashMap<String, Object> map);
 	public List<ChartDTO> chart3();
+	public List<ChartDTO> chart4();
+	public List<ChartDTO> chart5();
 	public List<ItemDTO> getname() throws Exception;
 }

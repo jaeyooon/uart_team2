@@ -148,9 +148,92 @@ public class AJAXController {
 		
 		result.put("month", month_ja);
 		result.put("result", ja);
-		//System.out.println(month_ja);
+		System.out.println(result);
 		return result;
 	}
+	
+	@RequestMapping("/chart4")
+	public Object chart4() {
+		JSONObject result = new JSONObject();
+		
+		List<ChartDTO> list = null;
+		
+		list = mapper.chart4();
+		
+		// [{name:'',y:''},{}]
+				JSONArray ja = new JSONArray();
+				for(ChartDTO c:list) {
+					JSONObject jo = new JSONObject();
+					jo.put("name", c.getCatename());
+					jo.put("y", c.getTotal_price());
+					ja.add(jo);
+				}
+				return ja;
+			}
+	
+	@RequestMapping("/chart5")
+	public Object chart5() {
+		JSONObject result = new JSONObject();
+		
+		
+		JSONArray ja = new JSONArray();
+		JSONObject mobj = new JSONObject();
+		JSONObject eobj = new JSONObject();
+		JSONObject pobj = new JSONObject();
+		JSONObject sobj = new JSONObject();
+		JSONObject ieobj = new JSONObject();
+		mobj.put("name", "미디어전시");
+		eobj.put("name", "체험전시");
+		pobj.put("name", "개인전시");
+		sobj.put("name", "특별전시");
+		ieobj.put("name", "공연예술전시");
+		
+		
+		JSONArray mja = new JSONArray();
+		JSONArray eja = new JSONArray();
+		JSONArray pja = new JSONArray();
+		JSONArray sja = new JSONArray();
+		JSONArray ieja = new JSONArray();
+		
+		List<ChartDTO> list = null;
+		
+		list = mapper.chart5();
+		
+		JSONArray month_ja = new JSONArray();
+		
+		for(ChartDTO c:list) {
+			if(c.getCateid().equals("1")) {
+				mja.add(c.getTotal_price());
+			}else if(c.getCateid().equals("2")) {
+				eja.add(c.getTotal_price());
+			}else if(c.getCateid().equals("3")) {
+				pja.add(c.getTotal_price());
+			}else if(c.getCateid().equals("4")) {
+				sja.add(c.getTotal_price());
+			}else if(c.getCateid().equals("5")) {
+				ieja.add(c.getTotal_price());
+				
+				month_ja.add(c.getDateRange());
+			}
+		}
+		mobj.put("data", mja);
+		eobj.put("data", eja);
+		pobj.put("data", pja);
+		sobj.put("data", sja);
+		ieobj.put("data", ieja);
+		ja.add(mobj);
+		ja.add(eobj);
+		ja.add(pobj);
+		ja.add(sobj);
+		ja.add(ieobj);
+		
+		result.put("DateRange", month_ja);
+		result.put("result", ja);
+		System.out.println(result);
+		return result;
+	}
+	
+	
 	
 	@RequestMapping("/getschedule")
 	public List<Map<String, Object>> getschedule() {
