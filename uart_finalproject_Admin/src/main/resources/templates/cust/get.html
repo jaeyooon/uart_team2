@@ -15,7 +15,7 @@ font-size:15px;
 					<th>ID</th>
 					<th>NAME</th>
 					<th>PWD</th>
-					
+					<th style="width:70px;">WITHDRAWAL</th>
 				</tr>
 			</thead>
 			<tbody class="table-border-bottom-0">
@@ -23,7 +23,8 @@ font-size:15px;
 					<td><a th:href="@{/cust/detail(custid=${c.custid})}" th:text="${c.custid}"></a></td>
 					<td th:text="${c.cname}"></td>
 					<td th:text="${c.pwd}"></td>
-					
+					<td th:if="${c.withdrawal.toString().equals('0')}" th:text="탈퇴" style="color: #f28482;"></td>
+					<td th:if="${c.withdrawal.toString().equals('1')}" th:text="회원"></td>
 				</tr>
 			</tbody>
 		</table>

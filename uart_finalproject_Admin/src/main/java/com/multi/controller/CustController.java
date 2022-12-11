@@ -23,8 +23,11 @@ public class CustController {
 	@RequestMapping("/get")
 	public String get(Model model) {
 		List<CustomerDTO> list = null;
+		Integer withdrawal = null;
+		
 		try {
 			list = service.get();
+			
 			model.addAttribute("list",list);
 			model.addAttribute("center",dir+"get");
 		} catch (Exception e) {
