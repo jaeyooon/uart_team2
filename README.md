@@ -2,7 +2,6 @@
 팀장: 조재윤  팀원: 김서윤, 조재원, 이현지, 박재형  
 기간: 22.10.25~22.12.16
 
-
 ## 1. 프로젝트 주제 및 기획의도
 **주제**:
 AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개발 
@@ -139,9 +138,17 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 **6) 매출 차트**
 
-**7) 페이징 처리 & 반응형 웹**
+**7) 페이징 처리 & 반응형 웹**  
+
+<details>
+    <summary>U-ART Admin_태블릿</summary> 
+
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+![관리자 모바일](https://user-images.githubusercontent.com/111713782/206995790-53c04566-6b8d-4033-8493-4b648f5893ff.gif)  
+</details>
 
 
+ 
 ## 5. Troubleshooting
 
 |&nbsp;&nbsp;Name&nbsp;&nbsp;|Issues|Problem solving|
