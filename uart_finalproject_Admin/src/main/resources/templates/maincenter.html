@@ -237,7 +237,7 @@ function clock(){
 			        type: 'column'
 			    },
 			    title: {
-			        text: '2022년 카테고리별 매출액'
+			        text: '2022년 카테고리별 연매출액'
 			    },
 			    
 			    xAxis: {
@@ -305,7 +305,7 @@ function clock(){
 			    type: 'column'
 			  },
 			  title: {
-			    text: '2022년 카테고리별 주간 매출액'
+			    text: '2022년 카테고리별 이번주 매출액'
 			  },
 			  xAxis: {
 				categories: data['DateRange'],
@@ -314,7 +314,7 @@ function clock(){
 			  yAxis: {
 				  title: {
 			            useHTML: true,
-			            text: '주간 매출액(원)'
+			            text: '이번주 매출액(원)'
 			        }
 			  },
 			  tooltip: {
@@ -418,8 +418,8 @@ function clock(){
 
 				<div class="card-body">
 				
-				    <button type="button" class="btn btn-primary" id="bt0">주간매출액</button>
-    				<button type="button" class="btn btn-primary" id="bt1">월별매출액</button>
+				    <button type="button" class="btn btn-primary" id="bt0">이번주 매출액</button>
+    				<button type="button" class="btn btn-primary" id="bt1">월별 매출액</button>
    					<button type="button" class="btn btn-primary" id="bt2">연매출액</button>
 						<br>
 					<div id="container3"></div>
