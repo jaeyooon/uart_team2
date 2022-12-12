@@ -92,7 +92,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN customer cu ON ol.custid = cu.custid
 		INNER JOIN item it ON it.itemid = ol.itemid
 		INNER JOIN cate c ON c.cateid = it.cateid
-		WHERE date_format(ol.orderdate,"%Y%m%d") BETWEEN "20221212" AND "20221216"
+		WHERE date_format(ol.orderdate,"%Y%m%d")  BETWEEN
+        (SELECT ADDDATE(CURDATE(), - WEEKDAY(CURDATE()) -1 ))
+    AND
+        (SELECT ADDDATE(CURDATE(), - WEEKDAY(CURDATE()) + 5 ))
 		GROUP BY DateRange, cateid
 
 	</select>
