@@ -144,7 +144,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ## 5. Troubleshooting
 
-|  Name  |Issues|Problem solving|
+|Name&nbsp;&nbsp;|Issues|Problem solving|
 |--|--|--| 
 |--|..|..| 
 |김서윤|..|..| 
