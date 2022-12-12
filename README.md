@@ -34,7 +34,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ✨**DB 설계**
 
-<img width="550" alt="ERD최종" src="https://user-images.githubusercontent.com/111713782/206343172-b33ae936-56e1-4e92-a82d-7237596124b5.PNG">
+<img width="985" alt="erd" src="https://user-images.githubusercontent.com/111727476/206938526-473926e0-98c2-4af2-8a03-840282c09ec6.png">
 
 ✨**UI 설계**
 
