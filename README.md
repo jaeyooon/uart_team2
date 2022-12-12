@@ -47,16 +47,23 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 **1-1) 회원가입 및 로그인(+kakao/naver)&로그아웃/회원정보 조회/수정/탈퇴**  
 - jQuery를 활용해 post방식으로 form 전송  
-- 회원탈퇴 시 ‘withdrawal’필드 값 ‘1 (회원)’→ ‘0 (탈퇴)’ 변경
-=> 중복아이디로 다시 가입 불가
+- 회원탈퇴 시 ‘withdrawal’필드 값 ‘1 (회원)’→ ‘0 (탈퇴)’ 변경  
+=> 중복아이디로 다시 가입 불가  
 => 해당 아이디로 로그인 불가  
 
 ![회원가입 로그인 회원정보수정 및 탈퇴](https://user-images.githubusercontent.com/111714371/207083678-09bf1b25-f6fd-44bd-b7bb-31b110612b08.gif)
 
 **1-2) sns로그인(+kakao/naver)&로그아웃**
-- SNS계정으로 처음 로그인을 하는 경우, 카카오/네이버 서버는 redirect url로 인증코드를 전달 → 클라이언트(Web)쪽에서 인증코드를 이용하여  access_token발급받은 후 서버로 전송 → 서버에서는 access_token을 이용하여 카카오/네이버 서버로부터 사용자 정보(이름, 이메일, 성별)를 받음 → 사용자정보를 db에 저장함으로서 회원가입 진행한 후 로그인되도록 구현
+- SNS계정으로 처음 로그인을 하는 경우, 카카오/네이버 서버는 redirect url로 인증코드를 전달   
+  → 클라이언트(Web)쪽에서 인증코드를 이용하여  access_token발급받은 후 서버로 전송   
+  → 서버에서는 access_token을 이용하여 카카오/네이버 서버로부터 사용자 정보(이름, 이메일, 성별)를 받음   
+  → 사용자정보를 db에 저장함으로서 회원가입 진행한 후 로그인되도록 구현
+  
+  ![sns계정 로그인 처음하는 경우](https://user-images.githubusercontent.com/111714371/207106848-62fa52a0-f633-417b-8666-e414a160ec09.gif)
 
 - SNS계정이 이미 있는 경우, 해당 계정으로 로그인 되도록 구현
+
+![sns계정 이미 있는 경우](https://user-images.githubusercontent.com/111714371/207106968-0635e8aa-d32e-4b2f-890e-3927ae31c855.gif)
 
 **2-1) 공연•전시 상세페이지(상세정보, 예매/취소 안내)**  
 - Bootstrap tab을 사용하여 한 페이지에서 다양한 정보 탐색 가능
@@ -79,6 +86,11 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 - XML query문 사용하여 맵핑하여 Mapper 함수호출 
 - 전시 카테고리 별 화면구현/ 전시 마감순/시작순 목록구현/ 리뷰 별점순 추천작품 목록 구현
 - 공연예술 페이지 - 공공데이터 포털 API호출하여 가져온 데이터를 화면에 나타냄
+
+![카테고리별 전시목록 필터링 기능](https://user-images.githubusercontent.com/111714371/207107219-f9d72dab-c0ba-4a19-95e2-f3d97a0a58e8.gif)
+
+![추천전시 공연예술 ](https://user-images.githubusercontent.com/111714371/207107366-9c83ea1a-5a09-481e-b5fb-9f4cf7a820c5.gif)
+
 
 **4) 위시리스트**
 - Mapper 함수를 사용하여 위시리스트 중복확인 가능한 모달 구현
@@ -170,7 +182,11 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 - Thymeleaf를 사용하여 동적인 html 구현
 - form과 MultipartFile 기능 사용하여 파일도 등록가능하도록 구현
 - 소비자 웹 사이트와 연동시켜 관리자 웹사이트에 등록시 소비자 웹 사이트에도 자동으로 등록되도록 구현
-- 화면(String 자료형)과 서버(Date 자료형)에서 교환되는 날짜정보를 각 위치에 적합한 형식으로 변환하여 데이터값을 전송하여 기능구현   
+- 화면(String 자료형)과 서버(Date 자료형)에서 교환되는 날짜정보를 각 위치에 적합한 형식으로 변환하여 데이터값을 전송하여 기능구현  
+
+![전시 수정 삭제](https://user-images.githubusercontent.com/111714371/207111211-b08a6f28-951c-4a00-b343-b8c451bbd5b0.gif)
+
+![전시 등록](https://user-images.githubusercontent.com/111714371/207111322-163e5aba-d43a-4010-a486-3ec7062e5583.gif)
 
 **5) 전시 일정 fullcalendar조회**
 - 라이브러리 사용
