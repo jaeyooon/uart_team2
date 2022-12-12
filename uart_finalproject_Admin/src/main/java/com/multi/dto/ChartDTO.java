@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class ChartDTO {
 	private String DateRange;
-	private String month;
+	private String MonthRange;
 	private String year;
 	private String gender;
 	private int total_price;

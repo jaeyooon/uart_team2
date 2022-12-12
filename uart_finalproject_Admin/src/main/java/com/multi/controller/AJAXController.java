@@ -68,14 +68,14 @@ public class AJAXController {
 		list = mapper.chart1();
 		
 		JSONArray month_ja = new JSONArray();
-		int m = 0;
+		
 		for(ChartDTO c:list) {
 			if(c.getGender().equals("남")) {
 				mja.add(c.getTotal_price());
 			}else{
 				fja.add(c.getTotal_price());
-				m++;
-				month_ja.add(m);
+				
+				month_ja.add(c.getMonthRange());
 			}
 		}
 		mobj.put("data", mja);
@@ -85,7 +85,7 @@ public class AJAXController {
 		
 		// [{},{}]
 		// {"month":[1,2,3,4,5,6],"result":[{},{}]}
-		result.put("month", month_ja);
+		result.put("MonthRange", month_ja);
 		result.put("result", ja);
 		return result;
 	}
@@ -103,9 +103,9 @@ public class AJAXController {
 		JSONObject ieobj = new JSONObject();
 		mobj.put("name", "미디어전시");
 		eobj.put("name", "체험전시");
-		pobj.put("name", "개인전시");
-		sobj.put("name", "특별전시");
-		ieobj.put("name", "공연예술전시");
+		pobj.put("name", "개인전");
+		sobj.put("name", "특별전");
+		ieobj.put("name", "공연예술");
 		
 		
 		JSONArray mja = new JSONArray();
@@ -119,7 +119,7 @@ public class AJAXController {
 		list = mapper.chart3();
 		
 		JSONArray month_ja = new JSONArray();
-		int m = 0;
+		
 		for(ChartDTO c:list) {
 			if(c.getCateid().equals("1")) {
 				mja.add(c.getTotal_price());
@@ -131,8 +131,8 @@ public class AJAXController {
 				sja.add(c.getTotal_price());
 			}else if(c.getCateid().equals("5")) {
 				ieja.add(c.getTotal_price());
-				m++;
-				month_ja.add(m);
+				
+				month_ja.add(c.getMonthRange());
 			}
 		}
 		mobj.put("data", mja);
@@ -146,7 +146,7 @@ public class AJAXController {
 		ja.add(sobj);
 		ja.add(ieobj);
 		
-		result.put("month", month_ja);
+		result.put("MonthRange", month_ja);
 		result.put("result", ja);
 		System.out.println(result);
 		return result;
@@ -184,9 +184,9 @@ public class AJAXController {
 		JSONObject ieobj = new JSONObject();
 		mobj.put("name", "미디어전시");
 		eobj.put("name", "체험전시");
-		pobj.put("name", "개인전시");
-		sobj.put("name", "특별전시");
-		ieobj.put("name", "공연예술전시");
+		pobj.put("name", "개인전");
+		sobj.put("name", "특별전");
+		ieobj.put("name", "공연예술");
 		
 		
 		JSONArray mja = new JSONArray();

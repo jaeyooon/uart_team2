@@ -22,7 +22,7 @@ function display1(data){
 	    },
 	    
 	    xAxis: {
-	        categories: data['month'],
+	        categories: data['MonthRange'],
 	        crosshair: true
 	    },
 	    yAxis: {
@@ -193,7 +193,7 @@ function clock(){
 		    text: '2022년 카테고리별 월별 매출액'
 		  },
 		  xAxis: {
-			categories: data['month'],
+			categories: data['MonthRange'],
 		    crosshair: true
 		  },
 		  yAxis: {
@@ -203,7 +203,7 @@ function clock(){
 		        }
 		  },
 		  tooltip: {
-		    headerFormat: '<span style="font-size:10px">{point.key}월</span><table>',
+		    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
 		    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
 		      '<td style="padding:0"><b>{point.y:.0f}</b>원</td></tr>',
 		    footerFormat: '</table>',
@@ -419,8 +419,8 @@ function clock(){
 				<div class="card-body">
 				
 				    <button type="button" class="btn btn-primary" id="bt0">주간매출액</button>
-    <button type="button" class="btn btn-primary" id="bt1">월별매출액</button>
-    <button type="button" class="btn btn-primary" id="bt2">연매출액</button>
+    				<button type="button" class="btn btn-primary" id="bt1">월별매출액</button>
+   					<button type="button" class="btn btn-primary" id="bt2">연매출액</button>
 						<br>
 					<div id="container3"></div>
 					<div>

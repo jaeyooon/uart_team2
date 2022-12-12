@@ -9,12 +9,25 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="chart1" resultType="ChartDTO">
-		SELECT
-		DATE_FORMAT(ol.orderdate,'%m') AS month, cu.gender AS gender,
-		SUM(ol.totalprice) AS total_price FROM orderlist ol
+		SELECT 
+		CASE DATE_FORMAT(ol.orderdate,'%m') 
+		WHEN 01 THEN "1"
+		WHEN 02 THEN "2"
+		WHEN 03 THEN "3"
+		WHEN 04 THEN "4"
+		WHEN 05 THEN "5"
+		WHEN 06 THEN "6"
+		WHEN 07 THEN "7"
+		WHEN 08 THEN "8"
+		WHEN 09 THEN "9"
+		WHEN 10 THEN "10"
+		WHEN 11 THEN "11"
+		WHEN 12 THEN "12"
+		END AS MonthRange, 
+		cu.gender AS gender,SUM(ol.totalprice) AS total_price FROM orderlist ol
 		INNER JOIN customer
 		cu ON ol.custid = cu.custid
-		GROUP BY month, gender
+		GROUP BY MonthRange, gender
 	</select>
 
 	<select id="chart2" resultType="ChartDTO"
@@ -28,13 +41,28 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="chart3" resultType="ChartDTO">
-		SELECT DATE_FORMAT(ol.orderdate,'%m') AS month, SUM(ol.totalprice) AS
+		SELECT 
+		CASE DATE_FORMAT(ol.orderdate,'%m') 
+		WHEN 01 THEN "1월"
+		WHEN 02 THEN "2월"
+		WHEN 03 THEN "3월"
+		WHEN 04 THEN "4월"
+		WHEN 05 THEN "5월"
+		WHEN 06 THEN "6월"
+		WHEN 07 THEN "7월"
+		WHEN 08 THEN "8월"
+		WHEN 09 THEN "9월"
+		WHEN 10 THEN "10월"
+		WHEN 11 THEN "11월"
+		WHEN 12 THEN "12월"
+		END AS MonthRange, 
+		SUM(ol.totalprice) AS
 		total_price,
 		c.cateid FROM orderlist ol
 		INNER JOIN customer cu ON ol.custid = cu.custid
 		INNER JOIN item it ON it.itemid = ol.itemid
 		INNER JOIN cate c ON c.cateid = it.cateid
-		GROUP BY month, cateid
+		GROUP BY MonthRange, cateid
 	</select>
 
 	<select id="chart4" resultType="ChartDTO">
@@ -51,20 +79,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 		SELECT
 		CASE DAYOFWEEK(ol.orderdate)
-		WHEN 1 THEN "Sunday"
-		WHEN 2 THEN "Monday"
-		WHEN 3 THEN "Tuesday"
-		WHEN 4 THEN "Wednesday"
-		WHEN 5 THEN "Thursday"
-		WHEN 6 THEN "Friday"
-		WHEN 7 THEN "Saturday"
-		END AS DateRange
-		,SUM(ol.totalprice) AS total_price,
+		WHEN 1 THEN "일요일"
+		WHEN 2 THEN "월요일"
+		WHEN 3 THEN "화요일"
+		WHEN 4 THEN "수요일"
+		WHEN 5 THEN "목요일"
+		WHEN 6 THEN "금요일"
+		WHEN 7 THEN "토요일"
+		END AS DateRange,
+		SUM(ol.totalprice) AS total_price,
 		c.cateid FROM orderlist ol
 		INNER JOIN customer cu ON ol.custid = cu.custid
 		INNER JOIN item it ON it.itemid = ol.itemid
 		INNER JOIN cate c ON c.cateid = it.cateid
-		WHERE date_format(ol.orderdate,"%Y%m%d") BETWEEN "20221205" AND "20221211"
+		WHERE date_format(ol.orderdate,"%Y%m%d") BETWEEN "20221212" AND "20221216"
 		GROUP BY DateRange, cateid
 
 	</select>
