@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		ol.orderlistid,ol.custid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place,
 		ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
 		INNER JOIN item i ON ol.itemid = i.itemid
-		ORDER BY ol.orderdate DESC
+		ORDER BY ol.orderlistid DESC
 		LIMIT #{offset}, 10
 	</select>
 	
@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		ol.orderlistid,ol.custid, ol.ordercnt as orderlist_ordercnt, i.itemplace as item_place,
 		ol.orderdate as orderlist_orderdate, ol.candate as orderlist_candate FROM orderlist ol 
 		INNER JOIN item i ON ol.itemid = i.itemid
-		ORDER BY ol.orderdate ASC
+		ORDER BY ol.orderlistid ASC
 		LIMIT #{offset}, 10
 	</select>
 	
