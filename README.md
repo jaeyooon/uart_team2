@@ -85,6 +85,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![상품 카톡 공유](https://user-images.githubusercontent.com/111714371/207085438-de7a03d6-b779-4ea0-a4f4-fbb6d8aa15ac.gif)
 
 <br>
+
 **3) 검색 및 검색어 자동완성기능**
 - ajax 이용하여 form 전송
 - jQuery 라이브러리를 사용 => JSON Array를 사용하여 배열을 만들고 ajax 이용하여 전송
@@ -92,6 +93,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![검색기능 자동완성 포함](https://user-images.githubusercontent.com/111714371/207086199-3c657ea0-c196-4a1e-9f0e-336126206161.gif)
 
 <br>
+
 **4) OCR 수험생 인증 이벤트**
 
 <img width="889" alt="OCR수험생 이벤트" src="https://user-images.githubusercontent.com/111713782/206957643-49aa0308-ce02-4ebf-b2bc-88e947a23999.PNG">
@@ -105,6 +107,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![수험생이벤트OCR](https://user-images.githubusercontent.com/111714371/207086352-1f24057a-c427-4752-a83e-5dd36bc2f9d0.gif)
 
 <br>
+
 **5) 챗봇**
 
 <img width="907" alt="챗봇" src="https://user-images.githubusercontent.com/111713782/206958397-61d94768-8d61-4d29-9878-2dd64f1ffc27.PNG">
@@ -118,6 +121,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![챗봇](https://user-images.githubusercontent.com/111714371/207086989-31fd0cd6-5569-4e59-9709-7dd571e7f3ea.gif)
 
 <br>
+
 **6) 예매 및 결제**
 - 대상에 따라 상이한 가격정보와 수량 데이터 가져오기
 - 이벤트 테이블의 sort 필드 값  
@@ -129,6 +133,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![추천전시에서 결제완료페이지](https://user-images.githubusercontent.com/111714371/207085999-910c0c3b-21f6-4273-8222-bbc0ae0d39e7.gif)
 
 <br>
+
 **7) 예매 및 결제(모바일 환경)**
 - I’mport(아임포트) API 사용하여 모바일 웹 환경에서도 결제 가능하도록 구현
 - 모바일 웹 환경에서는 특정 PG사(ex.KG 이니시스..)의 웹사이트로 리디렉션되면 requestPay()함수에 지정한 callback 함수가 메모리에서 해제되기 때문에, pc 웹 환경에서와 달리 결제 프로세스 완료 후 callback 함수가 실행될 수 없음   
@@ -149,6 +154,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![전시일정 스케줄](https://user-images.githubusercontent.com/111714371/207089868-5fdd0b93-f969-408d-95ae-4180a8192930.gif)
 
 <br>
+
 **2) 매출 차트**
 - Highcharts를 이용함  
   - GROUPBY를 통해 전시 카테고리를 기준으로 월별 매출액 구현  
@@ -159,6 +165,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![매출차트 최신](https://user-images.githubusercontent.com/111714371/207097049-46195cea-ce7a-4625-a5c7-41bd73174bbd.gif)
 
 <br>
+
 **3) 페이징 처리 & 반응형 웹**  
 - U-ART Admin_태블릿
 
@@ -181,6 +188,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![회원가입 로그인 회원정보수정 및 탈퇴](https://user-images.githubusercontent.com/111714371/207083678-09bf1b25-f6fd-44bd-b7bb-31b110612b08.gif)
 
 <br>
+
 **2) 카테고리별 정렬 및 추천작품(별점순)** 
 - XML query문 사용하여 맵핑하여 Mapper 함수호출 
 - 전시 카테고리 별 화면구현/ 전시 마감순/시작순 목록구현/ 리뷰 별점순 추천작품 목록 구현
@@ -191,6 +199,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![추천전시 공연예술 ](https://user-images.githubusercontent.com/111714371/207107366-9c83ea1a-5a09-481e-b5fb-9f4cf7a820c5.gif)
 
 <br>
+
 **3) 위시리스트**
 - Mapper 함수를 사용하여 위시리스트 중복확인 가능한 모달 구현
 - 함수 onclick 기능 사용하여 위시리스트로 이동가능한 모달 구현
@@ -198,6 +207,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![위시리스트 중복방지 기능 포함](https://user-images.githubusercontent.com/111714371/207085681-96d11b03-6641-40de-86a9-bf45c435333d.gif)
 
 <br>
+
 **4) 예매내역**
 - 취소가능일에만 예매취소가 가능하도록 기능 구현
 - 예매취소버튼 클릭   
@@ -217,6 +227,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![관리자 회원가입 권한부여 로그인 앤 아웃](https://user-images.githubusercontent.com/111714371/207087132-514a2114-62d0-4efd-8fc4-a939f5cb88dd.gif)
 
 <br>
+
 **2) 고객정보, 예매내역 조회 및 검색**  
 - 고객 정보와 예매 내역 정보 각 화면에 구현하기
   => 소비자 & 관리자 페이지간 연동 이뤄지도록 구현
@@ -227,6 +238,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![관리자 회원조회 예매내역 조회](https://user-images.githubusercontent.com/111714371/207088799-83f86663-2741-4466-9940-41c2b19a23dc.gif)
 
 <br>
+
 **3) 관리자 정보 조회(수정/삭제)&등록**
 - 관리자 ID에 <a></a>를 적용하여 상세정보 조회로 이동 가능
 - jQuery 사용하여 관리자정보 update/delete 기능 구현
@@ -235,6 +247,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![관리자정보 조회 수정 삭제](https://user-images.githubusercontent.com/111714371/207089319-e36def29-5e12-41ef-bc64-69839e05d2b0.gif)
 
 <br>
+
 **4) 전시 목록 조회(수정/삭제)&등록**
 - Thymeleaf를 사용하여 동적인 html 구현
 - form과 MultipartFile 기능 사용하여 파일도 등록가능하도록 구현
