@@ -12,20 +12,14 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 3. 소비자 페이지와 관리자 페이지 별도 개발, 페이지 간 적절히 연동
 4. 사용자의 편의를 고려한 화면구성과 기능 구현
 
-## 2. 프로젝트 역할분담
-
-|이름|역할|
-|--|--| 
-|조재윤|예매 & 예매내역 DB구축 및 CRUD 설계<br>sns로그인(Kakao&Naver)<br>이벤트 OCR_CLOVA OCR<br>Fullcalendar전시 일정<br>공공데이터api, 결제api(i'mport)<br>예매내역 조회/취소<br>소비자&관리자 페이징처리|  
-|김서윤|위시리스트 DB 구축 및 CRUD 설계<br>소비자 상세정보페이지 상단부<br> 소비자 예매페이지(티켓수량선택, 결제예정 티켓수량/티켓금액/사용자정보) <br> 소비자 페이지 위시리스트 조회/추가/중복방지/삭제<br> 관리자 페이지 (매출 차트 전체/실시간 서버시간/가입자수/리뷰별 추천전시 롤링배너) |
-|조재원| 고객 & 티켓 DB 구축 및 CRUD 설계<br>sns공유하기_카카오api<br>소비자&관리자 login/logout 및 조회/수정/탈퇴<br>FAQ, 한줄평, @media작업, favicon|
-|이현지|상품 & 카테고리 DB 구축 및 CRUD 설계<br>챗봇_CLOVA Chatbot<br>검색기능_Autocomplete<br>소비자 메인, 전시목록, 상세정보페이지<br>관리자페이지 전시목록 조회/등록/수정/삭제|
-|박재형|Marker & 리뷰 & 이벤트 DB 구축 및 CRUD 설계<br>지도API_장소안내<br>소비자&관리자 회원가입
-  
-## 3. 프로젝트 수행 방법 및 도구 
+## 2. 프로젝트 수행 방법 및 도구 
 ✨**시스템 구성도** 
 
 <img width="736" alt="시스템 구성도" src="https://user-images.githubusercontent.com/111713782/206954676-a3c6981c-40b9-412e-9376-e93618b5a9a2.PNG">
+
+✨**NCP시스템 구성도**
+
+<img width="874" alt="ncp구성도" src="https://user-images.githubusercontent.com/111727476/207198802-2daf6818-de21-4043-81ac-464e5cbdc7b4.png">
 
 ✨**개발 환경 및 수행 도구**
 
@@ -41,7 +35,20 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 <img width="933" alt="통합UI" src="https://user-images.githubusercontent.com/111713782/206375750-e2ce8aac-66f5-427b-97c1-596ae4f5ae28.PNG">
 
+## 3. 프로젝트 역할분담
+
+|이름|역할|
+|--|--| 
+|조재윤|예매 & 예매내역 DB구축 및 CRUD 설계<br>sns로그인(Kakao&Naver)<br>이벤트 OCR_CLOVA OCR<br>Fullcalendar전시 일정<br>공공데이터api, 결제api(i'mport)<br>예매내역 조회/취소<br>소비자&관리자 페이징처리|  
+|김서윤|위시리스트 DB 구축 및 CRUD 설계<br>소비자 상세정보페이지 상단부<br> 소비자 예매페이지(티켓수량선택, 결제예정 티켓수량/티켓금액/사용자정보) <br> 소비자 페이지 위시리스트 조회/추가/중복방지/삭제<br> 관리자 페이지 (매출 차트 전체/실시간 서버시간/가입자수/리뷰별 추천전시 롤링배너) |
+|조재원| 고객 & 티켓 DB 구축 및 CRUD 설계<br>sns공유하기_카카오api<br>소비자&관리자 login/logout 및 조회/수정/탈퇴<br>FAQ, 한줄평, @media작업, favicon|
+|이현지|상품 & 카테고리 DB 구축 및 CRUD 설계<br>챗봇_CLOVA Chatbot<br>소비자&관리자페이지 검색기능_Autocomplete<br>소비자 메인, 전시목록, 상세정보페이지<br>관리자페이지 전시목록 조회/등록/수정/삭제|
+|박재형|Marker & 리뷰 & 이벤트 DB 구축 및 CRUD 설계<br>지도API_장소안내<br>소비자&관리자 회원가입
+  
+
 ## 4. 프로젝트 구현 기능
+
+✨**주요 기능**
 
 <img width="80" height="30" alt="fav" src="https://user-images.githubusercontent.com/111713782/206620993-70808226-5ae0-478e-82c5-41bb216121b2.png">  
 
@@ -131,9 +138,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ![검색기능 자동완성 포함](https://user-images.githubusercontent.com/111714371/207086199-3c657ea0-c196-4a1e-9f0e-336126206161.gif)
 
-✨**NCP시스템 구성도**
 
-<img width="874" alt="ncp구성도" src="https://user-images.githubusercontent.com/111727476/207198802-2daf6818-de21-4043-81ac-464e5cbdc7b4.png">
 
 **9) OCR 수험생 인증 이벤트**
 
