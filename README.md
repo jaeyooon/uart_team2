@@ -51,7 +51,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ✨**주요 기능**
 
-<img width="80" height="30" alt="fav" src="https://user-images.githubusercontent.com/111713782/206620993-70808226-5ae0-478e-82c5-41bb216121b2.png">  
+<img width="104" alt="cust" src="https://user-images.githubusercontent.com/111713782/207240230-35c91db5-1459-470a-ad0a-317d17e5535d.PNG">
 
 **1) sns로그인(+kakao/naver)&로그아웃**
 - SNS계정으로 처음 로그인을 하는 경우, 카카오/네이버 서버는 redirect url로 인증코드를 전달   
@@ -144,9 +144,9 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 <br>
 <br/>
-<img width="700" alt="admin_line" src="https://user-images.githubusercontent.com/111727476/207234220-986cc69c-ab1c-4c52-bf81-a6349cfdcfef.png">
-
-**1) 전시 일정 fullcalendar조회**
+<img width="121" alt="admin" src="https://user-images.githubusercontent.com/111713782/207240241-163919a1-49f7-41aa-a054-9bbfbd259ff2.PNG">  
+   
+**1) 전시 일정 fullcalendar조회**  
 - 라이브러리 사용
 - 전시별로 색상을 다르게 적용하여 전시일정을 한눈에 알아보기 쉽게 구현  
   => 전시명 클릭시 전시조회 페이지로 이동하여 수정 및 삭제 가능하도록 함
@@ -177,7 +177,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 <br><br>
 ✨**일반 기능**
 
-<img width="80" height="30" alt="fav" src="https://user-images.githubusercontent.com/111713782/206620993-70808226-5ae0-478e-82c5-41bb216121b2.png"> 
+<img width="104" alt="cust" src="https://user-images.githubusercontent.com/111713782/207240230-35c91db5-1459-470a-ad0a-317d17e5535d.PNG">
 
 **1) 회원가입 및 로그인&로그아웃/회원정보 조회/수정/탈퇴**  
 - jQuery를 활용해 post방식으로 form 전송  
@@ -219,7 +219,8 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 <br>
 <br/>
-<img width="1000" alt="admin_line" src="https://user-images.githubusercontent.com/111727476/207234220-986cc69c-ab1c-4c52-bf81-a6349cfdcfef.png">
+
+<img width="121" alt="admin" src="https://user-images.githubusercontent.com/111713782/207240241-163919a1-49f7-41aa-a054-9bbfbd259ff2.PNG">
 
 **1)회원가입 및 로그인&로그아웃** 
 - 관리자 레벨에 따라 권한 다르게 부여 => A레벨 관리자(admin01)만 A레벨 관리자(admin01)만 관리자정보 탭 조회 및 등록 가능
