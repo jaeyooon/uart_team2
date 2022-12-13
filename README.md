@@ -210,16 +210,11 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ![매출차트 최신](https://user-images.githubusercontent.com/111714371/207097049-46195cea-ce7a-4625-a5c7-41bd73174bbd.gif)
 
 **7) 페이징 처리 & 반응형 웹**  
+- U-ART Admin_태블릿
 
-<details>
-    <summary>U-ART Admin_태블릿</summary> 
-
-<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
 ![관리자 모바일](https://user-images.githubusercontent.com/111713782/206995790-53c04566-6b8d-4033-8493-4b648f5893ff.gif)  
 </details>
 
-
- 
 ## 5. Troubleshooting
 
 |&nbsp;&nbsp;Name&nbsp;&nbsp;|Issues|Problem solving|
