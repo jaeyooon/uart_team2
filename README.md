@@ -51,7 +51,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ✨**주요 기능**
 
-<img width="104" alt="cust" src="https://user-images.githubusercontent.com/111713782/207240230-35c91db5-1459-470a-ad0a-317d17e5535d.PNG">
+<img width="187" alt="ufav" src="https://user-images.githubusercontent.com/111713782/207254283-b01c1f9c-d3ac-4953-acb9-c0c8ffc0ef82.PNG">
 
 **1) sns로그인(+kakao/naver)&로그아웃**
 - SNS계정으로 처음 로그인을 하는 경우, 카카오/네이버 서버는 redirect url로 인증코드를 전달   
@@ -144,7 +144,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 <br>
 <br/>
-<img width="121" alt="admin" src="https://user-images.githubusercontent.com/111713782/207240241-163919a1-49f7-41aa-a054-9bbfbd259ff2.PNG">  
+<img width="175" alt="afav" src="https://user-images.githubusercontent.com/111713782/207254274-e7ee8174-4bcc-4c5d-be07-1ea92cafb7b5.PNG">
    
 **1) 전시 일정 fullcalendar조회**  
 - 라이브러리 사용
@@ -177,7 +177,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 <br><br>
 ✨**일반 기능**
 
-<img width="104" alt="cust" src="https://user-images.githubusercontent.com/111713782/207240230-35c91db5-1459-470a-ad0a-317d17e5535d.PNG">
+<img width="187" alt="ufav" src="https://user-images.githubusercontent.com/111713782/207254283-b01c1f9c-d3ac-4953-acb9-c0c8ffc0ef82.PNG">
 
 **1) 회원가입 및 로그인&로그아웃/회원정보 조회/수정/탈퇴**  
 - jQuery를 활용해 post방식으로 form 전송  
@@ -220,7 +220,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 <br>
 <br/>
 
-<img width="121" alt="admin" src="https://user-images.githubusercontent.com/111713782/207240241-163919a1-49f7-41aa-a054-9bbfbd259ff2.PNG">
+<img width="175" alt="afav" src="https://user-images.githubusercontent.com/111713782/207254274-e7ee8174-4bcc-4c5d-be07-1ea92cafb7b5.PNG">
 
 **1)회원가입 및 로그인&로그아웃** 
 - 관리자 레벨에 따라 권한 다르게 부여 => A레벨 관리자(admin01)만 A레벨 관리자(admin01)만 관리자정보 탭 조회 및 등록 가능
