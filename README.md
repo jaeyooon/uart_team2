@@ -219,7 +219,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 <br>
 <br/>
-<img width="684" alt="admin_line" src="https://user-images.githubusercontent.com/111727476/207234220-986cc69c-ab1c-4c52-bf81-a6349cfdcfef.png">
+<img width="1000" alt="admin_line" src="https://user-images.githubusercontent.com/111727476/207234220-986cc69c-ab1c-4c52-bf81-a6349cfdcfef.png">
 
 **1)회원가입 및 로그인&로그아웃** 
 - 관리자 레벨에 따라 권한 다르게 부여 => A레벨 관리자(admin01)만 A레벨 관리자(admin01)만 관리자정보 탭 조회 및 등록 가능
