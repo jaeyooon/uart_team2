@@ -1,4 +1,4 @@
-# uart_team2 Final Project 👨‍🎨🖼 
+# uart_Ensemble Final Project 👨‍🎨🖼 
 팀장: 조재윤  팀원: 김서윤, 조재원, 이현지, 박재형  
 기간: 2022.10.25~2022.12.16
 
@@ -16,10 +16,11 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ✨**시스템 구성도** 
 
 <img width="736" alt="시스템 구성도" src="https://user-images.githubusercontent.com/111713782/206954676-a3c6981c-40b9-412e-9376-e93618b5a9a2.PNG">
+<br>
 
 ✨**NCP시스템 구성도**
 
-<img width="874" alt="ncp구성도" src="https://user-images.githubusercontent.com/111727476/207198802-2daf6818-de21-4043-81ac-464e5cbdc7b4.png">
+<img width="736" alt="ncp구성도" src="https://user-images.githubusercontent.com/111727476/207198802-2daf6818-de21-4043-81ac-464e5cbdc7b4.png">
 
 ✨**개발 환경 및 수행 도구**
 
@@ -52,15 +53,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 <img width="80" height="30" alt="fav" src="https://user-images.githubusercontent.com/111713782/206620993-70808226-5ae0-478e-82c5-41bb216121b2.png">  
 
-**1-1) 회원가입 및 로그인(+kakao/naver)&로그아웃/회원정보 조회/수정/탈퇴**  
-- jQuery를 활용해 post방식으로 form 전송  
-- 회원탈퇴 시 ‘withdrawal’필드 값 ‘1 (회원)’→ ‘0 (탈퇴)’ 변경  
-=> 중복아이디로 다시 가입 불가  
-=> 해당 아이디로 로그인 불가  
-
-![회원가입 로그인 회원정보수정 및 탈퇴](https://user-images.githubusercontent.com/111714371/207083678-09bf1b25-f6fd-44bd-b7bb-31b110612b08.gif)
-
-**1-2) sns로그인(+kakao/naver)&로그아웃**
+**1) sns로그인(+kakao/naver)&로그아웃**
 - SNS계정으로 처음 로그인을 하는 경우, 카카오/네이버 서버는 redirect url로 인증코드를 전달   
   → 클라이언트(Web)쪽에서 인증코드를 이용하여  access_token발급받은 후 서버로 전송   
   → 서버에서는 access_token을 이용하여 카카오/네이버 서버로부터 사용자 정보(이름, 이메일, 성별)를 받음   
@@ -89,30 +82,35 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ![상품 카톡 공유](https://user-images.githubusercontent.com/111714371/207085438-de7a03d6-b779-4ea0-a4f4-fbb6d8aa15ac.gif)
 
-**3) 카테고리별 정렬 및 추천작품(별점순)** 
-- XML query문 사용하여 맵핑하여 Mapper 함수호출 
-- 전시 카테고리 별 화면구현/ 전시 마감순/시작순 목록구현/ 리뷰 별점순 추천작품 목록 구현
-- 공연예술 페이지 - 공공데이터 포털 API호출하여 가져온 데이터를 화면에 나타냄
+**3) 검색 및 검색어 자동완성기능**
+- ajax 이용하여 form 전송
+- jQuery 라이브러리를 사용 => JSON Array를 사용하여 배열을 만들고 ajax 이용하여 전송
 
-![카테고리별 전시목록 필터링 기능](https://user-images.githubusercontent.com/111714371/207107219-f9d72dab-c0ba-4a19-95e2-f3d97a0a58e8.gif)
+![검색기능 자동완성 포함](https://user-images.githubusercontent.com/111714371/207086199-3c657ea0-c196-4a1e-9f0e-336126206161.gif)
 
-![추천전시 공연예술 ](https://user-images.githubusercontent.com/111714371/207107366-9c83ea1a-5a09-481e-b5fb-9f4cf7a820c5.gif)
+**4) OCR 수험생 인증 이벤트**
 
+<img width="889" alt="OCR수험생 이벤트" src="https://user-images.githubusercontent.com/111713782/206957643-49aa0308-ce02-4ebf-b2bc-88e947a23999.PNG">
 
-**4) 위시리스트**
-- Mapper 함수를 사용하여 위시리스트 중복확인 가능한 모달 구현
-- 함수 onclick 기능 사용하여 위시리스트로 이동가능한 모달 구현
+- Naver Cloud Platform의 CLOVA OCR에 수험표 검증에 필요한 영역들(수험년도, 이름, 주민등록번호 앞자리, 수험번호)을 설정함.
+- 사용자가 U-ART 에서 수험표 이벤트 참여를 위해 사진을 업로드하면 OCR을 통해 JSON형태의 응답을 받음
+- 수험표 사진인지 여부를 판별  
+수험표 사진일 경우, 이번년도 수험표인지 여부와 db에 있는 사용자 정보와 일치하는지 여부 판별,  
+모든 조건에 일치하는 경우에만 전시예매 50% 할인 쿠폰 지급, 해당 이벤트의 중복 참여를 방지하기 위해 이벤트 참여 회원의 수험번호를 db에 저장
 
-![위시리스트 중복방지 기능 포함](https://user-images.githubusercontent.com/111714371/207085681-96d11b03-6641-40de-86a9-bf45c435333d.gif)
+![수험생이벤트OCR](https://user-images.githubusercontent.com/111714371/207086352-1f24057a-c427-4752-a83e-5dd36bc2f9d0.gif)
 
-**5) 예매내역**
-- 취소가능일에만 예매취소가 가능하도록 기능 구현
-- 예매취소버튼 클릭   
-  => jQuery로 취소하려는 날짜와 취소가능일 비교하는 함수 호출   
-  => 예매취소가 가능한 경우, ajax로 해당 데이터 전송 후 예매내역 삭제   
-  => 모달창으로 알림  
+**5) 챗봇**
 
-![예매내역 취소가능일에만 삭제가능](https://user-images.githubusercontent.com/111714371/207085859-27b7a3ec-f945-411d-97e0-05a059b05437.gif)
+<img width="907" alt="챗봇" src="https://user-images.githubusercontent.com/111713782/206958397-61d94768-8d61-4d29-9878-2dd64f1ffc27.PNG">
+
+- 웹소켓: 접속되어 있는 서버간 통신가능 =>접속되어 있는 모든 사용자 사용가능
+- Naver Cloud Platform의 CLOVA Chatbot 빌더 실행=> 대화목록 생성
+- Websocket을 사용하여 관리자페이지에 서버 생성(관리자페이지의 서버에 소비자페이지를 접속시켜 기능 구현)  
+- 등록된 질문 입력시 그에 해당되는 답변 전송(로그인 후 사용가능한 기능으로 구현하여 사용자의 이름을 상단과 채팅창에 출력하여 실제 채팅하는 환경 조성, 
+연결상태를 한 눈에 볼 수 있도록 시작/종료 상태 알림)
+
+![챗봇](https://user-images.githubusercontent.com/111714371/207086989-31fd0cd6-5569-4e59-9709-7dd571e7f3ea.gif)
 
 **6) 예매 및 결제**
 - 대상에 따라 상이한 가격정보와 수량 데이터 가져오기
@@ -132,40 +130,75 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ![모바일결제](https://user-images.githubusercontent.com/111713782/206960430-fa4653da-e47f-437a-a3af-3777d121a09b.gif)
 
-**8) 검색 및 검색어 자동완성기능**
-- ajax 이용하여 form 전송
-- jQuery 라이브러리를 사용 => JSON Array를 사용하여 배열을 만들고 ajax 이용하여 전송
-
-![검색기능 자동완성 포함](https://user-images.githubusercontent.com/111714371/207086199-3c657ea0-c196-4a1e-9f0e-336126206161.gif)
-
-
-
-**9) OCR 수험생 인증 이벤트**
-
-<img width="889" alt="OCR수험생 이벤트" src="https://user-images.githubusercontent.com/111713782/206957643-49aa0308-ce02-4ebf-b2bc-88e947a23999.PNG">
-
-- Naver Cloud Platform의 CLOVA OCR에 수험표 검증에 필요한 영역들(수험년도, 이름, 주민등록번호 앞자리, 수험번호)을 설정함.
-- 사용자가 U-ART 에서 수험표 이벤트 참여를 위해 사진을 업로드하면 OCR을 통해 JSON형태의 응답을 받음
-- 수험표 사진인지 여부를 판별  
-수험표 사진일 경우, 이번년도 수험표인지 여부와 db에 있는 사용자 정보와 일치하는지 여부 판별,  
-모든 조건에 일치하는 경우에만 전시예매 50% 할인 쿠폰 지급, 해당 이벤트의 중복 참여를 방지하기 위해 이벤트 참여 회원의 수험번호를 db에 저장
-
-![수험생이벤트OCR](https://user-images.githubusercontent.com/111714371/207086352-1f24057a-c427-4752-a83e-5dd36bc2f9d0.gif)
-
-**10) 챗봇**
-
-<img width="907" alt="챗봇" src="https://user-images.githubusercontent.com/111713782/206958397-61d94768-8d61-4d29-9878-2dd64f1ffc27.PNG">
-
-- 웹소켓: 접속되어 있는 서버간 통신가능 =>접속되어 있는 모든 사용자 사용가능
-- Naver Cloud Platform의 CLOVA Chatbot 빌더 실행=> 대화목록 생성
-- Websocket을 사용하여 관리자페이지에 서버 생성(관리자페이지의 서버에 소비자페이지를 접속시켜 기능 구현)  
-- 등록된 질문 입력시 그에 해당되는 답변 전송(로그인 후 사용가능한 기능으로 구현하여 사용자의 이름을 상단과 채팅창에 출력하여 실제 채팅하는 환경 조성, 
-연결상태를 한 눈에 볼 수 있도록 시작/종료 상태 알림)
-
-![챗봇](https://user-images.githubusercontent.com/111714371/207086989-31fd0cd6-5569-4e59-9709-7dd571e7f3ea.gif)
 
 <br/>
-<img width="120" height="30" alt="afav" src="https://user-images.githubusercontent.com/111713782/206620706-641f588a-cb24-4f06-81d8-17bb45c01b91.PNG">  
+<img width="120" height="30" alt="afav" src="https://user-images.githubusercontent.com/111713782/206620706-641f588a-cb24-4f06-81d8-17bb45c01b91.PNG"> 
+
+**1) 전시 일정 fullcalendar조회**
+- 라이브러리 사용
+- 전시별로 색상을 다르게 적용하여 전시일정을 한눈에 알아보기 쉽게 구현  
+  => 전시명 클릭시 전시조회 페이지로 이동하여 수정 및 삭제 가능하도록 함
+
+![전시일정 스케줄](https://user-images.githubusercontent.com/111714371/207089868-5fdd0b93-f969-408d-95ae-4180a8192930.gif)
+
+**2) 매출 차트**
+- Highcharts를 이용함  
+  - GROUPBY를 통해 전시 카테고리를 기준으로 월별 매출액 구현  
+  - GROUPBY를 통해 성별을 기준으로 월별 매출액 구현    
+  - AJAX를 통해 월별 기간을 잡고, GROUPBY를 통해 성별을 기준으로 기간별 매출액 비율을 구현
+- 롤링배너를 통해서 ‘리뷰별점 추천전시 6’를 HTML로 화면에 나타냄
+
+![매출차트 최신](https://user-images.githubusercontent.com/111714371/207097049-46195cea-ce7a-4625-a5c7-41bd73174bbd.gif)
+
+**3) 페이징 처리 & 반응형 웹**  
+- U-ART Admin_태블릿
+
+![관리자 모바일](https://user-images.githubusercontent.com/111713782/206995790-53c04566-6b8d-4033-8493-4b648f5893ff.gif)  
+</details>
+
+❗소비자웹사이트에도 공통적으로 적용함.
+
+<br><br>
+✨**일반 기능**
+
+<img width="80" height="30" alt="fav" src="https://user-images.githubusercontent.com/111713782/206620993-70808226-5ae0-478e-82c5-41bb216121b2.png"> 
+
+**1) 회원가입 및 로그인&로그아웃/회원정보 조회/수정/탈퇴**  
+- jQuery를 활용해 post방식으로 form 전송  
+- 회원탈퇴 시 ‘withdrawal’필드 값 ‘1 (회원)’→ ‘0 (탈퇴)’ 변경  
+=> 중복아이디로 다시 가입 불가  
+=> 해당 아이디로 로그인 불가  
+
+![회원가입 로그인 회원정보수정 및 탈퇴](https://user-images.githubusercontent.com/111714371/207083678-09bf1b25-f6fd-44bd-b7bb-31b110612b08.gif)
+
+**2) 카테고리별 정렬 및 추천작품(별점순)** 
+- XML query문 사용하여 맵핑하여 Mapper 함수호출 
+- 전시 카테고리 별 화면구현/ 전시 마감순/시작순 목록구현/ 리뷰 별점순 추천작품 목록 구현
+- 공연예술 페이지 - 공공데이터 포털 API호출하여 가져온 데이터를 화면에 나타냄
+
+![카테고리별 전시목록 필터링 기능](https://user-images.githubusercontent.com/111714371/207107219-f9d72dab-c0ba-4a19-95e2-f3d97a0a58e8.gif)
+
+![추천전시 공연예술 ](https://user-images.githubusercontent.com/111714371/207107366-9c83ea1a-5a09-481e-b5fb-9f4cf7a820c5.gif)
+
+
+**3) 위시리스트**
+- Mapper 함수를 사용하여 위시리스트 중복확인 가능한 모달 구현
+- 함수 onclick 기능 사용하여 위시리스트로 이동가능한 모달 구현
+
+![위시리스트 중복방지 기능 포함](https://user-images.githubusercontent.com/111714371/207085681-96d11b03-6641-40de-86a9-bf45c435333d.gif)
+
+**4) 예매내역**
+- 취소가능일에만 예매취소가 가능하도록 기능 구현
+- 예매취소버튼 클릭   
+  => jQuery로 취소하려는 날짜와 취소가능일 비교하는 함수 호출   
+  => 예매취소가 가능한 경우, ajax로 해당 데이터 전송 후 예매내역 삭제   
+  => 모달창으로 알림  
+
+![예매내역 취소가능일에만 삭제가능](https://user-images.githubusercontent.com/111714371/207085859-27b7a3ec-f945-411d-97e0-05a059b05437.gif)
+
+
+ <br/>
+<img width="120" height="30" alt="afav" src="https://user-images.githubusercontent.com/111713782/206620706-641f588a-cb24-4f06-81d8-17bb45c01b91.PNG"> 
 
 **1)회원가입 및 로그인&로그아웃** 
 - 관리자 레벨에 따라 권한 다르게 부여 => A레벨 관리자(admin01)만 A레벨 관리자(admin01)만 관리자정보 탭 조회 및 등록 가능
@@ -198,34 +231,14 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ![전시 등록](https://user-images.githubusercontent.com/111714371/207111322-163e5aba-d43a-4010-a486-3ec7062e5583.gif)
 
-**5) 전시 일정 fullcalendar조회**
-- 라이브러리 사용
-- 전시별로 색상을 다르게 적용하여 전시일정을 한눈에 알아보기 쉽게 구현  
-  => 전시명 클릭시 전시조회 페이지로 이동하여 수정 및 삭제 가능하도록 함
 
-![전시일정 스케줄](https://user-images.githubusercontent.com/111714371/207089868-5fdd0b93-f969-408d-95ae-4180a8192930.gif)
-
-**6) 매출 차트**
-- Highcharts를 이용함  
-  - GROUPBY를 통해 전시 카테고리를 기준으로 월별 매출액 구현  
-  - GROUPBY를 통해 성별을 기준으로 월별 매출액 구현    
-  - AJAX를 통해 월별 기간을 잡고, GROUPBY를 통해 성별을 기준으로 기간별 매출액 비율을 구현
-- 롤링배너를 통해서 ‘리뷰별점 추천전시 6’를 HTML로 화면에 나타냄
-
-![매출차트 최신](https://user-images.githubusercontent.com/111714371/207097049-46195cea-ce7a-4625-a5c7-41bd73174bbd.gif)
-
-**7) 페이징 처리 & 반응형 웹**  
-- U-ART Admin_태블릿
-
-![관리자 모바일](https://user-images.githubusercontent.com/111713782/206995790-53c04566-6b8d-4033-8493-4b648f5893ff.gif)  
-</details>
 
 ## 5. Troubleshooting
 
 |&nbsp;&nbsp;Name&nbsp;&nbsp;|Issues|Problem solving|
 |:--:|--|--|
 |조재윤|⦁ 네이버 오픈 API를 활용하여 javascript로 네이버 로그인을 구현할 때 네이버 서버와는 연결이 되어 접근 토큰(access token) 값까지 받았는데 사용자 정보를 가져오지 못하는 문제가 생김.<br>⦁ 아임포트 결제 기능 구현할 때 pc 웹 환경에서와 달리 모바일 웹 환경에서 결제까지는 되는데 결제 데이터가 db에 반영되지 않는 문제가 생김.<br>⦁ 공공데이터 포털 API를 호출하여 이클립스 환경에서 JUnit Test로 데이터들이 잘 들어왔는지 확인할 때 여러 요청변수들을 어떤 형식으로 명시해줘야 하고 XML 형식의 데이터를 parsing할 때는 어떤 방식으로 해야하는지 어려움이 있었음.<br>⦁ 페이징 기능을 구현할 때 한 블럭에 해당하는 `startpage`와 `endpage`를 컨트롤러로부터 가져와서 화면에 어떤 식으로 page를 지정해주고 각각의 페이지에 나타내는 데이터 수를 어떻게 설정해줘야 하는지 어려움이 있었음.|⦁ callback하는 과정에서 접근 토큰 값으로 네이버 서버로부터 사용자 정보를 불러와서 `navercallback.html`로 화면에 해당 데이터가 잘 가져와졌는지 확인할 수 있도록 매핑 작업을 해줌.<br>⦁ 모바일 웹 환경에서 아임포트 결제 API를 연동할 때 특정 PG사의 경우 pc 웹 환경에서와 달리 결제 프로세스 완료 후 callback 함수가 호출되지 않는다는 점을 아임포트 개발문서에서 알게되었고, 해결을 위해 `requestPay()`함수에 결제 프로세스 완료 후 리디렉션 될 URL을 지정하였음. redirect_url의 파라미터로 데이터를 서버로 넘겨서 db에 결제 데이터가 들어가도록 함.<br>⦁ apiurl 뒤에 `+ "& "`를 통해 여러 개의 요청변수들을 명시할 수 있고 데이터를 가져오는 개수도 요청변수를 통해 설정할 수 있음을 알게 되었음. XML 형식의 데이터를 parsing할 때 `getTagValue`로 필요한 태그 정보들만 불러와 데이터를 활용할 수 있음을 알게 되었음.<br>⦁ mapper파일에 `LIMIT`(가져올 데이터의 양)과 `offset`(가져올 데이터의 초기 위치값) 으로 select 함수를 만들어서 한 페이지당 몇 개씩 데이터가 나오도록 설정해줌.<br>`th:each="page : ${#numbers.sequence(startpage,endpage)}"` 로 시작과 끝 구간에 해당하는 만큼 반복해서 page 값을 받아서 화면에 나타내도록 함. 
-|김서윤|⦁localhost에서 작동되는 group by가 포함된 쿼리가 NCP서버에서는 1055 에러로 작동되지 않아서 차트가 나오지 않음.|⦁방법1. group by 사용 시 select의 칼럼 중 집계함수에 쓰이는 칼럼을 제외한 모든 칼럼을 기입해야 함. <br> ⦁방법2. $ vi /etc/my.cnf 에서 sql_mode에서 ONLY_FULL_GROUP_BY 설정을 제거해야함.|
+|김서윤|⦁localhost에서 작동되는 group by가 포함된 쿼리가 NCP서버에서는 1055 에러로 작동되지 않아서 차트가 나오지 않음.|⦁방법1. group by 사용 시 select의 칼럼 중 집계함수에 쓰이는 칼럼을 제외한 모든 칼럼을 기입해야 함. <br> ⦁방법2. $ vi /etc/my.cnf 에서 sql_mode에서 ONLY_FULL_GROUP_BY 설정을 제거.|
 |조재원|⦁ 반응형 웹 템플릿을 사용했음에도 모바일 버전에서 화면 깨짐 현상이 발생함.<br>⦁ 카카오톡 공유하기 버튼을 한번 이상 누를 때 `Kakao.init`오류 발생.|⦁ 템플릿의 고유한 틀을 벗어나서 외부에서 반응형 탭/캐러셀등을 삽입했을 때 이러한 현상이 발생할 수 있으므로 `@media`작업을 통해 해결해줘야 함.<br>⦁ initialize가 두번 호출 되는 경우 오류가 발생하므로 초기화 되었을 때에는 init을 호출하지 않고, 초기화 되지 않은 상황에서만 호출되도록 if문을 사용해줌.| 
 |이현지|⦁ 화면과 서버의 간의 날짜데이터 전송이 원활하지 않아 DB에 정보가 저장되지 않음.<br>⦁ 템플릿과 구현기능의 충돌로 자동완성된 검색어 출력이 원활하지 않음.|⦁ 화면의 데이터를 전송하고 받을 수 있는 String형 변수를 DTO에 추가한 후 Controller에서 형변환을 통해 Date형식과 String형식을 양쪽에 적합하게 전송하여 해결.<br>⦁ z-index와 검색창 위치조절(CSS)로 해결. | 
 |박재형|⦁ sql구문에 맞춰서 xml파일을 잘 맟추지 않아서 정보가 화면에 나오지 않았다.<br> ⦁ 지도 화면에 구현하는 과정에서 기존에 배웠던 대로만 하려고 해서 지도가 제대로 안 나오는 문제점이 있었음. | xml파일의 문법을 올바르게 고치니 제대로 된 정보가 나왔다. 앞으로 할때 항상 주의하자.<br> ⦁ 처한 상황에 맞게끔 코드를 수정하여 문제를 해결함. |
