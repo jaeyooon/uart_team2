@@ -144,7 +144,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 <br>
 <br/>
-<img width="684" alt="admin_line" src="https://user-images.githubusercontent.com/111727476/207234220-986cc69c-ab1c-4c52-bf81-a6349cfdcfef.png">
+<img width="700" alt="admin_line" src="https://user-images.githubusercontent.com/111727476/207234220-986cc69c-ab1c-4c52-bf81-a6349cfdcfef.png">
 
 **1) 전시 일정 fullcalendar조회**
 - 라이브러리 사용
