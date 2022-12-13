@@ -15,7 +15,8 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 ## 2. 프로젝트 수행 방법 및 도구 
 ✨**시스템 구성도** 
 
-<img width="736" alt="시스템 구성도" src="https://user-images.githubusercontent.com/111713782/206954676-a3c6981c-40b9-412e-9376-e93618b5a9a2.PNG">
+<img width="736" alt="전체시스템구성도" src="https://user-images.githubusercontent.com/111727476/207280298-e7932e7a-52ad-453e-93c5-ca2773c1f25f.png">
+
 <br>
 
 ✨**NCP시스템 구성도**
