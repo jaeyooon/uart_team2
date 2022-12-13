@@ -133,7 +133,7 @@ AI플랫폼을 활용한  Spring boot기반의  전시 예매 웹 서비스 개�
 
 ✨**NCP시스템 구성도**
 
-<img width="707" alt="NCP환경" src="https://user-images.githubusercontent.com/111713782/206957393-0efd25a4-5034-4a09-87fd-badac1a4d134.PNG">
+<img width="874" alt="ncp구성도" src="https://user-images.githubusercontent.com/111727476/207198802-2daf6818-de21-4043-81ac-464e5cbdc7b4.png">
 
 **9) OCR 수험생 인증 이벤트**
 
