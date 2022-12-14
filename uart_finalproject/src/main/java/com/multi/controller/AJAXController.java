@@ -269,15 +269,19 @@ public class AJAXController {
 	
 	@RequestMapping("/checkorderdetail")
 	public Object checkorderdetail(Model model,  Integer itemid, String custid) {
+		System.out.println(itemid);
+		System.out.println(custid);
 		boolean result = false;
 		
 		List<OrderdetailDTO> list1 = null;
 		try {
 			list1 = odetail_service.checkorderdetail(itemid); // itemid로 예매내역 조회
+			System.out.println(list1);
 			if(list1 != null) {
 				for(OrderdetailDTO list : list1) {
 					if(list.getCust_custid().equals(custid)) { // itemid로 예매내역 조회한것 중에 해당 custid의 예매내역이 존재할 경우
 						result = true;
+						break;		// result가 true가 되면 for문을 빠져나옴
 					} else {
 						result = false;
 					}
@@ -292,7 +296,7 @@ public class AJAXController {
 	}
 	
 	@RequestMapping("/registerreview")
-	public Object registerreview(Model model,  Integer itemid, String custid, String reviewcontent, Float reviewgrade) {
+	public Object registerreview(Model model,  Integer itemid, String custid, String reviewcontent, Double reviewgrade) {
 		boolean result = false;
 		
 		List<ReviewDTO> lastreview = null;
@@ -302,14 +306,18 @@ public class AJAXController {
 			if(lastreview == null || lastreview.isEmpty()) {  // 해당상품에 대한 리뷰를 작성한적이 없는 경우
 				ReviewDTO review = new ReviewDTO(0,itemid,custid,reviewcontent,reviewgrade, null);
 				review_service.register(review);
-		
+				
 				result = true;
+				System.out.println("OK");
 			} 
 			else {
 				for(ReviewDTO review : lastreview) {
 					if(review.getCustid().equals(custid)) {  // 해당상품에 대한 리뷰를 작성한 적이 있는 경우
 						result = false;
 					} else {								// itemid에 대한 리뷰 중 해당회원이 작성한 리뷰는 없는 경우
+						ReviewDTO review2 = new ReviewDTO(0,itemid,custid,reviewcontent,reviewgrade, null);
+						review_service.register(review2);
+						
 						result = true;
 					}
 				}

@@ -18,6 +18,6 @@ public class ReviewDTO {
 	private Integer itemid;
 	private String custid;
 	private String reviewcontent;
-	private double reviewgrade;
+	private Double reviewgrade;
 	private Date reviewdate;
 }
