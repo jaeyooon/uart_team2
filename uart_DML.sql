@@ -316,10 +316,12 @@ SELECT * FROM orderdetail;
 
 -- eventbl(이벤트) table ---------------------------------------------------------
 INSERT INTO eventbl VALUES (NULL,'id10', '2022-11-17', '2022-12-31', '수험표 인증시, 전시 50% 할인!','sevent.png', 50, '2022-11-18', 1);
+
 SELECT * FROM eventbl;
 
 -- emanage(수험생 이벤트 관리) table ---------------------------------------------------------
 INSERT INTO emanage VALUES ('12349876', '2022-11-05');
+
 SELECT * FROM emanage;
 
 -- admintbl(관리자) table ---------------------------------------------------------
