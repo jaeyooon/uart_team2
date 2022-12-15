@@ -153,6 +153,7 @@ CREATE TABLE eventbl(
     pdate DATE,
     sort INT
 );
+
 ALTER TABLE eventbl ADD CONSTRAINT PRIMARY KEY (eid);
 ALTER TABLE eventbl MODIFY eid INT AUTO_INCREMENT;
 ALTER TABLE eventbl AUTO_INCREMENT = 50;
@@ -163,6 +164,7 @@ CREATE TABLE emanage(
     tnumber VARCHAR(50),
     rdate DATE NOT NULL
 );
+
 ALTER TABLE emanage ADD CONSTRAINT PRIMARY KEY (tnumber);
 
 -- admintbl(관리자) table ---------------------------------------------------------
@@ -175,6 +177,7 @@ CREATE TABLE admintbl(
    adphone VARCHAR(20),
    lev VARCHAR(30)
 );
+
 ALTER TABLE admintbl ADD CONSTRAINT PRIMARY KEY (adminid);
 
 
