@@ -1,7 +1,9 @@
 DROP DATABASE IF EXISTS uartdb;
 CREATE DATABASE uartdb;
 
--- customer 테이블 —----------------------------------------
+USE uartdb;
+
+-- customer(고객) table ---------------------------------------------------------
 DROP TABLE IF EXISTS customer;
 CREATE TABLE customer(
    custid VARCHAR(100),
@@ -17,18 +19,17 @@ CREATE TABLE customer(
 
 ALTER TABLE customer ADD CONSTRAINT PRIMARY KEY(custid);
 
--- cate table ---------------------------------------
+-- cate(카테고리) table ---------------------------------------------------------
 DROP TABLE IF EXISTS cate;
-
 CREATE TABLE cate(
 cateid INT,
 catename VARCHAR(20)
 );
+
 ALTER TABLE cate ADD CONSTRAINT PRIMARY KEY(cateid);
 
--- item table ------------------------------------------
+-- item(상품) table ---------------------------------------------------------
 DROP TABLE IF EXISTS item;
-
 CREATE TABLE item(
 itemid INT,
 cateid INT,
@@ -45,12 +46,13 @@ estart DATE,
 efin DATE,
 rdate DATE
 );
+
 ALTER TABLE item ADD CONSTRAINT PRIMARY KEY(itemid);
 -- ALTER TABLE item ADD FOREIGN KEY(cateid) REFERENCES cate(cateid);
 ALTER TABLE item MODIFY itemid INT AUTO_INCREMENT;
 ALTER TABLE item AUTO_INCREMENT=100;
 
--- REVIEW TABLES —----------------------------------------
+-- review(리뷰) table ---------------------------------------------------------
 DROP TABLE IF EXISTS review;
 CREATE TABLE review(
     reviewid INT,
@@ -60,15 +62,15 @@ CREATE TABLE review(
     reviewgrade DOUBLE,
     reviewdate Date
 );
+
 ALTER TABLE review ADD CONSTRAINT PRIMARY KEY (reviewid);
 -- ALTER TABLE review ADD CONSTRAINT FOREIGN KEY (itemid) REFERENCES item (itemid);
 -- ALTER TABLE review ADD CONSTRAINT FOREIGN KEY (custid) REFERENCES customer (custid);
 ALTER TABLE review MODIFY reviewid INT AUTO_INCREMENT;
 ALTER TABLE review AUTO_INCREMENT = 10;
 
--- wish table ------------------------------------------
+-- wish(위시리스트) table ---------------------------------------------------------
 DROP TABLE IF EXISTS wish;
-
 CREATE TABLE wish(
 wishid INT,
 custid VARCHAR(100),
@@ -82,7 +84,7 @@ ALTER TABLE wish ADD CONSTRAINT PRIMARY KEY (wishid);
 ALTER TABLE wish MODIFY wishid INT AUTO_INCREMENT;
 ALTER TABLE wish AUTO_INCREMENT = 20;
 
--- option 테이블 —---------------------------------------------
+-- itemoption(상품옵션) table ---------------------------------------------------------
 DROP TABLE IF EXISTS itemoption;
 CREATE TABLE itemoption(
     optionid INT,
@@ -103,7 +105,7 @@ ALTER TABLE itemoption ADD CONSTRAINT CHECK (price2 > 0);
 ALTER TABLE itemoption ADD CONSTRAINT CHECK (price3 > 0);
 -- ALTER TABLE itemoption ADD CONSTRAINT FOREIGN KEY(itemid) REFERENCES item(itemid);
 
--- 예매(orderlist) -------------------------------------------
+-- orderlist(예매) table ---------------------------------------------------------
 DROP TABLE IF EXISTS orderlist;
 CREATE TABLE orderlist (
 orderlistid INT,
@@ -124,7 +126,7 @@ ALTER TABLE orderlist MODIFY orderlistid INT AUTO_INCREMENT;
 ALTER TABLE orderlist AUTO_INCREMENT = 1000;
 ALTER TABLE orderlist ADD CONSTRAINT CHECK (totalprice > 0);
 
--- 예매내역(orderdetail) ---------------------------------------
+-- orderdetail(예매내역) table ---------------------------------------------------------
 DROP TABLE IF EXISTS orderdetail;
 CREATE TABLE orderdetail (
 orderdetailid INT,
@@ -138,7 +140,7 @@ ALTER TABLE orderdetail ADD CONSTRAINT PRIMARY KEY (orderdetailid);
 ALTER TABLE orderdetail MODIFY orderdetailid INT AUTO_INCREMENT;
 ALTER TABLE orderdetail AUTO_INCREMENT = 40;
 
--- EVENTBL TABLE -------------------------------------------------
+-- eventbl(이벤트) table ---------------------------------------------------------
 DROP TABLE IF EXISTS eventbl;
 CREATE TABLE eventbl(
     eid INT,
@@ -155,7 +157,7 @@ ALTER TABLE eventbl ADD CONSTRAINT PRIMARY KEY (eid);
 ALTER TABLE eventbl MODIFY eid INT AUTO_INCREMENT;
 ALTER TABLE eventbl AUTO_INCREMENT = 50;
 
--- emanage(수험생 이벤트 관리) 테이블 -----------------------------------
+-- emanage(수험생 이벤트 관리) table ---------------------------------------------------------
 DROP TABLE IF EXISTS emanage;
 CREATE TABLE emanage(
     tnumber VARCHAR(50),
@@ -163,7 +165,7 @@ CREATE TABLE emanage(
 );
 ALTER TABLE emanage ADD CONSTRAINT PRIMARY KEY (tnumber);
 
---  admintbl(관리자) 테이블 -------------------------------------------
+-- admintbl(관리자) table ---------------------------------------------------------
 DROP TABLE IF EXISTS admintbl;
 CREATE TABLE admintbl(
    adminid VARCHAR(10),
