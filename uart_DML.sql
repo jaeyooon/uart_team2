@@ -1,4 +1,4 @@
--- customer 테이블 —----------------------------------------
+-- customer(고객) table ---------------------------------------------------------
 INSERT INTO customer VALUES('id01', 'pwd01', '박민준', '001010', '남', 'mjpark@naver.com','010-1234-5678', '2017-11-30', 1);
 INSERT INTO customer VALUES('id02', 'pwd02', '이서연', '040907', '여', 'syleek@gmail.com','010-2534-1173', '2019-09-13', 1);
 INSERT INTO customer VALUES('id03', 'pwd03', '강예준', '040425', '남', 'yjkang@naver.com','010-5436-6879', '2019-01-23', 1);
@@ -10,10 +10,9 @@ INSERT INTO customer VALUES('id08', 'pwd08', '김연지', '040203', '여', 'yjki
 INSERT INTO customer VALUES('id09', 'pwd09', '최연우', '881106', '남', 'ywchoi@gamil.com','010-0504-2245', '2020-02-08', 1);
 INSERT INTO customer VALUES('id10', 'pwd10', '조하린', '900802', '여', 'hlcho@naver.com','010-6654-6879', '2010-11-11', 1);
 
-
 SELECT * FROM customer;
 
--- cate table ---------------------------------------
+-- cate(카테고리) table ---------------------------------------------------------
 INSERT INTO cate VALUES(1, '미디어전시');
 INSERT INTO cate VALUES(2, '체험형전시');
 INSERT INTO cate VALUES(3, '개인전');
@@ -22,7 +21,7 @@ INSERT INTO cate VALUES(5, '공연예술');
 
 SELECT*FROM cate;
 
--- item table ------------------------------------------
+-- item(상품) table ---------------------------------------------------------
 INSERT INTO item VALUES(NULL, 1, 'GUSTAV KLIMT(구스타프 클림트)', 'img01.jpg', '빛의 시어터','서울특별시 광진구 워커힐로 177 그랜드워커힐 호텔앤리조트', '37.55496636787816' ,'127.11102799216009', '전체관람가',  '온라인수령', 200, '2022.05.27', '2023.03.05', '2022.02.12');
 INSERT INTO item VALUES(NULL, 1, '골드베렌의 100번째 생일 기념전', 'img02.jpg', '안녕인사동 B1인사센트럴 뮤지엄','서울특별시 종로구 인사동길 49', '37.57447443356658' ,'126.98352625760418','전체관람가',  '온라인수령', 200, '2022.10.13', '2023.03.12', '2022.02.12');
 INSERT INTO item VALUES(NULL, 1, 'POKÉMON THE DREAMING(포켓몬)', 'img03.jpg', '현대백화점 판교점 10층 토파즈홀','경기도 성남시 분당구 판교역로 146번길 20', '37.3926484929912' ,'127.11206705409401', '전체관람가',  '온라인수령', 200, '2022.10.07', '2022.11.30', '2022.02.12');
@@ -53,7 +52,7 @@ INSERT INTO item VALUES(NULL, 4, '합스부르크 600년, 매혹의 걸작들', 
 
 SELECT*FROM item;
 
--- REVIEW TABLES —----------------------------------------
+-- review(리뷰) table ---------------------------------------------------------
 INSERT INTO review VALUES (NULL, 100, 'id01', "너무나 유익한 전시에요", 5.0, '2022-01-30');
 INSERT INTO review VALUES (NULL, 102,'id02', "동선이 복잡하고 전시된 작품들이 난잡해서 알아보기 힘들어요", 1.0, '2022-02-09');
 INSERT INTO review VALUES (NULL, 103, 'id03', "마치 해외 박물관에 있는 기분입니다!", 5.0, '2022-03-08');
@@ -70,7 +69,7 @@ INSERT INTO review VALUES (NULL, 120, 'id06', "기대만큼이나 만족스러�
 
 SELECT * FROM review;
 
--- wish table ------------------------------------------
+-- wish(위시리스트) table ---------------------------------------------------------
 INSERT INTO wish VALUES (NULL,'id01', 100, sysdate());
 INSERT INTO wish VALUES (NULL,'id01', 109, sysdate());
 INSERT INTO wish VALUES (NULL,'id02', 101, sysdate());
@@ -88,10 +87,9 @@ INSERT INTO wish VALUES (NULL,'id09', 115, sysdate());
 INSERT INTO wish VALUES (NULL,'id10', 107, sysdate());
 INSERT INTO wish VALUES (NULL,'id10', 116, sysdate());
 
-
 SELECT * FROM wish;
 
--- option 테이블 —---------------------------------------------
+-- itemoption(상품옵션) table ---------------------------------------------------------
 INSERT INTO itemoption VALUES(NULL,100,'성인',20000,'청소년',20000,'어린이',20000);
 INSERT INTO itemoption VALUES(NULL,101,'성인',20000,'청소년',20000,'어린이',20000);
 INSERT INTO itemoption VALUES(NULL,102,'성인',20000,'청소년',20000,'어린이',20000);
@@ -119,7 +117,7 @@ INSERT INTO itemoption VALUES(NULL,123,'성인',17000,'청소년',15000,'어린�
 
 SELECT * FROM itemoption;
 
--- 예매(orderlist) -------------------------------------------
+-- orderlist(예매) table ---------------------------------------------------------
 INSERT INTO orderlist VALUES (NULL, 100, 'id01', '2022-01-28', 1, 20000, '카카오페이', '010-8765-4321', '2022-02-28');
 INSERT INTO orderlist VALUES (NULL, 106, 'id02', '2022-01-28', 4, 116000, '네이버페이', '010-9225-1345', '2022-02-28');
 INSERT INTO orderlist VALUES (NULL, 112, 'id03', '2022-01-28', 2, 34000, '신용카드', '010-2589-7370', '2022-02-28');
@@ -221,10 +219,11 @@ INSERT INTO orderlist VALUES (NULL, 111, 'id06', '2022-12-16', 2, 58000, '네이
 INSERT INTO orderlist VALUES (NULL, 117, 'id08', '2022-12-16', 1, 17000, '신용카드', '010-5321-9287', '2023-01-21');
 INSERT INTO orderlist VALUES (NULL, 123, 'id09', '2022-12-16', 2, 34000, '카카오페이', '010-6523-2704', '2023-01-21');
 INSERT INTO orderlist VALUES (NULL, 135, 'id10', '2022-12-16', 3, 30000, '네이버페이', '010-2589-8440', '2023-01-21');
+INSERT INTO orderlist VALUES (NULL, 119, 'id01', '2022-12-15', 2, 20000, '네이버페이', '010-8765-4321', '2023-01-15');
 
 SELECT * FROM orderlist;
 
--- 예매내역(orderdetail) ---------------------------------------
+-- orderdetail(예매내역) table ---------------------------------------------------------
 INSERT INTO orderdetail VALUES (NULL, 1000, 100);
 INSERT INTO orderdetail VALUES (NULL, 1001, 106);
 INSERT INTO orderdetail VALUES (NULL, 1002, 112);
@@ -311,18 +310,19 @@ INSERT INTO orderdetail VALUES (NULL, 1081, 111);
 INSERT INTO orderdetail VALUES (NULL, 1082, 117);
 INSERT INTO orderdetail VALUES (NULL, 1083, 123);
 INSERT INTO orderdetail VALUES (NULL, 1084, 135);
+INSERT INTO orderdetail VALUES (NULL, 1085, 119); 
 
 SELECT * FROM orderdetail;
 
--- EVENTBL TABLE -------------------------------------------------
+-- eventbl(이벤트) table ---------------------------------------------------------
 INSERT INTO eventbl VALUES (NULL,'id10', '2022-11-17', '2022-12-31', '수험표 인증시, 전시 50% 할인!','sevent.png', 50, '2022-11-18', 1);
 SELECT * FROM eventbl;
 
--- emanage(수험생 이벤트 관리) 테이블 -----------------------------------
+-- emanage(수험생 이벤트 관리) table ---------------------------------------------------------
 INSERT INTO emanage VALUES ('12349876', '2022-11-05');
 SELECT * FROM emanage;
 
---  admintbl(관리자) 테이블 -------------------------------------------
+-- admintbl(관리자) table ---------------------------------------------------------
 INSERT INTO admintbl VALUES ('admin01', 'pwd01', 'Josh', 'rtfgh13456@uart.com' , '010-5234-4782' ,'A');
 INSERT INTO admintbl VALUES ('admin02', 'pwd02', 'Cho', 'jycho0208@uart.com', '010-3782-1922' , 'I');
 INSERT INTO admintbl VALUES ('admin03', 'pwd03', 'Kim', 'sykim0405@uart.com' , '010-9543-8932' , 'B');
