@@ -208,7 +208,7 @@ $(document).ready(function(){
                 <button id="submit" class="buy-now btn btn-sm btn-primary">Login</button>
          
              <div class="login_sns">
-				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=48b96f6623867093002dbead41c00334&redirect_uri=http://101.101.219.170/oauth/kakao&response_type=code"> 
+				<li><a href="https://kauth.kakao.com/oauth/authorize?client_id=48b96f6623867093002dbead41c00334&redirect_uri=http://127.0.0.1/oauth/kakao&response_type=code"> 
 					<img id="kakao" th:src="@{/img/kakao_login.png}">
 				</a></li>
 				
@@ -216,10 +216,10 @@ $(document).ready(function(){
 				  <div id="naver_id_login"></div>
 				  
 				  <script type="text/javascript">
-				  	var naver_id_login = new naver_id_login("NDkDf_szvxKsXLeeDzNd", "http://101.101.219.170/cust/callback"); 
+				  	var naver_id_login = new naver_id_login("NDkDf_szvxKsXLeeDzNd", "http://127.0.0.1/cust/callback"); 
 				  	var state = naver_id_login.getUniqState();
 				  	naver_id_login.setButton("white", 2, 43);
-				  	naver_id_login.setDomain("http://101.101.219.170");
+				  	naver_id_login.setDomain("http://127.0.0.1");
 				  	naver_id_login.setState(state);
 				  	/* naver_id_login.setPopup(); */
 				  	naver_id_login.init_naver_id_login();

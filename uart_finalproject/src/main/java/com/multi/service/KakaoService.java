@@ -31,7 +31,7 @@ public class KakaoService{
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=48b96f6623867093002dbead41c00334"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://101.101.219.170/oauth/kakao"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://127.0.0.1/oauth/kakao"); // 본인이 설정한 주소
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
 			bw.flush();
