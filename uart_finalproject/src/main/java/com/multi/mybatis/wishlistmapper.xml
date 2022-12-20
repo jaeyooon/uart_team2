@@ -38,13 +38,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE wi.custid= #{custid}
 	</select>
 	
-	<!-- 카트 추가 -->
+	<!-- 위시리스트 추가 -->
 	<insert id="addWish">
 	
 		INSERT INTO wish VALUES (null,#{custid},#{itemid},sysdate())
 	
 	</insert>
-	<!-- 카트 확인 -->
+	<!-- 위시리스트 확인 -->
 	<select id="checkWish" resultType="WishlistDTO">
 	
 		select * from wish
