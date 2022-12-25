@@ -188,16 +188,7 @@ public class AJAXController {
 		
 		return ja;
 	}
-	
-	/*@RequestMapping("/wishlist/add")
-	public Object addwishlist(WishlistDTO wish) {
-		try {
-			wishlist_service.register(wish);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
-	}*/
+
 	
 	/* 위시리스트 추가 */
 	/**
